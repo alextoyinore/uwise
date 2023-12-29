@@ -20,18 +20,7 @@ class UserSerializer(serializers.ModelSerializer):
         return user
     
 
-class UsernameUpdateSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = '__all__'
-        extra_kwargs = {'password': {'write_only':True}}
-    
-    def update(self, instance, validated_data):
-        instance.username = validated_data.get('username', instance.username)
-        instance.save()
-        return instance
-
-class AuthTokenSerializer(serializers.Serializer):
+class AuthTokenWithEmailSerializer(serializers.Serializer):
     email = serializers.EmailField(trim_whitespace=True)
     password = serializers.CharField(
         style={'input_type': 'password'},
@@ -55,3 +44,30 @@ class AuthTokenSerializer(serializers.Serializer):
                 raise serializers.ValidationError('Invalid email or password.')
         else:
             raise serializers.ValidationError('Must include "email" and "password".')
+        
+
+class AuthTokenWithUsernameSerializer(serializers.Serializer):
+    username = serializers.CharField(trim_whitespace=True)
+    password = serializers.CharField(
+        style={'input_type': 'password'},
+        trim_whitespace=False
+    )
+
+    def validate(self, attrs):
+        username = attrs.get('username')
+        password = attrs.get('password')
+
+        if username and password:
+            user = User.objects.filter(username=username).first()
+
+            if user and user.check_password(password):
+                if not user.is_active:
+                    raise serializers.ValidationError('User account is disabled.')
+                
+                attrs['user'] = user
+                return attrs
+            else:
+                raise serializers.ValidationError('Invalid username or password.')
+        else:
+            raise serializers.ValidationError('Must include "username" and "password".')
+        

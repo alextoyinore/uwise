@@ -25,8 +25,12 @@ class UserView(ModelViewSet):
         return [permission() for permission in permission_classes]
 
 
-class LoginView(ObtainAuthToken):
-    serializer_class = serializers.AuthTokenSerializer
+class LoginWithEmailView(ObtainAuthToken):
+    serializer_class = serializers.AuthTokenWithEmailSerializer
+
+
+class LoginWithUsernameView(ObtainAuthToken):
+    serializer_class = serializers.AuthTokenWithUsernameSerializer
 
 
 class ProfileView(ModelViewSet):
@@ -37,8 +41,3 @@ class ProfileView(ModelViewSet):
         serialized_user = serializers.UserSerializer(current_user)
         return Response(serialized_user.data)
     
-
-class SetUsername(ModelViewSet):
-    permission_classes = [IsAuthenticated]
-    serializer_class = serializers.UsernameUpdateSerializer
-    queryset = User.objects.all()
