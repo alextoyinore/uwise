@@ -18,7 +18,6 @@ class UserSerializer(serializers.ModelSerializer):
             password=validated_data['password'],
         )
         return user
-    
 
 class AuthTokenWithEmailSerializer(serializers.Serializer):
     email = serializers.EmailField(trim_whitespace=True)

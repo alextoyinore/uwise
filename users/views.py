@@ -2,6 +2,7 @@ from django.shortcuts import render
 from users import serializers
 from rest_framework.viewsets import ModelViewSet
 from .models import User
+from rest_framework import status
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -14,7 +15,7 @@ class UserView(ModelViewSet):
     queryset = User.objects.all()
 
     def get_permissions(self):
-        # Apply different permissions for different methods
+        # Applying different permissions for different methods
         if self.action == 'list':
             permission_classes = [IsAdminUser]
         elif self.action in ['retrieve', 'update', 'partial_update', 'destroy']:
@@ -40,4 +41,12 @@ class ProfileView(ModelViewSet):
         current_user = request.user
         serialized_user = serializers.UserSerializer(current_user)
         return Response(serialized_user.data)
+    
+
+class LogoutView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request,format=None):
+        request.auth.delete()
+        return Response({"detail":"You logged out!"}, status=status.HTTP_200_OK)
     
