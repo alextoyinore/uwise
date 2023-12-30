@@ -7,6 +7,7 @@ from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from social_django.utils import psa
 
 
 # views.py
@@ -48,5 +49,14 @@ class LogoutView(APIView):
 
     def post(self, request,format=None):
         request.auth.delete()
-        return Response({"detail":"You logged out!"}, status=status.HTTP_200_OK)
+        return Response({"message":"You logged out!"}, status=status.HTTP_200_OK)
     
+
+
+class SocialLoginView(ModelViewSet):
+    @psa('social:complete')
+    def create(self, request, backend):
+        user = request.user
+        serialized_user = serializers.UserSerializer(user)
+        return Response({'message': 'Login successful!', 'user': serialized_user.data})
+

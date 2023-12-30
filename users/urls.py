@@ -1,5 +1,5 @@
 from django.urls import path, re_path
-from .views import UserView, LoginWithEmailView, LoginWithUsernameView, ProfileView, LogoutView
+from .views import *
 from rest_framework.authtoken.views import obtain_auth_token
 
 # urls
@@ -7,6 +7,7 @@ urlpatterns = [
     # LOGINS
     path('login/e', view=LoginWithEmailView.as_view(), name='email-login'),
     path('login/u', view=LoginWithUsernameView.as_view(), name='username-login'),
+    path('login/<backend>', view=SocialLoginView.as_view({'post':'create'}), name='social-login'),
 
     # USER
     path('users/me', view=ProfileView.as_view({
@@ -27,6 +28,5 @@ urlpatterns = [
     path('logout', view=LogoutView.as_view(), name='logout')
 ]
 
-\
 
 
