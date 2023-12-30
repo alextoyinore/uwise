@@ -25,10 +25,12 @@ class User(AbstractUser):
     desired_job_field = models.CharField(max_length=100, default='', blank=True)
     current_job = models.CharField(max_length=100, default='', blank=True)
     desired_job = models.CharField(max_length=100, default='', blank=True)
+    academic_level = models.CharField(max_length=100, default=None, choices=ACADEMIC_LEVEL)
     is_student = models.BooleanField(default=False)
     is_facilitator = models.BooleanField(default=False)
     is_admin = models.BooleanField(default=False)
-    academic_level = models.CharField(max_length=100, default=None, choices=ACADEMIC_LEVEL)
+    is_subscriber = models.BooleanField(default=False)
+
     
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = [
