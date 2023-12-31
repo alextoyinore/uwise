@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from users import serializers
 from rest_framework.viewsets import ModelViewSet
-from .models import User
+from .models import *
 from rest_framework import status
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.views import APIView
@@ -26,6 +26,10 @@ class UserView(ModelViewSet):
 
         return [permission() for permission in permission_classes]
 
+
+class AcademicLevelView(ModelViewSet):
+    serializer_class = serializers.AcademicLevelSerializer
+    queryset = AcademicLevel.objects.all()
 
 class LoginWithEmailView(ObtainAuthToken):
     serializer_class = serializers.AuthTokenWithEmailSerializer

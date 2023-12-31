@@ -1,14 +1,16 @@
 # serializers.py
 from rest_framework import serializers
-from .models import User
+from .models import *
 from rest_framework.authtoken.models import Token
 
 # serializers
 class UserSerializer(serializers.ModelSerializer):
+    # academic_level = serializers.HyperlinkedRelatedField('AcademicLevelSerializer')
     class Meta:
         model = User
         fields = '__all__'
         extra_kwargs = {'password': {'write_only':True}}
+        depth = 1
 
     def create(self, validated_data):
         user = User.objects.create_user(
@@ -18,6 +20,11 @@ class UserSerializer(serializers.ModelSerializer):
             password=validated_data['password'],
         )
         return user
+
+class AcademicLevelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AcademicLevel
+        fields = '__all__'
 
 class AuthTokenWithEmailSerializer(serializers.Serializer):
     email = serializers.EmailField(trim_whitespace=True)
