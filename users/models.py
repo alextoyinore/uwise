@@ -25,7 +25,8 @@ class User(AbstractUser):
     desired_job_field = models.CharField(max_length=100, default='', blank=True)
     current_job = models.CharField(max_length=100, default='', blank=True)
     desired_job = models.CharField(max_length=100, default='', blank=True)
-    academic_level = models.CharField(max_length=100, default=None, choices=ACADEMIC_LEVEL)
+    academic_level = models.CharField(max_length=100, default='', choices=ACADEMIC_LEVEL)
+    organization = models.ForeignKey('Organization', default=None, null=True, on_delete=models.CASCADE)
     is_student = models.BooleanField(default=False)
     is_facilitator = models.BooleanField(default=False)
     is_admin = models.BooleanField(default=False)
@@ -57,6 +58,16 @@ class User(AbstractUser):
         return self.get_full_name()
     
 
+class Organization(models.Model):
+    name = models.CharField(max_length=200, null=False, blank=False)
+    logo = models.SlugField(default='')
+    region = models.CharField(max_length=100, default='', null=True, blank=True)
+    url = models.URLField(null=False, blank=False)
+
+    def __str__(self) -> str:
+        return self.name
+    
+
 class Subscriber(models.Model):
     user = models.OneToOneField('User', on_delete=models.DO_NOTHING, null=False, blank=False, default=None)
     date_of_subscription = models.DateField()
@@ -68,12 +79,15 @@ class Subscriber(models.Model):
 
 
 class SubscriptionType(models.Model):
+    name = models.CharField(max_length=100, null=False, blank=False)
     SUBSCRIPTION_TYPE = [
         ('student', 'Student'),
         ('professional', 'Professional'),
         ('premium', 'Premium'),
+        ('vocational', 'Vocational'),
+        ('organization', 'Organization')
     ]
-    name = models.CharField(max_length=100, default=None, choices=SUBSCRIPTION_TYPE)
+    type = models.CharField(max_length=100, default=None, choices=SUBSCRIPTION_TYPE)
     RECURRENT_TYPE = [
         ('monthly', 'Monthly'),
         ('quarterly', 'Quarterly'),
@@ -81,8 +95,10 @@ class SubscriptionType(models.Model):
     ]
     recurrent_type = models.CharField(max_length=100, default=None, choices=RECURRENT_TYPE)
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    details = models.SlugField(max_length=5000)
+    details = models.SlugField(max_length=1000)
     active = models.BooleanField(default=False)
 
     def __str__(self) -> str:
         return self.name
+
+
