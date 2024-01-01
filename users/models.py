@@ -7,7 +7,7 @@ class User(AbstractUser):
     email = models.EmailField(max_length=100, unique=True)
     first_name = models.CharField(max_length=100, null=False, blank=False)
     last_name = models.CharField(max_length=100, null=False, blank=False)
-    username = models.CharField(max_length=100, unique=True, default='', blank=False) 
+    username = models.CharField(max_length=100, unique=True, default='', blank=False)
     country = models.CharField(max_length=100, default='', blank=True)
     address = models.CharField(max_length=100, default='', blank=True)
     city = models.CharField(max_length=100, default='', blank=True)
@@ -24,7 +24,6 @@ class User(AbstractUser):
     is_admin = models.BooleanField(default=False)
     is_subscriber = models.BooleanField(default=False)
 
-    
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = [
         'first_name',
@@ -36,6 +35,7 @@ class User(AbstractUser):
     '''
     Generate username from user provided email
     '''
+
     def save(self, *args, **kwargs):
         email_username = self.email.split('@')[0]
         email_domain = self.email.split('@')[1].split('.')[0]
@@ -45,6 +45,7 @@ class User(AbstractUser):
     def __str__(self):
         return self.get_full_name()
 
+
 # Accessible only to Super Admins
 class AcademicLevel(models.Model):
     title = models.CharField(max_length=50, null=False, blank=False)
@@ -52,6 +53,7 @@ class AcademicLevel(models.Model):
 
     def __str__(self) -> str:
         return self.title
+
 
 class Organization(models.Model):
     fullname = models.CharField(max_length=150, null=False, blank=False)
@@ -65,8 +67,9 @@ class Organization(models.Model):
     size = models.IntegerField(null=False, blank=False)
 
     def __str__(self) -> str:
-        return self.name
-    
+        return self.organization_name
+
+
 # Accessible only to Super Admins
 class OrganizationType(models.Model):
     title = models.CharField(max_length=100, null=False, blank=False)
@@ -74,16 +77,17 @@ class OrganizationType(models.Model):
 
     def __str__(self) -> str:
         return self.title
-    
+
 
 class Subscription(models.Model):
     user = models.ForeignKey('User', on_delete=models.CASCADE, null=False, blank=False, default=None)
     date_of_subscription = models.DateField()
     subscription_renewal_date = models.DateField()
-    subsciption_type = models.ForeignKey('SubscriptionType', on_delete=models.CASCADE, null=False, blank=False, default=None)
+    subscription_type = models.ForeignKey('SubscriptionType', on_delete=models.CASCADE, null=False, blank=False,
+                                          default=None)
 
     def __str__(self) -> str:
-        return self.user
+        return self.user.username
 
 
 # Accessible to only Super Admins
@@ -96,7 +100,8 @@ class SubscriptionType(models.Model):
     active = models.BooleanField(default=False)
 
     def __str__(self) -> str:
-        return self.name
+        return self.title
+
 
 # Accessible to only Super Admins
 class SubscriptionRecurrentType(models.Model):
@@ -106,4 +111,3 @@ class SubscriptionRecurrentType(models.Model):
 
     def __str__(self) -> str:
         return self.title
-
