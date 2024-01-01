@@ -101,6 +101,7 @@ class SubscriptionType(models.Model):
 # Accessible to only Super Admins
 class SubscriptionRecurrentType(models.Model):
     title = models.CharField(max_length=20, null=False, blank=False)
+    time_period = models.BigIntegerField()
     description = models.CharField(max_length=100, default='')
 
     def __str__(self) -> str:
