@@ -1,11 +1,11 @@
 # serializers.py
 from rest_framework import serializers
 from .models import *
+from .views import *
 from rest_framework.authtoken.models import Token
 
 # serializers
 class UserSerializer(serializers.ModelSerializer):
-    # academic_level = serializers.HyperlinkedRelatedField('AcademicLevelSerializer')
     class Meta:
         model = User
         fields = '__all__'
@@ -24,6 +24,36 @@ class UserSerializer(serializers.ModelSerializer):
 class AcademicLevelSerializer(serializers.ModelSerializer):
     class Meta:
         model = AcademicLevel
+        fields = '__all__'
+
+
+class OrganizationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Organization
+        fields = '__all__'
+        depth = 1
+
+class OrganizationTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OrganizationType
+        fields = '__all__'
+        
+
+class SubscriptionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Subscription
+        fields = '__all__'
+
+
+class SubscriptionTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SubscriptionType
+        fields = '__all__'
+
+
+class SubscriptionRecurrentTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SubscriptionRecurrentType
         fields = '__all__'
 
 class AuthTokenWithEmailSerializer(serializers.Serializer):

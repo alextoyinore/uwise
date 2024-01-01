@@ -27,7 +27,6 @@ class User(AbstractUser):
     
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = [
-        # 'username',
         'first_name',
         'last_name',
     ]
@@ -77,7 +76,7 @@ class OrganizationType(models.Model):
         return self.title
     
 
-class Subscriber(models.Model):
+class Subscription(models.Model):
     user = models.ForeignKey('User', on_delete=models.CASCADE, null=False, blank=False, default=None)
     date_of_subscription = models.DateField()
     subscription_renewal_date = models.DateField()
