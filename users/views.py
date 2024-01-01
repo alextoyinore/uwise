@@ -30,6 +30,36 @@ class UserView(ModelViewSet):
 class AcademicLevelView(ModelViewSet):
     serializer_class = serializers.AcademicLevelSerializer
     queryset = AcademicLevel.objects.all()
+    permission_classes = [IsAdminUser]
+
+
+class OrganizationView(ModelViewSet):
+    serializer_class = serializers.OrganizationSerializer
+    queryset = Organization.objects.all()
+
+
+class OrganizationTypeView(ModelViewSet):
+    serializer_class = serializers.OrganizationTypeSerializer
+    queryset = OrganizationType.objects.all()
+    permission_classes = [IsAdminUser]
+
+
+class SubscriptionView(ModelViewSet):
+    serializer_class = serializers.SubscriptionSerializer
+    queryset = Subscription.objects.all()
+
+
+class SubscriptionTypeView(ModelViewSet):
+    serializer_class = serializers.SubscriptionTypeSerializer
+    queryset = SubscriptionType.objects.all()
+    permission_classes = [IsAdminUser]
+
+
+class SubscriptionRecurrentTypeView(ModelViewSet):
+    serializer_class = serializers.SubscriptionRecurrentTypeSerializer
+    queryset = SubscriptionRecurrentType.objects.all()
+    permission_classes = [IsAdminUser]
+
 
 class LoginWithEmailView(ObtainAuthToken):
     serializer_class = serializers.AuthTokenWithEmailSerializer
@@ -42,19 +72,18 @@ class LoginWithUsernameView(ObtainAuthToken):
 class ProfileView(ModelViewSet):
     permission_classes = [IsAuthenticated]
 
-    def retrieve(self, request):
+    def retrieve(self, request, **kwargs):
         current_user = request.user
         serialized_user = serializers.UserSerializer(current_user)
         return Response(serialized_user.data)
-    
 
-class LogoutView(APIView):
+
+class LogoutView(ModelViewSet):
     permission_classes = [IsAuthenticated]
 
-    def post(self, request,format=None):
+    def create(self, request, **kwargs):
         request.auth.delete()
-        return Response({"message":"You logged out!"}, status=status.HTTP_200_OK)
-    
+        return Response({"message": "You logged out!"}, status=status.HTTP_200_OK)
 
 
 class SocialLoginView(ModelViewSet):
@@ -63,4 +92,3 @@ class SocialLoginView(ModelViewSet):
         user = request.user
         serialized_user = serializers.UserSerializer(user)
         return Response({'message': 'Login successful!', 'user': serialized_user.data})
-
