@@ -39,42 +39,6 @@ urlpatterns = [
         'delete': 'destroy'
     }), name='academic-level-detail'),
 
-    # SUBSCRIPTION
-    path('subscriptions', view=SubscriptionView.as_view({
-        'get': 'list',
-        'post': 'create'
-    }), name='subscriptions'),
-    path('subscription/<int:pk>', view=SubscriptionView.as_view({
-        'get': 'retrieve',
-        'put': 'update',
-        'patch': 'partial_update',
-        'delete': 'destroy'
-    }), name='subscription-detail'),
-
-    # SUBSCRIPTION TYPE
-    path('subscription-types', view=SubscriptionTypeView.as_view({
-        'get': 'list',
-        'post': 'create'
-    }), name='subscription-types'),
-    path('subscription-type/<int:pk>', view=SubscriptionTypeView.as_view({
-        'get': 'retrieve',
-        'put': 'update',
-        'patch': 'partial_update',
-        'delete': 'destroy'
-    }), name='subscription-type-detail'),
-
-    # SUBSCRIPTION RECURRENT TYPE
-    path('subscription-recurrent-types', view=SubscriptionRecurrentTypeView.as_view({
-        'get': 'list',
-        'post': 'create'
-    }), name='subscription-recurrent-types'),
-    path('subscription-recurrent-type/<int:pk>', view=SubscriptionRecurrentTypeView.as_view({
-        'get': 'retrieve',
-        'put': 'update',
-        'patch': 'partial_update',
-        'delete': 'destroy'
-    }), name='subscription-recurrent-type-detail'),
-
     # ORGANIZATION
     path('organizations', view=OrganizationView.as_view({
         'get': 'list',

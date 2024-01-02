@@ -7,6 +7,7 @@ class User(AbstractUser):
     email = models.EmailField(max_length=100, unique=True)
     first_name = models.CharField(max_length=100, null=False, blank=False)
     last_name = models.CharField(max_length=100, null=False, blank=False)
+    gender = models.OneToOneField('Gender', default=None, on_delete=models.CASCADE, null=True, blank=False)
     username = models.CharField(max_length=100, unique=True, default='', blank=False)
     country = models.CharField(max_length=100, default='', blank=True)
     address = models.CharField(max_length=100, default='', blank=True)
@@ -42,8 +43,17 @@ class User(AbstractUser):
         self.username = email_username + email_domain
         super(User, self).save(*args, **kwargs)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.get_full_name()
+
+
+# Accessible only to Super Admins
+class Gender(models.Model):
+    title = models.CharField(max_length=50, null=False, blank=False)
+    description = models.CharField(max_length=100, default=None, blank=False)
+
+    def __str__(self) -> str:
+        return self.title
 
 
 # Accessible only to Super Admins
@@ -62,7 +72,7 @@ class Organization(models.Model):
     logo = models.URLField(default='')
     region = models.CharField(max_length=100, default='', null=True, blank=True)
     url = models.URLField(null=False, blank=False)
-    work_email = models.EmailField(null=False, blank=False)
+    work_email = models.EmailField(unique=True, null=False, blank=False)
     type = models.ForeignKey('OrganizationType', on_delete=models.CASCADE, null=False, blank=False)
     size = models.IntegerField(null=False, blank=False)
 
@@ -74,40 +84,6 @@ class Organization(models.Model):
 class OrganizationType(models.Model):
     title = models.CharField(max_length=100, null=False, blank=False)
     description = models.TextField(max_length=200, default='')
-
-    def __str__(self) -> str:
-        return self.title
-
-
-class Subscription(models.Model):
-    user = models.ForeignKey('User', on_delete=models.CASCADE, null=False, blank=False, default=None)
-    date_of_subscription = models.DateField()
-    subscription_renewal_date = models.DateField()
-    subscription_type = models.ForeignKey('SubscriptionType', on_delete=models.CASCADE, null=False, blank=False,
-                                          default=None)
-
-    def __str__(self) -> str:
-        return self.user.username
-
-
-# Accessible to only Super Admins
-class SubscriptionType(models.Model):
-    title = models.CharField(max_length=100, null=False, blank=False)
-    description = models.CharField(max_length=200, default='')
-    recurrent_type = models.ForeignKey('SubscriptionRecurrentType', on_delete=models.CASCADE)
-    price = models.DecimalField(max_digits=10, decimal_places=2)
-    details = models.SlugField(max_length=1000)
-    active = models.BooleanField(default=False)
-
-    def __str__(self) -> str:
-        return self.title
-
-
-# Accessible to only Super Admins
-class SubscriptionRecurrentType(models.Model):
-    title = models.CharField(max_length=20, null=False, blank=False)
-    time_period = models.BigIntegerField()
-    description = models.CharField(max_length=100, default='')
 
     def __str__(self) -> str:
         return self.title

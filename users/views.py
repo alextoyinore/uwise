@@ -27,6 +27,12 @@ class UserView(ModelViewSet):
         return [permission() for permission in permission_classes]
 
 
+class GenderView(ModelViewSet):
+    serializer_class = serializers.GenderSerializer
+    queryset = Gender.objects.all()
+    permission_classes = [IsAdminUser]
+
+
 class AcademicLevelView(ModelViewSet):
     serializer_class = serializers.AcademicLevelSerializer
     queryset = AcademicLevel.objects.all()
@@ -41,23 +47,6 @@ class OrganizationView(ModelViewSet):
 class OrganizationTypeView(ModelViewSet):
     serializer_class = serializers.OrganizationTypeSerializer
     queryset = OrganizationType.objects.all()
-    permission_classes = [IsAdminUser]
-
-
-class SubscriptionView(ModelViewSet):
-    serializer_class = serializers.SubscriptionSerializer
-    queryset = Subscription.objects.all()
-
-
-class SubscriptionTypeView(ModelViewSet):
-    serializer_class = serializers.SubscriptionTypeSerializer
-    queryset = SubscriptionType.objects.all()
-    permission_classes = [IsAdminUser]
-
-
-class SubscriptionRecurrentTypeView(ModelViewSet):
-    serializer_class = serializers.SubscriptionRecurrentTypeSerializer
-    queryset = SubscriptionRecurrentType.objects.all()
     permission_classes = [IsAdminUser]
 
 

@@ -4,12 +4,13 @@ from .models import *
 from .views import *
 from rest_framework.authtoken.models import Token
 
+
 # serializers
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = '__all__'
-        extra_kwargs = {'password': {'write_only':True}}
+        extra_kwargs = {'password': {'write_only': True}}
         depth = 1
 
     def create(self, validated_data):
@@ -20,6 +21,13 @@ class UserSerializer(serializers.ModelSerializer):
             password=validated_data['password'],
         )
         return user
+
+
+class GenderSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Gender
+        fields = '__all__'
+
 
 class AcademicLevelSerializer(serializers.ModelSerializer):
     class Meta:
@@ -33,28 +41,12 @@ class OrganizationSerializer(serializers.ModelSerializer):
         fields = '__all__'
         depth = 1
 
+
 class OrganizationTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = OrganizationType
         fields = '__all__'
-        
 
-class SubscriptionSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Subscription
-        fields = '__all__'
-
-
-class SubscriptionTypeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = SubscriptionType
-        fields = '__all__'
-
-
-class SubscriptionRecurrentTypeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = SubscriptionRecurrentType
-        fields = '__all__'
 
 class AuthTokenWithEmailSerializer(serializers.Serializer):
     email = serializers.EmailField(trim_whitespace=True)
@@ -73,14 +65,14 @@ class AuthTokenWithEmailSerializer(serializers.Serializer):
             if user and user.check_password(password):
                 if not user.is_active:
                     raise serializers.ValidationError('User account is disabled.')
-                
+
                 attrs['user'] = user
                 return attrs
             else:
                 raise serializers.ValidationError('Invalid email or password.')
         else:
             raise serializers.ValidationError('Must include "email" and "password".')
-        
+
 
 class AuthTokenWithUsernameSerializer(serializers.Serializer):
     username = serializers.CharField(trim_whitespace=True)
@@ -99,11 +91,10 @@ class AuthTokenWithUsernameSerializer(serializers.Serializer):
             if user and user.check_password(password):
                 if not user.is_active:
                     raise serializers.ValidationError('User account is disabled.')
-                
+
                 attrs['user'] = user
                 return attrs
             else:
                 raise serializers.ValidationError('Invalid username or password.')
         else:
             raise serializers.ValidationError('Must include "username" and "password".')
-        
