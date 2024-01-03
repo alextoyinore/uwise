@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     "rest_framework.authtoken",
     "users.apps.UserConfig",
     "subscriptions.apps.SubscriptionsConfig",
+    "courses.apps.CoursesConfig",
+    "utils.apps.UtilsConfig",
     "social_django",
 ]
 
