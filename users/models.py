@@ -13,7 +13,7 @@ class User(AbstractUser):
     address = models.CharField(max_length=100, default='', blank=True)
     city = models.CharField(max_length=100, default='', blank=True)
     postal_code = models.CharField(max_length=6, default='', blank=True)
-    photo = models.URLField(default=''),
+    image = models.URLField(default=''),
     current_job_field = models.CharField(max_length=100, default='', blank=True)
     desired_job_field = models.CharField(max_length=100, default='', blank=True)
     current_job = models.CharField(max_length=100, default='', blank=True)
@@ -69,7 +69,7 @@ class Organization(models.Model):
     fullname = models.CharField(max_length=150, null=False, blank=False)
     job_title = models.CharField(max_length=100, null=False, blank=False)
     organization_name = models.CharField(max_length=100, null=False, blank=False)
-    logo = models.URLField(default='')
+    image = models.URLField(default='')
     region = models.CharField(max_length=100, default='', null=True, blank=True)
     url = models.URLField(null=False, blank=False)
     work_email = models.EmailField(unique=True, null=False, blank=False)

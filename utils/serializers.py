@@ -22,8 +22,3 @@ class LanguageSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class CourseLevelSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = CourseLevel
-        fields = '__all__'
-

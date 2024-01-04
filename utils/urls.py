@@ -5,10 +5,10 @@ from .views import  *
 urlpatterns = [
     # CATEGORIES
 
-    path('categories', views=CategoryViewSet.as_view({
+    path('categories', view=CategoryViewSet.as_view({
         'post': 'create',
         'get': 'list'}), name='categories'),
-    path('category/<int:pk>', views=CategoryViewSet.as_view({
+    path('category/<int:pk>', view=CategoryViewSet.as_view({
         'get': 'retrieve',
         'put': 'update',
         'patch': 'partial_update',
@@ -17,10 +17,10 @@ urlpatterns = [
 
     # TAGS
 
-    path('tags', views=CategoryViewSet.as_view({
+    path('tags', view=CategoryViewSet.as_view({
         'post': 'create',
         'get': 'list'}), name='tags'),
-    path('tag/<int:pk>', views=CategoryViewSet.as_view({
+    path('tag/<int:pk>', view=CategoryViewSet.as_view({
         'get': 'retrieve',
         'put': 'update',
         'patch': 'partial_update',
@@ -29,25 +29,13 @@ urlpatterns = [
 
     # LANGUAGES
 
-    path('languages', views=LanguageViewSet.as_view({
+    path('languages', view=LanguageViewSet.as_view({
         'post': 'create',
         'get': 'list'}), name='languages'),
-    path('language/<int:pk>', views=LanguageViewSet.as_view({
+    path('language/<int:pk>', view=LanguageViewSet.as_view({
         'get': 'retrieve',
         'put': 'update',
         'patch': 'partial_update',
         'delete': 'destroy',
     }), name='language'),
-
-    # COURSE LEVEL
-
-    path('course-levels', views=CourseLevelViewSet.as_view({
-        'post': 'create',
-        'get': 'list'}), name='course-levels'),
-    path('course-level/<int:pk>', views=CourseLevelViewSet.as_view({
-        'get': 'retrieve',
-        'put': 'update',
-        'patch': 'partial_update',
-        'delete': 'destroy',
-    }), name='course-level'),
 ]

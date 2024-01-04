@@ -5,19 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28e0790d-2666-491f-b2f6-e15adf6182b8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/utils/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/serializers.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b9fddd52-b39e-4257-93e7-0b5b96e060c2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b9fddd52-b39e-4257-93e7-0b5b96e060c2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/courses/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/courses/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/courses/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/courses/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uwise/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/uwise/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uwise/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/uwise/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/courses/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/courses/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/courses/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/courses/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/courses/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/courses/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +124,7 @@
       <updated>1703533702963</updated>
       <workItem from="1703533727735" duration="50828000" />
       <workItem from="1704116096732" duration="8776000" />
-      <workItem from="1704184318653" duration="11968000" />
+      <workItem from="1704184318653" duration="23616000" />
     </task>
     <servers />
   </component>

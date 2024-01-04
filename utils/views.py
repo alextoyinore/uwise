@@ -24,8 +24,3 @@ class LanguageViewSet(ModelViewSet):
     serializer_class = LanguageSerializer
     permission_classes = [IsAdminUser]
 
-
-class CourseLevelViewSet(ModelViewSet):
-    queryset = CourseLevel.objects.all()
-    serializer_class = CourseLevelSerializer
-    permission_classes = [IsAdminUser]
