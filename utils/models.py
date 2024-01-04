@@ -57,7 +57,7 @@ class Rating(models.Model):
 class Grade(models.Model):
     user = models.ForeignKey(users.models.User, on_delete=models.CASCADE)
     course = models.ForeignKey(courses.models.Course, on_delete=models.CASCADE)
-    grade = models.IntegerField(null=False, blank=False)
+    grade = models.DecimalField(max_digits=2, decimal_places=2, null=False, blank=False)
     date = models.DateTimeField(auto_now=True)
 
     def __str__(self):
