@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "subscriptions.apps.SubscriptionsConfig",
     "courses.apps.CoursesConfig",
     "utils.apps.UtilsConfig",
+    "web.apps.WebConfig",
     "social_django",
 ]
 

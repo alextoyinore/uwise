@@ -71,3 +71,4 @@ class ReadingViewSet(ModelViewSet):
     queryset = Reading.objects.all()
     serializer_class = ReadingSerializer
     permission_classes = [IsAdminUser]
+
