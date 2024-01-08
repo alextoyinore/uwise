@@ -1,0 +1,136 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <link rel="stylesheet" href="css/web.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="auth-container">
+    <header class="header-bar">
+      <img src="images/uwise.png" alt="uwise logo">
+    </header>
+    <div>
+        <div class="tab-switch">
+            <button class="tab-switch-btn left-switcher" id="login-btn" onclick="showLoginForm()">Login</button>
+            <button class="tab-switch-btn right-switcher" id="signup-btn" onclick="showSignupForm()">Sign Up</button>
+        </div>
+          <div class="auth-form-container" id="loginForm">
+            <form>
+                <h2>Sign in to your account.</h2>
+                <p>Build skills for today, tomorrow, and beyond. Education to future-proof your career.</p>
+              <label for="emailOrUsername">Email or Username</label>
+              <input
+                type="text"
+                id="emailOrUsername"
+                name="emailOrUsername"
+                placeholder="Enter your email or username"
+              /> <br>
+      
+              <label for="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter your password"
+              /> <br>
+      
+              <!-- Submit button -->
+              <button type="submit" onclick="submitForm()">Login</button>
+            </form>
+          </div>
+      
+          <div class="auth-form-container" id="signupForm" style="display: none;">
+            <form>
+                <h2>Create your student account.</h2>
+                <p>Build skills for today, tomorrow, and beyond. Education to future-proof your career.</p>
+                <label for="email">Email</label>
+                <input
+                  type="text"
+                  id="email"
+                  name="email"
+                  placeholder="Enter your email"
+                /> <br>
+
+              <label for="firstName">First Name</label>
+              <input
+                type="text"
+                id="firstName"
+                name="firstName"
+                placeholder="Enter your first name"
+              /> <br>
+      
+              <label for="lastName">Last Name</label>
+              <input
+                type="text"
+                id="lastName"
+                name="lastName"
+                placeholder="Enter your last name"
+              /> <br>
+      
+              <label for="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter your password"
+              /> <br>
+      
+              <!-- Submit button -->
+              <button type="submit" onclick="submitForm()">Sign Up</button>
+            </form>
+    </div>
+    <!-- Google and Facebook login buttons -->
+    <div class="tab-switch">
+        <button class="tab-switch-btn left-bottom-switcher" onclick="loginWithGoogle()">Google</button>
+        <button class="tab-switch-btn right-bottom-switcher" onclick="loginWithFacebook()">Facebook</button>
+      </div>
+  </div>
+</div>
+
+  <script>
+
+    window.addEventListener('load', ()=>showLoginForm())
+
+    function showLoginForm() {
+      document.getElementById('loginForm').style.display = 'block';
+      document.getElementById('signupForm').style.display = 'none';
+      document.getElementById('login-btn').style.backgroundColor = '#fff'
+      document.getElementById('signup-btn').style.backgroundColor = '#eee'
+
+      // Focus
+      document.getElementById('login-btn').style.borderBottom = '0'
+      document.getElementById('signup-btn').style.borderBottom = '1px solid #ccc'
+    }
+
+    function showSignupForm() {
+      document.getElementById('loginForm').style.display = 'none';
+      document.getElementById('signupForm').style.display = 'block';
+      document.getElementById('signup-btn').style.backgroundColor = '#fff'
+      document.getElementById('login-btn').style.backgroundColor = '#eee'
+
+      // Focus
+      document.getElementById('signup-btn').style.borderBottom = '0'
+      document.getElementById('login-btn').style.borderBottom = '1px solid #ccc'
+    }
+
+    function submitForm() {
+      // Add logic to handle form submission using JavaScript
+      // Example: document.getElementById("loginForm").submit();
+    }
+
+    function loginWithGoogle() {
+      // Add logic to handle Google login using JavaScript
+    }
+
+    function loginWithFacebook() {
+      // Add logic to handle Facebook login using JavaScript
+    }
+  </script>
+</body>
+</html>
