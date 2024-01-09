@@ -7,7 +7,7 @@ class User(AbstractUser):
     email = models.EmailField(max_length=100, unique=True)
     first_name = models.CharField(max_length=100, null=False, blank=False)
     last_name = models.CharField(max_length=100, null=False, blank=False)
-    gender = models.OneToOneField('UserGender', default=None, on_delete=models.CASCADE, null=True, blank=False)
+    gender = models.OneToOneField('UserGender', default=None, on_delete=models.CASCADE, null=True, blank=False, related_name='user_gender')
     username = models.CharField(max_length=100, unique=True, default='', blank=False)
     country = models.CharField(max_length=100, default='', blank=True)
     address = models.CharField(max_length=100, default='', blank=True)
@@ -18,7 +18,7 @@ class User(AbstractUser):
     desired_job_field = models.CharField(max_length=100, default='', blank=True)
     current_job = models.CharField(max_length=100, default='', blank=True)
     desired_job = models.CharField(max_length=100, default='', blank=True)
-    academic_level = models.OneToOneField('UserAcademicLevel', default=None, on_delete=models.CASCADE, null=True, blank=True)
+    academic_level = models.OneToOneField('UserAcademicLevel', default=None, on_delete=models.CASCADE, null=True, blank=True, related_name='user_academic_level')
     organization = models.ForeignKey('Organization', default=None, null=True, on_delete=models.CASCADE)
 
     USERNAME_FIELD = 'email'
