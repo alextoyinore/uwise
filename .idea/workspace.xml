@@ -5,19 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28e0790d-2666-491f-b2f6-e15adf6182b8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/uwise/permissions.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/serializers.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b9fddd52-b39e-4257-93e7-0b5b96e060c2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b9fddd52-b39e-4257-93e7-0b5b96e060c2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uwise.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uwise.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/courses/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/courses/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uwise/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/uwise/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uwise/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/uwise/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/css/web.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/static/css/web.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/templates/auth.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/auth.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,31 +50,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Django Server.uwise.executor": "Run",
-    "HTTP Request.generated-requests | #1.executor": "Run",
-    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowPanel.toolwindow.highlight.mappings": "true",
-    "WebServerToolWindowPanel.toolwindow.highlight.symlinks": "true",
-    "WebServerToolWindowPanel.toolwindow.show.date": "false",
-    "WebServerToolWindowPanel.toolwindow.show.permissions": "false",
-    "WebServerToolWindowPanel.toolwindow.show.size": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/techs/OneDrive/Desktop/uwise",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Django Server.uwise.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.generated-requests | #1.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.highlight.mappings&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.highlight.symlinks&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.date&quot;: &quot;false&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.permissions&quot;: &quot;false&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.size&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/toyin/Desktop/uwise&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Django Server.uwise">
     <configuration name="generated-requests | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" requestIdentifier="#1" runType="Run single request">
       <method v="2" />
@@ -91,7 +91,7 @@
       </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="launchJavascriptDebuger" value="false" />
@@ -129,6 +129,10 @@
       <workItem from="1703533727735" duration="50828000" />
       <workItem from="1704116096732" duration="8776000" />
       <workItem from="1704184318653" duration="30006000" />
+      <workItem from="1704646486378" duration="903000" />
+      <workItem from="1704658136546" duration="346000" />
+      <workItem from="1704659233224" duration="1693000" />
+      <workItem from="1704668905062" duration="1913000" />
     </task>
     <servers />
   </component>

@@ -23,4 +23,5 @@ urlpatterns = [
     path('api/v1/', include('courses.urls')),
     path('api/v1/', include('subscriptions.urls')),
     path('api/v1/', include('utils.urls')),
+    path('', include('web.urls')),
 ]

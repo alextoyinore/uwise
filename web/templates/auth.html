@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login Page</title>
-  <link rel="stylesheet" href="css/web.css">
+  <link rel="stylesheet" href="{% static "css/web.css" %}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;900&display=swap" rel="stylesheet">
@@ -13,7 +13,7 @@
 <body>
   <div class="auth-container">
     <header class="header-bar">
-      <img src="images/uwise.png" alt="uwise logo">
+      <img src="{% static "images/uwise.png" %}" alt="uwise logo">
     </header>
     <div>
         <div class="tab-switch">
@@ -22,8 +22,8 @@
         </div>
           <div class="auth-form-container" id="loginForm">
             <form>
-                <h2>Sign in to your account.</h2>
-                <p>Build skills for today, tomorrow, and beyond. Education to future-proof your career.</p>
+                <h2>Sign in to your account.</h2><br/>
+                <p>Build skills for today, tomorrow, and beyond. Education to future-proof your career.</p><br/>
               <label for="emailOrUsername">Email or Username</label>
               <input
                 type="text"
@@ -47,8 +47,9 @@
       
           <div class="auth-form-container" id="signupForm" style="display: none;">
             <form>
-                <h2>Create your student account.</h2>
+                <h2>Create your student account.</h2> <br/>
                 <p>Build skills for today, tomorrow, and beyond. Education to future-proof your career.</p>
+                <br/>
                 <label for="email">Email</label>
                 <input
                   type="text"
@@ -57,21 +58,21 @@
                   placeholder="Enter your email"
                 /> <br>
 
-              <label for="firstName">First Name</label>
+              <label for="fullName">Full Name</label>
               <input
                 type="text"
-                id="firstName"
-                name="firstName"
-                placeholder="Enter your first name"
+                id="fullName"
+                name="fullName"
+                placeholder="First name, Last name"
               /> <br>
       
-              <label for="lastName">Last Name</label>
+              {% comment %} <label for="lastName">Last Name</label>
               <input
                 type="text"
                 id="lastName"
                 name="lastName"
                 placeholder="Enter your last name"
-              /> <br>
+              /> <br> {% endcomment %}
       
               <label for="password">Password</label>
               <input
