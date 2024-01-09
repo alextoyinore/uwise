@@ -32,11 +32,21 @@ class GenderView(ModelViewSet):
     queryset = Gender.objects.all()
     permission_classes = [IsAdminUser]
 
+class UserGenderView(ModelViewSet):
+    serializer_class = serializers.UserGenderSerializer
+    queryset = UserGender.objects.all()
+    permission_classes = [IsAdminUser]
+
 
 class AcademicLevelView(ModelViewSet):
     serializer_class = serializers.AcademicLevelSerializer
     queryset = AcademicLevel.objects.all()
     permission_classes = [IsAdminUser]
+
+
+class UserAcademicLevelView(ModelViewSet):
+    serializer_class = serializers.UserAcademicLevelSerializer
+    queryset = UserAcademicLevel.objects.all()
 
 
 class OrganizationView(ModelViewSet):

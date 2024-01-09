@@ -29,9 +29,21 @@ class GenderSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class UserGenderSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserGender
+        fields = '__all__'
+
+
 class AcademicLevelSerializer(serializers.ModelSerializer):
     class Meta:
         model = AcademicLevel
+        fields = '__all__'
+
+
+class UserAcademicLevelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserAcademicLevel
         fields = '__all__'
 
 

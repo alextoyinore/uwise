@@ -20,6 +20,12 @@ class AcademicLevelAdmin(admin.ModelAdmin):
     search_fields = ('title',)
 
 
+@admin.register(UserAcademicLevel)
+class UserAcademicLevelAdmin(admin.ModelAdmin):
+    list_display = ('user', 'academic_level')
+    search_fields = ('user',)
+
+
 @admin.register(Organization)
 class Organization(admin.ModelAdmin):
     list_display = ('fullname', 'organization_name', 'type', 'work_email', 'url', 'size')
@@ -36,3 +42,9 @@ class OrganizationType(admin.ModelAdmin):
 class Gender(admin.ModelAdmin):
     list_display = ('title', 'description',)
     search_fields = ('title',)
+
+
+@admin.register(UserGender)
+class UserGender(admin.ModelAdmin):
+    list_display = ('user', 'gender')
+    search_fields = ('user',)

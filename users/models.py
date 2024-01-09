@@ -7,7 +7,7 @@ class User(AbstractUser):
     email = models.EmailField(max_length=100, unique=True)
     first_name = models.CharField(max_length=100, null=False, blank=False)
     last_name = models.CharField(max_length=100, null=False, blank=False)
-    gender = models.OneToOneField('Gender', default=None, on_delete=models.CASCADE, null=True, blank=False)
+    gender = models.OneToOneField('UserGender', default=None, on_delete=models.CASCADE, null=True, blank=False)
     username = models.CharField(max_length=100, unique=True, default='', blank=False)
     country = models.CharField(max_length=100, default='', blank=True)
     address = models.CharField(max_length=100, default='', blank=True)
@@ -18,12 +18,8 @@ class User(AbstractUser):
     desired_job_field = models.CharField(max_length=100, default='', blank=True)
     current_job = models.CharField(max_length=100, default='', blank=True)
     desired_job = models.CharField(max_length=100, default='', blank=True)
-    academic_level = models.ForeignKey('AcademicLevel', on_delete=models.CASCADE, null=True, blank=True)
+    academic_level = models.OneToOneField('UserAcademicLevel', default=None, on_delete=models.CASCADE, null=True, blank=True)
     organization = models.ForeignKey('Organization', default=None, null=True, on_delete=models.CASCADE)
-    is_student = models.BooleanField(default=False)
-    is_facilitator = models.BooleanField(default=False)
-    is_admin = models.BooleanField(default=False)
-    is_subscriber = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = [
@@ -56,6 +52,14 @@ class Gender(models.Model):
         return self.title
 
 
+class UserGender(models.Model):
+    user = models.OneToOneField('User', on_delete=models.CASCADE, null=True)
+    gender = models.ForeignKey('Gender', on_delete=models.CASCADE, null=True, blank=True)
+
+    def __str__(self) -> User:
+        return self.user
+
+
 # Accessible only to Super Admins
 class AcademicLevel(models.Model):
     title = models.CharField(max_length=50, null=False, blank=False)
@@ -63,6 +67,14 @@ class AcademicLevel(models.Model):
 
     def __str__(self) -> str:
         return self.title
+
+
+class UserAcademicLevel(models.Model):
+    user = models.OneToOneField('User', on_delete=models.CASCADE, null=True)
+    academic_level = models.ForeignKey('AcademicLevel', on_delete=models.CASCADE, null=True, blank=True)
+
+    def __str__(self) -> User:
+        return self.user
 
 
 class Organization(models.Model):
