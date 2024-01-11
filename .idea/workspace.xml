@@ -5,10 +5,111 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28e0790d-2666-491f-b2f6-e15adf6182b8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/adminWeb/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/adminWeb/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/adminWeb/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/adminWeb/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/authAPI/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blogAPI/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blogAPI/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blogAPI/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blogAPI/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/facilitatorWeb/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/facilitatorWeb/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/facilitatorWeb/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/facilitatorWeb/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/facilitatorWeb/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/facilitatorWeb/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/facilitatorWeb/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studentWeb/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studentWeb/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studentWeb/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studentWeb/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studentWeb/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studentWeb/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studentWeb/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/subscriptionAPI/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/subscriptionAPI/migrations/0004_subscription_active.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/subscriptionAPI/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/subscriptionAPI/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/superAdminWeb/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/superAdminWeb/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/superAdminWeb/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/superAdminWeb/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/superAdminWeb/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/superAdminWeb/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/superAdminWeb/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utilsAPI/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utilsAPI/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utilsAPI/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/templates/partials/base.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/templates/partials/footer.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/templates/partials/header.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/templates/partials/nav.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/templates/partials/sidebar.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/templates/widgets/course_card.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/templates/widgets/course_carousel.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/courses/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/adminWeb/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/courses/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/courseAPI/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/courses/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/courseAPI/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/courses/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/courseAPI/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/courses/migrations/0002_answer_rename_questions_quiz_description_quiz_active_and_more.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/courses/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/adminWeb/migrations/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/courses/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/courseAPI/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/courses/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/courseAPI/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/courses/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/adminWeb/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/courses/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/courseAPI/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/courses/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/courseAPI/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subscriptions/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/authAPI/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subscriptions/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/subscriptionAPI/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subscriptions/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/subscriptionAPI/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subscriptions/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/subscriptionAPI/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subscriptions/migrations/0002_remove_subscriptiontype_details_and_more.py" beforeDir="false" afterPath="$PROJECT_DIR$/subscriptionAPI/migrations/0002_remove_subscriptiontype_details_and_more.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subscriptions/migrations/0003_subscriptionrecurrenttype_active.py" beforeDir="false" afterPath="$PROJECT_DIR$/subscriptionAPI/migrations/0003_subscriptionrecurrenttype_active.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subscriptions/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/authAPI/migrations/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subscriptions/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/subscriptionAPI/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subscriptions/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/subscriptionAPI/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subscriptions/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/authAPI/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subscriptions/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/subscriptionAPI/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subscriptions/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/subscriptionAPI/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/authAPI/utils/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/authAPI/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/authAPI/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/authAPI/manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/migrations/0002_alter_user_academic_level.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/migrations/0003_rename_subscriber_subscription.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/migrations/0004_remove_subscriptiontype_recurrent_type_and_more.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/migrations/0005_alter_organization_work_email.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/migrations/0006_gender_user_gender.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/migrations/0007_gender_title.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/migrations/0008_rename_logo_organization_image.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/migrations/0009_remove_user_is_admin_remove_user_is_facilitator_and_more.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/blogAPI/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/authAPI/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/authAPI/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/blogAPI/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/authAPI/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/utils/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/blogAPI/migrations/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/utils/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/authAPI/utils/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/authAPI/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/courseAPI/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/utilsAPI/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/utilsAPI/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/utilsAPI/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/migrations/0002_alter_grade_grade.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/courseAPI/migrations/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/utilsAPI/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/utilsAPI/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/courseAPI/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/utilsAPI/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/utilsAPI/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uwise/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/uwise/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uwise/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/uwise/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +148,7 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "Django Server.uwise.executor": "Run",
     "HTTP Request.generated-requests | #1.executor": "Run",
+    "Python.uwise.executor": "Run",
     "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -58,28 +160,47 @@
     "WebServerToolWindowPanel.toolwindow.show.size": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/toyin/Desktop/uwise",
+    "last_opened_file_path": "C:/Users/toyin/Desktop/uwise/db.sqlite3",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Django Server.uwise">
-    <configuration name="generated-requests | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" requestIdentifier="#1" runType="Run single request">
-      <method v="2" />
-    </configuration>
-    <configuration name="uwise" type="Python.DjangoServer" factoryName="Django server">
+  <component name="RunManager">
+    <configuration name="uwise" type="PythonConfigurationType" factoryName="Python">
       <module name="uwise" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
-        <env name="DJANGO_SETTINGS_MODULE" value="uwise.settings" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manage.py" />
+      <option name="PARAMETERS" value="runserver" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="Python.DjangoServer" factoryName="Django server">
+      <module name="uwise" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="" />
@@ -97,11 +218,6 @@
       <option name="customRunCommand" value="" />
       <method v="2" />
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="HTTP Request.generated-requests | #1" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -125,6 +241,8 @@
       <workItem from="1704658136546" duration="346000" />
       <workItem from="1704659233224" duration="1693000" />
       <workItem from="1704668905062" duration="5333000" />
+      <workItem from="1704860980153" duration="6082000" />
+      <workItem from="1704928245519" duration="10113000" />
     </task>
     <servers />
   </component>
@@ -133,5 +251,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/uwise$uwise.coverage" NAME="uwise Coverage Results" MODIFIED="1704933478223" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>

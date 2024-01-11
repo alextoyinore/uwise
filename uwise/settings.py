@@ -44,10 +44,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "rest_framework",
     "rest_framework.authtoken",
-    "users.apps.UserConfig",
-    "subscriptions.apps.SubscriptionsConfig",
-    "courses.apps.CoursesConfig",
-    "utils.apps.UtilsConfig",
+    "authAPI.apps.AuthAPIConfig",
+    "subscriptionAPI.apps.SubscriptionAPIConfig",
+    "courseAPI.apps.CourseAPIConfig",
+    "utilsAPI.apps.UtilsAPIConfig",
     "web.apps.WebConfig",
     "social_django",
 ]
@@ -83,7 +83,7 @@ SIMPLE_JWT = {
 
 BASE_URL = 'http://localhost:8000'
 
-AUTH_USER_MODEL = 'users.User'
+AUTH_USER_MODEL = 'authAPI.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
