@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+
+import courseAPI.models
 from authAPI.manager import CustomUserManager
 
 
@@ -103,13 +105,14 @@ class OrganizationType(models.Model):
 
 
 class Facilitator(User):
-    partner_organization = models.ForeignKey('PartnerOrganization',
-                                             on_delete=models.SET_NULL,
-                                             null=True, blank=True,
-                                             related_name='partner_organization')
+    field = models.CharField(max_length=50, null=False, blank=False)
+    years_of_experience = models.IntegerField()
+    bio = models.TextField(max_length=200, default='', null=False, blank=False)
+    partner_organization = models.CharField(max_length=150, null=False, blank=False) # Mapped from Partner Organization in frontend
 
     def __str__(self):
-        return self.get_full_name()
+        return self.username
+
 
 
 class PartnerOrganization(models.Model):

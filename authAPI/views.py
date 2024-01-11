@@ -1,3 +1,4 @@
+from django.http import HttpResponseBadRequest, HttpResponse
 from django.shortcuts import render
 from authAPI import serializers
 from rest_framework.viewsets import ModelViewSet
@@ -26,11 +27,11 @@ class UserView(ModelViewSet):
 
         return [permission() for permission in permission_classes]
 
-
     def destroy(self, request, *args, **kwargs):
         instance = self.get_object()
         instance.delete()
-        return Response({'message': f'Gender Type "{instance}" deleted successfully'}, status=status.HTTP_204_NO_CONTENT)
+        return Response({'message': f'Gender Type "{instance}" deleted successfully'},
+                        status=status.HTTP_204_NO_CONTENT)
 
 
 class AcademicLevelView(ModelViewSet):
@@ -41,7 +42,8 @@ class AcademicLevelView(ModelViewSet):
     def destroy(self, request, *args, **kwargs):
         instance = self.get_object()
         instance.delete()
-        return Response({'message': f'Academic Level Type "{instance}" deleted successfully'}, status=status.HTTP_204_NO_CONTENT)
+        return Response({'message': f'Academic Level Type "{instance}" deleted successfully'},
+                        status=status.HTTP_204_NO_CONTENT)
 
 
 class OrganizationView(ModelViewSet):
@@ -51,7 +53,8 @@ class OrganizationView(ModelViewSet):
     def destroy(self, request, *args, **kwargs):
         instance = self.get_object()
         instance.delete()
-        return Response({'message': f'Organization "{instance}" deleted successfully'}, status=status.HTTP_204_NO_CONTENT)
+        return Response({'message': f'Organization "{instance}" deleted successfully'},
+                        status=status.HTTP_204_NO_CONTENT)
 
 
 class OrganizationTypeView(ModelViewSet):
@@ -62,7 +65,8 @@ class OrganizationTypeView(ModelViewSet):
     def destroy(self, request, *args, **kwargs):
         instance = self.get_object()
         instance.delete()
-        return Response({'message': f'Organization Type "{instance}" deleted successfully'}, status=status.HTTP_204_NO_CONTENT)
+        return Response({'message': f'Organization Type "{instance}" deleted successfully'},
+                        status=status.HTTP_204_NO_CONTENT)
 
 
 class LoginWithEmailView(ObtainAuthToken):
@@ -80,6 +84,22 @@ class ProfileView(ModelViewSet):
         current_user = request.user
         serialized_user = serializers.UserSerializer(current_user)
         return Response(serialized_user.data)
+
+
+class FacilitatorViewSet(ModelViewSet):
+    serializer_class = serializers.FacilitatorSerializer
+    queryset = Facilitator.objects.all()
+    permission_classes = [IsAdminUser]
+
+    def create(self, request, *args, **kwargs):
+        partner_exists = PartnerOrganization.objects.filter(
+            organization_title=request.data['partner_organization']).exists()
+        if not partner_exists:
+            return Response({'message': 'Invalid Partner Organization'}, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            serializer = serializers.FacilitatorSerializer(data=request.data)
+            serializer.is_valid(raise_exception=True)
+            serializer.save()
 
 
 class LogoutView(ModelViewSet):

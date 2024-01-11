@@ -38,9 +38,8 @@ class Course(models.Model):
     image = models.URLField()
     field = models.ForeignKey('Field', on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False)
-    facilitator = models.ForeignKey(authAPI.models.User, on_delete=models.CASCADE, null=False, blank=False)
-    organization = models.ForeignKey(authAPI.models.Organization, on_delete=models.CASCADE, null=False, blank=False)
-    level = models.ForeignKey('CourseLevel', on_delete=models.CASCADE, null=False, blank=False)
+    facilitator_username = models.CharField(max_length=200, null=False, blank=False)
+    level = models.CharField(max_length=200, null=False, blank=False)
     active = models.BooleanField(default=False)
 
     def __str__(self):

@@ -6,14 +6,14 @@ from courseAPI.models import Course, Module
 
 # Register your models here.
 @admin.register(CourseLevel)
-class CourseLevel(admin.ModelAdmin):
+class CourseLevelAdmin(admin.ModelAdmin):
     list_display = ('title', 'description')
     search_fields = ('title',)
 
 
 @admin.register(Course)
 class CourseAdmin(admin.ModelAdmin):
-    list_display = ('title', 'description', 'duration', 'level', 'active', 'field', 'organization')
+    list_display = ('title', 'description', 'duration', 'level', 'active', 'field')
     search_fields = ('title', 'level', 'active', 'field')
 
 

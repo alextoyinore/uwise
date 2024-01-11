@@ -1,5 +1,9 @@
 from django.shortcuts import render
+from rest_framework.response import Response
+from rest_framework import status
 from rest_framework.viewsets import ModelViewSet
+
+from authAPI.models import Facilitator
 from .models import *
 from .serializers import *
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
@@ -17,6 +21,19 @@ class CourseViewSet(ModelViewSet):
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
     permission_classes = [IsAdminUser]
+
+    def create(self, request, *args, **kwargs):
+        facilitator_exists = Facilitator.objects.filter(username__exact=self.request.data['username']).exists()
+        level_exists = CourseLevel.objects.filter(title__exact=self.request.data['title']).exists()
+
+        if not facilitator_exists:
+            return Response({'message': 'Facilitator does not exist'}, status=status.HTTP_400_BAD_REQUEST)
+        elif not level_exists:
+            return Response({'message': 'Invalid Course Level'}, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            serializer = CourseSerializer(data=request.data)
+            serializer.is_valid(raise_exception=True)
+            serializer.save()
 
 
 class AnswerViewSet(ModelViewSet):
