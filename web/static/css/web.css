@@ -14,12 +14,12 @@ body{
 
 .carousel-track {
   display: flex;
+  width: 100%;
 }
 
 .carousel-items{
   display: flex;
   flex-direction: row;
-  width: 100%;
 }
 
 .course-card {
@@ -366,7 +366,7 @@ p {
 
   .btn-cta-light{
     display: inline-block;
-    font-size: 1.5em;
+    font-size: 1.25em;
     padding: 10px 70px;
     color: #011F55;
     background: #fff;
@@ -443,7 +443,7 @@ p {
   }
 
   .slider:hover{
-    background: #0e3b8d;
+    background: #011F55;
   }
 
   .slider-btns{
@@ -454,7 +454,7 @@ p {
   .slider-btn-prev{
     height: 10px;
     width: 50px;
-    background: #3b5998;
+    background: #011F55;
     align-items: center;
     display: flex;
     border-radius: 10px;
@@ -464,7 +464,7 @@ p {
   .slider-btn-next{
     height: 10px;
     width: 50px;
-    background: #3b5998;
+    background: #011F55;
     align-items: center;
     display: flex;
     border-radius: 10px;

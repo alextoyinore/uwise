@@ -168,18 +168,20 @@
         const nextButton = document.querySelector('.slider-btn-next')
         const carouselItems = document.querySelector('.carousel-items')
         const courseCard = document.querySelector('.course-card')
+        const lastCard = document.querySelector('.course-card:last-child')
+        const carouselWrapper = document.querySelector('.carousel-wrapper')
 
         var currentX = carouselItems.style.left
 
-        prevButton.addEventListener('click', function (){
-            const newX = currentX - 250;
+        nextButton.addEventListener('click', function (){
+            const newX = currentX - 200;
             carouselItems.style.translate = newX + 'px'
             carouselItems.style.transition = '.5s ease-in-out'
             currentX = newX
         })
 
-        nextButton.addEventListener('click', function (){
-            const newX = currentX + 250;
+        prevButton.addEventListener('click', function (){
+            const newX = currentX + 200;
             carouselItems.style.translate = newX + 'px'
             carouselItems.style.transition = '.5s ease-in-out'
             currentX = newX
