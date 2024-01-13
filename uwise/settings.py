@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     "utilsAPI.apps.UtilsAPIConfig",
     "web.apps.WebConfig",
     "social_django",
+    "fontawesomefree",
 ]
 
 AUTHENTICATION_BACKENDS = (

@@ -7,24 +7,30 @@ body{
   padding: 0;
 }
 
-.carousel-container {
+.carousel-wrapper {
   position: relative;
   overflow: hidden;
 }
 
 .carousel-track {
   display: flex;
-  transition: transform 0.5s ease;
+}
+
+.carousel-items{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
 }
 
 .course-card {
+  flex: 0 0 auto;
   width: 180px;
   height: 250px;
   border-radius: 10px;
   overflow: hidden;
   margin-right: 20px;
   box-sizing: border-box;
-  background-color: #fff;
+  background: rgba(1, 31, 85, 0.05);
   border: 1px solid #ddd;
 }
 
@@ -35,18 +41,18 @@ body{
 
 .course-details {
   padding: 10px;
-  height: 40%;
+  height: 42.5%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.course-details p{
+.course-details i{
   font-size: .8em;
 }
 
-.course-details h2{
-  font-size: 1em;
+.course-details strong{
+  font-size: .9em;
 }
 
 h2 {
@@ -222,9 +228,8 @@ p {
   }
 
   .top-nav-content a:hover{
-    color: #4877c7;
+    color: #3b5998;
     transition: .5s ease-in-out;
-    /*text-decoration: underline;*/
   }
 
   #header-nav{
@@ -290,8 +295,7 @@ p {
 
   .header-auth-btn .signup-btn:hover{
     background: #10DC80;
-    border: 1px solid #10DC80;
-    transition: .5s ease-in-out;
+    transition: .3s ease-in-out;
   }
 
   .header-auth-btn .login-btn{
@@ -301,9 +305,9 @@ p {
   }
 
   .header-auth-btn .login-btn:hover{
-    background: #011F55;
+    background: #0e3b8d;
     color: #ffffff;
-    transition: .5s ease-in-out;
+    transition: .3s ease-in-out;
   }
 
   #header-message {
@@ -326,6 +330,8 @@ p {
     width: 100%;
     background: #3b5998;
     height: 350px;
+    display: flex;
+    margin-bottom: 50px;
   }
 
   #hero .hero-content{
@@ -333,18 +339,135 @@ p {
     margin: auto;
     display: flex;
     flex-direction: row;
+    align-items: center;
   }
 
   .hero-content-left{
     width: 50%;
   }
 
-  .hero-content-left h1{
-    font-size: 4em;
+  .hero-content-left strong{
+    font-size: 3.2em;
     color: #ffffff;
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  .hero-content-left i{
+    font-size: 14px;
+    color: #ffffff;
+    margin-bottom: 30px;
+    display: block;
+  }
+
+  .quote{
+    width: 60%;
+  }
+
+  .btn-cta-light{
+    display: inline-block;
+    font-size: 1.5em;
+    padding: 10px 70px;
+    color: #011F55;
+    background: #fff;
+    border-radius: 10px;
+    text-decoration: none;
+    border: 1px solid #011F55;
+  }
+
+  .btn-cta-light:hover{
+    color: white;
+    background: #10DC80;
+    transition: .3s ease-in-out;
+  }
+
+   .hero-content-right{
+    width: 50%;
+     text-align: right;
+  }
+
+  .btn-cta-light-var{
+    font-size: 1em;
+    padding: 8px 30px;
+    color: #011F55;
+    background: #fff;
+    border-radius: 10px;
+    margin: 5px;
+    text-decoration: none;
+    border: 1px solid #011F55;
+    display: inline-block;
+  }
+
+  .btn-cta-light-var:hover{
+    color: #fff;
+    background: #0e3b8d;
+    transition: .3s ease-in-out;
   }
 
   #content{
     width: 80%;
     margin: auto;
   }
+
+
+  #footer {
+    background: rgba(1, 31, 85, 0.05);
+    margin-top: 50px;
+    padding: 20px 50px;
+  }
+
+  .carousel-section-header{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .carousel-section-navs{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .slider-wrapper{
+    width: 200px;
+    height: 8px;
+    border-radius: 8px;
+    background: rgba(1, 31, 85, 0.05);
+  }
+
+  .slider{
+    width: 50px;
+    height: 8px;
+    border-radius: 8px;
+    background: #3b5998;
+    cursor: pointer;
+  }
+
+  .slider:hover{
+    background: #0e3b8d;
+  }
+
+  .slider-btns{
+    display: flex;
+    gap: 5px;
+  }
+
+  .slider-btn-prev{
+    height: 10px;
+    width: 50px;
+    background: #3b5998;
+    align-items: center;
+    display: flex;
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  .slider-btn-next{
+    height: 10px;
+    width: 50px;
+    background: #3b5998;
+    align-items: center;
+    display: flex;
+    border-radius: 10px;
+    text-align: center;
+  }
+
