@@ -1,12 +1,10 @@
-from django.shortcuts import render
-from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.permissions import IsAdminUser
+from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 
 from authAPI.models import Facilitator
-from .models import *
 from .serializers import *
-from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
 
 # Create your views here.
@@ -23,8 +21,8 @@ class CourseViewSet(ModelViewSet):
     permission_classes = [IsAdminUser]
 
     def create(self, request, *args, **kwargs):
-        facilitator_exists = Facilitator.objects.filter(username__exact=self.request.data['username']).exists()
-        level_exists = CourseLevel.objects.filter(title__exact=self.request.data['title']).exists()
+        facilitator_exists = Facilitator.objects.filter(username=self.request.data['username']).exists()
+        level_exists = CourseLevel.objects.filter(title=self.request.data['title']).exists()
 
         if not facilitator_exists:
             return Response({'message': 'Facilitator does not exist'}, status=status.HTTP_400_BAD_REQUEST)

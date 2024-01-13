@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% block head %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block pageTitle %}{% endblock %}</title>
+{% endblock %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static "css/web.css" %}">
+</head>
+<body>
+    <div id="top-nav" class="top-nav">
+        {% block top-nav %}{% endblock %}
+    </div>
+    <div id="header-nav" class="header-nav">
+        {% block header-nav %}{% endblock %}
+    </div>
+    <div id="header-message" class="header-message">
+        {% block header-message %}{% endblock %}
+    </div>
+    <div id="hero">
+        {% block hero %}{% endblock %}
+    </div>
+    <div id="content" class="content">
+        {% block content %}{% endblock %}
+    </div>
+    <div id="footer" class="footer">
+        {% block footer %}{% endblock %}
+    </div>
+
+    <script src="{% static "js/web.js" %}" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js" integrity="sha512-xgIrH5DRuEOcZK5cPtVXx/WSp5DTir2JNcKE5ahV2u51NCTD9UDxbQgZHYHVBlPc4H8tug6BZTYIl2RdA/X0Vg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+</html>

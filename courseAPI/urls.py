@@ -18,9 +18,9 @@ urlpatterns = [
 
     # COURSE
 
-    path('courseAPI', view=CourseViewSet.as_view({
+    path('courses', view=CourseViewSet.as_view({
         'post': 'create',
-        'get': 'list'}), name='courseAPI'),
+        'get': 'list'}), name='courses'),
     path('course/<int:pk>', view=CourseViewSet.as_view({
         'get': 'retrieve',
         'put': 'update',
@@ -159,9 +159,9 @@ urlpatterns = [
 
     # SPECIALIZATION COURSES
 
-    path('specialization-courseAPI', view=SpecializationCourseViewSet.as_view({
+    path('specialization-courses', view=SpecializationCourseViewSet.as_view({
         'post': 'create',
-        'get': 'list'}), name='specialization-courseAPI'),
+        'get': 'list'}), name='specialization-courses'),
     path('specialization-course/<int:pk>', view=SpecializationCourseViewSet.as_view({
         'get': 'retrieve',
         'put': 'update',

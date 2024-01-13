@@ -2,9 +2,9 @@
 /* Add your styles for the authentication page here */
 
 body{
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 .carousel-container {
@@ -80,7 +80,6 @@ p {
   }
   
   .header-bar {
-    /* background-color: #333; */
     padding: 10px;
     text-align: center;
     color: white;
@@ -166,13 +165,6 @@ p {
     border-radius: 5px;
   }
 
-  input:focus{
-    outline: 2px solid #011F55;
-    background-color: transparent;
-    border-style: solid;
-    box-shadow: inset 0px 0px 0px 0px transparent;
-  }
-
   input::placeholder{
     color: #aaa;
   }
@@ -184,7 +176,7 @@ p {
     height: 40px;
     text-align: center;
     align-content: center;
-    border: 0;
+    border: 1px solid #011F55;
   }
   
   button:hover {
@@ -208,4 +200,151 @@ p {
     margin-left: 10px;
     background-color: #3b5998;
   }
-  
+
+
+  #top-nav{
+    display: flex;
+    background: #011F55;
+    color: #ffffff;
+    padding: 5px;
+    font-size: 14px;
+  }
+
+  .top-nav-content{
+    width: 80%;
+    margin: auto;
+  }
+
+  .top-nav-content a {
+    color: #ffffff;
+    text-decoration: none;
+    padding-right: 20px;
+  }
+
+  .top-nav-content a:hover{
+    color: #4877c7;
+    transition: .5s ease-in-out;
+    /*text-decoration: underline;*/
+  }
+
+  #header-nav{
+    background: #ffffff;
+    color: #011F55;
+    padding: 10px;
+    font-size: 14px;
+    border-bottom: 1px solid #cccccc;
+  }
+
+  .header-nav-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 80%;
+    margin: auto;
+  }
+
+  .header-nav-left {
+    width: 30%;
+    align-items: center;
+    display: flex;
+  }
+
+  .header-nav-left a .logo {
+    max-height: 30px;
+    margin-right: 20px;
+  }
+
+  .header-nav-left a {
+    text-decoration: none;
+    color: #555555;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .header-nav-right{
+    width: 60%;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .header-search-input{
+    padding: 20px;
+    border-radius: 20px;
+    width: 400px;
+  }
+
+  /*.header-search-input:focus{*/
+  /*  width: 400px;*/
+  /*  transition: .5s ease-in-out;*/
+  /*}*/
+
+  .header-auth-btn button{
+    width: 120px;
+  }
+
+  .header-auth-btn .signup-btn{
+    width: 150px;
+  }
+
+  .header-auth-btn .signup-btn:hover{
+    background: #10DC80;
+    border: 1px solid #10DC80;
+    transition: .5s ease-in-out;
+  }
+
+  .header-auth-btn .login-btn{
+    background: transparent;
+    border: 1px solid #011F55;
+    color: #011F55;
+  }
+
+  .header-auth-btn .login-btn:hover{
+    background: #011F55;
+    color: #ffffff;
+    transition: .5s ease-in-out;
+  }
+
+  #header-message {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background: rgba(1, 31, 85, 0.1);
+  }
+
+  .header-message-content{
+    width: 80%;
+    margin: auto;
+    padding: 5px;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  #hero{
+    width: 100%;
+    background: #3b5998;
+    height: 350px;
+  }
+
+  #hero .hero-content{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .hero-content-left{
+    width: 50%;
+  }
+
+  .hero-content-left h1{
+    font-size: 4em;
+    color: #ffffff;
+  }
+
+  #content{
+    width: 80%;
+    margin: auto;
+  }

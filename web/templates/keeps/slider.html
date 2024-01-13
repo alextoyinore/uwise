@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="carousel-container">
+    <div class="carousel-wrapper">
+      <div class="carousel-track" id="carouselTrack">
+        <div class="course-card">
+          <div class="course-image">
+            <img src="https://cdn.pixabay.com/photo/2023/09/15/11/43/architecture-8254661_640.jpg" alt="Course Image 1">
+          </div>
+          <div class="course-details">
+            <h2>Course Title 1</h2>
+            <p>Duration: 8 weeks</p>
+          </div>
+        </div>
+        <!-- Repeat the course-card for additional cards -->
+        <div class="course-card">
+            <div class="course-image">
+              <img src="https://cdn.pixabay.com/photo/2023/09/15/11/43/architecture-8254661_640.jpg" alt="Course Image 1">
+            </div>
+            <div class="course-details">
+              <h2>Course Title 1</h2>
+              <p>Duration: 8 weeks</p>
+            </div>
+          </div>
+          <div class="course-card">
+            <div class="course-image">
+              <img src="https://cdn.pixabay.com/photo/2023/09/15/11/43/architecture-8254661_640.jpg" alt="Course Image 1">
+            </div>
+            <div class="course-details">
+              <h2>Course Title 1</h2>
+              <p>Duration: 8 weeks</p>
+            </div>
+          </div>
+          <div class="course-card">
+            <div class="course-image">
+              <img src="https://cdn.pixabay.com/photo/2023/09/15/11/43/architecture-8254661_640.jpg" alt="Course Image 1">
+            </div>
+            <div class="course-details">
+              <h2>Course Title 1</h2>
+              <p>Duration: 8 weeks</p>
+            </div>
+          </div>
+          <div class="course-card">
+            <div class="course-image">
+              <img src="https://cdn.pixabay.com/photo/2023/09/15/11/43/architecture-8254661_640.jpg" alt="Course Image 1">
+            </div>
+            <div class="course-details">
+              <h2>Course Title 1</h2>
+              <p>Duration: 8 weeks</p>
+            </div>
+          </div>
+        <!-- For simplicity, duplicated the same card 7 times -->
+        <!-- You should replace the content and images accordingly -->
+
+        <div class="course-card">
+          <div class="course-image">
+            <img src="https://cdn.pixabay.com/photo/2023/09/15/11/43/architecture-8254661_640.jpg" alt="Course Image 1">
+          </div>
+          <div class="course-details">
+            <h2>Course Title 1</h2>
+            <p>Duration: 8 weeks</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="prev" onclick="prevSlide()">❮</button>
+    <button class="next" onclick="nextSlide()">❯</button>
+
+    <div class="dot-indicators" id="dotIndicators"></div>
+  </div>
+
+<script>
+    let currentIndex = 0;
+
+    function showSlide(index) {
+      const track = document.getElementById('carouselTrack');
+      const slides = track.getElementsByClassName('course-card');
+      const indicators = document.getElementById('dotIndicators').children;
+
+      currentIndex = (index + slides.length) % slides.length;
+
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.transform = `translateX(${-currentIndex * 100}%)`;
+      }
+
+      // Update dot indicators
+      for (let i = 0; i < indicators.length; i++) {
+        indicators[i].classList.remove('active');
+      }
+      indicators[currentIndex].classList.add('active');
+    }
+
+    function prevSlide() {
+      showSlide(currentIndex - 1);
+    }
+
+    function nextSlide() {
+      showSlide(currentIndex + 1);
+    }
+
+    // Create dot indicators based on the number of slides
+    const track = document.getElementById('carouselTrack');
+    const slides = track.getElementsByClassName('course-card');
+    const dotIndicators = document.getElementById('dotIndicators');
+
+    for (let i = 0; i < slides.length; i++) {
+      const dot = document.createElement('span');
+      dot.className = 'dot';
+      dot.addEventListener('click', () => showSlide(i));
+      dotIndicators.appendChild(dot);
+    }
+
+    showSlide(currentIndex);
+
+    // Dragging functionality
+    let isDragging = false;
+    let startPos = 0;
+    let currentTranslate = 0;
+    let prevTranslate = 0;
+
+    track.addEventListener('mousedown', dragStart);
+    track.addEventListener('touchstart', dragStart);
+    track.addEventListener('mouseup', dragEnd);
+    track.addEventListener('mouseleave', dragEnd);
+    track.addEventListener('touchend', dragEnd);
+    track.addEventListener('mousemove', drag);
+    track.addEventListener('touchmove', drag);
+
+    function dragStart(e) {
+      if (e.type === 'touchstart') {
+        startPos = e.touches[0].clientX;
+      } else {
+        startPos = e.clientX;
+      }
+
+      isDragging = true;
+    }
+
+    function drag(e) {
+      if (!isDragging) return;
+
+      const currentPosition = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
+
+      currentTranslate = prevTranslate + currentPosition - startPos;
+
+      setTranslate(currentTranslate);
+    }
+
+    function dragEnd() {
+      isDragging = false;
+
+      // Determine if it's a swipe or just a click
+      const moveAmt = currentTranslate - prevTranslate;
+
+      if (Math.abs(moveAmt) > 50) {
+        if (moveAmt > 0) {
+          prevSlide();
+        } else {
+          nextSlide();
+        }
+      }
+
+      prevTranslate = currentTranslate;
+    }
+
+    function setTranslate(position) {
+      track.style.transform = `translateX(${position}px)`;
+    }
+  </script>
+
+</body>
+</html>
