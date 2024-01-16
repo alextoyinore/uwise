@@ -31,7 +31,7 @@
     <div class="header-message-content">
         <span>Best offer of the year: Save $200 on a Coursera Plus annual
             subscription | Get 50% off access for your team.</span>
-        <span class="fa-times"></span>
+        <span class="fa-times">x</span>
     </div>
 {% endblock %}
 
@@ -173,25 +173,93 @@
 
         var currentX = carouselItems.style.left
 
+        var carouselRight = carouselItems.getBoundingClientRect().right
+        var carouselLeft = carouselItems.getBoundingClientRect().left
+
+        var wrapperRight = carouselWrapper.getBoundingClientRect().right
+        var wrapperLeft = carouselWrapper.getBoundingClientRect().left
+
+        const courseCardWidth = courseCard.getBoundingClientRect().width
+        const marginSize = 20
+
+        const carouselSectionNavs = document.querySelector('.carousel-section-navs')
+        const sliderWrapper = document.querySelector('.slider-wrapper')
+        const slider = document.querySelector('.slider')
+
+        const carouselItemsWidth = carouselItems.getBoundingClientRect().width
+        const wrapperWidth = carouselWrapper.getBoundingClientRect().width
+
+        const sliderWrapperWidth = sliderWrapper.getBoundingClientRect().width
+
+        window.addEventListener('load', function(){
+            if(carouselItemsWidth < wrapperWidth){
+                carouselSectionNavs.style.display = 'none'
+            }
+            var sliderWidthPercentage = (wrapperWidth / carouselItemsWidth)
+            var sliderWidth = sliderWrapperWidth * sliderWidthPercentage
+            slider.style.width = sliderWidth + 'px'
+        })
+
+        const courseCardPercentOfCarouselItems = (courseCardWidth + marginSize) / carouselItemsWidth
+        var sliderCurrentX = slider.getBoundingClientRect().left
+
         nextButton.addEventListener('click', function (){
-            const newX = currentX - 200;
-            carouselItems.style.translate = newX + 'px'
-            carouselItems.style.transition = '.5s ease-in-out'
-            currentX = newX
+            if(carouselRight > (wrapperRight)){
+                const newX = currentX - (courseCardWidth + marginSize)
+                carouselItems.style.translate = newX + 'px'
+                const newSliderX = sliderCurrentX + courseCardPercentOfCarouselItems.toFixed()
+                slider.style.translate = newSliderX  + 'px'
+                carouselItems.style.transition = '.5s ease-in-out'
+                currentX = newX
+                sliderCurrentX = newSliderX
+                carouselRight = carouselItems.getBoundingClientRect().right
+                carouselLeft = carouselItems.getBoundingClientRect().left
+            }
         })
 
         prevButton.addEventListener('click', function (){
-            const newX = currentX + 200;
-            carouselItems.style.translate = newX + 'px'
-            carouselItems.style.transition = '.5s ease-in-out'
-            currentX = newX
+            if(carouselLeft < (wrapperLeft)){
+                const newX = currentX + (courseCardWidth + marginSize)
+                carouselItems.style.translate = newX + 'px'
+                carouselItems.style.transition = '.5s ease-in-out'
+                currentX = newX
+                carouselLeft = carouselItems.getBoundingClientRect().left
+                carouselRight = carouselItems.getBoundingClientRect().right
+            }
         })
 
     </script>
 {% endblock %}
 
 {% block footer %}
-    <div class="footer-content">
+    <div class="footer-wrapper">
+        <div class="footer-content">
+            <br>
+            <div class="footer-nav-header">
+                <img class="logo" src="{% static "images/uwise_individual.png" %}" alt="Uwise Individual">
+                <img class="logo" src="{% static "images/uwise_student.png" %}" alt="Uwise Student">
+                <img class="logo" src="{% static "images/uwise_business.png" %}" alt="Uwise Business">
+                <img class="logo" src="{% static "images/uwise_government.png" %}" alt="Uwise Government">
+            </div>
+            <div class="footer-nav-list">
+                <div class="footer-nav">
+                    <strong class="footer-nav-title">Categories</strong>
+                    <a href="">Design</a>
+                    <a href="">Popular</a>
+                    <a href="">Development</a>
+                    <a href="">Social</a>
+                    <a href="">Industrial</a>
+                </div>
 
+                <div class="footer-nav">
+                    <strong class="footer-nav-title">Categories</strong>
+                    <a href="">Design</a>
+                    <a href="">Popular</a>
+                    <a href="">Development</a>
+                    <a href="">Social</a>
+                    <a href="">Industrial</a>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}
