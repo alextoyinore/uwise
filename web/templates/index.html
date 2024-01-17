@@ -13,11 +13,11 @@
     <div class="header-nav-content">
         <div class="header-nav-left">
             <a href=""><img class="logo" src="{% static 'images/uwise.png' %}" alt="Uwise Logo"></a>
-            <a href="">Learn <span class="fa-arrow-down"></span> </a>
+            <a href="">Learn <span class="material-symbols-outlined">expand_more</span> </a>
         </div>
         <div class="header-nav-right">
             <div class="header-search">
-                <span class="fa-search"></span>
+                <span class="material-symbols-outlined search-icon">search</span>
                 <input class="header-search-input" placeholder="What do you want to learn?" class="search" type="search" />
             </div>
             <div class="header-auth-btn">
@@ -31,7 +31,7 @@
     <div class="header-message-content">
         <span>Best offer of the year: Save $200 on a Coursera Plus annual
             subscription | Get 50% off access for your team.</span>
-        <span class="fa-times">x</span>
+        <span class="material-symbols-outlined close-icon">close</span>
     </div>
 {% endblock %}
 
@@ -40,7 +40,7 @@
         <div class="hero-content-left">
             <strong>Training the future <br>of global wealth</strong>
             <i class="quote">Wealth comes from wisdom, wisdom comes from understanding, understanding comes from knowledge, all knowledge comes from God</i>
-            <a href="" class="btn-cta-light">Get Started <span class="fa-arrow-right"></span></a>
+            <a href="" class="btn-cta-light">Get Started <span class="material-symbols-outlined">chevron_right</span></a>
         </div>
         <div class="hero-content-right">
             <a href="" class="btn-cta-light-var">Programming & Software</a>
@@ -63,18 +63,18 @@
 {% endblock %}
 
 {% block content %}
-    <div class="content-carousel-section">
+    <div class="carousel-section">
         <div class="carousel-section-header">
             <div class="carousel-section-title">
                 <h3>Programming & Software</h3>
             </div>
             <div class="carousel-section-navs">
                 <div class="slider-wrapper">
-                    <div class="slider"></div>
+                    <div class="slider-thumb"></div>
                 </div>
                 <div class="slider-btns">
-                    <button class="slider-btn-prev"> < </button>
-                    <button class="slider-btn-next"> > </button>
+                    <button id="prev" class="slider-btn"><span class="material-symbols-outlined">chevron_left</span></button>
+                    <button id="next" class="slider-btn"><span class="material-symbols-outlined">chevron_right</span></button>
                 </div>
             </div>
         </div>
@@ -164,69 +164,44 @@
         </div>
     </div>
     <script>
-        const prevButton = document.querySelector('.slider-btn-prev')
-        const nextButton = document.querySelector('.slider-btn-next')
-        const carouselItems = document.querySelector('.carousel-items')
-        const courseCard = document.querySelector('.course-card')
-        const lastCard = document.querySelector('.course-card:last-child')
-        const carouselWrapper = document.querySelector('.carousel-wrapper')
 
-        var currentX = carouselItems.style.left
+        const initSlider = () => {
+            const sliderButtons = document.querySelectorAll('.slider-btn')
+            const carouselWrapper = document.querySelector('.carousel-wrapper')
+            const carouselItems = document.querySelector('.carousel-items')
+            const carouselSectionNav = document.querySelector('.carousel-section-navs')
+            const sliderWrapper = document.querySelector('.slider-wrapper')
+            const sliderThumb = document.querySelector('.slider-thumb')
 
-        var carouselRight = carouselItems.getBoundingClientRect().right
-        var carouselLeft = carouselItems.getBoundingClientRect().left
+            const maxScrollLeft = carouselItems.scrollWidth - carouselItems.clientWidth
 
-        var wrapperRight = carouselWrapper.getBoundingClientRect().right
-        var wrapperLeft = carouselWrapper.getBoundingClientRect().left
-
-        const courseCardWidth = courseCard.getBoundingClientRect().width
-        const marginSize = 20
-
-        const carouselSectionNavs = document.querySelector('.carousel-section-navs')
-        const sliderWrapper = document.querySelector('.slider-wrapper')
-        const slider = document.querySelector('.slider')
-
-        const carouselItemsWidth = carouselItems.getBoundingClientRect().width
-        const wrapperWidth = carouselWrapper.getBoundingClientRect().width
-
-        const sliderWrapperWidth = sliderWrapper.getBoundingClientRect().width
-
-        window.addEventListener('load', function(){
-            if(carouselItemsWidth < wrapperWidth){
-                carouselSectionNavs.style.display = 'none'
+            if(carouselItems.getBoundingClientRect().width < carouselWrapper.getBoundingClientRect().width){
+                carouselSectionNav.style.display = 'none'
             }
-            var sliderWidthPercentage = (wrapperWidth / carouselItemsWidth)
-            var sliderWidth = sliderWrapperWidth * sliderWidthPercentage
-            slider.style.width = sliderWidth + 'px'
-        })
 
-        const courseCardPercentOfCarouselItems = (courseCardWidth + marginSize) / carouselItemsWidth
-        var sliderCurrentX = slider.getBoundingClientRect().left
 
-        nextButton.addEventListener('click', function (){
-            if(carouselRight > (wrapperRight)){
-                const newX = currentX - (courseCardWidth + marginSize)
-                carouselItems.style.translate = newX + 'px'
-                const newSliderX = sliderCurrentX + courseCardPercentOfCarouselItems.toFixed()
-                slider.style.translate = newSliderX  + 'px'
-                carouselItems.style.transition = '.5s ease-in-out'
-                currentX = newX
-                sliderCurrentX = newSliderX
-                carouselRight = carouselItems.getBoundingClientRect().right
-                carouselLeft = carouselItems.getBoundingClientRect().left
+            sliderButtons.forEach(button => {
+                button.addEventListener('click', ()=>{
+                    const direction = button.id === 'prev' ? -1 : 1
+                    const scrollAmount = carouselWrapper.clientWidth * direction
+                    carouselWrapper.scrollBy({left: scrollAmount, behavior: "smooth"})
+                })
+            })
+
+
+            const updateSliderPosition = () => {
+                const scrollPosition = carouselWrapper.scrollLeft
+                const thumbPosition = (scrollPosition / maxScrollLeft) * (sliderWrapper.clientWidth - sliderThumb.offsetWidth)
+                sliderThumb.style.left = `${thumbPosition}px`
             }
-        })
 
-        prevButton.addEventListener('click', function (){
-            if(carouselLeft < (wrapperLeft)){
-                const newX = currentX + (courseCardWidth + marginSize)
-                carouselItems.style.translate = newX + 'px'
-                carouselItems.style.transition = '.5s ease-in-out'
-                currentX = newX
-                carouselLeft = carouselItems.getBoundingClientRect().left
-                carouselRight = carouselItems.getBoundingClientRect().right
-            }
-        })
+            carouselWrapper.addEventListener('scroll', ()=>{
+                updateSliderPosition()
+            })
+
+        }
+
+        window.addEventListener('load', initSlider)
 
     </script>
 {% endblock %}
