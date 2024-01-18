@@ -5,3 +5,18 @@ from django.views.generic import TemplateView
 class HomeView(TemplateView):
     template_name = "index.html"
 
+class AboutView(TemplateView):
+    template_name = 'pages/about.html'
+
+
+class PrivacyView(TemplateView):
+    template_name = 'pages/privacy.html'
+
+
+class PageView(TemplateView):
+    template_name = 'pages/page.html'
+
+    def get(self, request, *args, **kwargs):
+        page = request.GET.get('page', '')
+        context = {'page': page}
+        return render(request, self.template_name, context)

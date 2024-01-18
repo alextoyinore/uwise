@@ -17,6 +17,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="{% static "css/web.css" %}">
+    <script src="{% static "js/web.js" %}" defer></script>
 
     {% comment %}
     JS Linkers
@@ -26,25 +27,24 @@
 {% endblock %}
 </head>
 <body>
-    <div id="top-nav" class="top-nav">
-        {% block top-nav %}{% endblock %}
-    </div>
-    <div id="header-nav" class="header-nav">
-        {% block header-nav %}{% endblock %}
-    </div>
-    <div id="header-message" class="header-message">
-        {% block header-message %}{% endblock %}
-    </div>
-    <div id="hero">
-        {% block hero %}{% endblock %}
-    </div>
+    {% block top-nav %}
+        {% include 'partials/topnav.html' %}
+    {% endblock %}
+
+    {% block header-nav %}
+        {% include 'partials/header.html' %}
+    {% endblock %}
+
+    {% block header-message %}
+        {% include 'partials/header_message.html' %}
+    {% endblock %}
+
+    {% block hero %}{% endblock %}
+
     <div id="content" class="content">
         {% block content %}{% endblock %}
     </div>
-    <div id="footer" class="footer">
-        {% block footer %}{% endblock %}
-    </div>
 
-    <script src="{% static "js/web.js" %}" defer></script>
+    {% block footer %}{% endblock %}
 </body>
 </html>

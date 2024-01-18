@@ -1,0 +1,19 @@
+{% load  static %}
+<div id="header-nav" class="header-nav">
+    <div class="header-nav-content">
+        <div class="header-nav-left">
+            <a href="{% url 'home' %}"><img class="logo" src="{% static 'images/uwise.png' %}" alt="Uwise Logo"></a>
+            <a href="">Learn <span class="material-symbols-outlined">expand_more</span> </a>
+        </div>
+        <div class="header-nav-right">
+            <div class="header-search">
+                <span class="material-symbols-outlined search-icon">search</span>
+                <input class="header-search-input" placeholder="What do you want to learn?" class="search" type="search" />
+            </div>
+            <div class="header-auth-btn">
+                <button class="login-btn">Login</button>
+                <button class="signup-btn">Sign Up</button>
+            </div>
+        </div>
+    </div>
+</div>
