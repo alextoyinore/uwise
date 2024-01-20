@@ -1,0 +1,74 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block pageTitle %} Auth {% endblock %}
+{% block header-message %}{% endblock %}
+{% block hero %}{% endblock %}
+
+{% block content %}
+  <div id="content" class="content">
+    <div class="content">
+      <div id="login-form">
+        <form>
+            <h2>Sign in to your account.</h2><br/>
+            <p>Build skills for today, tomorrow, and beyond. Education to future-proof your career.</p><br/>
+          
+          <label for="emailOrUsername">Email or Username</label>
+          <input type="text" id="emailOrUsername" name="emailOrUsername" placeholder="Enter your email or username"
+          /> <br>
+
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter your password"
+          /> <br>
+
+          <!-- Submit button -->
+          <button type="submit" onclick="submitForm()">Login</button>
+        </form>
+    </div>
+
+    <div id="signup-form">
+      <form>
+        <h2>Create your student account.</h2> <br/>
+        <p>Build skills for today, tomorrow, and beyond. Education to future-proof your career.</p>
+        <br/>
+        
+        <label for="email">Email</label>
+        <input type="text" id="email" name="email" placeholder="Enter your email"
+        /> <br>
+
+        <label for="firstname">Full Name</label>
+        <input type="text" id="firstname" name="firstname" placeholder="First name"
+        /> <br>
+
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" name="lastName" placeholder="Enter your last name"
+        /> <br>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password"
+        /> <br>
+
+        <!-- Submit button -->
+        <button type="submit" onclick="submitForm()">Sign Up</button>
+      </form>
+    </div>
+    </div>
+  </div>
+
+  <script>
+
+    function submitForm() {
+      // Add logic to handle form submission using JavaScript
+      // Example: document.getElementById("loginForm").submit();
+    }
+
+    function loginWithGoogle() {
+      // Add logic to handle Google login using JavaScript
+    }
+
+    function loginWithFacebook() {
+      // Add logic to handle Facebook login using JavaScript
+    }
+  </script>
+
+{% endblock %}
+

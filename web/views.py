@@ -104,7 +104,7 @@ class ContactView(TemplateView):
 
 
 class AuthView(TemplateView):
-    template_name = 'pages/auth.html'
+    template_name = 'auth.html'
 
 
 class PageView(TemplateView):

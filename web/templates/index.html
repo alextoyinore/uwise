@@ -2,9 +2,6 @@
 {% load static %}
 {% block pageTitle %} Welcome {% endblock %}
 
-<div id="header-message" class="header-message">
-    {% include 'partials/header_message.html' %}
-</div>
 {% block hero %}
     {% include 'widgets/hero2.html' %}
 {% endblock %}
@@ -12,11 +9,6 @@
 {% block content %}
     <div id="content" class="content">
         {% include 'widgets/course_carousel.html' with carousels=carousel_data.carousels %}
-    <br>
-        {% comment %} {% include 'widgets/course_carousel.html' %} {% endcomment %}
     </div>
 {% endblock %}
 
-{% block footer %}
-    {% include 'partials/footer.html' %}
-{% endblock %}

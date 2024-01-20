@@ -279,10 +279,14 @@ p {
     width: 150px;
   }
 
-  .header-auth-btn .signup-btn:hover{
+  .header-auth-btn .signup-btn{
+    background: #0e3b8d;
+  }
+
+  /* .header-auth-btn .signup-btn:hover{
     background: #10DC80;
     transition: .3s ease-in-out;
-  }
+  } */
 
   .header-auth-btn .login-btn{
     background: transparent;
@@ -320,10 +324,10 @@ p {
   }
 
   #hero {
-    /*width: 100%;*/
     /*background: #3b5998;*/
     background: #011F55;
     display: flex;
+    margin-bottom: 25px;
   }
 
   .hero-content {
@@ -420,12 +424,13 @@ p {
   #content{
     width: 100%;
     background: #011F5505;
-    padding: 25px 0;
+    /* padding: 25px 0; */
   }
 
   .content{
     width: 75%;
     margin: auto;
+    /* padding: 25px 0; */
   }
 
   .carousel-section{
@@ -483,6 +488,7 @@ p {
   .course-image img {
     width: 100%;
     height: 50%;
+    object-fit: cover;
   }
 
   .course-details {
@@ -559,12 +565,13 @@ p {
   }
 
   #next {
-    float: right;
+    text-align: right;
   }
 
   #footer {
     background: rgba(1, 31, 85, 0.05);
-    /*margin-top: 50px;*/
+    width: 100%;
+    margin-top: 25px;
   }
 
   .footer-wrapper{
