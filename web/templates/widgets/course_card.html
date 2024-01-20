@@ -1,0 +1,11 @@
+{% for course in courses %}
+<div class="course-card">
+    <div class="course-image">
+        <img src="{{course.image}}" alt="">
+    </div>
+    <div class="course-details">
+        <strong class="course-title">{{course.title}}</strong>
+        <i class="course-duration">{{course.duration}} Weeks, {{course.level}}</i>
+    </div>
+</div>
+{% endfor %}

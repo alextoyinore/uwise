@@ -11,9 +11,9 @@
 
 {% block content %}
     <div id="content" class="content">
-        {% include 'widgets/course_carousel.html' %}
+        {% include 'widgets/course_carousel.html' with carousels=carousel_data.carousels %}
     <br>
-        {% include 'widgets/course_carousel.html' %}
+        {% comment %} {% include 'widgets/course_carousel.html' %} {% endcomment %}
     </div>
 {% endblock %}
 
