@@ -3,16 +3,18 @@
 {% block header-message %}{% endblock %}
 {% block hero %}{% endblock %}
 
-{% block content %}
-    {% if page is 'about' %}
+
+    {% if page == 'about' %}
+
         {% include 'pages/about.html' %}
-    {% elif page is 'privacy' %}
+    {% elif page == 'privacy' %}
         {% include 'pages/privacy.html' %}
-    {% elif page is 'contact' %}
+    {% elif page == 'contact' %}
         {% include 'pages/contact.html' %}
     {% endif %}
-{% endblock %}
+
 
 {% block footer %}
     {% include 'partials/footer.html' %}
 {% endblock %}
+

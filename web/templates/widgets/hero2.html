@@ -1,0 +1,67 @@
+<div id="hero">
+    <div class="hero2-content">
+        <div class="hero-content-top">
+            <strong>Training the future of global wealth</strong>
+            <p>Wealth comes from wisdom, wisdom comes from understanding, understanding comes from knowledge, all knowledge comes from God</p>
+        </div>
+        <div class="hero-content-bottom">
+            <a href="" class="btn-cta-light-var dark">Programming & Software</a>
+            <a href="" class="btn-cta-light-var dark">Data Science</a>
+            <a href="" class="btn-cta-light-var dark">Business Analysis</a>
+            <a href="" class="btn-cta-light-var dark">Ai & ML</a>
+            <a href="" class="btn-cta-light-var dark">DevOps</a>
+            <a href="" class="btn-cta-light-var dark">Marketing</a>
+            <a href="" class="btn-cta-light-var dark">Industrialization</a>
+            <a href="" class="btn-cta-light-var dark">Polity</a>
+            <a href="" class="btn-cta-light-var dark">Art & Creatives</a>
+            <a href="" class="btn-cta-light-var dark">Health & Medicine</a>
+        </div>
+        <div class="">
+            <a href="{% url 'auth' %}" class="btn-cta-light-var hero-cta">Get Started</a>
+            <a href="{% url 'auth' %}" class="btn-cta-light-var hero-cta">Get the App</a>
+        </div>
+    </div>
+</div>
+<style>
+
+    .hero2-content{
+        display: flex;
+        flex-direction: column;
+        width: 75%;
+        margin: auto;
+        text-align: center;
+        padding: 30px 0;
+        gap: 20px;
+    }
+
+    .hero-content-top{
+        width: 100%;
+    }
+    .hero-content-top strong{
+        color: #fff;
+        font-size: 3em;
+    }
+
+    .hero-content-top p{
+        color: #fff;
+    }
+
+    .hero-cta {
+        padding: 10px 50px;
+    }
+
+    .green {
+        background: #10DC80;
+        color: #fff;
+    }
+
+    .red{
+        background: #ff253a;
+        color: #fff;
+    }
+
+    .dark {
+        background: #0e3b8d;
+        color: #4285f4;
+    }
+</style>

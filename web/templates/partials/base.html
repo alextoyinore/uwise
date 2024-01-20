@@ -8,21 +8,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block pageTitle %}{% endblock %}</title>
 
-    {% comment %}
-    CSS Linkers
-    {% endcomment %}
-    {% comment %} <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css"> {% endcomment %}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="{% static "css/web.css" %}">
     <script src="{% static "js/web.js" %}" defer></script>
-
-    {% comment %}
-    JS Linkers
-    {% endcomment %}
-    {% comment %} <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script> {% endcomment %}
 
 {% endblock %}
 </head>
@@ -41,9 +32,7 @@
 
     {% block hero %}{% endblock %}
 
-    <div id="content" class="content">
-        {% block content %}{% endblock %}
-    </div>
+    {% block content %}{% endblock %}
 
     {% block footer %}{% endblock %}
 </body>

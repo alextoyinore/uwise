@@ -6,11 +6,15 @@
     {% include 'partials/header_message.html' %}
 </div>
 {% block hero %}
-    {% include 'widgets/hero.html' %}
+    {% include 'widgets/hero2.html' %}
 {% endblock %}
 
 {% block content %}
-    {% include 'widgets/course_carousel.html' %}
+    <div id="content" class="content">
+        {% include 'widgets/course_carousel.html' %}
+    <br>
+        {% include 'widgets/course_carousel.html' %}
+    </div>
 {% endblock %}
 
 {% block footer %}

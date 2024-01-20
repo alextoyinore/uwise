@@ -13,6 +13,14 @@ class PrivacyView(TemplateView):
     template_name = 'pages/privacy.html'
 
 
+class ContactView(TemplateView):
+    template_name = 'pages/contact.html'
+
+
+class AuthView(TemplateView):
+    template_name = 'pages/auth.html'
+
+
 class PageView(TemplateView):
     template_name = 'pages/page.html'
 
