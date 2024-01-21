@@ -6,6 +6,6 @@ urlpatterns = [
     path('about', view=AboutView.as_view(), name='about'),
     path('privacy', view=PrivacyView.as_view(), name='privacy'),
     path('contact', view=ContactView.as_view(), name='contact'),
-    path('<str:page>', view=PageView.as_view(), name='page'),
-    path('auth', view=AuthView.as_view(), name='auth'),
+    path('login', view=LoginView.as_view(), name='login'),
+    path('signup', view=SignUpView.as_view(), name='signup'),
 ]

@@ -1,14 +1,16 @@
 {% extends 'partials/base.html' %}
 {% load static %}
-{% block pageTitle %} Welcome {% endblock %}
+{% block page-title %} Welcome {% endblock %}
 
 {% block hero %}
     {% include 'widgets/hero2.html' %}
 {% endblock %}
 
 {% block content %}
-    <div id="content" class="content">
-        {% include 'widgets/course_carousel.html' with carousels=carousel_data.carousels %}
+    <div id="content">
+        <div class="content">
+            {% include 'widgets/course_carousel.html' with carousels=carousel_data.carousels %}
+        </div>
     </div>
 {% endblock %}
 

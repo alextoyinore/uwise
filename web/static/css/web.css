@@ -23,6 +23,7 @@ h3{
 h2 {
   margin: 0;
   font-size: 1.5em;
+  color: #011F55;
 }
 
 p {
@@ -47,10 +48,9 @@ p {
 .auth-container {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    width: 75%;
-    margin: auto;
+    justify-content: space-between;
+    gap: 50px;
+    padding: 50px 0;
   }
   
   .header-bar {
@@ -111,11 +111,27 @@ p {
   .right-bottom-switcher{
     border-bottom-right-radius: 10px;
   }
+
+  .form-row{
+    display: flex;
+    gap: 25px;
+  }
+
+  .form-column{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
   
   form {
     display: flex;
     flex-direction: column;
-    width: 280px;
+    width: 400px;
+    border: 1px solid #011F5510;
+    background: #fff;
+    border-radius: 20px;
+    padding: 40px;
+    /* text-align: center; */
   }
 
   form p{
@@ -124,7 +140,7 @@ p {
   }
   
   label {
-    margin-bottom: 8px;
+    padding: 6px 0;
     font-size: 14px;
   }
   
@@ -133,8 +149,8 @@ p {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    height: 20px;
     outline: 0;
+    height: 20px;
   }
 
   input::placeholder{
@@ -149,6 +165,7 @@ p {
     text-align: center;
     align-content: center;
     border: 1px solid #011F55;
+    width: 100%;
   }
   
   button:hover {
@@ -327,7 +344,6 @@ p {
     /*background: #3b5998;*/
     background: #011F55;
     display: flex;
-    margin-bottom: 25px;
   }
 
   .hero-content {
@@ -424,19 +440,16 @@ p {
   #content{
     width: 100%;
     background: #011F5505;
-    /* padding: 25px 0; */
   }
 
   .content{
     width: 75%;
     margin: auto;
-    /* padding: 25px 0; */
   }
 
   .carousel-section{
-    width: 75%;
-    margin: auto;
     border-radius: 10px;
+    padding: 25px 0;
   }
 
   .carousel-section-header{
@@ -571,13 +584,12 @@ p {
   #footer {
     background: rgba(1, 31, 85, 0.05);
     width: 100%;
-    margin-top: 25px;
+    padding: 25px 0;
   }
 
   .footer-wrapper{
     width: 75%;
     margin: auto;
-    padding: 25px 0;
   }
 
   .footer-nav-header{

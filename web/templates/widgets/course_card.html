@@ -5,7 +5,29 @@
     </div>
     <div class="course-details">
         <strong class="course-title">{{course.title}}</strong>
+        {% comment %} <div class="course-details-top">
+            <strong class="course-title">{{course.title}}</strong>
+            <p>
+            {% set range_end = course.rating %}
+            {% for i in range(1, range_end) %}
+                <span class="material-symbols-outlined">star</span>
+            {% endfor %}
+            </p> 
+        </div> {% endcomment %}
         <i class="course-duration">{{course.duration}} Weeks, {{course.level}}</i>
     </div>
 </div>
 {% endfor %}
+<style>
+    .course-details-top {
+        height: 50%;
+    }
+
+    .course-details-top strong{
+        line-height: 16px;
+    }
+
+    .course-details-top span{
+        font-size: 10px;
+    }
+</style>
