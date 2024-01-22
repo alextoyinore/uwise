@@ -6,7 +6,7 @@
 {% block head %}
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block page-title %}{% endblock %}</title>
+  <title>{% block page-title %}{% endblock %} - Uwise</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,17 +18,20 @@
 {% endblock %}
 </head>
 <body>
-    {% block top-nav %}
-        {% include 'partials/topnav.html' %}
-    {% endblock %}
 
-    {% block header-nav %}
-        {% include 'partials/header.html' %}
-    {% endblock %}
+    <div class="header">
+        {% block top-nav %}
+            {% include 'partials/topnav.html' %}
+        {% endblock %}
 
-    {% block header-message %}
-        {% include 'partials/header_message.html' %}
-    {% endblock %}
+        {% block header-nav %}
+            {% include 'partials/header.html' %}
+        {% endblock %}
+
+        {% block header-message %}
+            {% include 'partials/header_message.html' %}
+        {% endblock %}
+    </div>
 
     {% block hero %}{% endblock %}
 

@@ -9,9 +9,9 @@
   <div class="content">
     <div id="login-form" class="auth-container">
       <form>
-          <h1>Sign in to your account.</h1><br/>
-          <p>Build skills for today, tomorrow, and beyond. Education to future-proof your career.</p><br/>
-        
+          <h1>Sign in to your student account.</h1><br/>
+          <p>Learn, unlearn, and re-learn. Practice and perfect new skills for business, career, and personal growth.</p>
+        <br>
         <label for="emailOrUsername">Email or Username</label>
         <input type="text" id="emailOrUsername" name="emailOrUsername" placeholder="Enter your email or username"
         /> <br>
@@ -22,6 +22,12 @@
   
         <!-- Submit button -->
         <button type="submit" onclick="submitForm()">Login</button>
+
+        <br>
+
+        <p class="form-bottom-info">
+          <span>Not a student? <a href="{% url 'signup' %}">Sign Up</a></span>
+        </p>
       </form>
     </div>
   </div>

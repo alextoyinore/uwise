@@ -5,3 +5,11 @@
         <span class="material-symbols-outlined close-icon">close</span>
     </div>
 </div>
+
+<script>
+    const closeIcon = document.querySelector('.close-icon')
+    const headerMessage = document.querySelector('.header-message')
+    closeIcon.addEventListener('click', ()=>{
+        headerMessage.style.display = 'none'
+    })
+</script>
