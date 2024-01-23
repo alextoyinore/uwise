@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.template.defaulttags import register
 
+
 # Create your views here.
 
 @register.filter
@@ -91,7 +92,7 @@ class HomeView(TemplateView):
                         'rating': 3,
                     },
                     {
-                        'id': 4,
+                        'id': 10,
                         'image': 'https://images.pexels.com/photos/256302/pexels-photo-256302.jpeg?auto=compress&cs=tinysrgb&w=600',
                         'title': 'Interview Preparation',
                         'duration': 14,
@@ -99,14 +100,102 @@ class HomeView(TemplateView):
                         'rating': 4,
                     }
                 ]
+            },
+
+            {
+                'id': 2,
+                'title': 'Vocational Trainings',
+                'courses': [
+                    {
+                        'id': 11,
+                        'image': 'https://images.pexels.com/photos/336372/pexels-photo-336372.jpeg?auto=compress&cs=tinysrgb&w=600',
+                        'title': 'Intro to Fashion Design',
+                        'duration': 100,
+                        'level': 'Beginner',
+                        'rating': 4,
+                    },
+                    {
+                        'id': 12,
+                        'image': 'https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg?auto=compress&cs=tinysrgb&w=600',
+                        'title': 'Fundamentals of Shoe Making',
+                        'duration': 100,
+                        'level': 'Beginner',
+                        'rating': 4,
+                    },
+                    {
+                        'id': 13,
+                        'image': 'https://images.pexels.com/photos/973401/pexels-photo-973401.jpeg?auto=compress&cs=tinysrgb&w=600',
+                        'title': 'Hair and Cosmetics',
+                        'duration': 180,
+                        'level': 'Beginner',
+                        'rating': 4,
+                    },
+                    {
+                        'id': 14,
+                        'image': 'https://images.pexels.com/photos/1249611/pexels-photo-1249611.jpeg?auto=compress&cs=tinysrgb&w=600',
+                        'title': 'Carpentry and Wood Works',
+                        'duration': 360,
+                        'level': 'Beginner',
+                        'rating': 5,
+                    },
+                    {
+                        'id': 15,
+                        'image': 'https://images.pexels.com/photos/1492232/pexels-photo-1492232.jpeg?auto=compress&cs=tinysrgb&w=600',
+                        'title': 'Aluminium works for Everybody',
+                        'duration': 180,
+                        'level': 'Beginner',
+                        'rating': 5,
+                    },
+                    {
+                        'id': 16,
+                        'image': 'https://images.pexels.com/photos/5532719/pexels-photo-5532719.jpeg?auto=compress&cs=tinysrgb&w=600',
+                        'title': 'Laptop and Phone Engineering for Everybody',
+                        'duration': 180,
+                        'level': 'Intermediate',
+                        'rating': 4,
+                    },
+                    {
+                        'id': 17,
+                        'image': 'https://images.pexels.com/photos/65623/vehicle-chrome-technology-automobile-65623.jpeg?auto=compress&cs=tinysrgb&w=600',
+                        'title': 'Mechanical Works and Auto Repairs',
+                        'duration': 360,
+                        'level': 'Advanced',
+                        'rating': 3,
+                    },
+                    {
+                        'id': 18,
+                        'image': 'https://images.pexels.com/photos/404280/pexels-photo-404280.jpeg?auto=compress&cs=tinysrgb&w=600',
+                        'title': 'Iron smelting and Welding',
+                        'duration': 360,
+                        'level': 'Advanced',
+                        'rating': 3,
+                    },
+                    {
+                        'id': 19,
+                        'image': 'https://images.pexels.com/photos/1474993/pexels-photo-1474993.jpeg?auto=compress&cs=tinysrgb&w=600',
+                        'title': 'Visual Arts and Figure Painting',
+                        'duration': 360,
+                        'level': 'Intermediate',
+                        'rating': 3,
+                    },
+                    {
+                        'id': 20,
+                        'image': 'https://images.pexels.com/photos/1509534/pexels-photo-1509534.jpeg?auto=compress&cs=tinysrgb&w=600',
+                        'title': 'Creative Arts and Metal Works',
+                        'duration': 14,
+                        'level': 'Advanced',
+                        'rating': 4,
+                    }
+                ]
             }
         ]
-       
+
     }
 
     def get(self, request, *args, **kwargs):
         context = {'carousel_data': self.dummy_data}
         return render(request, self.template_name, context)
+
 
 class AboutView(TemplateView):
     template_name = 'pages/about.html'
@@ -122,7 +211,7 @@ class ContactView(TemplateView):
 
 class LoginView(TemplateView):
     template_name = 'login.html'
-    
+
 
 class SignUpView(TemplateView):
     template_name = 'signup.html'
