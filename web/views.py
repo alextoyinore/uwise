@@ -14,6 +14,35 @@ class HomeView(TemplateView):
     template_name = "index.html"
 
     dummy_data = {
+        'testimonials': [
+            {
+                'id': 1,
+                'title': 'From our Alumni',
+                'messages': [
+                    {
+                        'id': 1,
+                        'student_name': 'Kayode Olawale',
+                        'student_photo': 'https://images.pexels.com/photos/1370750/pexels-photo-1370750.jpeg?auto=compress&cs=tinysrgb&w=600',
+                        'message': 'At a time in my life when I needed a new direction, I found Uwise and it\'s been a blessing',
+                        'date': '2020-05-21',
+                    },
+                    {
+                        'id': 2,
+                        'student_name': 'Olufade Blessing',
+                        'student_photo': 'https://images.pexels.com/photos/2080383/pexels-photo-2080383.jpeg?auto=compress&cs=tinysrgb&w=600',
+                        'message': 'After Uwise, I launched my own startup as we are encouraged to do in the "What will you Build?" sessions. I\'m happy I found Uwise, my startup is a success',
+                        'date': '2023-08-21',
+                    },
+                    {
+                        'id': 3,
+                        'student_name': 'Toyin Abrahams',
+                        'student_photo': 'https://images.pexels.com/photos/274610/pexels-photo-274610.jpeg?auto=compress&cs=tinysrgb&w=600',
+                        'message': 'After Uwise, I launched my own startup as we are encouraged to do in the "What will you Build?" sessions. I\'m happy I found Uwise, my startup is a success',
+                        'date': '2023-08-21',
+                    }
+                ]
+            }
+        ],
         'carousels': [
             {
                 'id': 1,
@@ -26,6 +55,7 @@ class HomeView(TemplateView):
                         'duration': 28,
                         'level': 'Intermediate',
                         'rating': 3,
+                        'rating_count': 439
                     },
                     {
                         'id': 2,
@@ -34,6 +64,7 @@ class HomeView(TemplateView):
                         'duration': 28,
                         'level': 'Beginner',
                         'rating': 4,
+                        'rating_count': 1035
                     },
                     {
                         'id': 3,
@@ -42,6 +73,7 @@ class HomeView(TemplateView):
                         'duration': 28,
                         'level': 'Beginner',
                         'rating': 4,
+                        'rating_count': 126
                     },
                     {
                         'id': 4,
@@ -50,6 +82,7 @@ class HomeView(TemplateView):
                         'duration': 28,
                         'level': 'Beginner',
                         'rating': 5,
+                        'rating_count': 435
                     },
                     {
                         'id': 5,
@@ -58,6 +91,7 @@ class HomeView(TemplateView):
                         'duration': 28,
                         'level': 'Beginner',
                         'rating': 5,
+                        'rating_count': 2045
                     },
                     {
                         'id': 6,
@@ -66,6 +100,7 @@ class HomeView(TemplateView):
                         'duration': 28,
                         'level': 'Intermediate',
                         'rating': 4,
+                        'rating_count': 516
                     },
                     {
                         'id': 7,
@@ -74,6 +109,7 @@ class HomeView(TemplateView):
                         'duration': 28,
                         'level': 'Advanced',
                         'rating': 3,
+                        'rating_count': 989
                     },
                     {
                         'id': 8,
@@ -82,6 +118,7 @@ class HomeView(TemplateView):
                         'duration': 28,
                         'level': 'Advanced',
                         'rating': 3,
+                        'rating_count': 493
                     },
                     {
                         'id': 9,
@@ -90,6 +127,7 @@ class HomeView(TemplateView):
                         'duration': 28,
                         'level': 'Intermediate',
                         'rating': 3,
+                        'rating_count': 235
                     },
                     {
                         'id': 10,
@@ -98,6 +136,7 @@ class HomeView(TemplateView):
                         'duration': 14,
                         'level': 'Advanced',
                         'rating': 4,
+                        'rating_count': 2674
                     }
                 ]
             },
@@ -113,6 +152,7 @@ class HomeView(TemplateView):
                         'duration': 100,
                         'level': 'Beginner',
                         'rating': 4,
+                        'rating_count': 439
                     },
                     {
                         'id': 12,
@@ -121,6 +161,7 @@ class HomeView(TemplateView):
                         'duration': 100,
                         'level': 'Beginner',
                         'rating': 4,
+                        'rating_count': 504
                     },
                     {
                         'id': 13,
@@ -129,6 +170,7 @@ class HomeView(TemplateView):
                         'duration': 180,
                         'level': 'Beginner',
                         'rating': 4,
+                        'rating_count': 783
                     },
                     {
                         'id': 14,
@@ -137,6 +179,7 @@ class HomeView(TemplateView):
                         'duration': 360,
                         'level': 'Beginner',
                         'rating': 5,
+                        'rating_count': 402
                     },
                     {
                         'id': 15,
@@ -145,6 +188,7 @@ class HomeView(TemplateView):
                         'duration': 180,
                         'level': 'Beginner',
                         'rating': 5,
+                        'rating_count': 902
                     },
                     {
                         'id': 16,
@@ -153,6 +197,7 @@ class HomeView(TemplateView):
                         'duration': 180,
                         'level': 'Intermediate',
                         'rating': 4,
+                        'rating_count': 454
                     },
                     {
                         'id': 17,
@@ -161,6 +206,7 @@ class HomeView(TemplateView):
                         'duration': 360,
                         'level': 'Advanced',
                         'rating': 3,
+                        'rating_count': 1009
                     },
                     {
                         'id': 18,
@@ -169,6 +215,7 @@ class HomeView(TemplateView):
                         'duration': 360,
                         'level': 'Advanced',
                         'rating': 3,
+                        'rating_count': 420
                     },
                     {
                         'id': 19,
@@ -177,14 +224,16 @@ class HomeView(TemplateView):
                         'duration': 360,
                         'level': 'Intermediate',
                         'rating': 3,
+                        'rating_count': 430
                     },
                     {
                         'id': 20,
                         'image': 'https://images.pexels.com/photos/1509534/pexels-photo-1509534.jpeg?auto=compress&cs=tinysrgb&w=600',
                         'title': 'Creative Arts and Metal Works',
-                        'duration': 14,
+                        'duration': 360,
                         'level': 'Advanced',
                         'rating': 4,
+                        'rating_count': 3006
                     }
                 ]
             }
@@ -193,8 +242,12 @@ class HomeView(TemplateView):
     }
 
     def get(self, request, *args, **kwargs):
-        context = {'carousel_data': self.dummy_data}
+        context = {'data': self.dummy_data}
         return render(request, self.template_name, context)
+
+
+class CourseView(TemplateView):
+    template_name = 'course.html'
 
 
 class AboutView(TemplateView):

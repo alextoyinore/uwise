@@ -7,68 +7,52 @@
 {% endblock %}
 
 {% block content %}
-    <div id="content">
+    <section id="content">
         <div class="content">
-            {% include 'widgets/course_carousel.html' with carousels=carousel_data.carousels %}
+            {% include 'widgets/course_carousel.html' with carousels=data.carousels %}
             <br><br>
-            <section class="biginfo">
-                <div class="biginfo-content">
-                    <div class="biginfo-image">
-                        <img src="https://images.pexels.com/photos/935969/pexels-photo-935969.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
-                    </div>
-                    <div class="biginfo-copy">
-                        <h1>The Uwise X-Factor</h1>
-                        <br>
-                        <article>
-                            <h3>Personal Experience</h3>
-                            <p>At Uwise, we cater to one student. Whether you are in a cohort of 50,000 students, more, or less, we still deliver the one-student one-teacher experience</p>
-                        </article>
+            {% include 'widgets/biginfo.html' %}
+            <br><br>
+            {% include 'widgets/course_carousel.html' with carousels=data.carousels %}
 
-                        <br>
-                        <article>
-                            <h3>Business Oriented</h3>
-                            <p>At Uwise, we prepare students to take over the world. We are building the next global solution.</p>
-                        </article>
-
-                        <br>
-                        <article>
-                            <h3>Personal Experience</h3>
-                            <p>At Uwise, we prepare students who will build not just businesses but people </p>
-                        </article>
-                    </div>
-                </div>
-            </section>
+            <br><br>
+            {% include 'widgets/testimonial_carousel.html' with testimonials=data.testimonials %}
+            <br><br>
+            {% include 'widgets/partners.html' %}
         </div>
-    </div>
+    </section>
+    
+    <section class="bottom-cta">
+        <p>Wherever your heart leads, tech, vocational, or professional path, or you just want to develop as a person, gain confidence, and position yourself to better contribute to societal growth and development, we are here for you</p>
+        <a href="{% url 'signup' %}" class="btn-cta green">Get Started Now</a>
+    </section>
 
     <style>
-    .biginfo{
-        {#padding: 20px;#}
-        {#border-radius: 20px;#}
-        {#background: #c3d3ec99;#}
-    }
-    .biginfo-content{
-        display: flex;
-        flex-direction: row;
-        gap: 50px;
-    }
-
-   .biginfo-image{
-        width: 40%;
-        height: 400px;
-    }
-
-    .biginfo-image img{
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 20px;
-        transform: rotate(-15deg);
-    }
-
-    .biginfo-copy{
-        width: 50%;
-    }
-</style>
+        .bottom-cta {
+            width: 100%;
+            background: #011F55;
+            padding: 50px 0;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .bottom-cta p {
+            color: #ffffff;
+            width: 70%;
+            margin: auto;
+            font-size: 13px;
+            padding: 20px 0;
+            line-height: 25px;
+        }
+        
+        .bottom-cta a:hover {
+            background: #0e3b8d;
+            transition: .3s ease-in-out;
+        }
+        
+    </style>
 {% endblock %}
 

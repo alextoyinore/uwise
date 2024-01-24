@@ -1,0 +1,56 @@
+<article class="testimonial-card">
+    <div class="student-photo">
+        <img src="{{ message.student_photo }}" alt="">
+    </div>
+
+    <div class="message-column">
+        <h3>{{ message.student_name }}</h3>
+        <p>{{ message.message }}</p>
+        <i>{{ message.date }}</i>
+    </div>
+
+</article>
+
+<style>
+    .testimonial-card {
+        width: 400px;
+        height: 150px;
+        background: #ffffff;
+        display: flex;
+        flex-direction: row;
+        padding: 10px 20px;
+        flex: 0 0 auto;
+        gap: 25px;
+        align-items: center;
+        border: 1px solid #eee;
+        border-radius: 20px;
+    }
+
+    .student-photo {
+        width: 100px;
+        height: 100px;
+        border-radius: 200px;
+    }
+
+    .student-photo img {
+        object-fit: cover;
+        width: 100px;
+        height: 100px;
+        border-radius: 200px;
+    }
+    
+    .message-column {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .message-column p {
+        font-size: 12px;
+    }
+    
+    .message-column i {
+        font-size: 10px;
+        padding: 10px 0;
+        color: #ccc;
+    }
+</style>

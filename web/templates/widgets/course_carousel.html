@@ -18,8 +18,8 @@
     <div class="carousel-wrapper">
         <div class="carousel-track">
             <div class="carousel-items">
-                {% for i in carousels %}
-                    {% include 'widgets/course_card.html' with courses=carousel.courses %}
+                {% for course in carousel.courses %}
+                    {% include 'widgets/course_card.html' with course=course %}
                 {% endfor %}
             </div>
         </div>

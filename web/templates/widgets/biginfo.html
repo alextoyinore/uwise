@@ -1,0 +1,39 @@
+<section class="biginfo">
+    <div class="biginfo-content">
+        <div class="biginfo-image">
+            <img src="https://images.pexels.com/photos/3310695/pexels-photo-3310695.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
+            <img src="https://images.pexels.com/photos/773371/pexels-photo-773371.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
+            <img src="https://images.pexels.com/photos/2083937/pexels-photo-2083937.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
+            <img src="https://images.pexels.com/photos/1068205/pexels-photo-1068205.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
+        </div>
+        <div class="biginfo-copy">
+            <h1>The Uwise X-Factor</h1>
+            
+            <article>
+                <h3>Personal Experience</h3>
+                <p>At Uwise, we cater to one student. Whether you are in a cohort of 50,000 students, more, or less, we still deliver the one-student one-teacher experience</p>
+            </article>
+
+            <br>
+            <article>
+                <h3>Business Oriented</h3>
+                <p>At Uwise, we prepare students to take over the world. We are building you to build the next solution to a global problem.</p>
+            </article>
+
+            <br>
+            <article>
+                <h3>People Oriented</h3>
+                <p>At Uwise, we prepare students who will build not just businesses but people </p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<script>
+    window.addEventListener('load', ()=>{
+        const bigInfoImage = document.querySelectorAll('.biginfo-image img')
+        for (let i = 0; i < bigInfoImage.length; i++) {
+            bigInfoImage[i].style.transform = `rotate(-${5*i}deg)`
+        }
+    })
+</script>

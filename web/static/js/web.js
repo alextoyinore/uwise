@@ -11,8 +11,8 @@ const initSlider = () => {
         if(carouselItems.getBoundingClientRect().width < carouselWrapper.getBoundingClientRect().width){
             carouselSectionNav.style.display = 'none'
         }else {
-            var sliderWidthPercentage = (carouselWrapper.clientWidth / carouselItems.clientWidth)
-            var sliderWidth = sliderWrapper.clientWidth * sliderWidthPercentage
+            var carouselWidthPercentage = (carouselWrapper.clientWidth / carouselItems.clientWidth)
+            var sliderWidth = sliderWrapper.clientWidth * carouselWidthPercentage
             sliderThumb.style.width = sliderWidth + 'px'
         }
 
@@ -39,3 +39,10 @@ const initSlider = () => {
     }
 
     window.addEventListener('load', initSlider)
+
+    // window.addEventListener('load', ()=>{
+    //     const bigInfoImage = document.querySelectorAll('.biginfo-image img')
+    //     for (let i = 0; i < bigInfoImage.length; i++) {
+    //         bigInfoImage[i].style.transform = `rotate(-${10*i}deg)`
+    //     }
+    // })

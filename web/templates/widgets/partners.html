@@ -1,0 +1,36 @@
+{% load static %}
+
+<section class="partners-wrapper">
+    <div class="partner-title">
+        <h2>Our Partners</h2>
+    </div>
+
+    <article>
+        <p>We partner with the best educators and firms in the world to give our students the best</p>
+        <div class="partner-list">
+            <img src="{% static 'images/peach.png' %}" alt="">
+            <img src="{% static 'images/truuskill.png' %}" alt="">
+        </div>
+    </article>
+</section>
+
+<style>
+    .partners-wrapper {
+        width: 100%;
+        text-align: center;
+    }
+
+    .partner-list{
+        display: flex;
+        flex-direction: row;
+        padding: 25px 0;
+        align-items: center;
+        justify-content: center;
+        gap: 25px;
+    }
+
+    .partner-list img {
+        height: 25px;
+        {#width: 50px;#}
+    }
+</style>

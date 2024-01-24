@@ -1,33 +1,41 @@
-{% for course in courses %}
-<div class="course-card">
+
+<a href="{% url 'view-course' %}" class="course-card">
     <div class="course-image">
         <img src="{{course.image}}" alt="">
     </div>
     <div class="course-details">
         <strong class="course-title">{{course.title}}</strong>
-        {% comment %} <div class="course-details-top">
-            <strong class="course-title">{{course.title}}</strong>
-            <p>
-            {% set range_end = course.rating %}
-            {% for i in range(1, range_end) %}
-                <span class="material-symbols-outlined">star</span>
-            {% endfor %}
-            </p> 
-        </div> {% endcomment %}
-        <i class="course-duration">{{course.duration}} Weeks, {{course.level}}</i>
+        <div class="course-details-bottom">
+            <p class="rating"><span class="material-symbols-outlined rating-star">star</span> {{ course.rating }}  ({{ course.rating_count }} reviews)</p>
+            <i class="course-duration">{{course.duration}} Days, {{course.level}}</i>
+        </div>
     </div>
-</div>
-{% endfor %}
+</a>
+
+
+
 <style>
-    .course-details-top {
-        height: 65%;
+    
+    .course-details-bottom {
+        height: 40px;
+        line-height: 25px;
+    }
+    
+    .course-details-bottom p {
+        font-style: italic;
     }
 
-    .course-details-top strong{
-        line-height: 16px;
+    .course-details p {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
     }
-
-    .course-details-top span{
+    .rating {
         font-size: 10px;
+    }
+
+    .rating-star {
+        font-size: 14px;
+        color: #011F55;
     }
 </style>
