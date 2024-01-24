@@ -5,31 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b5bedfd-d550-4555-a8e1-6879e7615a78" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/authAPI/migrations/0003_delete_gender_facilitator_bio_facilitator_field_and_more.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authAPI/migrations/0004_alter_facilitator_options.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authAPI/migrations/0005_remove_facilitator_user_ptr_and_more.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authAPI/migrations/0006_remove_user_academic_level_user_academic_year_and_more.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authAPI/migrations/0007_alter_user_managers_alter_user_years_of_experience.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authAPI/migrations/0008_rename_academic_year_user_academic_level.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/courseAPI/migrations/0002_remove_course_facilitator_remove_course_organization_and_more.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utilsAPI/migrations/0002_gender_maritalstatus.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utilsAPI/migrations/0003_testimonial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utilsAPI/migrations/0004_rename_message_review_review_remove_review_rating_and_more.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/authAPI/migrations/0009_alter_academiclevel_description_and_more.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/orderAPI/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/orderAPI/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/orderAPI/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/orderAPI/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/orderAPI/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/orderAPI/serializers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/orderAPI/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/orderAPI/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/orderAPI/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authAPI/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/authAPI/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/authAPI/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/authAPI/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authAPI/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/authAPI/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authAPI/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/authAPI/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authAPI/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/authAPI/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/courseAPI/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/courseAPI/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/courseAPI/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/courseAPI/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/courseAPI/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/courseAPI/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utilsAPI/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/utilsAPI/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utilsAPI/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/utilsAPI/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utilsAPI/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/utilsAPI/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templates/widgets/course_card.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/widgets/course_card.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templates/widgets/hero.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/widgets/hero.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uwise/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/uwise/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uwise/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/uwise/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +35,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -143,7 +136,7 @@
       <workItem from="1706053327907" duration="2812000" />
       <workItem from="1706085258571" duration="6907000" />
       <workItem from="1706105961113" duration="140000" />
-      <workItem from="1706124747796" duration="5092000" />
+      <workItem from="1706124747796" duration="8755000" />
     </task>
     <servers />
   </component>

@@ -13,7 +13,7 @@ class CourseLevelAdmin(admin.ModelAdmin):
 
 @admin.register(Course)
 class CourseAdmin(admin.ModelAdmin):
-    list_display = ('title', 'description', 'duration', 'level', 'active', 'field')
+    list_display = ('title', 'description', 'duration', 'level', 'is_active', 'field')
     search_fields = ('title', 'level', 'active', 'field')
 
 
@@ -55,7 +55,7 @@ class AnswerAdmin(admin.ModelAdmin):
 
 @admin.register(Reading)
 class ReadingAdmin(admin.ModelAdmin):
-    list_display = ('title', 'reading', 'module', 'active')
+    list_display = ('title', 'reading', 'module', 'is_active')
     search_fields = ('title', 'module', 'active')
 
 

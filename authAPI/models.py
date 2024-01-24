@@ -56,7 +56,7 @@ class User(AbstractUser):
 # Accessible only to Super Admins
 class AcademicLevel(models.Model):
     title = models.CharField(max_length=50, null=False, blank=False)
-    description = models.CharField(max_length=200, default='')
+    description = models.CharField(max_length=200, default='', null=True, blank=True)
 
     def __str__(self) -> str:
         return self.title
@@ -86,7 +86,7 @@ class Organization(models.Model):
 # Accessible only to Super Admins
 class OrganizationType(models.Model):
     title = models.CharField(max_length=100, unique=True, null=False, blank=False)
-    description = models.TextField(max_length=200, default='')
+    description = models.CharField(max_length=200, default='', null=True, blank=True)
 
     def __str__(self) -> str:
         return self.title

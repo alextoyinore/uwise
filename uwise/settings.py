@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "subscriptionAPI.apps.SubscriptionAPIConfig",
     "courseAPI.apps.CourseAPIConfig",
     "utilsAPI.apps.UtilsAPIConfig",
+    "orderAPI.apps.OrderAPIConfig",
     "web.apps.WebConfig",
     "social_django",
     "fontawesomefree",
