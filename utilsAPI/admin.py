@@ -2,7 +2,7 @@ from django.contrib import admin
 
 from utilsAPI.models import *
 
-from utilsAPI.models import Review, Rating, Grade, Note, Message
+from utilsAPI.models import Review, Rating, Grade, Note, Message, Testimonial
 
 
 # Register your models here.
@@ -26,8 +26,8 @@ class LanguageAdmin(admin.ModelAdmin):
 
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
-    list_display = ('user', 'course', 'rating', 'title', 'message')
-    search_fields = ('user', 'course', 'rating',)
+    list_display = ('user', 'course', 'title', 'review')
+    search_fields = ('user', 'course',)
 
 
 @admin.register(Rating)
@@ -58,3 +58,9 @@ class MessageAdmin(admin.ModelAdmin):
 class Gender(admin.ModelAdmin):
     list_display = ('title', 'description',)
     search_fields = ('title',)
+
+
+@admin.register(Testimonial)
+class TestimonialAdmin(admin.ModelAdmin):
+    list_display = ('title', 'message', 'date')
+    search_fields = ('title', 'user',)

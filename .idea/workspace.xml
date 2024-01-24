@@ -5,26 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b5bedfd-d550-4555-a8e1-6879e7615a78" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/web/static/images/peach.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/static/images/truuskill.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/templates/course.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/templates/widgets/biginfo.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/templates/widgets/partners.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/templates/widgets/testimonial_card.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/templates/widgets/testimonial_carousel.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/8be3bbb1-a699-4e15-94f5-feee08450db9.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/8be3bbb1-a699-4e15-94f5-feee08450db9.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/authAPI/migrations/0003_delete_gender_facilitator_bio_facilitator_field_and_more.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/authAPI/migrations/0004_alter_facilitator_options.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/authAPI/migrations/0005_remove_facilitator_user_ptr_and_more.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/authAPI/migrations/0006_remove_user_academic_level_user_academic_year_and_more.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/authAPI/migrations/0007_alter_user_managers_alter_user_years_of_experience.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/authAPI/migrations/0008_rename_academic_year_user_academic_level.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/courseAPI/migrations/0002_remove_course_facilitator_remove_course_organization_and_more.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utilsAPI/migrations/0002_gender_maritalstatus.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utilsAPI/migrations/0003_testimonial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utilsAPI/migrations/0004_rename_message_review_review_remove_review_rating_and_more.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authAPI/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/authAPI/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authAPI/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/authAPI/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authAPI/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/authAPI/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authAPI/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/authAPI/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authAPI/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/authAPI/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/courseAPI/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/courseAPI/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/static/css/web.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/static/css/web.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/static/js/web.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/static/js/web.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utilsAPI/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/utilsAPI/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utilsAPI/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/utilsAPI/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utilsAPI/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/utilsAPI/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templates/pages/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/pages/contact.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templates/partials/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/partials/footer.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/templates/widgets/course_card.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/widgets/course_card.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templates/widgets/course_carousel.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/widgets/course_carousel.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/templates/widgets/hero.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/widgets/hero.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,26 +63,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Django Server.uwise.executor": "Run",
-    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "django.template.preview.state": "SHOW_PREVIEW",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/toyin/Desktop/uwise/web/templates/widgets",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Django Server.uwise.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;django.template.preview.state&quot;: &quot;SHOW_EDITOR&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/toyin/Desktop/uwise/web/templates/widgets&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\toyin\Desktop\uwise\web\templates\widgets" />
@@ -89,7 +95,10 @@
   <component name="RunManager">
     <configuration name="uwise" type="Python.DjangoServer" factoryName="Django server">
       <module name="uwise" />
-      <option name="ENV_FILES" value="$PROJECT_DIR$/.env" />
+      <selectedOptions>
+        <option name="envPaths" visible="false" />
+      </selectedOptions>
+      <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -102,8 +111,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="launchJavascriptDebuger" value="false" />
-      <option name="port" value="8000" />
-      <option name="host" value="localhost" />
+      <option name="host" value="" />
       <option name="additionalOptions" value="" />
       <option name="browserUrl" value="" />
       <option name="runTestServer" value="false" />
@@ -132,11 +140,17 @@
       <workItem from="1706004469904" duration="12211000" />
       <workItem from="1706033278788" duration="7528000" />
       <workItem from="1706041528613" duration="9398000" />
-      <workItem from="1706053327907" duration="2659000" />
+      <workItem from="1706053327907" duration="2812000" />
+      <workItem from="1706085258571" duration="6907000" />
+      <workItem from="1706105961113" duration="140000" />
+      <workItem from="1706124747796" duration="5092000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

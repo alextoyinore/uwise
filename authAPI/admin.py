@@ -22,8 +22,8 @@ class AcademicLevelAdmin(admin.ModelAdmin):
 
 @admin.register(Organization)
 class Organization(admin.ModelAdmin):
-    list_display = ('registerer_name', 'organization_name', 'type', 'registerer_email', 'website', 'size')
-    search_fields = ('organization_name', 'registerer_email')
+    list_display = ('contact_name', 'name', 'type', 'contact_email', 'website', 'size')
+    search_fields = ('name', 'contact_email')
 
 
 @admin.register(OrganizationType)

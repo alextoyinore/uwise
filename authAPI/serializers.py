@@ -42,12 +42,6 @@ class OrganizationTypeSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class FacilitatorSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Facilitator
-        fields = '__all__'
-
-
 class AuthTokenWithEmailSerializer(serializers.Serializer):
     email = serializers.EmailField(trim_whitespace=True)
     password = serializers.CharField(

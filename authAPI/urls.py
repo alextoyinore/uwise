@@ -13,10 +13,10 @@ urlpatterns = [
     path('logout', view=LogoutView.as_view({'post': 'create'}), name='logout'),
 
     # USER
-    path('authAPI/me', view=ProfileView.as_view({
+    path('users/me', view=ProfileView.as_view({
         'get': 'retrieve'
     }), name='me'),
-    path('authAPI', view=UserView.as_view({
+    path('users', view=UserView.as_view({
         'get': 'list',
         'post': 'create'
     }), name='authAPI'),

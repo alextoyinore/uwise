@@ -85,23 +85,6 @@ class ProfileView(ModelViewSet):
         serialized_user = serializers.UserSerializer(current_user)
         return Response(serialized_user.data)
 
-
-class FacilitatorViewSet(ModelViewSet):
-    serializer_class = serializers.FacilitatorSerializer
-    queryset = Facilitator.objects.all()
-    permission_classes = [IsAdminUser]
-
-    def create(self, request, *args, **kwargs):
-        partner_exists = PartnerOrganization.objects.filter(
-            organization_title=request.data['partner_organization']).exists()
-        if not partner_exists:
-            return Response({'message': 'Invalid Partner Organization'}, status=status.HTTP_400_BAD_REQUEST)
-        else:
-            serializer = serializers.FacilitatorSerializer(data=request.data)
-            serializer.is_valid(raise_exception=True)
-            serializer.save()
-
-
 class LogoutView(ModelViewSet):
     permission_classes = [IsAuthenticated]
 
