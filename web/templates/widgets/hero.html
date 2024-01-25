@@ -1,11 +1,49 @@
 <div id="hero">
     <div class="hero-content">
         <div class="hero-content-left">
-            <strong class="course-title">{{ course.title }}</strong>
-            
+            <strong class="course-title">Introduction to Web Development with Python</strong>
+            <p class="course-description">This course introduces you to web development
+                with the JavaScript programming language using the React framework. 
+                The React framework is one of the most popularly adopted framework among 
+                JavaScript developers in the world of coding. React was given to the world by 
+                Meta (Facebook) in 2013 and has since grown to become the most adopted JavaScript 
+                framework beating the likes of Angular that came before it and taken the lion share of 
+                the market from Vue it's closest competitor.</p>
         </div>
         <div class="hero-content-right">
-            
+            <div class="course-summary-card">
+                <b>Duration: 60 Days</b>
+                <b>Price: 150,000</b>
+                <b>Language: English</b>
+                <b>Level: Beginner</b>
+                <b>Field: Computer Science</b>
+                <b>Rating: 4.5</b>
+                
+                <br>
+
+                <a href="" class="btn-cta-light-var green">Enroll</a>
+
+            </div>
         </div>
     </div>
 </div>
+
+<style>
+    .course-summary-card {
+        width: 75%;
+        background: #c3d3ec;
+        border-radius: 20px;
+        padding: 20px 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        text-align: left;
+        transform: rotate(5deg);
+    }
+
+    .course-summary-card b {
+        color: #011F55;
+        border-bottom: 1px solid #3b5998;
+        padding: 10px 20px;
+    }
+</style>

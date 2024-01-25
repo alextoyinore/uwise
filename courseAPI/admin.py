@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import *
 
-from courseAPI.models import Course, Module, Field
+from courseAPI.models import Course, Lesson, Field
 
 
 # Register your models here.
@@ -17,27 +17,27 @@ class CourseAdmin(admin.ModelAdmin):
     search_fields = ('title', 'level', 'active', 'field')
 
 
-@admin.register(Module)
-class ModuleAdmin(admin.ModelAdmin):
+@admin.register(Lesson)
+class LessonAdmin(admin.ModelAdmin):
     list_display = ('title', 'week', 'description', 'course')
     search_fields = ('title', 'course')
 
 
 @admin.register(Video)
 class VideoAdmin(admin.ModelAdmin):
-    list_display = ('title', 'video', 'module', 'date')
+    list_display = ('title', 'video', 'lesson', 'date')
     search_fields = ('title', 'video',)
 
 
 @admin.register(Image)
 class ImageAdmin(admin.ModelAdmin):
-    list_display = ('title', 'image', 'module', 'date')
+    list_display = ('title', 'image', 'lesson', 'date')
     search_fields = ('title', 'image',)
 
 
 @admin.register(Quiz)
 class QuizAdmin(admin.ModelAdmin):
-    list_display = ('title', 'module')
+    list_display = ('title', 'lesson')
     search_fields = ('title',)
 
 
@@ -55,20 +55,20 @@ class AnswerAdmin(admin.ModelAdmin):
 
 @admin.register(Reading)
 class ReadingAdmin(admin.ModelAdmin):
-    list_display = ('title', 'reading', 'module', 'is_active')
-    search_fields = ('title', 'module', 'active')
+    list_display = ('title', 'reading', 'lesson', 'is_active')
+    search_fields = ('title', 'lesson', 'active')
 
 
-@admin.register(Specialization)
-class Specialization(admin.ModelAdmin):
+@admin.register(Programme)
+class ProgrammeAdmin(admin.ModelAdmin):
     list_display = ('title', 'field')
     search_fields = ('title', 'field')
 
 
-@admin.register(SpecializationCourse)
-class SpecializationCourseAdmin(admin.ModelAdmin):
-    list_display = ('course',)
-    search_fields = ('course',)
+# @admin.register(SpecializationCourse)
+# class SpecializationCourseAdmin(admin.ModelAdmin):
+#     list_display = ('course',)
+#     search_fields = ('course',)
 
 
 @admin.register(Field)

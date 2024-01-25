@@ -83,15 +83,15 @@ urlpatterns = [
 
     # MODULE
 
-    path('modules', view=ModuleViewSet.as_view({
+    path('lessons', view=LessonViewSet.as_view({
         'post': 'create',
-        'get': 'list'}), name='modules'),
-    path('module/<int:pk>', view=ModuleViewSet.as_view({
+        'get': 'list'}), name='lessons'),
+    path('lesson/<int:pk>', view=LessonViewSet.as_view({
         'get': 'retrieve',
         'put': 'update',
         'patch': 'partial_update',
         'delete': 'destroy',
-    }), name='module'),
+    }), name='lesson'),
 
 
     # QUESTION
@@ -147,25 +147,25 @@ urlpatterns = [
 
     # SPECIALIZATION
 
-    path('specializations', view=SpecializationViewSet.as_view({
+    path('programmes', view=ProgrammeViewSet.as_view({
         'post': 'create',
-        'get': 'list'}), name='specializations'),
-    path('specialization/<int:pk>', view=SpecializationViewSet.as_view({
+        'get': 'list'}), name='programmes'),
+    path('programme/<int:pk>', view=ProgrammeViewSet.as_view({
         'get': 'retrieve',
         'put': 'update',
         'patch': 'partial_update',
         'delete': 'destroy',
-    }), name='specialization'),
+    }), name='programme'),
 
     # SPECIALIZATION COURSES
 
-    path('specialization-courses', view=SpecializationCourseViewSet.as_view({
-        'post': 'create',
-        'get': 'list'}), name='specialization-courses'),
-    path('specialization-course/<int:pk>', view=SpecializationCourseViewSet.as_view({
-        'get': 'retrieve',
-        'put': 'update',
-        'patch': 'partial_update',
-        'delete': 'destroy',
-    }), name='specialization-course'),
+    # path('specialization-courses', view=SpecializationCourseViewSet.as_view({
+    #     'post': 'create',
+    #     'get': 'list'}), name='specialization-courses'),
+    # path('specialization-course/<int:pk>', view=SpecializationCourseViewSet.as_view({
+    #     'get': 'retrieve',
+    #     'put': 'update',
+    #     'patch': 'partial_update',
+    #     'delete': 'destroy',
+    # }), name='specialization-course'),
 ]

@@ -38,16 +38,16 @@ class FieldSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class SpecializationSerializer(serializers.ModelSerializer):
+class ProgrammeSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Specialization
+        model = Programme
         fields = '__all__'
 
 
-class SpecializationCourseSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = SpecializationCourse
-        fields = '__all__'
+# class SpecializationCourseSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = SpecializationCourse
+#         fields = '__all__'
 
 
 
@@ -57,9 +57,9 @@ class ImageSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class ModuleSerializer(serializers.ModelSerializer):
+class LessonSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Module
+        model = Lesson
         fields = '__all__'
 
 

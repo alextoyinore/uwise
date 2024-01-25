@@ -399,7 +399,8 @@ textarea {
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 25px 0;
+    padding: 80px 0;
+    gap: 100px;
   }
 
   .hero-content-left {
@@ -408,20 +409,24 @@ textarea {
 
   .hero-content-left strong{
     font-size: 3.2em;
-    /*color: #011F55;*/
     color: #ffffff;
+    line-height: 1.1em;
     display: block;
     margin-bottom: 20px;
     letter-spacing: 0;
   }
 
+  .hero-content-left p {
+    color: #3b5998;
+  }
+
   .hero-content-left i {
     font-size: 14px;
-    /*color: #0e3b8d;*/
     color: #ffffff;
     margin-bottom: 30px;
     display: block;
   }
+
 
   .quote {
     width: 60%;
@@ -464,7 +469,9 @@ textarea {
 
    .hero-content-right {
     width: 50%;
-     text-align: right;
+    text-align: right;
+    display: flex;
+     align-items: center;
   }
 
   .btn-cta-light-var {

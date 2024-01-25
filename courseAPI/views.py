@@ -56,9 +56,9 @@ class ImageViewSet(ModelViewSet):
     permission_classes = [IsAdminUser]
 
 
-class ModuleViewSet(ModelViewSet):
-    queryset = Module.objects.all()
-    serializer_class = ModuleSerializer
+class LessonViewSet(ModelViewSet):
+    queryset = Lesson.objects.all()
+    serializer_class = LessonSerializer
     permission_classes = [IsAdminUser]
 
 
@@ -74,13 +74,13 @@ class ReadingViewSet(ModelViewSet):
     permission_classes = [IsAdminUser]
 
 
-class SpecializationViewSet(ModelViewSet):
-    queryset = Specialization.objects.all()
-    serializer_class = SpecializationSerializer
+class ProgrammeViewSet(ModelViewSet):
+    queryset = Programme.objects.all()
+    serializer_class = ProgrammeSerializer
     permission_classes = [IsAdminUser]
 
 
-class SpecializationCourseViewSet(ModelViewSet):
-    queryset = SpecializationCourse.objects.all()
-    serializer_class = SpecializationCourseSerializer
-    permission_classes = [IsAdminUser]
+# class SpecializationCourseViewSet(ModelViewSet):
+#     queryset = SpecializationCourse.objects.all()
+#     serializer_class = SpecializationCourseSerializer
+#     permission_classes = [IsAdminUser]
