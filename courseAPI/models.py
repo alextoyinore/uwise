@@ -38,12 +38,12 @@ class Course(models.Model):
     duration = models.IntegerField(blank=False, null=False)
     image = models.ImageField(upload_to='courses/images/', null=True, blank=True)
     field = models.ForeignKey('Field', on_delete=models.CASCADE)
-    price = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False)
+    price = models.DecimalField(max_digits=9, decimal_places=2, null=False, blank=False)
     facilitators = models.ManyToManyField(User, blank=True)
-    language = models.CharField(max_length=200, null=False, blank=False)
+    language = models.CharField(max_length=200, null=True, blank=True)
     organization = models.ForeignKey(Organization, on_delete=models.SET_NULL, swappable=True, null=True, blank=True)
     level = models.CharField(max_length=200, null=False, blank=False)
-    is_active = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
 
     def __str__(self):
         return self.title

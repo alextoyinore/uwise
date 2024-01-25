@@ -7,7 +7,7 @@
     <list default="true" id="4b5bedfd-d550-4555-a8e1-6879e7615a78" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/courseAPI/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/courseAPI/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/courseAPI/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/courseAPI/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,7 +156,7 @@
       <workItem from="1706085258571" duration="6907000" />
       <workItem from="1706105961113" duration="140000" />
       <workItem from="1706124747796" duration="19851000" />
-      <workItem from="1706191510361" duration="1419000" />
+      <workItem from="1706191510361" duration="1982000" />
     </task>
     <servers />
   </component>

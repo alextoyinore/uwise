@@ -19,19 +19,6 @@ class CourseViewSet(ModelViewSet):
     serializer_class = CourseSerializer
     permission_classes = [IsAdminUser]
 
-    def create(self, request, *args, **kwargs):
-        is_facilitator = User.objects.filter(username=self.request.data['username'], is_active=True).exists()
-        level_exists = CourseLevel.objects.filter(title=self.request.data['title']).exists()
-
-        if not is_facilitator:
-            return Response({'message': 'Facilitator does not exist'}, status=status.HTTP_400_BAD_REQUEST)
-        elif not level_exists:
-            return Response({'message': 'Invalid Course Level'}, status=status.HTTP_400_BAD_REQUEST)
-        else:
-            serializer = CourseSerializer(data=request.data)
-            serializer.is_valid(raise_exception=True)
-            serializer.save()
-
 
 class AnswerViewSet(ModelViewSet):
     queryset = Answer.objects.all()
