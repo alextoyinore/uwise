@@ -1,12 +1,12 @@
 from django.db import models
-import authAPI.models
+from authAPI.models import User, Organization
 
 
 # Create your models here.
 class Field(models.Model):
     title = models.CharField(max_length=100, null=False, blank=False)
-    description = models.TextField()
-    is_active = models.BooleanField(default=False)
+    description = models.CharField(max_length=500, null=True, blank=True)
+    is_active = models.BooleanField(default=True)
 
     def __str__(self):
         return self.title
@@ -16,6 +16,7 @@ class Specialization(models.Model):
     title = models.CharField(max_length=100, null=False, blank=False)
     field = models.ForeignKey(Field, on_delete=models.CASCADE)
     description = models.TextField()
+    courses = models.ManyToManyField('Course', related_name='specialization_courses', blank=True)
     is_active = models.BooleanField(default=False)
 
     def __str__(self):
@@ -29,16 +30,18 @@ class SpecializationCourse(models.Model):
 
     def __str__(self):
         return self.specialization.title
-    
+
 
 class Course(models.Model):
     title = models.CharField(max_length=200, null=False, blank=False)
     description = models.TextField(blank=False, null=False)
     duration = models.IntegerField(blank=False, null=False)
-    image = models.URLField()
+    image = models.ImageField(upload_to='courses/images/', null=True)
     field = models.ForeignKey('Field', on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False)
-    facilitator = models.CharField(max_length=200, null=False, blank=False)
+    facilitators = models.ManyToManyField(User, blank=False)
+    language = models.CharField(max_length=200, null=False, blank=False)
+    organization = models.ForeignKey(Organization, on_delete=models.SET_NULL, swappable=True, null=True, blank=True)
     level = models.CharField(max_length=200, null=False, blank=False)
     is_active = models.BooleanField(default=False)
 
@@ -143,4 +146,3 @@ class Answer(models.Model):
 
     def __str__(self):
         return self.answer
-

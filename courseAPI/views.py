@@ -20,10 +20,10 @@ class CourseViewSet(ModelViewSet):
     permission_classes = [IsAdminUser]
 
     def create(self, request, *args, **kwargs):
-        facilitator_exists = Facilitator.objects.filter(username=self.request.data['username']).exists()
+        is_facilitator = User.objects.filter(username=self.request.data['username'], is_active=True).exists()
         level_exists = CourseLevel.objects.filter(title=self.request.data['title']).exists()
 
-        if not facilitator_exists:
+        if not is_facilitator:
             return Response({'message': 'Facilitator does not exist'}, status=status.HTTP_400_BAD_REQUEST)
         elif not level_exists:
             return Response({'message': 'Invalid Course Level'}, status=status.HTTP_400_BAD_REQUEST)

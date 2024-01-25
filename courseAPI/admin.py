@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import *
 
-from courseAPI.models import Course, Module
+from courseAPI.models import Course, Module, Field
 
 
 # Register your models here.
@@ -69,3 +69,9 @@ class Specialization(admin.ModelAdmin):
 class SpecializationCourseAdmin(admin.ModelAdmin):
     list_display = ('course',)
     search_fields = ('course',)
+
+
+@admin.register(Field)
+class FieldAdmin(admin.ModelAdmin):
+    list_display = ('title', 'is_active')
+    search_fields = ('title', 'is_active')

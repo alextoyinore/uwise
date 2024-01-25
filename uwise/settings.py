@@ -12,7 +12,11 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+
+# from django.conf.global_settings import DATABASES
 from dotenv import load_dotenv
+import dj_database_url
+
 
 # Load environment variables
 load_dotenv()
@@ -49,6 +53,7 @@ INSTALLED_APPS = [
     "courseAPI.apps.CourseAPIConfig",
     "utilsAPI.apps.UtilsAPIConfig",
     "orderAPI.apps.OrderAPIConfig",
+    "blogAPI.apps.BlogAPIConfig",
     "web.apps.WebConfig",
     "social_django",
     "fontawesomefree",
@@ -125,8 +130,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    },
 }
+
+# DATABASES['default'] = dj_database_url.parse(os.getenv('DATABASE_URL'))
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

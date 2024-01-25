@@ -18,6 +18,9 @@ class Cart(models.Model):
         get_latest_by = 'date_added'
         verbose_name = 'Cart'
 
+    def __str__(self):
+        return f'{self.user.get_full_name()} - {self.course.title}'
+
 
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='order_user', null=False, blank=False)
@@ -30,3 +33,6 @@ class Order(models.Model):
         verbose_name_plural = 'Orders'
         get_latest_by = 'date_added'
         verbose_name = 'Order'
+
+    def __str__(self):
+        return f'{self.user.get_full_name()} - {self.course.title}'
