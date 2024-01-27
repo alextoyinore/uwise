@@ -1,24 +1,24 @@
 <div id="hero">
     <div class="hero2-content">
-        <div class="hero-content-top">
-            <strong>Training the future of global wealth</strong>
+        <div class="hero2-content-top">
+            <strong>Training the future of global wealth</strong><br>
             <p>Wealth comes from wisdom, wisdom comes from understanding, understanding comes from knowledge, all knowledge comes from God</p>
         </div>
-        <div class="hero-content-bottom">
-            <a href="" class="btn-cta-light-var dark">Programming & Software</a>
-            <a href="" class="btn-cta-light-var dark">Data Science</a>
-            <a href="" class="btn-cta-light-var dark">Business Analysis</a>
-            <a href="" class="btn-cta-light-var dark">Ai & ML</a>
-            <a href="" class="btn-cta-light-var dark">DevOps</a>
-            <a href="" class="btn-cta-light-var dark">Marketing</a>
-            <a href="" class="btn-cta-light-var dark">Industrialization</a>
-            <a href="" class="btn-cta-light-var dark">Polity</a>
-            <a href="" class="btn-cta-light-var dark">Art & Creatives</a>
-            <a href="" class="btn-cta-light-var dark">Health & Medicine</a>
+        <div class="hero2-content-bottom">
+            <a href="" class="btn-cta-light dark">Programming & Software</a>
+            <a href="" class="btn-cta-light dark">Data Science</a>
+            <a href="" class="btn-cta-light dark">Business Analysis</a>
+            <a href="" class="btn-cta-light dark">Ai & ML</a>
+            <a href="" class="btn-cta-light dark">DevOps</a>
+            <a href="" class="btn-cta-light dark">Marketing</a>
+            <a href="" class="btn-cta-light dark">Industrialization</a>
+            <a href="" class="btn-cta-light dark">Polity</a>
+            <a href="" class="btn-cta-light dark">Art & Creatives</a>
+            <a href="" class="btn-cta-light dark">Health & Medicine</a>
         </div>
-        <div class="">
-            <a href="{% url 'signup' %}" class="btn-cta-light-var hero-cta">Get Started</a>
-            <a href="{% url 'home' %}" class="btn-cta-light-var hero-cta green">Get the App</a>
+        <div class="hero2-cta">
+            <a href="{% url 'signup' %}" class="btn-cta-light hero-cta">Get Started</a>
+            <a href="{% url 'home' %}" class="btn-cta-light hero-cta green">Get the App</a>
         </div>
     </div>
 </div>
@@ -30,24 +30,43 @@
         width: 75%;
         margin: auto;
         text-align: center;
-        padding: 80px 0;
+        padding: 50px 0;
         gap: 20px;
     }
 
-    .hero-content-top{
+    .hero2-content-top{
         width: 100%;
     }
-    .hero-content-top strong{
+    .hero2-content-top strong{
         color: #fff;
         font-size: 3em;
     }
 
-    .hero-content-top p{
+    .hero2-content-top p{
         color: #fff;
     }
+    .hero2-content-bottom {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 
-    .hero-cta {
+    .hero2-content-bottom a {
+        text-align: center;
+    }
+
+    .hero2-cta {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
         padding: 10px 50px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .hero2-cta a {
+        padding: 15px 65px ;
     }
 
     .green {

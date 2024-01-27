@@ -16,8 +16,8 @@ class Programme(models.Model):
     title = models.CharField(max_length=100, null=False, blank=False)
     field = models.ForeignKey(Field, on_delete=models.CASCADE)
     description = models.TextField()
-    objective = models.TextField()
-    skills = models.TextField()
+    objectives = models.TextField(null=True, blank=True)
+    skills = models.TextField(null=True, blank=True)
     courses = models.ManyToManyField('Course', related_name='programme_courses', blank=True)
     is_active = models.BooleanField(default=False)
 
@@ -36,6 +36,7 @@ class Programme(models.Model):
 
 class Course(models.Model):
     title = models.CharField(max_length=200, null=False, blank=False)
+    excerpt = models.TextField(null=False, blank=False)
     description = models.TextField(blank=False, null=False)
     duration = models.IntegerField(blank=False, null=False)
     image = models.URLField(null=True, blank=True)
@@ -46,6 +47,10 @@ class Course(models.Model):
     language = models.CharField(max_length=200, null=True, blank=True)
     organization = models.ForeignKey(Organization, on_delete=models.SET_NULL, swappable=True, null=True, blank=True)
     level = models.CharField(max_length=200, null=False, blank=False)
+    skills = models.TextField(blank=True, null=True)
+    tags = models.TextField(blank=True, null=True)
+    objectives = models.TextField(blank=True, null=True)
+    next_start_date = models.DateTimeField(null=True, blank=True)
     is_active = models.BooleanField(default=True)
 
     def __str__(self):

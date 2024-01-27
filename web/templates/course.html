@@ -3,11 +3,524 @@
 {% block page-title %} Welcome {% endblock %}
 
 {% block hero %}
-    {% include 'widgets/hero.html' %}
+    {% include 'widgets/hero.html' with course=data.course_data %}
 {% endblock %}
 
-{% block content %}
 
+{% block content %}
+    <div class="content">
+        <nav class="course-detail-nav">
+            <a href="#description" class="btn-nav">Description</a>
+            <a href="#objectives" class="btn-nav">Objectives</a>
+            <a href="#courses" class="btn-nav">Courses/Lessons</a>
+            <a href="#testimonials" class="btn-nav">Testimonials</a>
+        </nav>
+        <hr>
+        <section id="description" class="skills-section">
+            <h3 class="section-title">Skills you'll gain</h3><br>
+            <div class="skills-content">
+                {% for skill in data.course_data.skills %}
+                    <span class="skill">{{ skill }}</span>
+                {% endfor %}
+            </div>
+        </section>
+        <section class="info">
+            <h3 class="section-title">Important Information</h3><br>
+            <div class="info-detail">
+                <div class="info-content">
+                    <span class="material-symbols-outlined icon">people</span>
+                    <span class="info-message">Students will attend courses while the instructor is teaching them live</span>
+                </div>
+                <div class="info-content">
+                    <span class="material-symbols-outlined icon">class</span>
+                    <span class="info-message">If a student attends less than 50% of the live classes they will have to join
+                        the next cohort to complete their attendance quota before they can be issued a certificate. </span>
+                </div>
+                <div class="info-content">
+                    <span class="material-symbols-outlined icon">percent</span>
+                    <span class="info-message">Students must obtain a 50% logged-in time as attendance for every
+                        lecture in a course to be eligible for a certificate</span>
+                </div>
+                <div class="info-content">
+                    <span class="material-symbols-outlined icon">grade</span>
+                    <span class="info-message">A student needs to score above 80% to be eligible for a certificate</span>
+                </div>
+                <div class="info-content">
+                    <span class="material-symbols-outlined icon">stream</span>
+                    <span class="info-message">The courses may be pre-recorded to manage resources, but students will be made to watch
+                        them in a live session where they may engage with course reps and facilitators.</span>
+                </div>
+            </div>
+        </section>
+        <section class="long-ad">
+            <div class="long-ad-content">
+                <div class="ad-content-left">
+                    <h3>Go from where you are to where you want to be with life-changing learning for your team</h3>
+                    <a href="" class="btn-cta-light-var">Learn more about Uwise Business now</a>
+                </div>
+                <div class="ad-content-right">
+                    <img src="{% static 'images/logos.png' %}" alt="">
+                </div>
+            </div>
+        </section>
+        <section id="objectives" class="partner-info">
+            <div class="partner-info-content">
+                <div class="partner-info-left">
+                    <h3>Advance your career with courses tailored to on-the-job in-demand skills</h3>
+                    <ul>
+                        {% for objective in data.course_data.objectives %}
+                            <li>{{ objective }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="partner-info-right">
+                    <img src="{% static 'images/lady.png' %}" alt="">
+                </div>
+            </div>
+        </section>
+        <section class="career-support-info">
+            <div class="career-info-content">
+                <div class="career-info-left">
+                    <img src="{% static 'images/truuskill.png' %}" alt="">
+                    <h3>Get exclusive access to career advice, support, and resources when you complete this track</h3>
+                </div>
+                <div class="career-info-right">
+                    <div class="career-info">
+                        <span class="material-symbols-outlined">note</span>
+                        <b>Resume Review/Rewrite</b>
+                        <p>Get professional HR review and help rewriting your resume</p>
+                    </div>
+                    <div class="career-info">
+                        <span class="material-symbols-outlined">mic</span>
+                        <b>Interview Prep</b>
+                        <p>Practice interview questions with seasoned interviewers</p>
+                    </div>
+                    <div class="career-info">
+                        <span class="material-symbols-outlined">support</span>
+                        <b>Career Support</b>
+                        <p>Get 1-6 months first job or startup support</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="certificate-info">
+            <div class="certificate-content">
+                <div class="certificate-left">
+                    <h3>Earn a professional Certificate</h3>
+                    <p>Your certificate may be shared on LinkedIn or any other job site and may be printed out and shown to potential employers</p>
+                </div>
+                <div class="certificate-right">
+                    <img src="{% static 'images/certificate.png' %}" alt="">
+                    <img src="{% static 'images/certificate_2.png' %}" alt="">
+                </div>
+            </div>
+        </section>
+        <section id="courses" class="programme-course-list">
+            <div class="course-list-content">
+                <h3>Courses in this Programme</h3>
+                <p>This course introduces you to web development
+                with the JavaScript programming language using the React framework.
+                The React framework is one of the most popularly adopted framework among
+                JavaScript developers in the world of coding</p><br>
+                <div class="course-list">
+                    <div class="course-list-left">
+                        <div class="course-list-item">
+                            <div class="list-item-left">
+                                <a href="">Introduction to Software Engineering</a>
+                                <p>Course 1 . 15 hours . 4.7 <span class="material-symbols-outlined rating">star</span> (437 Ratings)</p>
+                            </div>
+                            <span class="material-symbols-outlined expand">expand_more</span>
+                        </div>
+                        <div class="course-list-item">
+                            <div class="list-item-left">
+                                <a href="">Python for Everybody</a>
+                                <p>Course 2 . 13 hours . 4.5 <span class="material-symbols-outlined rating">star</span> (437 Ratings)</p>
+                            </div>
+                            <span class="material-symbols-outlined expand">expand_more</span>
+                        </div>
+                    </div>
+                    <div class="course-list-right">
+                        <div class="author-list">
+                            <h3>Facilitators</h3>
+                            {% for facilitator in data.course_data.facilitators %}
+                            <div class="author-item">
+                                <div class="author-image">
+                                    <img src="{{ facilitator.image }}" alt="">
+                                </div>
+                                <div class="author-detail">
+                                    <b>{{ facilitator.name }}</b>
+                                    <p>{{ facilitator.course_count }} Courses . {{ facilitator.student_count }} Students</p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="testimonials" class="testimonials">
+            {% include 'widgets/testimonial_carousel.html' with testimonials=data.testimonials %}
+        </section>
+        <section class="latest-blogs">
+            <h3>Lastest Blogs . <a href="">See All</a></h3>
+            <div class="blog-content">
+                <div class="blog-item">
+                    <div class="blog-image">
+                        <img src="https://images.pexels.com/photos/5198239/pexels-photo-5198239.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
+                    </div>
+                    <div class="blog-detail">
+                        <b>Learning a new skill in less than 10,000 hours</b>
+                        <p>Developing a new set of skill or skills can be a...</p>
+                    </div>
+                </div>
+                <div class="blog-item">
+                    <div class="blog-image">
+                        <img src="https://images.pexels.com/photos/4144038/pexels-photo-4144038.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
+                    </div>
+                    <div class="blog-detail">
+                        <b>Why learning Python in 2024 is Jackpot move</b>
+                        <p>Developing a new set of skill or skills can be a...</p>
+                    </div>
+                </div>
+                <div class="blog-item">
+                    <div class="blog-image">
+                        <img src="https://images.pexels.com/photos/920382/pexels-photo-920382.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
+                    </div>
+                    <div class="blog-detail">
+                        <b>Learning a new skill in less than 10,000 hours</b>
+                        <p>Developing a new set of skill or skills can be a...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <style>
+    .latest-blogs {
+        width: 100%;
+        padding: 25px 0;
+    }
+    .blog-content {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 25px;
+    }
+    .blog-item {
+        width: 300px;
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        border-radius: 10px;
+        border: 1px solid #c3d3ec;
+        padding: 20px;
+        cursor: pointer;
+    }
+    .blog-item:hover {
+        border-color: #011F55;
+        color: #0646d5;
+    }
+    .blog-image {
+        width: 75px;
+        height: 75px;
+    }
+    .blog-image img {
+        width: 75px;
+        height: 75px;
+        object-fit: cover;
+        border-radius: 75px;
+    }
+    .blog-detail {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .testimonials {
+        padding: 25px 0;
+    }
+    .programme-course-list {
+        width: 100%;
+        padding: 25px 0;
+    }
+    .course-list-content > p, .course-list-content > h3 {
+        width: 60%;
+    }
+    .course-list {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 25px;
+    }
+    .course-list-left {
+        width: 65%;
+        border: 1px solid #c3d3ec;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .course-list-item {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        background: #c3d3ec22;
+        padding: 10px;
+        border: 1px solid #c3d3ec55;
+    }
+    .course-list-item .expand {
+        cursor: pointer;
+    }
+    .list-item-left a {
+        text-decoration: none;
+        color: #011F55;
+        font-weight: bold;
+    }
+    .list-item-left p {
+        color: #777777;
+        padding: 5px 0;
+    }
+    .list-item-left p .rating {
+        font-size: 16px;
+    }
+    .course-list-right {
+        width: 35%;
+    }
+    .author-list {
+        border: 1px solid #c3d3ec;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .author-item {
+        display: flex;
+        flex-direction: row;
+        padding: 5px;
+        gap: 10px;
+        align-items: center;
+    }
+    .author-image {
+        width: 40px;
+        height: 40px;
+    }
+    .author-image img {
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+        border-radius: 60px;
+    }
+    .author-detail p {
+        font-size: 10px;
+        line-height: 16px;
+    }
+    .author-detail b {
+        font-size: 12px;
+        line-height: 16px;
+    }
+
+
+    .certificate-info {
+        width: 100%;
+        padding: 25px 0;
+    }
+    .certificate-content {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 20px 30px;
+        border: 1px solid #c3d3ec;
+        gap: 20px;
+    }
+    .certificate-left {
+        width: 30%;    
+    }
+    .certificate-right {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 25px;
+    }
+    .certificate-right img {
+        height: 120px;
+    }
+    
+    .career-support-info {
+        width: 100%;
+        padding: 25px 0;
+    }
+    .career-info-content {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 30px;
+        background: #eff3fa;
+        gap: 20px;
+    }
+    .career-info-left {
+        width: 40%;
+    }
+    .career-info-left h3 {
+        font-size: .9em;
+    }
+    .career-info-left img {
+        height: 25px;
+    }
+    .career-info-right {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        justify-content: space-between;
+    }
+    .career-info {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+    .career-info b {
+        display: block;
+    }
+
+    li {
+        font-size: 13px;
+        color: #777777;
+        line-height: 20px;
+    }
+    .partner-info {
+        width: 100%;
+        padding: 25px 0;
+    }
+    .partner-info-content {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 50px;
+    }
+    .partner-info-left {
+        width: 45%;
+        padding: 20px 30px;
+    }
+    .partner-info-right {
+        width: 50%;
+        height: inherit;
+    }
+    .partner-info-right img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+
+    .long-ad {
+        width: 100%;
+        padding: 25px 0;
+    }
+
+    .long-ad-content {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 50px;
+        background: #eff3fa;
+        border: 1px solid #c3d3ec;
+    }
+
+    .ad-content-left {
+        padding: 20px 30px;
+        width: 40%;
+    }
+
+    .ad-content-left h3 {
+        line-height: 1.6em;
+        padding-left: 5px;
+    }
+
+    .ad-content-right {
+        width: 50%;
+        object-fit: cover;
+    }
+
+    .ad-content-right img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .info {
+        padding: 25px 0;
+    }
+    .info-detail {
+        display: flex;
+        flex-direction: row;
+        gap: 25px;
+        {#justify-content: space-evenly;#}
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+    .info-content {
+        background: #eff3fa;
+        padding: 10px 20px;
+        width: 200px;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 10px;
+        height: 80px;
+    }
+
+    .info-content .info-message {
+        font-size: 10px;
+    }
+
+    .info-content .icon {
+        font-size: 40px;
+    }
+    hr {
+        margin: 0;
+        border: 1px solid #c3d3ec55;
+    }
+    .course-detail-nav {
+        width: 50%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .btn-nav {
+        padding: 20px 20px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 13px;
+        color: #0e3b8d;
+    }
+
+    .btn-nav:hover {
+        {#color: #0646d5;#}
+        background: #eff3fa;
+    }
+
+    .skills-section {
+        padding: 20px 0;
+    }
+
+    .skills-content {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        text-align: left;
+        flex-wrap: wrap;
+    }
+
+    .skill {
+        padding: 5px 10px;
+        font-size: 12px;
+        color: #0e3b8d;
+        background: #eff3fa;
+        border-radius: 5px;
+    }
+    </style>
 {% endblock %}
 
 {% block footer %}

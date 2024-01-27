@@ -6,14 +6,21 @@
             <a href="">Learn <span class="material-symbols-outlined">expand_more</span> </a>
         </div>
         <div class="header-nav-right">
+            {% if data.page == 'home' %}
             <div class="header-search">
                 <span class="material-symbols-outlined search-icon">search</span>
-                <input class="header-search-input" placeholder="What do you want to learn?" class="search" type="search" />
+                <input class="header-search-input search" placeholder="What do you want to learn?" type="search" />
             </div>
-            <div class="header-auth-btn">
-                <a href="{% url 'login' %}"><button class="login-btn">Login</button></a>
-                <a href="{% url 'signup' %}"><button class="signup-btn">Sign Up</button></a>
-            </div>
+                <a class="btn-cta-light" href="{% url 'login' %}">Login</a>
+                <a class="btn-cta-light" href="{% url 'signup' %}">Get Started</a>
+           
+            {% elif data.page == 'course' %}
+                <a href="" class="btn-cta blue">Enroll Now </a>
+            {% elif data.page == 'login' %}
+                <a class="btn-cta-light" href="{% url 'signup' %}">Sign Up</a>
+            {% elif data.page == 'signup' %}
+                <a class="btn-cta-light" href="{% url 'login' %}">Login</a>
+            {% endif %}
         </div>
     </div>
 </div>
