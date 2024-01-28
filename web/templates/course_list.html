@@ -1,0 +1,102 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block page-title %} Welcome {% endblock %}
+
+{% block hero %}
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <div class="courses-content">
+            <nav class="filters">
+                <div class="filter-items">
+                    <h2>Filters</h2>
+                    <h3>By Field</h3>
+                    <div class="filter-item-group">
+                        <span class="filter-item">Computing</span>
+                        <span class="filter-item">Fashion</span>
+                        <span class="filter-item">Development</span>
+                        <span class="filter-item">Engineering</span>
+                        <span class="filter-item">Engineering</span>
+                    </div>
+                    
+                    <h3>By Price</h3>
+                    <div class="filter-item-group">
+                        <span class="filter-item">Free</span>
+                        <span class="filter-item">Under #200k</span>
+                        <span class="filter-item">#200k - #500k</span>
+                        <span class="filter-item">#500k - #1M</span>
+                        <span class="filter-item">#1M - Above</span>
+                    </div>
+                </div>
+            </nav>
+            <article class="course-list">
+
+                <h2>All Courses</h2> <br>
+                <div class="course-grid">
+                    {% for course in data.courses %}
+                        {% include 'widgets/course_card.html' with course=course %}
+                    {% endfor %}
+                </div>
+            </article>
+        </div>
+    </div>
+    <style>
+        .courses-content {
+            display: flex;
+            flex-direction: row;
+            position: relative;
+            padding: 150px 0;
+        }
+        .filters {
+            width: 20%;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-base-color: #011F55;
+            padding: 10px 20px 0 0;
+            border-right: 1px solid #c3d3ec;
+            position: relative;
+        }
+        .course-list {
+            width: 80%;
+            padding: 10px 0 0 40px;
+            {#position: relative;#}
+            {#left: 200px;#}
+        }
+        .course-grid {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .filter-item-group {
+            display: flex;
+            flex-direction: row;
+            gap: 5px;
+            flex-wrap: wrap;
+
+        }
+        .filter-item {
+            font-size: 10px;
+            color: #011F55;
+            background: #c3d3ec33;
+            padding: 5px 10px;
+            border-radius: 2px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .filter-item:hover {
+            background: #c3d3ec77;
+            border: 1px solid #c3d3ec;
+        }
+    </style>
+{% endblock %}
+
+{% block footer %}
+    {% include 'partials/footer.html' %}
+{% endblock %}

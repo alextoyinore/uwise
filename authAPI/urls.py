@@ -9,6 +9,17 @@ urlpatterns = [
     path('login/u', view=LoginWithUsernameView.as_view(), name='username-login'),
     path('login/<backend>', view=SocialLoginView.as_view({'post': 'create'}), name='social-login'),
 
+    # REFERRAL
+    path('referrals/', view=ReferralView.as_view({
+        'get': 'list', 'post': 'create'
+    }), name='referrals'),
+    path('referral/', view=ReferralView.as_view({
+        'get': 'retrieve',
+        'put': 'update',
+        'patch': 'partial_update',
+        'delete': 'destroy'
+    }), name='referral'),
+
     # LOGOUT
     path('logout', view=LogoutView.as_view({'post': 'create'}), name='logout'),
 

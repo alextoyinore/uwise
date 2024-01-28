@@ -9,4 +9,6 @@ urlpatterns = [
     path('login', view=LoginView.as_view(), name='login'),
     path('signup', view=SignUpView.as_view(), name='signup'),
     path('course/<int:pk>', view=CourseView.as_view(), name='course'),
+    path('course-list', view=CourseListView.as_view(), name='course-list'),
+    path('course/<int:pk>/enroll', view=EnrollView.as_view(), name='enroll'),
 ]

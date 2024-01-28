@@ -90,4 +90,18 @@ class OrganizationType(models.Model):
 
     def __str__(self) -> str:
         return self.title
-    
+
+
+class Referral(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='referral_user')
+    referrer = models.OneToOneField(User, on_delete=models.CASCADE, related_name='referrer')
+    date = models.DateField(null=False, blank=False, auto_now=True)
+
+    class Meta:
+        unique_together = ('user', 'referrer')
+        ordering = ('date',)
+        verbose_name_plural = 'Referrals'
+
+    def __str__(self) -> str:
+        return self.referrer.get_full_name()
+

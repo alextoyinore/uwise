@@ -6,6 +6,57 @@
     {% include 'widgets/hero.html' with course=data.course_data %}
 {% endblock %}
 
+{% block extra-header-nav %}
+    <div class="header-nav extra-header-nav">
+         <div class="header-nav-content">
+            <div class="header-nav-left extra-header-nav-left">
+                <h3>{{ data.course_data.title }}</h3>
+                <p>Level: {{ data.course_data.level }} . Price: #{{ data.course_data.price }} . Duration: {{ data.course_data.duration }}</p>
+            </div>
+            <div class="header-nav-right">
+                <a href="{% url 'enroll' data.course_data.id %}" class="btn-cta-light green">Enroll Now </a>
+            </div>
+        </div>
+    </div>
+    <style>
+         .green {
+            background: #10DC80;
+            color: #fff;
+            border: 1px solid #0ab065;
+             font-weight: bold;
+         }
+    </style>
+    <script>
+        var prevScrollPos = window.scrollY || window.pageYOffset;
+        var header = document.querySelector(".extra-header-nav");
+
+        window.addEventListener('load', ()=> {
+            header.style.position = 'absolute'
+            header.style.top = '-80px'
+            header.style.left = '0'
+            header.style.width = '100%'
+        })
+
+        function handleScroll() {
+          var currentScrollPos = window.scrollY || window.pageYOffset;
+
+          if (prevScrollPos < currentScrollPos) {
+            header.style.top = "30px";
+            header.style.transition = '.5s ease-in-out'
+          } else {
+            header.style.top = "-80px"; // Adjust this value based on your header's height
+            header.style.transition = '.5s ease-in-out'
+          }
+
+          prevScrollPos = currentScrollPos;
+        }
+
+        window.onscroll = function() {
+          handleScroll();
+        };
+    </script>
+{% endblock %}
+
 
 {% block content %}
     <div class="content">
@@ -55,8 +106,8 @@
         <section class="long-ad">
             <div class="long-ad-content">
                 <div class="ad-content-left">
-                    <h3>Go from where you are to where you want to be with life-changing learning for your team</h3>
-                    <a href="" class="btn-cta-light-var">Learn more about Uwise Business now</a>
+                    <h3>Go from where you are to where you want to be with life-changing learning for your team</h3><br>
+                    <a href="" class="btn-cta-light">Learn more about Uwise Business</a>
                 </div>
                 <div class="ad-content-right">
                     <img src="{% static 'images/logos.png' %}" alt="">
@@ -211,7 +262,7 @@
         display: flex;
         flex-direction: row;
         gap: 20px;
-        border-radius: 10px;
+        border-radius: 5px;
         border: 1px solid #c3d3ec;
         padding: 20px;
         cursor: pointer;
@@ -235,6 +286,16 @@
         flex-direction: column;
         gap: 5px;
     }
+    .blog-detail b {
+        color: #011F55;
+        font-size: .8em;
+    }
+    .blog-detail p {
+        color: #777777;
+        font-size: 12px;
+        line-height: 18px;
+    }
+    
 
     .testimonials {
         padding: 25px 0;
@@ -385,7 +446,7 @@
     li {
         font-size: 13px;
         color: #777777;
-        line-height: 20px;
+        line-height: 22px;
     }
     .partner-info {
         width: 100%;

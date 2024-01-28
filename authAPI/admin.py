@@ -2,7 +2,7 @@ from django.contrib import admin
 
 from authAPI.models import *
 
-from authAPI.models import Organization
+from authAPI.models import Organization, Referral
 
 
 # Register your models here.
@@ -32,3 +32,6 @@ class OrganizationType(admin.ModelAdmin):
     search_fields = ('title',)
 
 
+@admin.register(Referral)
+class ReferralAdmin(admin.ModelAdmin):
+    list_display = ('user', 'referrer',)

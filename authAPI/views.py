@@ -33,6 +33,9 @@ class UserView(ModelViewSet):
         return Response({'message': f'Gender Type "{instance}" deleted successfully'},
                         status=status.HTTP_204_NO_CONTENT)
 
+class ReferralView(ModelViewSet):
+    serializer_class = serializers.ReferralSerializer
+    queryset = Referral.objects.all()
 
 class AcademicLevelView(ModelViewSet):
     serializer_class = serializers.AcademicLevelSerializer

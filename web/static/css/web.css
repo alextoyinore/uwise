@@ -6,6 +6,7 @@ body{
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
+  transition: .5s ease-in-out;
 }
 
 h1{
@@ -73,7 +74,7 @@ textarea {
     justify-content: center;
     gap: 50px;
     padding: 10px 0;
-    margin-top: 90px;
+    margin-top: 80px;
   }
 
   .left-bottom-switcher {
@@ -217,12 +218,15 @@ textarea {
     width: 100%;
   }
 
-  #header-nav{
+  .header-nav{
     background: #ffffff;
     color: #011F55;
     padding: 15px 0;
     font-size: 14px;
-    border-bottom: 1px solid #cccccc;
+    border-bottom: 1px solid #c3d3ec;
+  }
+  .extra-header-nav {
+    background: #f5faff;
   }
 
   .header-nav-content{
@@ -237,6 +241,12 @@ textarea {
     width: 33%;
     align-items: center;
     display: flex;
+  }
+  .extra-header-nav-left {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 50%;
+    line-height: 5px;
   }
 
   .header-nav-left a .logo {
@@ -392,7 +402,7 @@ textarea {
     align-items: center;
     justify-content: center;
     width: 200px;
-    font-size: 1.25em;
+    font-size: 1.2em;
     padding: 10px 30px;
     border-radius: 5px;
     text-decoration: none;
@@ -422,11 +432,19 @@ textarea {
     background: #0e3b8d;
     color: #4285f4;
   }
+  .small-btn {
+    font-size: 1em;
+  }
 
   .darker {
     background: #011F55;
     color: #4285f4;
   }
+
+   .green {
+        background: #10DC80;
+        color: #fff;
+    }
 
    .hero-content-right {
     width: 50%;
@@ -437,13 +455,14 @@ textarea {
 
   .btn-cta-light {
     font-size: 1em;
-    padding: 8px 30px;
+    padding: 10px 30px;
     color: #011F55;
     background: #fff;
     border-radius: 5px;
     text-decoration: none;
     border: 1px solid #011F55;
-    display: inline-block;
+    text-align: center;
+    /*text-wrap: nowrap;*/
   }
 
   .btn-cta-light:hover{
@@ -456,12 +475,12 @@ textarea {
   #content{
     width: 100%;
     background: #fafcff;
-    padding: 25px 0;
   }
 
   .content{
     width: 70%;
     margin: auto;
+    padding: 40px 0;
   }
 
   .carousel-section{
@@ -478,7 +497,7 @@ textarea {
   .carousel-wrapper {
     overflow-x: auto;
     scrollbar-width: none;
-    border-radius: 10px;
+    border-radius: 5px;
   }
 
   .carousel-wrapper::-webkit-scrollbar{
@@ -487,7 +506,7 @@ textarea {
 
   .carousel-track {
     display: flex;
-    border-radius: 10px;
+    border-radius: 5px;
     /*width: 100%;*/
   }
 
@@ -502,12 +521,12 @@ textarea {
     text-decoration: none;
     width: 180px;
     height: 270px;
-    border-radius: 10px;
+    border-radius: 5px;
     overflow: hidden;
     box-sizing: border-box;
     /*background: rgba(1, 31, 85, 0.05);*/
     background: #fff;
-    border: 1px solid #ddd;
+    border: 1px solid #c3d3ec;
     cursor: pointer;
     color: #011F55;
   }
@@ -515,7 +534,7 @@ textarea {
   .course-card:hover {
     /*scale: 1.1;*/
     border: 1px solid #011F55;
-    color: #0646d5;
+    color: #0e3b8d;
   }
 
   .course-image {
@@ -556,7 +575,7 @@ textarea {
     width: 200px;
     height: 4px;
     border-radius: 4px;
-    background: rgba(1, 31, 85, 0.05);
+    background: #546da155;
     display: flex;
     align-items: center;
   }
@@ -565,7 +584,7 @@ textarea {
     width: 50px;
     height: 4px;
     border-radius: 8px;
-    background: #ccc;
+    background: #546da1;
     cursor: grab;
   }
 
@@ -587,7 +606,7 @@ textarea {
   .slider-btn{
     height: 4px;
     width: 30px;
-    background: #ccc;
+    background: #546da1;
     align-items: center;
     display: flex;
     border-radius: 10px;

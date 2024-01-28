@@ -28,6 +28,9 @@
         {% block header-nav %}
             {% include 'partials/header.html' with page_type=data.page_type %}
         {% endblock %}
+    
+        {% block extra-header-nav %}
+        {% endblock %}
 
         {% block header-message %}
             {% include 'partials/header_message.html' %}

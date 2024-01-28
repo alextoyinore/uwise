@@ -6,6 +6,12 @@ from rest_framework.authtoken.models import Token
 
 
 # serializers
+class ReferralSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Referral
+        fields = '__all__'
+
+
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User

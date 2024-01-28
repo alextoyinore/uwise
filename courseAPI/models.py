@@ -43,6 +43,7 @@ class Course(models.Model):
     field = models.ForeignKey('Field', on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=9, decimal_places=2, null=False, blank=False)
     facilitators = models.ManyToManyField(User, blank=True)
+    courses = models.ManyToManyField('Course', related_name='specialization_courses', blank=True)
     lessons = models.ManyToManyField('Lesson', blank=True, related_name='course_lessons')
     language = models.CharField(max_length=200, null=True, blank=True)
     organization = models.ForeignKey(Organization, on_delete=models.SET_NULL, swappable=True, null=True, blank=True)
@@ -51,6 +52,7 @@ class Course(models.Model):
     tags = models.TextField(blank=True, null=True)
     objectives = models.TextField(blank=True, null=True)
     next_start_date = models.DateTimeField(null=True, blank=True)
+    is_specialization = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
 
     def __str__(self):

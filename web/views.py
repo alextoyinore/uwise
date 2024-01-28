@@ -30,14 +30,14 @@ dummy_data = {
                     'id': 2,
                     'student_name': 'Olufade Blessing',
                     'student_photo': 'https://images.pexels.com/photos/2080383/pexels-photo-2080383.jpeg?auto=compress&cs=tinysrgb&w=600',
-                    'message': 'After Uwise, I launched my own startup as we are encouraged to do in the "What will you Build?" sessions. I\'m happy I found Uwise, my startup is a success',
+                    'message': 'After Uwise, I launched my own startup as we are encouraged to do in the "What will you Build?" sessions.',
                     'date': '2023-08-21',
                 },
                 {
                     'id': 3,
                     'student_name': 'Toyin Abrahams',
                     'student_photo': 'https://images.pexels.com/photos/274610/pexels-photo-274610.jpeg?auto=compress&cs=tinysrgb&w=600',
-                    'message': 'After Uwise, I launched my own startup as we are encouraged to do in the "What will you Build?" sessions. I\'m happy I found Uwise, my startup is a success',
+                    'message': 'After Uwise, I launched my own startup as we are encouraged to do in the "What will you Build?" sessions.',
                     'date': '2023-08-21',
                 }
             ]
@@ -1125,6 +1125,35 @@ class CourseView(TemplateView):
             'course_data': course_data,
             'testimonials': dummy_data['testimonials'],
             'page': 'course',
+        }
+        # print(data)
+        context = {'data': data}
+        return render(request, self.template_name, context)
+
+
+class CourseListView(TemplateView):
+    template_name = 'course_list.html'
+
+    def get(self, request, *args, **kwargs):
+        data = dummy_data
+        context = {'data': data}
+        return render(request, self.template_name, context)
+
+
+class EnrollView(TemplateView):
+    template_name = 'enroll.html'
+
+    def get(self, request, *args, **kwargs):
+        course_data = None
+        for course in dummy_data['courses']:
+            # print(course.get('id'))
+            if course.get('id') == kwargs['pk']:
+                course_data = course
+        # print(course_data)
+        data = {
+            'course_data': course_data,
+            'testimonials': dummy_data['testimonials'],
+            'page': 'enroll',
         }
         # print(data)
         context = {'data': data}
