@@ -5,32 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b5bedfd-d550-4555-a8e1-6879e7615a78" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/authAPI/migrations/0010_referral.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/courseAPI/migrations/0014_course_courses_course_is_specialization_and_more.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/templates/course_list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/templates/enroll.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authAPI/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/authAPI/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authAPI/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/authAPI/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authAPI/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/authAPI/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authAPI/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/authAPI/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authAPI/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/authAPI/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/courseAPI/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/courseAPI/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/static/css/web.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/static/css/web.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templates/course.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/course.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templates/partials/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/partials/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templates/partials/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/partials/footer.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/templates/partials/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/partials/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templates/widgets/biginfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/widgets/biginfo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templates/widgets/hero.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/widgets/hero.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/templates/widgets/hero2.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/widgets/hero2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templates/widgets/testimonial_card.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/widgets/testimonial_card.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templates/widgets/testimonial_carousel.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/widgets/testimonial_carousel.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,7 +168,7 @@
       <workItem from="1706267858810" duration="644000" />
       <workItem from="1706286750902" duration="14048000" />
       <workItem from="1706312494845" duration="42184000" />
-      <workItem from="1706474009181" duration="7418000" />
+      <workItem from="1706474009181" duration="8529000" />
     </task>
     <servers />
   </component>
