@@ -7,70 +7,130 @@
 {% block content %}
 <div id="content">
   <div class="content">
-    <div id="signup-form" class="auth-container">
-      <form>
-        <h1>Create your student account.</h1> <br/>
-        <p>Learn, unlearn, and re-learn. Practice and perfect new skills for business, career, and personal growth.</p>
-        <br/>
+    <div class="auth-container">
+        <div class="auth-form">
+             <form method="post" id="signup-form">
+                 
+                 {% csrf_token %}
+                 
+                <h1>Create your student account.</h1> <br/>
+                <p>Learn, unlearn, and re-learn. Practice and perfect new skills for business, career, and personal growth.</p>
+                <br/>
 
-        <div class="form-row">
-
-          <div class="form-column">
-            <div>
-              <label class="input-label" for="firstname">First Name</label>
-              <input type="text" id="firstname" name="firstname" placeholder="First name"/>
-            </div>
-            <div class="form-row-column">
-              <label class="input-label" for="lastName">Last Name</label>
-              <input type="text" id="lastName" name="lastName" placeholder="Enter your last name"/>
-            </div>
-          </div>
-  
-          <div class="form-column">
-            <div>
-              <label class="input-label" for="email">Email</label>
-              <input type="text" id="email" name="email" placeholder="Enter your email"/>
-            </div>
-            <div>
-              <label class="input-label" for="password">Password</label>
-              <input type="password" id="password" name="password" placeholder="Enter your password"/>
-            </div>
-          </div>
-          
-        </div>
+                 <div class="error" style="display: none; margin-bottom: 10px; color: crimson; 
+                 font-size: 14px; font-variant-caps: petite-caps;"></div>
         
-        <br>
-    
-        <!-- Submit button -->
-        <button type="submit" onclick="submitForm()">Sign Up</button>
-
-        <br>
-
-        <p class="form-bottom-info">
-          <span>Already a student? <a href="{% url 'login' %}">Login</a></span>
-        </p>
-      </form>
+                <div class="form-row">
+        
+                  <div class="form-column">
+                    <div>
+                      <label class="input-label" for="firstname">First Name</label>
+                      <input type="text" id="firstName" name="firstname" required placeholder="First name"/>
+                    </div>
+                    <div class="form-row-column">
+                      <label class="input-label" for="lastName">Last Name</label>
+                      <input type="text" id="lastName" name="lastname" required placeholder="Enter your last name"/>
+                    </div>
+                  </div>
+          
+                  <div class="form-column">
+                    <div>
+                      <label class="input-label" for="email">Email</label>
+                      <input type="text" id="email" name="email" required placeholder="Enter your email"/>
+                    </div>
+                    <div>
+                      <label class="input-label" for="password">Password</label>
+                      <input type="password" id="password" name="password" required placeholder="Enter your password"/>
+                    </div>
+                  </div>
+                  
+                </div>
+                
+                <br>
+            
+                <!-- Submit button -->
+                <button type="submit" id="submitButton">Sign Up</button>
+        
+                <br>
+        
+                <p class="form-bottom-info">
+                  <span>Already a student? <a href="{% url 'login' %}">Login</a></span>
+                </p>
+              </form>
+        </div>
     </div>
   </div>
 </div>
 
+    <script>
+       document.querySelector('#signup-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        const error = document.querySelector('.error')
+       error.innerHTML = ''
+
+    
+        const formData = new URLSearchParams();
+           
+       const firstName = document.querySelector('#firstName').value
+       const lastName = document.querySelector('#lastName').value
+       const email = document.querySelector('#email').value
+       const password = document.querySelector('#password').value
+       
+       console.log(firstName)
+           
+       formData.append('first_name', firstName)
+       formData.append('last_name', lastName)
+       formData.append('email', email)
+       formData.append('password', password)
+           
+       {#console.log(formData.toString())#}
+    
+        fetch("{% url 'users' %}", {
+            method: 'POST',
+            body: formData.toString(),
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-Requested-With': 'XMLHttpRequest',  // Required for Django to identify it as an AJAX request
+                'X-CSRFToken': getCookie('csrftoken')  // Include CSRF token for security
+            },
+        })
+        .then(response => {
+            if (response.ok){
+                return response.json().then(data => {
+                console.log(data);
+                // Handle the response data as needed
+                const authContainer = document.querySelector('.auth-container')
+                authContainer.innerHTML =
+                `<div style="text-align:center; margin: 25px 0;">
+                    <h3>Hello, <span style="color:#10DC80;">${data.last_name}</span> your account has been successfully created</h3><br>
+                    <p><a href="{% url 'login' %}" class="btn-cta-light green">Proceed to Login</a></p>
+                </div>`
+                })
+            }else {
+                return response.json().then(data => {
+                    console.log(data)
+                    error.style.display = 'block'
+                    
+                    for (d in data){
+                        console.log(d)
+                        var newParagraph = document.createElement('b')
+                        newParagraph.setAttribute('style', 'display: block;')
+                        newParagraph.textContent = data[d]
+                        error.appendChild(newParagraph)
+                    }
+                })
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    });
+
+    </script>
+
 {% endblock %}
 
-  {% comment %} <script>
 
-    function submitForm() {
-      // Add logic to handle form submission using JavaScript
-      // Example: document.getElementById("loginForm").submit();
-    }
-
-    function loginWithGoogle() {
-      // Add logic to handle Google login using JavaScript
-    }
-
-    function loginWithFacebook() {
-      // Add logic to handle Facebook login using JavaScript
-    }
-  </script> {% endcomment %}
 
 
 

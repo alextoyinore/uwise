@@ -1,9 +1,18 @@
+import token
 from datetime import datetime
 
-from django.shortcuts import render
-from django.views.generic import TemplateView, DetailView, ListView
+from django.contrib.auth.forms import UserCreationForm
+from django.http import HttpResponse, JsonResponse
+from django.shortcuts import render, redirect
+from django.views.generic import TemplateView, DetailView, ListView, FormView
 from django.template.defaulttags import register
+from rest_framework.authtoken.models import Token
+import json
 
+from .forms import *
+from django.contrib import messages
+
+import authAPI
 from courseAPI.models import Course
 
 # Create your views here.
@@ -1168,7 +1177,9 @@ class HomeView(TemplateView):
             'carousels': dummy_data['carousels'],
             'testimonials': dummy_data['testimonials'],
             'page': 'home',
+            # 'token': _token
         }
+        print(data)
         context = {'data': data}
         return render(request, self.template_name, context)
 
@@ -1185,23 +1196,75 @@ class ContactView(TemplateView):
     template_name = 'pages/contact.html'
 
 
+from django.contrib.auth import login, authenticate, logout
+
+
+def authenticate_user(request):
+    tk = request.COOKIES.get('uwiseweb')
+
+    if tk:
+        user = authenticate(request, token=tk)
+        if user:
+            login(request, user)
+
+
 class LoginView(TemplateView):
     template_name = 'login.html'
+    # form_class = LoginForm
 
     def get(self, request, *args, **kwargs):
+        if self.request.user.is_authenticated:
+            return redirect('home')
+
         data = {
             'page': 'login',
+            'form': LoginForm()
         }
         context = {'data': data}
         return render(request, self.template_name, context)
 
+    def post(self, request, *args, **kwargs):
+        data = json.loads(request.body.decode('utf-8'))
+        print(data)
+
+        email = data.get('email')
+        password = data.get('password')
+        print(email)
+
+        user = authenticate(email=email, password=password)
+
+        if user and not user.is_facilitator and not user.is_superuser:
+            login(request, user)
+            return redirect('home')
+        else:
+            return JsonResponse({'success': False, 'error': 'Invalid login credentials'})
+
+        # email = request.POST.get('email')
+        # password = request.POST.get('password')
+        # user = authenticate(email=email, password=password)
+        # if user:
+        #     login(request, user)
+        #     return redirect('home')
+        # else:
+        #     context = {'error': user}
+        #     return render(request, 'login.html', context)
+
 
 class SignUpView(TemplateView):
     template_name = 'signup.html'
+    # form_class = SignUpForm
 
     def get(self, request, *args, **kwargs):
+        if self.request.user.is_authenticated:
+            return redirect('home')
+
         data = {
             'page': 'signup',
         }
         context = {'data': data}
         return render(request, self.template_name, context)
+
+
+def logout_user(request):
+    logout(request)
+    return redirect('login')

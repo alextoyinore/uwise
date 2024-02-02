@@ -26,5 +26,7 @@ urlpatterns = [
     path('api/v1/', include('orderAPI.urls')),
     path('api/v1/', include('blogAPI.urls')),
     path('', include('web.urls')),
+    # path('api/v1/auth/', include('djoser.urls')),
+    # path('api/v1/auth/', include('djoser.urls.authtoken')),
 ]
 

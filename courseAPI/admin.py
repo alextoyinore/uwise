@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import *
 
-from courseAPI.models import Course, Lesson, Field
+from courseAPI.models import Course, Lesson, Field, UserCourse, CourseFacilitator
 
 
 # Register your models here.
@@ -19,7 +19,7 @@ class CourseAdmin(admin.ModelAdmin):
 
 @admin.register(Lesson)
 class LessonAdmin(admin.ModelAdmin):
-    list_display = ('title', 'week', 'description', 'course')
+    list_display = ('title', 'week', 'description', 'price', 'course')
     search_fields = ('title', 'course')
 
 
@@ -59,19 +59,31 @@ class ReadingAdmin(admin.ModelAdmin):
     search_fields = ('title', 'lesson', 'active')
 
 
-@admin.register(Programme)
-class ProgrammeAdmin(admin.ModelAdmin):
+@admin.register(Specialization)
+class SpecializationAdmin(admin.ModelAdmin):
     list_display = ('title', 'field')
     search_fields = ('title', 'field')
 
 
-# @admin.register(SpecializationCourse)
-# class SpecializationCourseAdmin(admin.ModelAdmin):
-#     list_display = ('course',)
-#     search_fields = ('course',)
+@admin.register(SpecializationCourse)
+class SpecializationCourseAdmin(admin.ModelAdmin):
+    list_display = ('course',)
+    search_fields = ('course',)
 
 
 @admin.register(Field)
 class FieldAdmin(admin.ModelAdmin):
     list_display = ('title', 'is_active')
     search_fields = ('title', 'is_active')
+
+
+@admin.register(UserCourse)
+class UserCourseAdmin(admin.ModelAdmin):
+    list_display = ('user', 'course', 'date')
+    search_fields = ('date', 'user', 'course')
+
+
+@admin.register(CourseFacilitator)
+class CourseFacilitatorAdmin(admin.ModelAdmin):
+    list_display = ('facilitator', 'course', 'date')
+    search_fields = ('facilitator', 'course', 'date')

@@ -8,19 +8,161 @@
             {% endif %}
         </div>
         <div class="header-nav-right">
-            {% if data.page == 'home' %}
+            {% if user.is_authenticated %}
+                <div class="header-profile">
+                    <div class="header-profile-details">
+                        <b>{{ user.get_full_name }}</b>
+                        {% if user.current_job_title == '' %} <a href="">Update your profile</a> {% else %} <a href="">{{ user.current_job_title }}</a> {% endif %}
+                        <div class="header-profile-menu">
+                            <a href="">Profile</a>
+                            <a href="">My Learning</a>
+                            <a href="">Payments</a>
+                            <a href="">Favourites</a>
+                            <a id="logout" href="{% url 'logout-user' %}" onclick="" class="logout">Logout</a>
+                        </div>
+                    </div>
+                    <div class="header-profile-image">
+                        {% if user.image == '' or user.image == None %}
+                            <img src="{% static 'images/profile.png' %}" alt="">
+                        {% else %}
+                            <img src="{{ user.image }}" alt="">
+                        {% endif %}
+                    </div>
+                </div>
+            {% else %}
+                {% if data.page == 'home' or data.page == 'course' %}
                 <div class="header-search">
                     <span class="material-symbols-outlined search-icon">search</span>
                     <input class="header-search-input search" placeholder="What do you want to learn?" type="search" />
                 </div>
-                <a class="btn-cta-light" href="{% url 'login' %}">Login</a>
-                <a class="btn-cta blue" href="{% url 'signup' %}">Get Started</a>
-            {% elif data.page == 'login' %}
-                <a class="btn-cta-light" href="{% url 'signup' %}">Sign Up</a>
-            {% elif data.page == 'signup' %}
-                <a class="btn-cta-light" href="{% url 'login' %}">Login</a>
+                    <a class="btn-cta-light" href="{% url 'login' %}">Login</a>
+                    <a class="btn-cta blue" href="{% url 'signup' %}">Get Started</a>
+                {% elif data.page == 'login' %}
+                    <a class="btn-cta-light" href="{% url 'signup' %}">Sign Up</a>
+                {% elif data.page == 'signup' %}
+                    <a class="btn-cta-light" href="{% url 'login' %}">Login</a>
+                {% endif %}
+
             {% endif %}
+
         </div>
     </div>
 </div>
+
+<style>
+    .header-profile {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        cursor: pointer;
+        align-content: center;
+        position: relative;
+    }
+    .header-profile-details {
+        display: flex;
+        flex-direction: column;
+    }
+    .header-profile a {
+        text-decoration: none;
+        color: #777777;
+        font-size: 10px;
+    }
+    .header-profile-image {
+        width: 35px;
+        height: 35px;
+        border-radius: 35px;
+    }
+    .header-profile-image img {
+        width: 35px;
+        height: 35px;
+        border-radius: 35px;
+    }
+    .header-profile-menu {
+        display: none;
+        z-index: 1;
+        position: absolute;
+        width: 150px;
+        background: #ffffffee;
+        border: 1px solid #c3d3ec;
+        top: 50px;
+        {#border-radius: 5px;#}
+    }
+    .header-profile-menu a {
+        color: #011F55;
+        font-size: 13px;
+        padding: 10px 20px;
+    }
+    .header-profile-menu a:hover {
+        background: #c3d3ec;
+        {#color: #ffffff;#}
+        {#border-radius: 5px;#}
+    }
+    .header-profile-menu .logout {
+        color: crimson;
+        font-weight: bold;
+    }
+</style>
+
+<script>
+    const headerProfile = document.querySelector('.header-profile')
+    headerProfile.addEventListener('mouseover', () => {
+        const headerProfileMenu = document.querySelector('.header-profile-menu')
+        headerProfileMenu.style.display = 'flex'
+        headerProfileMenu.style.flexDirection = 'column'
+        
+        headerProfileMenu.addEventListener('mouseout', () => {
+            headerProfileMenu.style.display = 'none'
+        })
+    })
+    
+    function logout() {
+        document.querySelector('#logout').addEventListener('click', function(event) {
+
+            event.preventDefault()
+
+            fetch(
+                "{% url 'logout' %}", {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Authorization': `Bearer ${getCookie('uwiseweb')}`, // Include CSRF token for security
+                        'X-Requested-With': 'XMLHttpRequest',  // Required for Django to identify it as an AJAX request
+                        'X-CSRFToken': '{% csrf_token %}'  // Include CSRF token for security
+                    },
+                })
+                .then(response => {
+                    if (response.ok){
+                        return response.json().then(data => {
+                        console.log(data);
+                        // Handle the response data as needed
+                            window.location.href = '{% url 'login' %}'
+                        })
+                    }else {
+                        return response.json().then(data => {
+                            console.log(data)
+                        })
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        })
+    }
+
+    // Function to get cookie
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+</script>
 

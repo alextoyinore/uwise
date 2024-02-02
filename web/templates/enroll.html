@@ -6,26 +6,122 @@
 
 {% block content %}
 <div class="content">
-    Enroll
+    <section class="enroll-wrapper">
+        <h2>Complete Enrollment</h2><br>
+        <div class="enroll-content">
+            <div class="enroll-content-left">
+                <h3>Payment Method</h3>
+                <div class="payment-methods">
+                    <a href="">Card</a>
+                    <a href="">Bank Transfer</a>
+                    <a href="">Cash</a>
+                    <a href="">FlexiPay</a>
+                </div>
+            </div>
+            <div class="enroll-content-center">
+                <form id="card-form" action="">
+                    {% csrf_token %}
+                    <h3>Pay with Card</h3>
+                    
+                    <label for="cardNumber">Card Number</label>
+                    <input class="card-input" id="cardNumber" type="text" placeholder="0000 0000 0000 0000" />
+                    
+                    <p class="card-input-wrapper row">
+                        <span>
+                            <label for="cardExpiryDate">Exp. Date</label>
+                            <input class="card-input" id="cardExpiryDate" type="text" placeholder="MM/YY" />
+                        </span>
+                        <span>
+                            <label for="cardCVV">Card CVV</label>
+                            <input class="card-input" id="cardCVV" type="text" placeholder="123" />
+                        </span>
+                    </p>
+
+                </form>
+            </div>
+            <div class="enroll-content-right">
+                <div class="course-detail">
+                    <h3>{{ data.course_data.title }}</h3>
+                    <p>{{ data.course_data.field }} . {{ data.course_data.rating_count }} Reviews</p>
+                    <span>{{ data.course_data.excerpt | truncatewords:"20" }} </span><br>
+                    <button class="btn-cta-light green">Pay &#8358; {{ data.course_data.price | floatformat:"2" }}</button>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
+
+    <style>
+    #card-form {
+        max-width: 400px;
+    }
+        .card-input-wrapper {
+            width: 100%;
+        }
+        .row {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        form label {
+            display: block;
+            margin: 5px 0;
+            color: #777777;
+        }
+        .enroll-wrapper {
+            margin-top: 120px;
+            margin-bottom: 50px;
+            width: 100%;
+        }
+        .enroll-content {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin: 25px 0;
+        }
+        .enroll-content-left {
+            width: 20%;
+            {#border-right: 1px solid #c3d3ec;#}
+        }
+        .payment-methods a {
+            padding: 5px 10px;
+            cursor: pointer;
+            text-decoration: none;
+            color: #777777;
+            display: block;
+            font-size: 13px;
+        }
+        .payment-methods a:hover {
+            background: #c3d3ec33;
+        }
+        .payment-methods a:active {
+            color: #011F55;
+            font-weight: bold;
+        }
+        .enroll-content-center {
+            width: 50%;
+            margin: 0 25px;
+        }
+        .enroll-content-right {
+            width: 25%;
+        }
+        .enroll-content-right span {
+            display: block;
+            font-size: 12px;
+            color: #777777;
+            padding: 5px 0;
+        }
+        .green {
+          background: #10DC80;
+          color: #fff;
+          border: 1px solid #0fc471;
+          font-weight: bold;
+       }
+    </style>
 
 {% endblock %}
 
-  {% comment %} <script>
-
-    function submitForm() {
-      // Add logic to handle form submission using JavaScript
-      // Example: document.getElementById("loginForm").submit();
-    }
-
-    function loginWithGoogle() {
-      // Add logic to handle Google login using JavaScript
-    }
-
-    function loginWithFacebook() {
-      // Add logic to handle Facebook login using JavaScript
-    }
-  </script> {% endcomment %}
 
 
 

@@ -147,25 +147,51 @@ urlpatterns = [
 
     # SPECIALIZATION
 
-    path('programmes', view=ProgrammeViewSet.as_view({
+    path('specializations', view=SpecializationViewSet.as_view({
         'post': 'create',
-        'get': 'list'}), name='programmes'),
-    path('programme/<int:pk>', view=ProgrammeViewSet.as_view({
+        'get': 'list'}), name='specializations'),
+    path('specialization/<int:pk>', view=SpecializationViewSet.as_view({
         'get': 'retrieve',
         'put': 'update',
         'patch': 'partial_update',
         'delete': 'destroy',
-    }), name='programme'),
+    }), name='specialization'),
 
     # SPECIALIZATION COURSES
 
-    # path('specialization-courses', view=SpecializationCourseViewSet.as_view({
-    #     'post': 'create',
-    #     'get': 'list'}), name='specialization-courses'),
-    # path('specialization-course/<int:pk>', view=SpecializationCourseViewSet.as_view({
-    #     'get': 'retrieve',
-    #     'put': 'update',
-    #     'patch': 'partial_update',
-    #     'delete': 'destroy',
-    # }), name='specialization-course'),
+    path('specialization-courses', view=SpecializationCourseViewSet.as_view({
+        'post': 'create',
+        'get': 'list'}), name='specialization-courses'),
+    path('specialization-course/<int:pk>', view=SpecializationCourseViewSet.as_view({
+        'get': 'retrieve',
+        'put': 'update',
+        'patch': 'partial_update',
+        'delete': 'destroy',
+    }), name='specialization-course'),
+
+
+    # USER COURSES
+
+    path('user-courses', view=UserCourseViewSet.as_view({
+        'post': 'create',
+        'get': 'list'}), name='user-courses'),
+    path('user-course/<int:pk>', view=UserCourseViewSet.as_view({
+        'get': 'retrieve',
+        'put': 'update',
+        'patch': 'partial_update',
+        'delete': 'destroy',
+    }), name='user-course'),
+
+
+    # COURSE FACILITATOR
+
+    path('course-facilitators', view=CourseFacilitatorViewSet.as_view({
+        'post': 'create',
+        'get': 'list'}), name='course-facilitators'),
+    path('course-facilitator/<int:pk>', view=CourseFacilitatorViewSet.as_view({
+        'get': 'retrieve',
+        'put': 'update',
+        'patch': 'partial_update',
+        'delete': 'destroy',
+    }), name='course-facilitator'),
 ]

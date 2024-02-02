@@ -11,7 +11,7 @@
          <div class="header-nav-content">
             <div class="header-nav-left extra-header-nav-left">
                 <h3>{{ data.course_data.title }}</h3>
-                <p>Level: {{ data.course_data.level }} . Price: #{{ data.course_data.price }} . Duration: {{ data.course_data.duration }}</p>
+                <p>Level: {{ data.course_data.level }} . Price: &#8358; {{ data.course_data.price }} . Duration: {{ data.course_data.duration }} Days</p>
             </div>
             <div class="header-nav-right">
                 <a href="{% url 'enroll' data.course_data.id %}" class="btn-cta-light green">Enroll Now </a>
@@ -19,6 +19,9 @@
         </div>
     </div>
     <style>
+        .extra-header-nav {
+            display: none;
+        }
          .green {
             background: #10DC80;
             color: #fff;
@@ -35,13 +38,19 @@
             header.style.top = '-80px'
             header.style.left = '0'
             header.style.width = '100%'
+            header.style.display = 'block'
         })
 
         function handleScroll() {
           var currentScrollPos = window.scrollY || window.pageYOffset;
 
           if (prevScrollPos < currentScrollPos) {
-            header.style.top = "30px";
+              {% if not user.is_authenticated %}
+                header.style.top = "30px";
+              {% else %}
+                header.style.top = "0px";
+              {% endif %}
+
             header.style.transition = '.5s ease-in-out'
           } else {
             header.style.top = "-80px"; // Adjust this value based on your header's height

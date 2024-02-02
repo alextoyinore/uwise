@@ -2,13 +2,36 @@
 {% load static %}
 {% block page-title %} Welcome {% endblock %}
 
+
 {% block hero %}
-    {% include 'widgets/hero2.html' %}
+    {% if not user.is_authenticated %}
+        {% include 'widgets/hero2.html' %}
+    {% endif %}
 {% endblock %}
 
+
 {% block content %}
+    {% if user.is_authenticated %}
+                <br><br><br>
+        <div class="user-content-wrapper">
+            <div class="user-content">
+                <nav class="dash-nav">
+                    <a href="#description" class="btn-nav">Home</a>
+                    <a href="#objectives" class="btn-nav">My Learning</a>
+                    <a href="#courses" class="btn-nav">Completed</a>
+                    <a href="#testimonials" class="btn-nav">Explore</a>
+                </nav>
+
+                <div class="user-courses">
+                    <h1>My Courses</h1>
+                    {% include 'widgets/course_carousel.html' with carousels=data.carousels %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
     <section id="content">
-        <div class="content">
+        <div {% if user.is_authenticated %} id="home-content" {% endif %} class="content">
+
             {% include 'widgets/course_carousel.html' with carousels=data.carousels %}
             <br><br>
             {% include 'widgets/biginfo.html' %}
@@ -21,16 +44,54 @@
             {% include 'widgets/partners.html' %}
         </div>
     </section>
-    
-    <section class="bottom-cta">
-        <strong>What do you want to learn?</strong>
-        <p>Wherever your heart leads, tech, vocational, or professional path,
-            or you just want to develop as a person, gain confidence, and position
-            yourself to better contribute to societal growth and development, we are here for you.</p>
-        <a href="{% url 'signup' %}" class="btn-cta green bold">Get Started Now</a>
-    </section>
+
+    {% if not user.is_authenticated %}
+        <section class="bottom-cta">
+            <strong>What do you want to learn?</strong>
+            <p>Wherever your heart leads, tech, vocational, or professional path,
+                or you just want to develop as a person, gain confidence, and position
+                yourself to better contribute to societal growth and development, we are here for you.</p>
+            <a href="{% url 'signup' %}" class="btn-cta-light green bold">Get Started Now</a>
+        </section>
+    {% endif %}
 
     <style>
+    .user-content-wrapper {
+        width: 100%;
+        background: #c3d3ec44;
+    }
+    .user-content {
+        width: 70%;
+        margin: auto;
+    }
+        .user-courses {
+            width: 100%;
+            {#padding: 25px;#}
+            margin: 25px 0;
+        }
+        .dash-nav {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            padding-top: 50px;
+            width: 100%;
+            border-bottom: 1px solid #c3d3ec;
+        }
+        .dash-nav a {
+            text-decoration: none;
+            color: #011F55;
+            background: #c3d3ec44;
+            padding: 10px 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .dash-nav a:hover, .dash-nav a:active, .dash-nav a:visited {
+            background: #c3d3ec;
+        }
+
+        #home-content {
+            {#margin-top: 100px;#}
+        }
         .bottom-cta {
             width: 100%;
             background: #011F55;
@@ -54,11 +115,10 @@
             color: #c3d3ec;
             font-size: 2.2em;
         }
-        
-        .bottom-cta a:hover {
-            background: #0e3b8d;
-            transition: .3s ease-in-out;
+        .bottom-cta a {
+            padding: 12px 80px;
         }
+        
         
     </style>
 {% endblock %}

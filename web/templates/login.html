@@ -7,51 +7,163 @@
 {% block content %}
 <div id="content">
   <div class="content">
-    <div id="login-form" class="auth-container">
-      <form>
-          <h1>Sign in to your Uwise account.</h1><br/>
-          <p>Learn, unlearn, and re-learn. Practice and perfect new skills for business, career, and personal growth.</p>
-        <br>
-        <label for="emailOrUsername">Email or Username</label>
-        <input type="text" id="emailOrUsername" name="emailOrUsername" placeholder="Enter your email or username"
-        /> <br>
-  
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" placeholder="Enter your password"
-        /> <br>
-  
-        <!-- Submit button -->
-        <button type="submit" onclick="submitForm()">Login</button>
+    <div class="auth-container">
+        <div class="auth-form">
+            <form method="post" id="login-form">
+                
+                {% csrf_token %}
+                
+                <h1>Sign in to your Uwise account.</h1><br/>
+                <p>Learn, unlearn, and re-learn. Practice and perfect new skills for business, career, and personal growth.</p>
+                <br>
+                 
+                <div class="error" style="display: none; margin-bottom: 10px; color: crimson; 
+                 font-size: 14px; font-variant-caps: petite-caps;"></div>
 
-        <br>
+                <label for="email">Email</label>
+                <input type="text" id="email" name="email" placeholder="Enter your email"
+                /> <br>
 
-        <p class="form-bottom-info">
-          <span>Not a student? <a href="{% url 'signup' %}">Sign Up</a></span>
-          <a href="{% url 'signup' %}">Forgot your password?</a>
-        </p>
-      </form>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password"
+                /> <br>
+          
+                <!-- Submit button -->
+                <button type="submit" onclick="login()">Login</button>
+        
+                <br>
+        
+                <p class="form-bottom-info">
+                  <span>Not a student? <a href="{% url 'signup' %}">Sign Up</a></span>
+                  <a href="{% url 'signup' %}">Forgot your password?</a>
+                </p>
+            </form>
+        </div>
     </div>
   </div>
 </div>
+    
+<script>
+
+function login() {
+
+    document.querySelector('#login-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+        const error = document.querySelector('.error')
+        error.innerHTML = ''
+
+       const formData = new URLSearchParams();
+
+       const email = document.querySelector('#email').value
+       const password = document.querySelector('#password').value
+
+       console.log(email)
+
+       formData.append('email', email)
+       formData.append('password', password) 
+
+       {#console.log(formData.toString())#}
+
+        fetch("{% url 'email-login' %}", {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-Requested-With': 'XMLHttpRequest',  // Required for Django to identify it as an AJAX request
+                'X-CSRFToken': `${getCookie('csrftoken')}`  // Include CSRF token for security
+            },
+        })
+        .then(response => {
+            if (response.ok){
+                return response.json().then(data => {
+                    console.log(data);
+                    // Handle the response data as needed
+                    fetch('{% url 'login' %}', {
+                        method: 'POST',
+                        body: JSON.stringify({email: email, password: password}),
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                            'X-Requested-With': 'XMLHttpRequest',  // Required for Django to identify it as an AJAX request
+                            'X-CSRFToken': `${getCookie('csrftoken')}`  // Include CSRF token for security
+                        },
+                    }).then(response => {
+                        if (response.ok) {
+                            window.location.href = '{% url 'home' %}'      
+                        }
+                    })
+                })
+            }else {
+                return response.json().then(data => {
+                    console.log(data)
+                    error.style.display = 'block'
+
+                    for (d in data){
+                        console.log(d)
+                        var newParagraph = document.createElement('b')
+                        newParagraph.setAttribute('style', 'display: block;')
+                        newParagraph.textContent = data[d]
+                        error.appendChild(newParagraph)
+                    }
+                })
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    });
+}
+
+
+// Function to get cookie
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+
+// Function to set a cookie
+function setCookie(name, value, options = {}) {
+    options = {
+        path: '/',
+        secure: true,  // Use 'true' if your site is served over HTTPS
+        sameSite: 'Strict',  // Adjust according to your needs
+        ...options,
+    };
+
+    if (options.expires instanceof Date) {
+        options.expires = options.expires.toUTCString();
+    }
+
+    let updatedCookie = encodeURIComponent(name) + "=" + encodeURIComponent(value);
+
+    for (let optionKey in options) {
+        updatedCookie += "; " + optionKey;
+        let optionValue = options[optionKey];
+        if (optionValue !== true) {
+            updatedCookie += "=" + optionValue;
+        }
+    }
+
+    document.cookie = updatedCookie;
+}
+    
+</script>
 
 {% endblock %}
 
 
-  {% comment %} <script>
-
-    function submitForm() {
-      // Add logic to handle form submission using JavaScript
-      // Example: document.getElementById("loginForm").submit();
-    }
-
-    function loginWithGoogle() {
-      // Add logic to handle Google login using JavaScript
-    }
-
-    function loginWithFacebook() {
-      // Add logic to handle Facebook login using JavaScript
-    }
-  </script> {% endcomment %}
 
 
 

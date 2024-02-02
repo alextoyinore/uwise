@@ -19,7 +19,7 @@ class User(AbstractUser):
     address = models.CharField(max_length=100, default='', blank=True)
     city = models.CharField(max_length=100, default='', blank=True)
     postal_code = models.CharField(max_length=10, default='', blank=True)
-    image = models.ImageField(upload_to='uploads/users/', default='', null=True, blank=True)
+    image = models.URLField(default='', null=True, blank=True)
     current_work_field = models.CharField(max_length=100, default='', blank=True)
     desired_work_field = models.CharField(max_length=100, default='', blank=True)
     current_job_title = models.CharField(max_length=100, default='', blank=True)

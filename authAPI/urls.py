@@ -30,7 +30,7 @@ urlpatterns = [
     path('users', view=UserView.as_view({
         'get': 'list',
         'post': 'create'
-    }), name='authAPI'),
+    }), name='users'),
     path('user/<int:pk>', view=UserView.as_view({
         'get': 'retrieve',
         'put': 'update',

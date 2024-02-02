@@ -21,8 +21,11 @@
 <body>
 
     <div class="header">
+    
         {% block top-nav %}
-            {% include 'partials/topnav.html' %}
+            {% if not user.is_authenticated %}
+                {% include 'partials/topnav.html' %}
+            {% endif %}
         {% endblock %}
 
         {% block header-nav %}

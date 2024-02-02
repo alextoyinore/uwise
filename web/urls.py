@@ -11,4 +11,5 @@ urlpatterns = [
     path('course/<int:pk>', view=CourseView.as_view(), name='course'),
     path('course-list', view=CourseListView.as_view(), name='course-list'),
     path('course/<int:pk>/enroll', view=EnrollView.as_view(), name='enroll'),
+    path('user/logout', view=logout_user, name='logout-user')
 ]

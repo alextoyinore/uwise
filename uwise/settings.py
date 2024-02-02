@@ -14,6 +14,7 @@ from pathlib import Path
 import os
 
 # from django.conf.global_settings import DATABASES
+# from django.conf.global_settings import DATABASES
 from dotenv import load_dotenv
 import dj_database_url
 
@@ -57,11 +58,13 @@ INSTALLED_APPS = [
     "web.apps.WebConfig",
     "social_django",
     "fontawesomefree",
+    "djoser",
 ]
 
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.google.GoogleOAuth2',
     'django.contrib.auth.backends.ModelBackend',
+    'uwise.backends.TokenAuthenticationBackend',
 )
 
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
@@ -73,6 +76,7 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
     ),
     'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.AcceptHeaderVersioning',
     'DEFAULT_RENDERER_CLASSES': [
@@ -103,6 +107,12 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'uwise.urls'
+
+APPEND_SLASH = False
+
+SESSION_COOKIE_AGE = 1209600  # 2 weeks in seconds
+# SESSION_COOKIE_SECURE = True   # Use secure cookies (HTTPS)
+
 
 TEMPLATES = [
     {

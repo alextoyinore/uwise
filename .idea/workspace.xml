@@ -5,11 +5,48 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b5bedfd-d550-4555-a8e1-6879e7615a78" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/authAPI/migrations/0011_alter_user_image_alter_user_is_active.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/authAPI/migrations/0012_alter_user_is_active.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/courseAPI/migrations/0015_alter_courselevel_options_remove_course_courses_and_more.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/courseAPI/migrations/0016_course_courses.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/courseAPI/migrations/0017_alter_course_options_course_date_added_and_more.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/courseAPI/migrations/0018_answer_link_audio_link_course_link_and_more.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/courseAPI/migrations/0019_lesson_price.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/courseAPI/migrations/0020_alter_course_options_remove_course_date_added_and_more.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uwise/backends.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uwise/middleware.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/static/images/profile.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authAPI/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/authAPI/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authAPI/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/authAPI/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authAPI/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/authAPI/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authAPI/utils/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/uwise/custom_processor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authAPI/utils/utils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/authAPI/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/authAPI/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/courseAPI/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/courseAPI/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/courseAPI/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/courseAPI/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/courseAPI/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/courseAPI/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/courseAPI/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/courseAPI/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/courseAPI/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/courseAPI/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uwise/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/uwise/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uwise/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/uwise/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/static/css/web.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/static/css/web.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/js/web.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/static/js/web.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/templates/course.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/course.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/templates/course_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/course_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/templates/enroll.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/enroll.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/templates/partials/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/partials/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/templates/partials/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/partials/footer.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/templates/partials/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/partials/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templates/widgets/hero2.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/widgets/hero2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/templates/partials/header_message.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/partials/header_message.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/templates/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/signup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/templates/widgets/hero.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/widgets/hero.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,7 +205,21 @@
       <workItem from="1706267858810" duration="644000" />
       <workItem from="1706286750902" duration="14048000" />
       <workItem from="1706312494845" duration="42184000" />
-      <workItem from="1706474009181" duration="8529000" />
+      <workItem from="1706474009181" duration="13723000" />
+      <workItem from="1706536256469" duration="4409000" />
+      <workItem from="1706559094964" duration="2587000" />
+      <workItem from="1706565322521" duration="1184000" />
+      <workItem from="1706624825892" duration="5141000" />
+      <workItem from="1706635246466" duration="2276000" />
+      <workItem from="1706641810054" duration="1810000" />
+      <workItem from="1706651193215" duration="7306000" />
+      <workItem from="1706678725793" duration="6761000" />
+      <workItem from="1706690006017" duration="5891000" />
+      <workItem from="1706703336780" duration="7680000" />
+      <workItem from="1706723570615" duration="7313000" />
+      <workItem from="1706731422600" duration="22517000" />
+      <workItem from="1706830610469" duration="5933000" />
+      <workItem from="1706836679409" duration="9198000" />
     </task>
     <servers />
   </component>
@@ -179,6 +230,6 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/uwise$uwise.coverage" NAME="uwise Coverage Results" MODIFIED="1706474623778" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/uwise$uwise.coverage" NAME="uwise Coverage Results" MODIFIED="1706864446434" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>

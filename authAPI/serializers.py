@@ -1,4 +1,5 @@
 # serializers.py
+from django.contrib.auth.password_validation import validate_password
 from rest_framework import serializers
 from .models import *
 from .views import *
@@ -13,20 +14,36 @@ class ReferralSerializer(serializers.ModelSerializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(write_only=True)
+
     class Meta:
         model = User
         fields = '__all__'
         extra_kwargs = {'password': {'write_only': True}}
         depth = 1
 
+
+    def validate_password(self, value):
+        """
+        Validate the password using Django's password validation.
+        """
+        try:
+            validate_password(value)
+        except serializers.ValidationError as error:
+            raise serializers.ValidationError(error.messages)
+
+        return value
+
     def create(self, validated_data):
-        user = User.objects.create_user(
-            email=validated_data['email'],
-            first_name=validated_data['first_name'],
-            last_name=validated_data['last_name'],
-            password=validated_data['password'],
-        )
+        """
+        Create a user with the validated password.
+        """
+        user = User.objects.create(**validated_data)
+        user.set_password(validated_data['password'])
+        user.is_active = True
+        user.save()
         return user
+
 
 
 class AcademicLevelSerializer(serializers.ModelSerializer):
@@ -49,7 +66,9 @@ class OrganizationTypeSerializer(serializers.ModelSerializer):
 
 
 class AuthTokenWithEmailSerializer(serializers.Serializer):
-    email = serializers.EmailField(trim_whitespace=True)
+    email = serializers.EmailField(
+        trim_whitespace=True,
+        style={'input_type': 'email'})
     password = serializers.CharField(
         style={'input_type': 'password'},
         trim_whitespace=False

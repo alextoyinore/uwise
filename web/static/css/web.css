@@ -1,12 +1,16 @@
 /* styles.css */
 /* Add your styles for the authentication page here */
 
+html {
+  scroll-behavior: smooth;
+  transition: .5s ease-in-out;
+}
+
 body{
   font-family: 'Open Sans', sans-serif;
   margin: 0;
   padding: 0;
-  scroll-behavior: smooth;
-  transition: .5s ease-in-out;
+  background: #fafcff;
 }
 
 h1{
@@ -39,8 +43,8 @@ h2 {
 }
 
 hr {
-  margin: 0;
-  color: #cccccc;
+  margin: 5px 0;
+  color: #c3d3ec55;
 }
 
 p {
@@ -54,6 +58,10 @@ textarea {
   outline: 0;
   border: 1px solid #ccc;
   padding: 20px;
+}
+
+.center-txt {
+  text-align: center;
 }
 
 /* Styles for small screens (up to 767px) */
@@ -75,6 +83,10 @@ textarea {
     gap: 50px;
     padding: 25px 0;
     margin-top: 100px;
+  }
+
+  .auth-form {
+    width: 400px;
   }
 
   .left-bottom-switcher {
@@ -104,11 +116,15 @@ textarea {
   .input-label {
     padding: 8px 0;
   }
+
+  #login-form, #signup-form {
+    width: 400px;
+    margin: auto;
+  }
   
   form {
     display: flex;
     flex-direction: column;
-    width: 400px;
     border: 1px solid #011F5510;
     background: #fff;
     border-radius: 20px;
@@ -331,10 +347,8 @@ textarea {
     width: 100%;
     display: flex;
     align-items: center;
-    /* background: #011F5511; */
-    /* border-bottom: 1px solid #011F5544; */
-    background: #c3d3ec;
-    /*border-bottom: 1px solid #10DC80;*/
+    background: #deeaff;
+    border-bottom: 1px solid #c3d3ec;
   }
 
   .close-icon{
@@ -442,9 +456,15 @@ textarea {
   }
 
    .green {
-        background: #10DC80;
-        color: #fff;
-    }
+      background: #10DC80;
+      color: #fff;
+      border: 1px solid #0aa65e;
+      font-weight: bold;
+   }
+
+   .green:hover {
+     border-color: #011F55;
+   }
 
    .hero-content-right {
     width: 50%;
@@ -492,6 +512,9 @@ textarea {
   .carousel-section-header{
     display: flex;
     justify-content: space-between;
+  }
+  .carousel-section-title {
+    margin-bottom: 20px;
   }
 
   .carousel-wrapper {
@@ -702,6 +725,7 @@ textarea {
     margin: 10px 0;
     justify-content: space-between;
     width: 100%;
+    flex-wrap: wrap;
   }
 
   .footer-nav{

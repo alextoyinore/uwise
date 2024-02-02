@@ -30,12 +30,14 @@ class UserView(ModelViewSet):
     def destroy(self, request, *args, **kwargs):
         instance = self.get_object()
         instance.delete()
-        return Response({'message': f'Gender Type "{instance}" deleted successfully'},
+        return Response({'message': f'User "{instance}" deleted successfully'},
                         status=status.HTTP_204_NO_CONTENT)
+
 
 class ReferralView(ModelViewSet):
     serializer_class = serializers.ReferralSerializer
     queryset = Referral.objects.all()
+
 
 class AcademicLevelView(ModelViewSet):
     serializer_class = serializers.AcademicLevelSerializer
@@ -87,6 +89,7 @@ class ProfileView(ModelViewSet):
         current_user = request.user
         serialized_user = serializers.UserSerializer(current_user)
         return Response(serialized_user.data)
+
 
 class LogoutView(ModelViewSet):
     permission_classes = [IsAuthenticated]

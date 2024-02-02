@@ -7,6 +7,7 @@ class CourseLevelSerializer(serializers.ModelSerializer):
         model = CourseLevel
         fields = '__all__'
 
+
 class AnswerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Answer
@@ -31,24 +32,34 @@ class VideoSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-
 class FieldSerializer(serializers.ModelSerializer):
     class Meta:
         model = Field
         fields = '__all__'
 
 
-class ProgrammeSerializer(serializers.ModelSerializer):
+class SpecializationSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Programme
+        model = Specialization
         fields = '__all__'
 
 
-# class SpecializationCourseSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = SpecializationCourse
-#         fields = '__all__'
+class SpecializationCourseSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SpecializationCourse
+        fields = '__all__'
 
+
+class UserCourseSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserCourse
+        fields = '__all__'
+
+
+class CourseFacilitatorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CourseFacilitator
+        fields = '__all__'
 
 
 class ImageSerializer(serializers.ModelSerializer):
@@ -63,12 +74,10 @@ class LessonSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-
 class CourseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Course
         fields = '__all__'
-
 
 
 class ReadingSerializer(serializers.ModelSerializer):
@@ -77,11 +86,7 @@ class ReadingSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-
 class QuizSerializer(serializers.ModelSerializer):
     class Meta:
         model = Quiz
         fields = '__all__'
-
-
-

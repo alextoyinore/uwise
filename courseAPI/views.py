@@ -1,5 +1,5 @@
 from rest_framework import status
-from rest_framework.permissions import IsAdminUser
+from rest_framework.permissions import IsAdminUser, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 
@@ -74,13 +74,26 @@ class ReadingViewSet(ModelViewSet):
     permission_classes = [IsAdminUser]
 
 
-class ProgrammeViewSet(ModelViewSet):
-    queryset = Programme.objects.all()
-    serializer_class = ProgrammeSerializer
+class SpecializationViewSet(ModelViewSet):
+    queryset = Specialization.objects.all()
+    serializer_class = SpecializationSerializer
     permission_classes = [IsAdminUser]
 
 
-# class SpecializationCourseViewSet(ModelViewSet):
-#     queryset = SpecializationCourse.objects.all()
-#     serializer_class = SpecializationCourseSerializer
-#     permission_classes = [IsAdminUser]
+class SpecializationCourseViewSet(ModelViewSet):
+    queryset = SpecializationCourse.objects.all()
+    serializer_class = SpecializationCourseSerializer
+    permission_classes = [IsAdminUser]
+
+
+class UserCourseViewSet(ModelViewSet):
+    queryset = UserCourse.objects.all()
+    serializer_class = UserCourseSerializer
+    permission_classes = [IsAuthenticated]
+
+
+class CourseFacilitatorViewSet(ModelViewSet):
+    queryset = CourseFacilitator.objects.all()
+    serializer_class = CourseFacilitatorSerializer
+    permission_classes = [IsAdminUser]
+
