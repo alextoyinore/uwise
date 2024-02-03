@@ -4,20 +4,20 @@
 
 
 {% block hero %}
-    {% if not user.is_authenticated %}
+    {% if not user.is_authenticated or user.is_authenticated and user.is_superuser %}
         {% include 'widgets/hero2.html' %}
     {% endif %}
 {% endblock %}
 
 
 {% block content %}
-    {% if user.is_authenticated %}
+    {% if user.is_authenticated and not user.is_superuser and not user.is_facilitator %}
                 <br><br><br>
         <div class="user-content-wrapper">
             <div class="user-content">
                 <nav class="dash-nav">
                     <a href="#description" class="btn-nav">Home</a>
-                    <a href="#objectives" class="btn-nav">My Learning</a>
+                    <a href="#objectives" class="btn-nav">My Library</a>
                     <a href="#courses" class="btn-nav">Completed</a>
                     <a href="#testimonials" class="btn-nav">Explore</a>
                 </nav>
@@ -30,13 +30,23 @@
         </div>
     {% endif %}
     <section id="content">
-        <div {% if user.is_authenticated %} id="home-content" {% endif %} class="content">
+        <div {% if user.is_authenticated and not user.is_superuser and not user.is_facilitator %} id="home-content" {% endif %} class="content">
 
-            {% include 'widgets/course_carousel.html' with carousels=data.carousels %}
+            {% if data.carousels is not None or empty %}
+                {% for carousel in data.carousels %}
+                    {% include 'widgets/course_carousel.html' with carousel=carousel %}
+                {% endfor %}
+            {% endif %}
+
             <br><br>
             {% include 'widgets/biginfo.html' %}
             <br><br>
-            {% include 'widgets/course_carousel.html' with carousels=data.carousels %}
+
+            {% if data.carousels is not None or empty %}
+                {% for carousel in data.carousels %}
+                    {% include 'widgets/course_carousel.html' with carousel=carousel %}
+                {% endfor %}
+            {% endif %}
 
             <br><br>
             {% include 'widgets/testimonial_carousel.html' with testimonials=data.testimonials %}
@@ -45,7 +55,7 @@
         </div>
     </section>
 
-    {% if not user.is_authenticated %}
+    {% if not user.is_authenticated or user.is_authenticated and user.is_superuser or user.is_facilitator %}
         <section class="bottom-cta">
             <strong>What do you want to learn?</strong>
             <p>Wherever your heart leads, tech, vocational, or professional path,

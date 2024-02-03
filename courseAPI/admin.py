@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import *
 
-from courseAPI.models import Course, Lesson, Field, UserCourse, CourseFacilitator
+from courseAPI.models import Course, Lesson, Field, UserCourse, CourseFacilitator, UserLesson
 
 
 # Register your models here.
@@ -13,7 +13,7 @@ class CourseLevelAdmin(admin.ModelAdmin):
 
 @admin.register(Course)
 class CourseAdmin(admin.ModelAdmin):
-    list_display = ('title', 'description', 'duration', 'level', 'is_active', 'field')
+    list_display = ('title', 'description', 'duration', 'level', 'price', 'is_active', 'field')
     search_fields = ('title', 'level', 'active', 'field')
 
 
@@ -87,3 +87,9 @@ class UserCourseAdmin(admin.ModelAdmin):
 class CourseFacilitatorAdmin(admin.ModelAdmin):
     list_display = ('facilitator', 'course', 'date')
     search_fields = ('facilitator', 'course', 'date')
+
+
+@admin.register(UserLesson)
+class UserLessonAdmin(admin.ModelAdmin):
+    list_display = ('lesson', 'user',)
+    search_fields = ('lesson', 'user')

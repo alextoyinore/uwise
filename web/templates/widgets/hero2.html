@@ -5,16 +5,9 @@
             <p>Wealth comes from wisdom, wisdom comes from understanding, understanding comes from knowledge, all knowledge comes from God</p>
         </div>
         <div class="hero2-content-bottom">
-            <a href="" class="btn-cta-light dark">Programming & Software</a>
-            <a href="" class="btn-cta-light dark">Data Science</a>
-            <a href="" class="btn-cta-light dark">Business Analysis</a>
-            <a href="" class="btn-cta-light dark">Ai & ML</a>
-            <a href="" class="btn-cta-light dark">DevOps</a>
-            <a href="" class="btn-cta-light dark">Marketing</a>
-            <a href="" class="btn-cta-light dark">Industrialization</a>
-            <a href="" class="btn-cta-light dark">Polity</a>
-            <a href="" class="btn-cta-light dark">Art & Creatives</a>
-            <a href="" class="btn-cta-light dark">Health & Medicine</a>
+            {% for field in data.fields %}
+                <a href="{% url 'explore' %}?q={{ field }}" class="btn-cta-light dark">{{ field }}</a>
+            {% endfor %}
         </div>
         <div class="hero2-cta">
             <a href="{% url 'signup' %}" class="btn-cta-light hero-cta bold">Get Started</a>

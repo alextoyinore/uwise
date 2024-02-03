@@ -4,20 +4,22 @@
         <div class="header-nav-left">
             <a href="{% url 'home' %}"><img class="logo" src="{% static 'images/uwise.png' %}" alt="Uwise Logo"></a>
             {% if data.page is not 'enroll' %}
-                <a href="{% url 'course-list' %}">Learn <span class="material-symbols-outlined">expand_more</span> </a>
+                <a href="{% url 'explore' %}">Explore &nbsp; <span class="material-symbols-outlined">list</span> </a>
             {% endif %}
         </div>
         <div class="header-nav-right">
-            {% if user.is_authenticated %}
+            {% if user.is_authenticated and not user.is_superuser and not user.is_facilitator %}
                 <div class="header-profile">
                     <div class="header-profile-details">
-                        <b>{{ user.get_full_name }}</b>
+                        <b>{{ user.get_full_name | title }}</b>
                         {% if user.current_job_title == '' %} <a href="">Update your profile</a> {% else %} <a href="">{{ user.current_job_title }}</a> {% endif %}
                         <div class="header-profile-menu">
                             <a href="">Profile</a>
-                            <a href="">My Learning</a>
+                            <a href="">My Library</a>
                             <a href="">Payments</a>
                             <a href="">Favourites</a>
+                            <a href="">Announcements</a>
+                            <a href="">Certificates & Badges</a>
                             <a id="logout" href="{% url 'logout-user' %}" onclick="" class="logout">Logout</a>
                         </div>
                     </div>
@@ -81,10 +83,11 @@
         display: none;
         z-index: 1;
         position: absolute;
-        width: 150px;
+        width: 200px;
         background: #ffffffee;
         border: 1px solid #c3d3ec;
         top: 50px;
+        right: 0;
         {#border-radius: 5px;#}
     }
     .header-profile-menu a {
@@ -93,7 +96,7 @@
         padding: 10px 20px;
     }
     .header-profile-menu a:hover {
-        background: #c3d3ec;
+        background: #c3d3ec55;
         {#color: #ffffff;#}
         {#border-radius: 5px;#}
     }

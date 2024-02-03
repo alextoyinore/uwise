@@ -80,6 +80,12 @@ class CourseSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class UserLessonSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserLesson
+        fields = '__all__'
+
+
 class ReadingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Reading

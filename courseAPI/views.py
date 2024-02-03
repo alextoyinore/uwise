@@ -61,6 +61,10 @@ class LessonViewSet(ModelViewSet):
     serializer_class = LessonSerializer
     permission_classes = [IsAdminUser]
 
+class UserLessonViewSet(ModelViewSet):
+    queryset = UserLesson.objects.all()
+    serializer_class = UserLessonSerializer
+    permission_classes = [IsAuthenticated]
 
 class QuizViewSet(ModelViewSet):
     queryset = Quiz.objects.all()
