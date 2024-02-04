@@ -57,14 +57,14 @@ INSTALLED_APPS = [
     "blogAPI.apps.BlogAPIConfig",
     "web.apps.WebConfig",
     "social_django",
-    "fontawesomefree",
+    # "fontawesomefree",
     "djoser",
 ]
 
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.google.GoogleOAuth2',
     'django.contrib.auth.backends.ModelBackend',
-    'uwise.backends.TokenAuthenticationBackend',
+    # 'uwise.backends.TokenAuthenticationBackend',
 )
 
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
