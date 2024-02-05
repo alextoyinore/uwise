@@ -64,7 +64,6 @@ INSTALLED_APPS = [
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.google.GoogleOAuth2',
     'django.contrib.auth.backends.ModelBackend',
-    'uwise.backends.TokenAuthenticationBackend',
 )
 
 SOCIAL_AUTH_URL_NAMESPACE = 'social'

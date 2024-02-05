@@ -1,11 +1,11 @@
 <article class="testimonial-card">
     <div class="student-photo">
-        <img src="{{ message.student_photo }}" alt="">
+        <img src="{{ message.user.image }}" alt="">
     </div>
 
     <div class="message-column">
-        <h3>{{ message.student_name }}</h3>
-        <p>{{ message.message }}</p>
+        <h3>{{ message.user.get_full_name | title }}</h3>
+        <p>{{ message.message | truncatewords:"20" }}</p>
         <i>{{ message.date }}</i>
     </div>
 
@@ -14,7 +14,7 @@
 <style>
     .testimonial-card {
         width: 400px;
-        height: 125px;
+        {#height: 125px;#}
         background: #ffffff;
         display: flex;
         flex-direction: row;
@@ -45,7 +45,8 @@
     }
     
     .message-column p {
-        font-size: 12px;
+        font-size: 10px;
+        line-height: 15px;
     }
     
     .message-column i {
