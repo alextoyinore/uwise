@@ -10,25 +10,54 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser
 class CategoryViewSet(ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
-    permission_classes = [IsAdminUser]
+
+    def get_permissions(self):
+        if self.action == 'retrieve' or self.action == 'list':
+            permission_classes = []
+        else:
+            permission_classes = [IsAdminUser]
+
+        return [permission() for permission in permission_classes]
 
 
 class TagViewSet(ModelViewSet):
     queryset = Tag.objects.all()
     serializer_class = TagSerializer
-    permission_classes = [IsAdminUser]
+
+    def get_permissions(self):
+        if self.action == 'retrieve' or self.action == 'list':
+            permission_classes = []
+        else:
+            permission_classes = [IsAdminUser]
+
+        return [permission() for permission in permission_classes]
 
 
 class LanguageViewSet(ModelViewSet):
     queryset = Language.objects.all()
     serializer_class = LanguageSerializer
-    permission_classes = [IsAdminUser]
+
+    def get_permissions(self):
+        if self.action == 'retrieve' or self.action == 'list':
+            permission_classes = []
+        else:
+            permission_classes = [IsAdminUser]
+
+        return [permission() for permission in permission_classes]
 
 
 class GenderViewSet(ModelViewSet):
     serializer_class = GenderSerializer
     queryset = Gender.objects.all()
-    permission_classes = [IsAdminUser]
+
+    def get_permissions(self):
+        if self.action == 'retrieve' or self.action == 'list':
+            permission_classes = []
+        else:
+            permission_classes = [IsAdminUser]
+
+        return [permission() for permission in permission_classes]
+
 
 
 class GradeViewSet(ModelViewSet):
@@ -36,7 +65,7 @@ class GradeViewSet(ModelViewSet):
     queryset = Grade.objects.all()
 
     def get_permissions(self):
-        if self.action == 'retrieve':
+        if self.action == 'retrieve' or self.action == 'list':
             permission_classes = [IsAuthenticated, IsAdminUser]
         else:
             permission_classes = [IsAdminUser]
@@ -49,6 +78,18 @@ class MessageViewSet(ModelViewSet):
     queryset = Message.objects.all()
     permission_classes = [IsAuthenticated, IsAdminUser]
 
+
+class AnnouncementViewSet(ModelViewSet):
+    serializer_class = AnnouncementSerializer
+    queryset = Announcement.objects.all()
+
+    def get_permissions(self):
+        if self.action == 'retrieve' or self.action == 'list':
+            permission_classes = [IsAuthenticated, IsAdminUser]
+        else:
+            permission_classes = [IsAdminUser]
+
+        return [permission() for permission in permission_classes]
 
 class NoteViewSet(ModelViewSet):
     serializer_class = NoteSerializer

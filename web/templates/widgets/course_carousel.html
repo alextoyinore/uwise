@@ -1,9 +1,9 @@
 
-{#{% if carousel is not None %}#}
+{% if carousel is not None %}
 <section class="carousel-section">
     <div class="carousel-section-header">
         <div class="carousel-section-title">
-            <h3>{{carousel.title}} . <a href="">See All</a></h3>
+            <h3>{{ carousel.title }} . <a href="{% url 'explore' %}?q={{ carousel.title }}">See All</a></h3>
         </div>
         <div class="carousel-section-navs">
             <div class="slider-wrapper">
@@ -18,7 +18,7 @@
     <div class="carousel-wrapper">
         <div class="carousel-track">
             <div class="carousel-items">
-                {% for course in carousel.courses %}
+                {% for course in carousel.courses.all %}
                     {% include 'widgets/course_card.html' with course=course %}
                 {% endfor %}
             </div>
@@ -26,5 +26,5 @@
     </div>
 </section>
 
-{#{% endif %}#}
+{% endif %}
 

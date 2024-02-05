@@ -3,56 +3,67 @@
     <div class="footer-wrapper">
         <div class="footer-content">
               <div class="footer-nav-list">
-        
-                <div class="footer-nav">
+              
+                  <div class="footer-nav">
                     <strong class="footer-nav-title">For</strong>
                     <a href="">Individual</a>
                     <a href="">School</a>
                     <a href="">Business</a>
                     <a href="">Government</a>
                 </div>
-
-                <div class="footer-nav">
-                    <strong class="footer-nav-title">Vocationals</strong>
-                    <a href="">Clothing & Design</a>
-                    <a href="">Catering</a>
-                    <a href="">Heavy Duty Engineering</a>
-                    <a href="">Heavy Duty Operator</a>
-                    <a href="">Shoe Making</a>
-                    <a href="">Hair & Cosmetics</a>
-                    <a href="">Carpentry</a>
-                </div>
-
-                <div class="footer-nav">
-                    <strong class="footer-nav-title">Tech (Code)</strong>
-                    <a href="">UI/UX</a>
-                    <a href="">Front-End</a>
-                    <a href="">Backend</a>
-                    <a href="">Mobile Engineering</a>
-                    <a href="">Database Engineering</a>
-                    <a href="">AI & ML</a>
-                </div>
-
-                <div class="footer-nav">
-                    <strong class="footer-nav-title">Tech (No-Code)</strong>
-                    <a href="">DevOps</a>
-                    <a href="">Product Design</a>
-                    <a href="">Data Analysis</a>
-                    <a href="">Product Management</a>
-                    <a href="">Digital Marketing</a>
-                    <a href="">Technical Writing</a>
-                </div>
                   
-                <div class="footer-nav">
-                    <strong class="footer-nav-title">Places</strong>
-                    <a href="{% url 'login' %}">Student</a>
-                    <a href="">Facilitate</a>
-                    <a href="">Blog</a>
-                    <a href="{% url 'about' %}">About</a>
-                    <a href="{% url 'privacy' %}">Privacy</a>
-                    <a href="{% url 'contact' %}">Contact</a>
-                    <a href="">FAQ</a>
-                </div>
+                  {% for footer_nav in data.footer_navs %}
+                      <div class="footer-nav">
+                        <strong class="footer-nav-title">{{ footer_nav.title }}</strong>
+                          {% for footer_link in footer_nav.footer_links.all %}
+                              <a href="{% url 'explore' %}?q={{ footer_link }}">{{ footer_link }}</a>
+                          {% endfor %}
+                      </div>
+                  {% endfor %}
+        
+
+{##}
+{#                <div class="footer-nav">#}
+{#                    <strong class="footer-nav-title">Vocationals</strong>#}
+{#                    <a href="">Clothing & Design</a>#}
+{#                    <a href="">Catering</a>#}
+{#                    <a href="">Heavy Duty Engineering</a>#}
+{#                    <a href="">Heavy Duty Operator</a>#}
+{#                    <a href="">Shoe Making</a>#}
+{#                    <a href="">Hair & Cosmetics</a>#}
+{#                    <a href="">Carpentry</a>#}
+{#                </div>#}
+{##}
+{#                <div class="footer-nav">#}
+{#                    <strong class="footer-nav-title">Tech (Code)</strong>#}
+{#                    <a href="">UI/UX</a>#}
+{#                    <a href="">Front-End</a>#}
+{#                    <a href="">Backend</a>#}
+{#                    <a href="">Mobile Engineering</a>#}
+{#                    <a href="">Database Engineering</a>#}
+{#                    <a href="">AI & ML</a>#}
+{#                </div>#}
+{##}
+{#                <div class="footer-nav">#}
+{#                    <strong class="footer-nav-title">Tech (No-Code)</strong>#}
+{#                    <a href="">DevOps</a>#}
+{#                    <a href="">Product Design</a>#}
+{#                    <a href="">Data Analysis</a>#}
+{#                    <a href="">Product Management</a>#}
+{#                    <a href="">Digital Marketing</a>#}
+{#                    <a href="">Technical Writing</a>#}
+{#                </div>#}
+{##}
+{#                <div class="footer-nav">#}
+{#                    <strong class="footer-nav-title">Places</strong>#}
+{#                    <a href="{% url 'login' %}">Student</a>#}
+{#                    <a href="">Facilitate</a>#}
+{#                    <a href="">Blog</a>#}
+{#                    <a href="{% url 'about' %}">About</a>#}
+{#                    <a href="{% url 'privacy' %}">Privacy</a>#}
+{#                    <a href="{% url 'contact' %}">Contact</a>#}
+{#                    <a href="">FAQ</a>#}
+{#                </div>#}
 
                 <div class="footer-nav">
                     <strong class="footer-nav-title">Uwise</strong>

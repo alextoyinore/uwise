@@ -1,13 +1,13 @@
 
-{% for testimonial in testimonials %}
+{#{% for testimonial in testimonials %}#}
 <section class="auto-slider-section">
     <div class="auto-slider-header">
         <div class="auto-slider-title">
-            <h3>{{testimonial.title}} . <a href="">See All</a></h3>
+            <h3>Testimonials . <a href="">See All</a></h3>
         </div>
         <div class="auto-slider-navs">
             <div class="dots-wrapper">
-                {% for message in testimonial.messages %}
+                {% for message in testimonials %}
                     <div class="dots"></div>
                 {% endfor %}
             </div>
@@ -16,7 +16,7 @@
     <div class="auto-slider-wrapper">
         <div class="auto-slider-track">
             <div class="auto-slider-items">
-                {% for message in testimonial.messages %}
+                {% for message in testimonials %}
                     {% include 'widgets/testimonial_card.html' with message=message %}
                 {% endfor %}
             </div>
@@ -24,7 +24,7 @@
     </div>
 </section>
 
-{% endfor %}
+{#{% endfor %}#}
 
 <style>
     .auto-slider-header {

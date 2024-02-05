@@ -23,7 +23,7 @@
                 </nav>
 
                 <div class="user-courses">
-                    <h1>My Courses</h1>
+                    <h1>My Library</h1>
                     {% include 'widgets/course_carousel.html' with carousels=data.carousels %}
                 </div>
             </div>
@@ -42,16 +42,17 @@
             {% include 'widgets/biginfo.html' %}
             <br><br>
 
-            {% if data.carousels is not None or empty %}
-                {% for carousel in data.carousels %}
-                    {% include 'widgets/course_carousel.html' with carousel=carousel %}
-                {% endfor %}
-            {% endif %}
+{#            {% if data.carousels is not None or empty %}#}
+{#                {% for carousel in data.carousels %}#}
+{#                    {% include 'widgets/course_carousel.html' with carousel=carousel %}#}
+{#                {% endfor %}#}
+{#            {% endif %}#}
 
             <br><br>
             {% include 'widgets/testimonial_carousel.html' with testimonials=data.testimonials %}
             <br><br>
             {% include 'widgets/partners.html' %}
+            <br><br>
         </div>
     </section>
 
@@ -69,6 +70,7 @@
     .user-content-wrapper {
         width: 100%;
         background: #c3d3ec44;
+        padding: 25px 0;
     }
     .user-content {
         width: 70%;

@@ -67,15 +67,27 @@ urlpatterns = [
 
     # MESSAGE
 
-    path('messages', view=GenderViewSet.as_view({
+    path('messages', view=MessageViewSet.as_view({
         'post': 'create',
         'get': 'list'}), name='messages'),
-    path('message/<int:pk>', view=GenderViewSet.as_view({
+    path('message/<int:pk>', view=MessageViewSet.as_view({
         'get': 'retrieve',
         'put': 'update',
         'patch': 'partial_update',
         'delete': 'destroy',
     }), name='message'),
+
+    # MESSAGE
+
+    path('announcements', view=AnnouncementViewSet.as_view({
+        'post': 'create',
+        'get': 'list'}), name='announcements'),
+    path('announcement/<int:pk>', view=AnnouncementViewSet.as_view({
+        'get': 'retrieve',
+        'put': 'update',
+        'patch': 'partial_update',
+        'delete': 'destroy',
+    }), name='announcement'),
 
 
     # NOTE

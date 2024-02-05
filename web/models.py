@@ -6,10 +6,9 @@ from courseAPI.models import Course
 # Create your models here.
 
 class CourseCarousel(models.Model):
-    title = models.CharField(max_length=200, verbose_name='course_carousel', null=False, blank=False)
-    courses = models.ManyToManyField(Course, verbose_name='courses', related_name='course_carousel_courses',
-                                     blank=False)
-    date = models.DateField(auto_now=True, verbose_name='date', null=False, blank=False)
+    title = models.CharField(max_length=200, verbose_name='Carousel Title', null=False, blank=False)
+    courses = models.ManyToManyField(Course)
+    date = models.DateField(auto_now=True, verbose_name='Date', null=False, blank=False)
     is_active = models.BooleanField(default=True, verbose_name='active', null=False)
 
     def __str__(self):

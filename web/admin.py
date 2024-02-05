@@ -26,3 +26,4 @@ class FooterTitleAdmin(admin.ModelAdmin):
 class FooterLinkAdmin(admin.ModelAdmin):
     list_display = ('title', 'url_name', 'url')
     search_fields = ('title',)
+

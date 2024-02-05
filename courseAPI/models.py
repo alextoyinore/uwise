@@ -50,6 +50,7 @@ class Course(models.Model):
     organization = models.ForeignKey(Organization, on_delete=models.SET_NULL, swappable=True, null=True, blank=True)
     level = models.ForeignKey('CourseLevel', on_delete=models.SET_NULL, null=True, blank=True,
                               related_name='course_level')
+    lessons = models.ManyToManyField('Lesson', related_name='course_lessons')
     skills = models.CharField(max_length=200, null=True, blank=True)
     tags = models.CharField(max_length=200, null=True, blank=True)
     objectives = models.TextField(blank=True, null=True)
@@ -101,13 +102,14 @@ class CourseLevel(models.Model):
 
 
 class Lesson(models.Model):
-    course = models.ForeignKey('Course', on_delete=models.CASCADE)
+    course = models.ForeignKey('Course', on_delete=models.CASCADE, null=True, blank=True)
     title = models.CharField(max_length=200, null=False, blank=False)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     week = models.IntegerField(blank=False, null=False)
     description = models.TextField(blank=False, null=False)
     is_active = models.BooleanField(default=True)
     date_created = models.DateField(auto_now=True)
+    time_duration = models.IntegerField()
 
     def __str__(self):
         return self.title

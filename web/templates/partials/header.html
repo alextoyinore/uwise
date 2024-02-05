@@ -16,8 +16,10 @@
                         <div class="header-profile-menu">
                             <a href="">Profile</a>
                             <a href="">My Library</a>
-                            <a href="">Payments</a>
+                            <a href="">Purchases</a>
                             <a href="">Favourites</a>
+                            <a href="">Messages</a>
+                            <a href="">Forum</a>
                             <a href="">Announcements</a>
                             <a href="">Certificates & Badges</a>
                             <a id="logout" href="{% url 'logout-user' %}" onclick="" class="logout">Logout</a>
@@ -32,11 +34,11 @@
                     </div>
                 </div>
             {% else %}
-                {% if data.page == 'home' or data.page == 'course' %}
-                <div class="header-search">
-                    <span class="material-symbols-outlined search-icon">search</span>
-                    <input class="header-search-input search" placeholder="What do you want to learn?" type="search" />
-                </div>
+                {% if data.page == 'home' or data.page == 'course' or data.page == 'enroll' or data.page == 'explore' %}
+                    <div class="header-search">
+                        <span class="material-symbols-outlined search-icon">search</span>
+                        <input class="header-search-input search" placeholder="What do you want to learn?" type="search" />
+                    </div>
                     <a class="btn-cta-light" href="{% url 'login' %}">Login</a>
                     <a class="btn-cta blue" href="{% url 'signup' %}">Get Started</a>
                 {% elif data.page == 'login' %}
@@ -88,6 +90,7 @@
         border: 1px solid #c3d3ec;
         top: 50px;
         right: 0;
+        {#text-align: left;#}
         {#border-radius: 5px;#}
     }
     .header-profile-menu a {

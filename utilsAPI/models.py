@@ -10,6 +10,10 @@ class Category(models.Model):
     slug = models.SlugField()
     description = models.CharField(max_length=200, null=False, blank=False)
 
+    class Meta:
+        ordering = ('name',)
+        verbose_name_plural = 'Categories'
+
     def __str__(self):
         return self.name
 
@@ -88,12 +92,27 @@ class Message(models.Model):
         return self.message
 
 
+class Announcement(models.Model):
+    title = models.CharField(max_length=200, null=False, blank=False)
+    message = models.TextField()
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    course = models.ForeignKey(Course, on_delete=models.SET_NULL, null=True, blank=True)
+    date = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
+
+
 # Only accessible to Super Admins
 class MaritalStatus(models.Model):
     title = models.CharField(max_length=200, null=False, blank=False)
     description = models.CharField(max_length=200, null=False, blank=False)
     active = models.BooleanField(default=True)
     date = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ('date',)
+        verbose_name_plural = 'Marital Statuses'
 
     def __str__(self):
         return self.title
@@ -113,8 +132,8 @@ class Gender(models.Model):
 class Testimonial(models.Model):
     title = models.CharField(max_length=200, blank=False, null=False)
     message = models.TextField(null=False, blank=False)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    course = models.ForeignKey(Course, on_delete=models.CASCADE, null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, null=True, blank=True)
     date = models.DateTimeField(auto_now=True)
 
     def __str__(self):
