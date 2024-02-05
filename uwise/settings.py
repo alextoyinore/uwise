@@ -14,7 +14,6 @@ from pathlib import Path
 import os
 
 # from django.conf.global_settings import DATABASES
-# from django.conf.global_settings import DATABASES
 from dotenv import load_dotenv
 import dj_database_url
 
@@ -64,10 +63,6 @@ INSTALLED_APPS = [
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.google.GoogleOAuth2',
     'django.contrib.auth.backends.ModelBackend',
-<<<<<<< HEAD
-    # 'uwise.backends.TokenAuthenticationBackend',
-=======
->>>>>>> 5fb154dd04e0f95a7f5b61a0fc3991171e4a4916
 )
 
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
