@@ -1,7 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-
-# from utilsAPI.models import Gender, MaritalStatus
 from authAPI.manager import CustomUserManager
 
 
@@ -104,4 +102,5 @@ class Referral(models.Model):
 
     def __str__(self) -> str:
         return self.referrer.get_full_name()
+
 

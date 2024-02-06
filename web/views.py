@@ -105,7 +105,7 @@ class HomeView(TemplateView):
             'fields': fields,
             'footer_navs': footer_navs,
         }
-        print(data)
+        # print(data)
         context = {'data': data}
         return render(request, self.template_name, context)
 

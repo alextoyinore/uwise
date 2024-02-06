@@ -1,14 +1,13 @@
 <article class="testimonial-card">
     <div class="student-photo">
-        <img src="{{ message.user.image }}" alt="">
+        <img src="{{ testimonial.user.image }}" alt="">
     </div>
 
     <div class="message-column">
-        <h3>{{ message.user.get_full_name | title }}</h3>
-        <p>{{ message.message | truncatewords:"20" }}</p>
-        <i>{{ message.date }}</i>
+        <h3>{{ testimonial.user.get_full_name | title }}</h3>
+        <p>{{ testimonial.message | truncatewords:"20" }}</p>
+        <i>{{ testimonial.date }}</i>
     </div>
-
 </article>
 
 <style>

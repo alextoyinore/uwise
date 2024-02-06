@@ -16,8 +16,8 @@
     <div class="auto-slider-wrapper">
         <div class="auto-slider-track">
             <div class="auto-slider-items">
-                {% for message in testimonials %}
-                    {% include 'widgets/testimonial_card.html' with message=message %}
+                {% for testimonial in testimonials %}
+                    {% include 'widgets/testimonial_card.html' with testimonial=testimonial %}
                 {% endfor %}
             </div>
         </div>

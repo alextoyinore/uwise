@@ -139,3 +139,12 @@ class Testimonial(models.Model):
     def __str__(self):
         return self.message
 
+
+class Favourite(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    courses = models.ManyToManyField(Course)
+    date = models.DateField(null=False, blank=False, auto_now=True)
+
+    def __str__(self) -> str:
+        return self.courses.all()
+
