@@ -83,15 +83,15 @@ urlpatterns = [
 
     # MODULE
 
-    path('lessons', view=LessonViewSet.as_view({
+    path('classes', view=ClassViewSet.as_view({
         'post': 'create',
-        'get': 'list'}), name='lessons'),
-    path('lesson/<int:pk>', view=LessonViewSet.as_view({
+        'get': 'list'}), name='classes'),
+    path('class/<int:pk>', view=ClassViewSet.as_view({
         'get': 'retrieve',
         'put': 'update',
         'patch': 'partial_update',
         'delete': 'destroy',
-    }), name='lesson'),
+    }), name='class'),
 
 
     # QUESTION
@@ -194,4 +194,57 @@ urlpatterns = [
         'patch': 'partial_update',
         'delete': 'destroy',
     }), name='course-facilitator'),
+
+
+    # FACILITATOR ATTENDANCE
+
+    path('facilitator-attendances', view=FacilitatorAttendanceViewSet.as_view({
+        'post': 'create',
+        'get': 'list'}), name='facilitator-attendances'),
+    path('facilitator-attendance/<int:pk>', view=FacilitatorAttendanceViewSet.as_view({
+        'get': 'retrieve',
+        'put': 'update',
+        'patch': 'partial_update',
+        'delete': 'destroy',
+    }), name='facilitator-attendance'),
+
+
+    # STUDENT ATTENDANCE
+
+    path('student-attendances', view=StudentAttendanceViewSet.as_view({
+        'post': 'create',
+        'get': 'list'}), name='facilitator-attendances'),
+    path('student-attendance/<int:pk>', view=StudentAttendanceViewSet.as_view({
+        'get': 'retrieve',
+        'put': 'update',
+        'patch': 'partial_update',
+        'delete': 'destroy',
+    }), name='student-attendance'),
+
+
+    # ASSESSMENT
+
+    path('assessments', view=AssessmentViewSet.as_view({
+        'post': 'create',
+        'get': 'list'}), name='assessments'),
+    path('assessment/<int:pk>', view=AssessmentViewSet.as_view({
+        'get': 'retrieve',
+        'put': 'update',
+        'patch': 'partial_update',
+        'delete': 'destroy',
+    }), name='assessment'),
+
+
+    # RESOURCE
+
+    path('resources', view=ResourceViewSet.as_view({
+        'post': 'create',
+        'get': 'list'}), name='resources'),
+    path('resource/<int:pk>', view=ResourceViewSet.as_view({
+        'get': 'retrieve',
+        'put': 'update',
+        'patch': 'partial_update',
+        'delete': 'destroy',
+    }), name='resource'),
 ]
+

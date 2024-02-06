@@ -56,13 +56,38 @@ class ImageViewSet(ModelViewSet):
     permission_classes = [IsAdminUser]
 
 
-class LessonViewSet(ModelViewSet):
-    queryset = Lesson.objects.all()
-    serializer_class = LessonSerializer
+class ClassViewSet(ModelViewSet):
+    queryset = Class.objects.all()
+    serializer_class = ClassSerializer
     permission_classes = [IsAdminUser]
 
+
+class FacilitatorAttendanceViewSet(ModelViewSet):
+    queryset = FacilitatorAttendance.objects.all()
+    serializer_class = FacilitatorAttendanceSerializer
+    permission_classes = [IsAdminUser]
+
+
+class StudentAttendanceViewSet(ModelViewSet):
+    queryset = StudentAttendance.objects.all()
+    serializer_class = StudentAttendanceSerializer
+    permission_classes = [IsAuthenticated]
+
+
+class AssessmentViewSet(ModelViewSet):
+    queryset = Assessment.objects.all()
+    serializer_class = AssessmentSerializer
+    permission_classes = [IsAdminUser]
+
+
+class ResourceViewSet(ModelViewSet):
+    queryset = Resource.objects.all()
+    serializer_class = ResourceSerializer
+    permission_classes = [IsAdminUser]
+
+
 class UserLessonViewSet(ModelViewSet):
-    queryset = UserLesson.objects.all()
+    queryset = UserClass.objects.all()
     serializer_class = UserLessonSerializer
     permission_classes = [IsAuthenticated]
 

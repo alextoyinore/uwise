@@ -68,9 +68,33 @@ class ImageSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class LessonSerializer(serializers.ModelSerializer):
+class ClassSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Lesson
+        model = Class
+        fields = '__all__'
+
+
+class FacilitatorAttendanceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FacilitatorAttendance
+        fields = '__all__'
+
+
+class StudentAttendanceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = StudentAttendance
+        fields = '__all__'
+
+
+class AssessmentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Assessment
+        fields = '__all__'
+
+
+class ResourceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Resource
         fields = '__all__'
 
 
@@ -82,7 +106,7 @@ class CourseSerializer(serializers.ModelSerializer):
 
 class UserLessonSerializer(serializers.ModelSerializer):
     class Meta:
-        model = UserLesson
+        model = UserClass
         fields = '__all__'
 
 

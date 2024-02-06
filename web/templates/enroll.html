@@ -14,29 +14,62 @@
             <p>{{ data.course_data.excerpt | truncatewords:"20" }} </p><br>
         </div>
         <div class="enroll-content">
-            <div class="enroll-content-left card">
-                <h3>Enroll in this course but pay later</h3>
-                <ul>
-                    <li>Access general course announcements</li>
-                    <li>Preview course with the first class</li>
-                    <li>Get random free classes</li>
-                </ul>
-                <a href="" class="btn-cta blue">Enroll Now</a>
+            <div class="enroll-content-left">
+                <div class='card'>
+                    <h2>Enroll in this course but pay later</h2>
+                    <ul>
+                        <li>Access general course announcements</li>
+                        <li>Preview course with the first class</li>
+                        <li>Get random free classes</li>
+                        <li>Access general course community</li>
+                    </ul>
+                    <a href="" class="btn-cta blue fill-x">Enroll Now</a>
+                </div>                
             </div>
             
-            <div class="enroll-content-center card">
-                <h3>Buy this course now</h3>
-                <a href="" class="btn-cta green">Pay &#8358; {{ data.course_data.price | floatformat:"2" }}</a>
+            <div class="enroll-content-center">
+                <div class='card'>
+                    <h2>Buy this course now</h2>
+                    <ul>
+                        <li>Access All Classes</li>
+                        <li>Access all course announcements</li>
+                        <li>Access all course communities</li>
+                        <li>Get help from all course facilitators</li>
+                        <li>Get freebies including heavily discount paid courses</li>
+                        <li>Get certificate upon completion</li>
+                        <li>Get discount on total fee</li>
+                        <li>Eligibility for class rep - Gives access to random free course</li>
+                        <li>Eligibility for course rep - Gives access to free course of choice</li>
+                        <li>Access 6 months on-first-job or startup support</li>
+                    </ul>
+                    <a href="" class="btn-cta green fill-x">Pay &#8358; {{ data.course_data.price | floatformat:"2" }}</a>
+                </div>
             </div>
-            <div class="enroll-content-right card">
-                <h3>Can't afford full course now? Buy a few classes</h3>
-                <a href="" class="btn-cta green">Pay &#8358; {{ data.course_data.price | floatformat:"2" }}</a>
+            
+            <div class="enroll-content-right">
+                <div class='card'>
+                    <h2>Can't afford the full course? <span>Buy a few courses to start</span></h2>
+                    <ul>
+                        <li>Access classes paid for</li>
+                        <li>Access all course announcements</li>
+                        <li>Access some course communities</li>
+                        <li>Get help from class facilitators</li>
+                        <li>Get freebies including heavily discount paid courses</li>
+                        <li>Get certificate upon completion</li>
+                        <li>Total payable fee is higher cumulatively</li>
+                        <li>Access 6 months on-first-job or startup support</li>
+                    </ul>
+                    <a href="" class="btn-cta green fill-x">Pay &#8358; {{ data.course_data.price | floatformat:"2" }}</a>
+                </div>
             </div>
         </div>
     </section>
 </div>
 
     <style>
+        .fill-x {
+            width: 80%;
+        }
         .card {
             background: #fff;
             padding: 20px;

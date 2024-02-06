@@ -153,11 +153,15 @@ class LoginView(TemplateView):
     template_name = 'login.html'
 
     def get(self, request, *args, **kwargs):
+
+        footer_navs = FooterTitle.objects.all()
+
         if self.request.user.is_authenticated and not self.request.user.is_superuser:
             return redirect('home')
 
         data = {
             'page': 'login',
+            'footer_navs': footer_navs,
         }
         context = {'data': data}
         return render(request, self.template_name, context)
@@ -183,11 +187,14 @@ class SignUpView(TemplateView):
     template_name = 'signup.html'
 
     def get(self, request, *args, **kwargs):
+        footer_navs = FooterTitle.objects.all()
+
         if self.request.user.is_authenticated and not self.request.user.is_superuser:
             return redirect('home')
 
         data = {
             'page': 'signup',
+            'footer_navs': footer_navs,
         }
         context = {'data': data}
         return render(request, self.template_name, context)
