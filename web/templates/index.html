@@ -16,15 +16,15 @@
         <div class="user-content-wrapper">
             <div class="user-content">
                 <nav class="dash-nav">
-                    <a href="#description" class="btn-nav">Home</a>
-                    <a href="#objectives" class="btn-nav">My Library</a>
-                    <a href="#courses" class="btn-nav">Completed</a>
-                    <a href="#testimonials" class="btn-nav">Explore</a>
+                    <a href="{% url 'home' %}" class="btn-nav">Home</a>
+                    <a href="{% url 'dashboard' %}#mylibrary" class="btn-nav">My Library</a>
+                    <a href="{% url 'dashboard' %}#completed" class="btn-nav">Completed</a>
+                    <a href="{% url 'explore' %}" class="btn-nav">Explore</a>
                 </nav>
 
                 <div class="user-courses">
                     <h1>My Library</h1>
-                    {% include 'widgets/course_carousel.html' with carousels=data.carousels %}
+                    {% include 'widgets/course_carousel.html' with carousel=data.user_courses_carousels %}
                 </div>
             </div>
         </div>

@@ -10,11 +10,44 @@ import courseAPI.models
 from utilsAPI.models import Testimonial
 from .models import *
 
+
 # Create your views here.
 
 # @register.filter
 # def get_range(value):
 #     return range(value)
+
+class LearnView(TemplateView):
+    template_name = 'learn.html'
+
+    def get(self, request, *args, **kwargs):
+        course_data = courseAPI.models.Course.objects.get(id=kwargs['pk'])
+        data = {
+            'course_data': course_data
+        }
+        context = {'data': data}
+        return render(request, self.template_name, context)
+
+
+class DashboardView(TemplateView):
+    template_name = 'dashboard.html'
+
+    def get(self, request, *args, **kwargs):
+        footer_navs = FooterTitle.objects.all()
+
+        q = request.GET.get('q')
+        fields = courseAPI.models.Field.objects.all()
+        courses = courseAPI.models.UserCourse.objects.filter(user=request.user).all()
+
+        # print(courses)
+        data = {
+            'q': q,
+            'courses': courses,
+            'footer_navs': footer_navs,
+            'page': 'explore',
+        }
+        context = {'data': data}
+        return render(request, self.template_name, context)
 
 
 class CourseView(TemplateView):
@@ -98,14 +131,26 @@ class HomeView(TemplateView):
         carousels = CourseCarousel.objects.all()[:4]
         footer_navs = FooterTitle.objects.all()
 
+        user_courses_carousels = None
+
+        if request.user.is_authenticated:
+            user_courses = courseAPI.models.UserCourse.objects.filter(user=request.user)
+            user_courses_carousels = {
+                'title': 'Enrolled Courses', #request.user.get_full_name(),
+                'courses': user_courses,
+                'is_user_carousel': True,
+            }
+
         data = {
             'carousels': carousels,
             'testimonials': testimonials,
             'page': 'home',
             'fields': fields,
             'footer_navs': footer_navs,
+            'user_courses_carousels': user_courses_carousels
         }
-        # print(data)
+
+        # print(data['user_courses_carousels'])
         context = {'data': data}
         return render(request, self.template_name, context)
 
@@ -203,4 +248,3 @@ class SignUpView(TemplateView):
 def logout_user(request):
     logout(request)
     return redirect('login')
-

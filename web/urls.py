@@ -11,6 +11,8 @@ urlpatterns = [
     path('course/<int:pk>', view=CourseView.as_view(), name='course'),
     path('explore', view=ExploreView.as_view(), name='explore'),
     path('course/<int:pk>/enroll', view=EnrollView.as_view(), name='enroll'),
-    path('user/logout', view=logout_user, name='logout-user')
+    path('user/logout', view=logout_user, name='logout-user'),
+    path('dashboard', view=DashboardView.as_view(), name='dashboard'),
+    path('learn/<int:pk>', view=LearnView.as_view(), name='learn'),
 ]
 

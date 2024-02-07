@@ -70,7 +70,7 @@ class Organization(models.Model):
 
     # ORGANIZATION DATA
     name = models.CharField(max_length=100, null=False, blank=False)
-    logo = models.ImageField(default='', upload_to='')
+    logo = models.URLField(blank=True, null=True)
     address = models.CharField(max_length=500, default='', null=True, blank=True)
     website = models.URLField(null=False, blank=False)
     type = models.ForeignKey('OrganizationType', on_delete=models.PROTECT, null=False, blank=False)

@@ -33,6 +33,9 @@ class SpecializationCourse(models.Model):
     course = models.ForeignKey('Course', on_delete=models.CASCADE)
     is_active = models.BooleanField(default=False)
 
+    class Meta:
+        unique_together = ('specialization', 'course')
+
     def __str__(self):
         return self.specialization.title
 
@@ -69,6 +72,9 @@ class UserCourse(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='course_owner', null=False, blank=False)
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='course')
     date = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('user', 'course')
 
     def __str__(self):
         return f'{self.user.get_full_name()} {self.course.title}'
@@ -154,6 +160,7 @@ class UserClass(models.Model):
 
     class Meta:
         verbose_name_plural = 'User Classes'
+        unique_together = ('the_class', 'user')
 
     def __str__(self):
         return f'{self.user.get_full_name()} {self.the_class.title}'
@@ -174,8 +181,12 @@ class FacilitatorAttendance(models.Model):
     the_class = models.ForeignKey('Class', on_delete=models.CASCADE, related_name='the_class_facilitated')
     date = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        unique_together = ('facilitator', 'the_class')
+
     def __str__(self):
         return f'{self.the_class.title}'
+
 
 class Reading(models.Model):
     the_class = models.ForeignKey('Class', on_delete=models.SET_NULL, null=True)

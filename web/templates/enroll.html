@@ -13,6 +13,7 @@
             <p>{{ data.course_data.field }} . {{ data.course_data.rating_count }} Reviews</p>
             <p>{{ data.course_data.excerpt | truncatewords:"20" }} </p><br>
         </div>
+        <div class="error" style="display: none; color: crimson;"></div>
         <div class="enroll-content">
             <div class="enroll-content-left">
                 <div class='card'>
@@ -23,7 +24,47 @@
                         <li>Get random free classes</li>
                         <li>Access general course community</li>
                     </ul>
-                    <a href="" class="btn-cta blue fill-x">Enroll Now</a>
+                    
+                    <a href="" id="btn-enroll" class="btn-cta blue fill-x">Enroll Now</a>
+
+                    <script>
+                        document.querySelector('#btn-enroll').addEventListener('click', function(event) {
+                            event.preventDefault();
+
+                            const formData = new URLSearchParams();
+                            formData.append('user', {{ user.id }})
+                            formData.append('course', {{ data.course_data.id }})
+
+                             fetch("{% url 'user-courses' %}", {
+                                method: 'POST',
+                                body: formData.toString(),
+                                headers: {
+                                    'Accept': 'application/json',
+                                    'Content-Type': 'application/x-www-form-urlencoded',
+                                    'X-Requested-With': 'XMLHttpRequest',  // Required for Django to identify it as an AJAX request
+                                    'X-CSRFToken': getCookie('csrftoken')  // Include CSRF token for security
+                                },
+                            }).then(response => {
+                                 if (response.ok) {
+                                    window.location.href = '{% url 'home' %}'
+                                 }else{
+                                     return response.json().then(data => {
+                                        console.log(data)
+                                        const error = document.querySelector('.error')
+                                        error.style.display = 'block'
+
+                                        for (d in data){
+                                            console.log(d)
+                                            var newParagraph = document.createElement('b')
+                                            newParagraph.setAttribute('style', 'display: block;')
+                                            newParagraph.textContent = data[d]
+                                            error.appendChild(newParagraph)
+                                        }
+                                    })
+                                 }
+                            })
+                        })
+                    </script>
                 </div>                
             </div>
             
@@ -68,7 +109,7 @@
 
     <style>
         .fill-x {
-            width: 80%;
+            {#width: 80%;#}
         }
         .card {
             background: #fff;

@@ -1,6 +1,6 @@
 {% extends 'partials/base.html' %}
 {% load static %}
-{% block page-title %} Welcome {% endblock %}
+{% block page-title %} Dashboard {% endblock %}
 
 {% block hero %}
 {% endblock %}
@@ -10,38 +10,31 @@
         <div class="courses-content">
             <nav class="filters">
                 <div class="filter-items">
-                    <h2>Filters</h2>
-                    <h3>By Field</h3>
-                    <div class="filter-item-group">
-                        {% for field in data.fields %}
-                            <a href="{% url 'explore' %}?q={{ field }}" class="filter-item">{{ field }}</a>
-                        {% endfor %}
-                    </div>
                     <br>
-                    
-                    <h3>By Price</h3>
                     <div class="filter-item-group">
-                        <span class="filter-item">Free</span>
-                        <span class="filter-item">Under #200k</span>
-                        <span class="filter-item">#200k - #500k</span>
-                        <span class="filter-item">#500k - #1M</span>
-                        <span class="filter-item">#1M - Above</span>
+                        <a class="filter-item" href="{% url 'dashboard' %}#">In Progress</a>
+                        <a class="filter-item" href="{% url 'dashboard' %}#">Enrolled</a>
+                        <a class="filter-item" href="{% url 'dashboard' %}#">Completed</a>
+                        <a class="filter-item" href="{% url 'dashboard' %}#">Favourites</a>
+                        <a class="filter-item" href="{% url 'dashboard' %}#">Wishlist</a>
                     </div>
                 </div>
             </nav>
             <article class="course-list">
+                <h1>{{ request.user.get_full_name }} Dashboard</h1>
 
-                <h2>
-                    {% if data.q is None %} All Courses {% else %} {{ data.q }} {% endif %}
-                </h2> <br>
+                <h3>
+                    {% if data.q is None %} My Library {% else %} {{ data.q }} {% endif %}
+                </h3> <br>
                 <div class="course-grid">
                     {% for course in data.courses %}
-                        {% include 'widgets/course_card.html' with course=course %}
+                        {% include 'widgets/user_course_card.html' with course=course.course %}
                     {% endfor %}
                 </div>
             </article>
         </div>
     </div>
+    
     <style>
         .courses-content {
             display: flex;
@@ -83,10 +76,11 @@
 
         }
         .filter-item {
-            font-size: 10px;
+            width: 100%;
+            font-size: 13px;
             color: #011F55;
-            background: #c3d3ec33;
-            padding: 5px 10px;
+            {#background: #c3d3ec33;#}
+            padding: 10px 10px;
             border-radius: 2px;
             cursor: pointer;
             font-weight: bold;

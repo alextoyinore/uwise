@@ -1,0 +1,39 @@
+
+<a href="{% url 'learn' course.id %}" class="course-card">
+    <div class="course-image">
+        <img src="{{course.image}}" alt="">
+    </div>
+    <div class="course-details">
+        <strong class="course-title">{{course.title}}</strong>
+        <div class="course-details-bottom">
+            <p class="rating"><span class="material-symbols-outlined rating-star">star</span> {{ course.rating }}  ({{ course.rating_count }} reviews)</p>
+            <i class="course-duration">{{course.duration}} Days, {{course.level}}</i>
+        </div>
+    </div>
+</a>
+
+<style>
+    
+    .course-details-bottom {
+        height: 40px;
+        line-height: 25px;
+    }
+    
+    .course-details-bottom p {
+        font-style: italic;
+    }
+
+    .course-details p {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .rating {
+        font-size: 10px;
+    }
+
+    .rating-star {
+        font-size: 14px;
+        color: #011F55;
+    }
+</style>

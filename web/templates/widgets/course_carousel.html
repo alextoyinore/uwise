@@ -3,7 +3,11 @@
 <section class="carousel-section">
     <div class="carousel-section-header">
         <div class="carousel-section-title">
-            <h3>{{ carousel.title }} . <a href="{% url 'explore' %}?q={{ carousel.title }}">See All</a></h3>
+            {% if carousel.is_user_carousel %}
+                <h3>{{ carousel.title }} . <a href="{% url 'dashboard' %}?q={{ carousel.title }}">See All</a></h3>
+            {% else %}
+                <h3>{{ carousel.title }} . <a href="{% url 'explore' %}?q={{ carousel.title }}">See All</a></h3>
+            {% endif %}
         </div>
         <div class="carousel-section-navs">
             <div class="slider-wrapper">
@@ -18,9 +22,15 @@
     <div class="carousel-wrapper">
         <div class="carousel-track">
             <div class="carousel-items">
+            {% if  not carousel.is_user_carousel %}
                 {% for course in carousel.courses.all %}
                     {% include 'widgets/course_card.html' with course=course %}
                 {% endfor %}
+            {% else %}
+                {% for course in carousel.courses.all %}
+                    {% include 'widgets/user_course_card.html' with course=course.course %}
+                {% endfor %}
+            {% endif %}
             </div>
         </div>
     </div>
