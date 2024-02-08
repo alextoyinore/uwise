@@ -86,10 +86,11 @@ class ResourceViewSet(ModelViewSet):
     permission_classes = [IsAdminUser]
 
 
-class UserLessonViewSet(ModelViewSet):
+class UserClassesViewSet(ModelViewSet):
     queryset = UserClass.objects.all()
     serializer_class = UserLessonSerializer
     permission_classes = [IsAuthenticated]
+
 
 class QuizViewSet(ModelViewSet):
     queryset = Quiz.objects.all()
@@ -125,4 +126,3 @@ class CourseFacilitatorViewSet(ModelViewSet):
     queryset = CourseFacilitator.objects.all()
     serializer_class = CourseFacilitatorSerializer
     permission_classes = [IsAdminUser]
-

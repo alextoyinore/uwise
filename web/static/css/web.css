@@ -44,7 +44,8 @@ h2 {
 
 hr {
   margin: 5px 0;
-  color: #c3d3ec55;
+  outline: 0;
+  border: 1px solid #c3d3ec;
 }
 
 p {
@@ -129,7 +130,6 @@ textarea {
     background: #fff;
     border-radius: 20px;
     padding: 40px;
-    /* text-align: center; */
   }
 
   form p{
@@ -548,7 +548,6 @@ textarea {
     border-radius: 5px;
     overflow: hidden;
     box-sizing: border-box;
-    /*background: rgba(1, 31, 85, 0.05);*/
     background: #fff;
     border: 1px solid #c3d3ec;
     cursor: pointer;
@@ -647,47 +646,41 @@ textarea {
     font-size: 10px;
   }
 
-  /* #next {
-    text-align: right;
-    clear: both;
-  } */
+  .biginfo{
+      padding: 25px;
+      border-radius: 20px;
+      background: #c3d3ec55;
+  }
+  .biginfo-content{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 50px;
+  }
 
+ .biginfo-image{
+      width: 30%;
+      height: 300px;
+      position: relative;
+  }
 
-    .biginfo{
-        padding: 25px;
-        border-radius: 20px;
-        background: #c3d3ec55;
-    }
-    .biginfo-content{
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        gap: 50px;
-    }
+  .biginfo-image img{
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+      transform-origin: bottom right;
+      transform: rotate(15deg);
+      box-shadow: 2px 2px 2px #ccc;
+  }
 
-   .biginfo-image{
-        width: 30%;
-        height: 300px;
-        position: relative;
-    }
-
-    .biginfo-image img{
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 20px;
-        transform-origin: bottom right;
-        transform: rotate(15deg);
-        box-shadow: 2px 2px 2px #ccc;
-    }
-
-    .biginfo-copy{
-        width: 40%;
-    }
+  .biginfo-copy{
+      width: 40%;
+  }
 
   #footer {
     background: #eff3fa;

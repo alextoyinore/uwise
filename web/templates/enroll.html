@@ -10,8 +10,8 @@
         <h1>Choose Enrollment Option</h1><br>
         <div class="course-detail">
             <h3>{{ data.course_data.title }}</h3>
-            <p>{{ data.course_data.field }} . {{ data.course_data.rating_count }} Reviews</p>
-            <p>{{ data.course_data.excerpt | truncatewords:"20" }} </p><br>
+            <p>{{ data.course_data.field }} . {{ data.course_data.rating_count }} Reviews</p><br>
+            <p>{{ data.course_data.excerpt | truncatewords:"50" }} </p><br>
         </div>
         <div class="error" style="display: none; color: crimson;"></div>
         <div class="enroll-content">
@@ -25,11 +25,14 @@
                         <li>Access general course community</li>
                     </ul>
                     
-                    <a href="" id="btn-enroll" class="btn-cta blue fill-x">Enroll Now</a>
-
+                    <a href="{% url 'enroll' data.course_data.id %}#" id="btn-enroll" onclick="enrollWithoutPaying()" class="btn-cta blue fill-x">Enroll Now</a>
                     <script>
-                        document.querySelector('#btn-enroll').addEventListener('click', function(event) {
-                            event.preventDefault();
+                        function enrollWithoutPaying(){
+                            {#preventDefault()#}
+                            
+                            {% if not user.is_authenticated %}
+                                window.location.href = '{% url 'login' %}'
+                            {% endif %}
 
                             const formData = new URLSearchParams();
                             formData.append('user', {{ user.id }})
@@ -58,12 +61,16 @@
                                             var newParagraph = document.createElement('b')
                                             newParagraph.setAttribute('style', 'display: block;')
                                             newParagraph.textContent = data[d]
+                                            if(data[d]==='The fields user, course must make a unique set.'){
+                                                newParagraph.textContent = 'You are already enrolled to this course'
+                                            }
                                             error.appendChild(newParagraph)
                                         }
                                     })
                                  }
-                            })
-                        })
+                            }).then(error => console.log(error))
+                        }
+                        
                     </script>
                 </div>                
             </div>

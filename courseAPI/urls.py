@@ -81,7 +81,7 @@ urlpatterns = [
     }), name='image'),
 
 
-    # MODULE
+    # CLASSES
 
     path('classes', view=ClassViewSet.as_view({
         'post': 'create',
@@ -181,6 +181,19 @@ urlpatterns = [
         'patch': 'partial_update',
         'delete': 'destroy',
     }), name='user-course'),
+
+
+    # USER CLASSES
+
+    path('user-classes', view=UserClassesViewSet.as_view({
+        'post': 'create',
+        'get': 'list'}), name='user-classes'),
+    path('user-class/<int:pk>', view=UserClassesViewSet.as_view({
+        'get': 'retrieve',
+        'put': 'update',
+        'patch': 'partial_update',
+        'delete': 'destroy',
+    }), name='user-class'),
 
 
     # COURSE FACILITATOR

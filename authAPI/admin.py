@@ -2,7 +2,7 @@ from django.contrib import admin
 
 from authAPI.models import *
 
-from authAPI.models import Organization, Referral
+from authAPI.models import Organization, Referral, Facilitator
 
 
 # Register your models here.
@@ -22,7 +22,7 @@ class AcademicLevelAdmin(admin.ModelAdmin):
 
 @admin.register(Organization)
 class Organization(admin.ModelAdmin):
-    list_display = ('contact_name', 'name', 'type', 'contact_email', 'website', 'size')
+    list_display = ('name', 'type', 'website', 'size')
     search_fields = ('name', 'contact_email')
 
 
@@ -35,3 +35,10 @@ class OrganizationType(admin.ModelAdmin):
 @admin.register(Referral)
 class ReferralAdmin(admin.ModelAdmin):
     list_display = ('user', 'referrer',)
+
+
+@admin.register(Facilitator)
+class FacilitatorAdmin(admin.ModelAdmin):
+    list_display = ('user', 'is_facilitator', 'date_upgraded')
+    search_fields = ('user',)
+

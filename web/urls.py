@@ -14,5 +14,6 @@ urlpatterns = [
     path('user/logout', view=logout_user, name='logout-user'),
     path('dashboard', view=DashboardView.as_view(), name='dashboard'),
     path('learn/<int:pk>', view=LearnView.as_view(), name='learn'),
+    path('learn/<int:pk>/<str:page>', view=LearnView.as_view(), name='learn'),
 ]
 

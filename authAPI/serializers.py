@@ -45,6 +45,11 @@ class UserSerializer(serializers.ModelSerializer):
         return user
 
 
+class FacilitatorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Facilitator
+        fields = '__all__'
+
 
 class AcademicLevelSerializer(serializers.ModelSerializer):
     class Meta:

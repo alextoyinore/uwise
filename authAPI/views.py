@@ -34,6 +34,12 @@ class UserView(ModelViewSet):
                         status=status.HTTP_204_NO_CONTENT)
 
 
+class FacilitatorView(ModelViewSet):
+    serializer_class = serializers.FacilitatorSerializer
+    queryset = Facilitator.objects.all()
+    permission_classes = [IsAdminUser]
+
+
 class ReferralView(ModelViewSet):
     serializer_class = serializers.ReferralSerializer
     queryset = Referral.objects.all()

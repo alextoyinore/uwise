@@ -27,6 +27,8 @@
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" placeholder="Enter your password"
                 /> <br>
+                
+                <input type="hidden" name="next" value="{{ request.GET.next }}">
           
                 <!-- Submit button -->
                 <button type="submit" onclick="login()">Login</button>

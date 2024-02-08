@@ -44,13 +44,13 @@ class GradeAdmin(admin.ModelAdmin):
 
 @admin.register(Note)
 class NoteAdmin(admin.ModelAdmin):
-    list_display = ('user', 'course', 'title', 'note',)
+    list_display = ('user', 'course', 'note',)
     search_fields = ('user', 'course',)
 
 
 @admin.register(Message)
 class MessageAdmin(admin.ModelAdmin):
-    list_display = ('user', 'course', 'message', 'date',)
+    list_display = ('sender', 'receiver', 'course', 'message', 'date',)
     search_fields = ('user', 'course', 'date',)
 
 

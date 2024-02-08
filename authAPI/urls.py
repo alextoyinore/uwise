@@ -60,7 +60,7 @@ urlpatterns = [
         'put': 'update',
         'patch': 'partial_update',
         'delete': 'destroy'
-    }), name='organization-detail'),
+    }), name='organization'),
 
     # ORGANIZATION TYPE
     path('organization-types', view=OrganizationTypeView.as_view({
@@ -72,5 +72,17 @@ urlpatterns = [
         'put': 'update',
         'patch': 'partial_update',
         'delete': 'destroy'
-    }), name='organization-type-detail'),
+    }), name='organization-type'),
+
+    # ORGANIZATION TYPE
+    path('facilitators', view=FacilitatorView.as_view({
+        'get': 'list',
+        'post': 'create'
+    }), name='facilitators'),
+    path('facilitator/<int:pk>', view=FacilitatorView.as_view({
+        'get': 'retrieve',
+        'put': 'update',
+        'patch': 'partial_update',
+        'delete': 'destroy'
+    }), name='facilitator'),
 ]

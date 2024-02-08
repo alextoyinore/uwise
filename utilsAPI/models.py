@@ -1,6 +1,6 @@
 from django.db import models
-from authAPI.models import User
-from courseAPI.models import Course
+from authAPI.models import User, Facilitator
+from courseAPI.models import Course, Class
 
 
 # Create your models here.
@@ -39,7 +39,8 @@ class Language(models.Model):
 class Review(models.Model):
     title = models.CharField(max_length=200, null=False, blank=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE, swappable=True)
-    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.SET_NULL, null=True, blank=True)
+    facilitator = models.ForeignKey(Facilitator, on_delete=models.SET_NULL, null=True, blank=True)
     review = models.TextField()
     date = models.DateTimeField(auto_now=True)
     is_approved = models.BooleanField(default=False)
@@ -52,6 +53,7 @@ class Rating(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     rating = models.IntegerField(null=False, blank=False)
+    facilitator = models.ForeignKey(Facilitator, on_delete=models.SET_NULL, null=True, blank=True)
     date = models.DateTimeField(auto_now=True)
     is_approved = models.BooleanField(default=False)
 
@@ -62,6 +64,7 @@ class Rating(models.Model):
 class Grade(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    the_class = models.ForeignKey(Class, on_delete=models.SET_NULL, null=True, blank=True)
     grade = models.DecimalField(max_digits=2, decimal_places=2, null=False, blank=False)
     date = models.DateTimeField(auto_now=True)
 
@@ -70,26 +73,26 @@ class Grade(models.Model):
 
 
 class Note(models.Model):
-    title = models.CharField(max_length=200, null=False, blank=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     note = models.TextField()
+    the_class = models.ForeignKey(Class, on_delete=models.SET_NULL, null=True, blank=True)
     date = models.DateTimeField(auto_now=True)
-    video_time = models.TimeField()
 
     def __str__(self):
-        return self.note
+        return self.course.title + " " + self.note
 
 
 class Message(models.Model):
-    title = models.CharField(max_length=200, null=False, blank=False)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    sender = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name='message_sender')
+    receiver = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True,  related_name='message_receiver')
     message = models.TextField()
+    the_class = models.ForeignKey(Class, on_delete=models.SET_NULL, null=True, blank=True)
+    course = models.ForeignKey(Course, on_delete=models.SET_NULL, null=True, blank=True)
     date = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.message
+        return f'{self.sender.get_full_name()} - {self.receiver.get_full_name()} - {self.message}'
 
 
 class Announcement(models.Model):

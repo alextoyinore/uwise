@@ -1,15 +1,17 @@
 {% extends 'partials/base.html' %}
 {% load static %}
 {% block page-title %} Learn {% endblock %}
+{% block header-message %}{% endblock %}
+
 
 {% block hero %}
 {% endblock %}
 {% block top-nav %}{% endblock %}
 
 {% block content %}
-    <div class="content">
+<div class="content">
+    <div class="courses-content">
         <nav class="filters">
-            <br><br><br><br><br>
             <div class="filter-items">
                 <div class="org-image">
                     {% if data.course_data.organization.logo is not None %}
@@ -23,27 +25,254 @@
 
                 <h3>{{ data.course_data.title }}</h3>
 
-                <div class="filter-item-group">
-                    <a class="filter-item" href="{% url 'learn' data.course_data.id %}#">Course Info</a>
-                    <a class="filter-item" href="{% url 'learn' data.course_data.id %}#">Classes</a>
-                    <a class="filter-item" href="{% url 'learn' data.course_data.id %}#">Notes</a>
-                    <a class="filter-item" href="{% url 'learn' data.course_data.id %}#">Grades</a>
-                    <a class="filter-item" href="{% url 'learn' data.course_data.id %}#">Communities</a>
-                    <a class="filter-item" href="{% url 'learn' data.course_data.id %}#">Reviews</a>
-                    <a class="filter-item" href="{% url 'learn' data.course_data.id %}#">Announcements</a>
+                <div class="filter-item-group" role="group">
+                    <a class="filter-item {% if data.page == 'info' %}selected{% endif %}" href="{% url 'learn' data.course_data.id %}/info">Course Info</a>
+                    <a class="filter-item {% if data.page == 'classes' %}selected{% endif %}" href="{% url 'learn' data.course_data.id %}/classes">Classes</a>
+                    <a class="filter-item {% if data.page == 'notes' %}selected{% endif %}" href="{% url 'learn' data.course_data.id %}/notes">Notes</a>
+                    <a class="filter-item {% if data.page == 'grades' %}selected{% endif %}" href="{% url 'learn' data.course_data.id %}/grades">Grades</a>
+                    <a class="filter-item {% if data.page == 'communities' %}selected{% endif %}" href="{% url 'learn' data.course_data.id %}/communities">Communities</a>
+                    <a class="filter-item {% if data.page == 'reviews' %}selected{% endif %}" href="{% url 'learn' data.course_data.id %}/reviews">Reviews</a>
+                    <a class="filter-item {% if data.page == 'announcements' %}selected{% endif %}" href="{% url 'learn' data.course_data.id %}/announcements">Announcements</a>
                 </div>
             </div>
         </nav>
         <article class="class-board">
+            {% if data.page == 'info' %}
+                <b>Field: <span>{{ data.course_data.field }}</span> .
+                Instruction Language: <span>{{ data.course_data.language }}</span> .
+                Course Duration: <span>{{ data.course_data.duration }} days</span></b>
+                <br/><br/>
 
+                <h3>Welcome Note</h3>
+                {% if data.course_data.welcome_note is not None or data.course_data.welcome_note is not empty %}
+                    <p>{{ data.course_data.welcome_note }}</p>
+                {% else %}
+                    <p>{{ data.course_data.description }}</p>
+                {% endif %}
+                <br/>
+                {% if data.course_data.intro_video is not None or data.course_data.intro_video is not empty %}
+                    <a target="_blank" class="resource-link" href="{{ data.course_data.intro_video }}">Watch Intro Video</a>
+                    {#<video controls style="width:100%;">#}
+                    {#  <source src="{{ data.course_data.intro_video }}" type="video/mp4" preload="auto" poster="" />#}
+                    {#</video>#}
+                {% endif %}
+                <br/><br/>
+                {% if data.course_data.welcome_note is not None or data.course_data.welcome_note is not empty %}
+                    <p>{{ data.course_data.description }}</p><br/>
+                {% endif %}
+
+                <h3>Description</h3>
+                <p>{{ data.course_data.description }}</p>
+                <br/>
+
+                <h3 class="course-skills">Skills you'll gain</h3><br>
+                <div class="skills-content">
+                    {% for skill in data.course_data.skills %}
+                        <span class="skill">{{ skill | title }}</span>
+                    {% endfor %}
+                </div>
+                <br/>
+
+                <div class="course-objectives">
+                    <h3>Why {{ data.course_data.title }}</h3>
+                    <ul>
+                        {% for objective in data.course_data.objectives %}
+                            <li>{{ objective | title }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% elif data.page == 'classes' %}
+                {% for class in data.classes %}
+                    <div class="class-item">
+                        <div class="title">
+                            <h3>{{ class.title }}</h3>
+                            <span class="material-symbols-outlined expand">expand_more</span>
+                        </div>
+                        <div style="display:none;" class="class-details">
+                            <hr>
+                            <h3>Overview</h3>
+                            <p>{{ class.description }}</p>
+                            <br/>
+
+                            <h3>Class Links</h3>
+                            <div class="class-links">
+                                <a target="_blank" class="resource-link" href="{{ class.class_link1 }}">Class Link 1</a>>
+                                {% if class.class_link2 is not None %}
+                                    <a target="_blank" class="resource-link" href="{{ class.class_link2 }}">Class Link 1</a>>
+                                {% endif %}
+                            </div>
+
+                            <h3>Class Resources</h3>
+                            <div class="class-links">
+                                <a target="_blank" class="resource-link resource" href="{{ class.resources.link }}">Class Resources</a>>
+                                {% for image in class.resources.images.all %}
+                                    <a target="_blank" class="resource-link resource" href="{{ image.link }}">Class Images</a>>
+                                {% endfor %}
+
+                                {% for video in class.resources.videos.all %}
+                                    <a target="_blank" class="resource-link resource" href="{{ video.link }}">Class Videos</a>>
+                                {% endfor %}
+
+                                {% for reading in class.resources.readings.all %}
+                                    <a target="_blank" class="resource-link resource" href="{{ reading.link }}">Class Readings</a>>
+                                {% endfor %}
+
+                                {% for assessment in class.resources.assessments.all %}
+                                    <a target="_blank" class="resource-link resource" href="{{ assessment.link }}">Class Assessements</a>>
+                                {% endfor %}
+
+                            </div>
+
+                            <br/>
+                            {% if class.objectives is not None %}
+                            <h3>Class Objectives</h3>
+                                <ul>
+                                    {% for obj in class.objectives %}
+                                        <li>{{ obj }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                {% endfor %}
+            {% elif data.page == 'notes' %}
+                <h3>My notes on {{ data.course_data.title }}</h3>
+                {% for note in data.notes %}
+                    <div class="notes">
+                        <div class="note">
+                            <b>{{ note.the_class.title }}</b>
+                            <p>{{ note.note }}</p>
+                            <i>{{ note.date }}</i>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% elif data.page == 'grades' %}
+                <h3>Grades</h3>
+            {% elif data.page == 'communities' %}
+                <h3>Course Communities</h3>
+            {% elif data.page == 'reviews' %}
+                <h3>Course Reviews</h3>
+            {% elif data.page == 'announcements' %}
+                <h3>Announcements</h3>
+            {% endif %}
         </article>
     </div>
+        <script>
+            document.querySelectorAll('.class-item').forEach((item)=>{
+                item.addEventListener('click', ()=> {
+                   // Find the next sibling element (assuming it's the description)
+                    const description = item.children[1];
+    
+                    // Toggle the display property of the description
+                    if (description.style.display === 'none' || description.style.display === '') {
+                        description.style.display = 'block'
+                        description.style.transition = '.5s ease-in-out'
+                    } else {
+                        description.style.display = 'none';
+                        description.style.transition = '.5s ease-in-out'
+                    }
+                })
+            })
+
+        </script>
+    </div>
     <style>
+    .notes {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .notes .note {
+        padding: 10px;
+        border: 1px solid #c3d3ec;
+        border-radius: 5px;
+        margin: 5px 0;
+    }
+    .note p {
+        color: #3b5998;
+    }
+    .note i {
+        font-size: 12px;
+        color: #777777;
+    }
+    .class-details {
+        cursor: default;
+    }
+    .class-details .class-links {
+        margin: 20px 0;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    .class-links .resource {
+        background: #c3d3ec55;
+        color: #011F55;
+        font-size: 13px;
+    }
+    .resource:hover{
+        color: #ffffff;
+    }
+    .class-item {
+        padding: 5px 10px;
+        border-radius: 5px;
+        border: 1px solid #c3d3ec;
+        margin: 10px 0;
+        cursor: pointer;
+    }
+    .class-item .title {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .resource-link {
+        text-decoration: none;
+        color: #ffffff;
+        background: #10DC80;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 13px;
+    }
+    .resource-link:hover{
+        background: #011F55;
+    }
+    li {
+        font-size: 13px;
+        color: #777777;
+        line-height: 22px;
+    }
+    .skills-content {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        text-align: left;
+        flex-wrap: wrap;
+    }
+
+    .skill {
+        padding: 5px 10px;
+        font-size: 12px;
+        color: #0e3b8d;
+        background: #eff3fa;
+        border-radius: 5px;
+    }
+    b{
+        font-size: 13px;
+        color: #011F55;
+    }
+    b span{
+        color: #10DC80;
+    }
         .courses-content {
             display: flex;
             flex-direction: row;
             position: relative;
-            padding: 150px 0;
+            margin: 100px 0;
         }
         .filters {
             width: 20%;
@@ -58,9 +287,10 @@
             {#border-right: 1px solid #c3d3ec;#}
             position: relative;
         }
-        .course-list {
-            width: 80%;
-            padding: 10px 0 0 40px;
+        .class-board {
+            width: 60%;
+            padding: 10px 0 0 10px;
+            margin: 25px 0;
             {#position: relative;#}
             {#left: 200px;#}
         }
@@ -89,9 +319,12 @@
             font-weight: bold;
             text-decoration: none;
         }
-        .filter-item:hover {
+        .filter-item:hover, .filter-item:active {
             background: #c3d3ec55;
             {#border-bottom: 1px solid #c3d3ec;#}
+        }
+        .selected {
+            background: #c3d3ec55;
         }
     </style>
 {% endblock %}

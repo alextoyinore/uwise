@@ -4,14 +4,14 @@
 
 
 {% block hero %}
-    {% if not user.is_authenticated or user.is_authenticated and user.is_superuser %}
+    {% if not user.is_authenticated %}
         {% include 'widgets/hero2.html' %}
     {% endif %}
 {% endblock %}
 
 
 {% block content %}
-    {% if user.is_authenticated and not user.is_superuser and not user.is_facilitator %}
+{#    {% if user.is_authenticated and not user.is_superuser and not user.is_facilitator %}#}
                 <br><br><br>
         <div class="user-content-wrapper">
             <div class="user-content">
@@ -28,10 +28,9 @@
                 </div>
             </div>
         </div>
-    {% endif %}
+{#    {% endif %}#}
     <section id="content">
-        <div {% if user.is_authenticated and not user.is_superuser and not user.is_facilitator %} id="home-content" {% endif %} class="content">
-
+        <div class="content">
             {% if data.carousels is not None or empty %}
                 {% for carousel in data.carousels %}
                     {% include 'widgets/course_carousel.html' with carousel=carousel %}
@@ -56,7 +55,7 @@
         </div>
     </section>
 
-    {% if not user.is_authenticated or user.is_authenticated and user.is_superuser or user.is_facilitator %}
+    {% if not user.is_authenticated %}
         <section class="bottom-cta">
             <strong>What do you want to learn?</strong>
             <p>Wherever your heart leads, tech, vocational, or professional path,

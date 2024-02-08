@@ -1,6 +1,8 @@
 {% extends 'partials/base.html' %}
 {% load static %}
 {% block page-title %} Course {% endblock %}
+{% block header-message %}{% endblock %}
+
 
 {% block hero %}
     {% include 'widgets/hero.html' with course=data.course_data %}
@@ -186,22 +188,22 @@
     {# Courses/Lessons in this course #}
         <section id="courses" class="programme-course-list">
             <div class="course-list-content">
-                <h3>Courses in this Programme</h3>
+                <h3>Classes in this course</h3>
                 <p>{{ data.course_data.description | truncatewords:"50" }}</p><br>
                 <div class="course-list">
                     <div class="course-list-left">
 
                         {# Course Lesson Item #}
 
-                        {% for lesson in data.course_data.lessons.all %}
+                        {% for class in data.classes %}
                             <div class="course-list-item">
                                 <div class="list-item-left">
-                                    <a href="">{{ lesson.title }}</a>
-                                    <p>Week {{ lesson.week }} . {{ lesson.time_duration }} hours . 4.7 <span class="material-symbols-outlined rating">star</span> (437 Ratings)</p>
+                                    <a href="">{{ class.title }}</a>
+                                    <p>Class {{ class.class_number }} . {{ class.time_duration }} days . 4.7 <span class="material-symbols-outlined rating">star</span> (437 Ratings)</p>
                                 </div>
                                 <span class="material-symbols-outlined expand">expand_more</span>
                             </div>
-                            <p style="display: none;">{{ lesson.description }}</p>
+                            <p style="display: none;">{{ class.description }}</p>
                         {% endfor %}
                             <script>
                                 courseListItem = document.querySelectorAll('.course-list-item')
@@ -227,14 +229,14 @@
                     <div class="course-list-right">
                         <div class="author-list">
                             <h3>Facilitators</h3>
-                            {% for facilitator in data.course_data.facilitators %}
+                            {% for class in data.classes %}
                             <div class="author-item">
                                 <div class="author-image">
-                                    <img src="{{ facilitator.image }}" alt="">
+                                    <img src="{{ class.facilitator.user.image }}" alt="">
                                 </div>
                                 <div class="author-detail">
-                                    <b>{{ facilitator.name }}</b>
-                                    <p>{{ facilitator.course_count }} Courses . {{ facilitator.student_count }} Students</p>
+                                    <b>{{ class.facilitator.user.get_full_name }}</b>
+                                    <p>{{ class.facilitator.user.course_count }} Courses . {{ facilitator.user.student_count }} Students</p>
                                 </div>
                             </div>
                             {% endfor %}

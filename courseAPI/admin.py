@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import *
 
-from courseAPI.models import Course, Class, Field, UserCourse, CourseFacilitator, UserClass
+from courseAPI.models import Course, Class, Field, UserCourse, CourseFacilitator, UserClass, Audio
 
 
 # Register your models here.
@@ -25,8 +25,8 @@ class ClassAdmin(admin.ModelAdmin):
 
 @admin.register(Resource)
 class Resource(admin.ModelAdmin):
-    list_display = ('title','link', 'the_class')
-    search_fields = ('title', 'the_class')
+    list_display = ('title', 'link', )
+    search_fields = ('title',)
 
 
 @admin.register(StudentAttendance)
@@ -114,6 +114,11 @@ class CourseFacilitatorAdmin(admin.ModelAdmin):
 
 
 @admin.register(UserClass)
-class Userthe_classAdmin(admin.ModelAdmin):
+class UserClassAdmin(admin.ModelAdmin):
     list_display = ('the_class', 'user',)
     search_fields = ('the_class', 'user')
+
+
+@admin.register(Audio)
+class AudioAdmin(admin.ModelAdmin):
+    list_display = ('audio', 'title', 'link')

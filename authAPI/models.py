@@ -3,6 +3,15 @@ from django.contrib.auth.models import AbstractUser
 from authAPI.manager import CustomUserManager
 
 
+class Facilitator(models.Model):
+    user = models.OneToOneField('User', on_delete=models.CASCADE, primary_key=True, related_name='facilitator_details')
+    is_facilitator = models.BooleanField(default=True)
+    date_upgraded = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.user.get_full_name()
+
+
 class User(AbstractUser):
     email = models.EmailField(max_length=100, unique=True)
     username = models.CharField(max_length=100, unique=True, null=True, blank=True)
@@ -26,7 +35,6 @@ class User(AbstractUser):
     years_of_experience = models.IntegerField(null=True, blank=True)
     bio = models.TextField(max_length=2000, default='', null=True, blank=True)
     organization = models.CharField(max_length=100, default='', null=True, blank=True)
-    is_facilitator = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'email'
 
@@ -62,11 +70,7 @@ class AcademicLevel(models.Model):
 
 class Organization(models.Model):
     # REGISTERER DATA
-    contact_name = models.CharField(max_length=150, null=False, blank=False)
-    contact_job_title = models.CharField(max_length=100, null=False, blank=False)
-    contact_email = models.EmailField(null=False, blank=False)
-    contact_phone = models.CharField(max_length=15, null=False, blank=False)
-    contact_image = models.ImageField(default='', null=True, blank=True)
+    contact = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name='organization_contact')
 
     # ORGANIZATION DATA
     name = models.CharField(max_length=100, null=False, blank=False)

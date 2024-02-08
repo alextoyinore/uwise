@@ -1,8 +1,7 @@
 from django.db import models
 from rest_framework.exceptions import ValidationError
 
-import authAPI
-from authAPI.models import User, Organization
+from authAPI.models import User, Organization, Facilitator
 
 
 # Create your models here.
@@ -44,6 +43,10 @@ class Course(models.Model):
     title = models.CharField(max_length=200, null=False, blank=False)
     excerpt = models.TextField(null=False, blank=False)
     description = models.TextField(blank=False, null=False)
+    welcome_note = models.TextField(blank=True, null=True)
+    intro_video = models.URLField(blank=True, null=True)
+    community_link1 = models.URLField(blank=True, null=True)
+    community_link2 = models.URLField(blank=True, null=True)
     duration = models.IntegerField(blank=False, null=False)
     image = models.URLField(null=False, blank=False)
     field = models.ForeignKey('Field', on_delete=models.CASCADE)
@@ -53,7 +56,7 @@ class Course(models.Model):
     organization = models.ForeignKey(Organization, on_delete=models.SET_NULL, swappable=True, null=True, blank=True)
     level = models.ForeignKey('CourseLevel', on_delete=models.SET_NULL, null=True, blank=True,
                               related_name='course_level')
-    classes = models.ManyToManyField('Class', related_name='course_classes')
+    # classes = models.ManyToManyField('Class', related_name='course_classes')
     skills = models.CharField(max_length=200, null=True, blank=True)
     tags = models.CharField(max_length=200, null=True, blank=True)
     objectives = models.TextField(blank=True, null=True)
@@ -81,7 +84,7 @@ class UserCourse(models.Model):
 
 
 class CourseFacilitator(models.Model):
-    facilitators = models.ManyToManyField(User, related_name='facilitators')
+    facilitators = models.ManyToManyField(Facilitator, related_name='facilitators')
     course = models.ForeignKey(Course, on_delete=models.CASCADE,
                                related_name='course_facilitated', null=False,
                                blank=False)
@@ -113,6 +116,7 @@ class Class(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     class_link1 = models.URLField(max_length=5000, null=False, blank=False)
     class_link2 = models.URLField(max_length=5000, null=True, blank=True)
+    resources = models.ForeignKey('Resource', models.CASCADE, related_name='resource_for_class', null=True, blank=True)
     class_number = models.IntegerField(blank=False, null=False)
     description = models.TextField(blank=False, null=False, default='')
     objectives = models.TextField(blank=False, null=False, default='')
@@ -121,6 +125,10 @@ class Class(models.Model):
     time_duration = models.IntegerField()
     expiration_date = models.DateField(null=True, blank=True)
     class_did_hold = models.BooleanField()
+    facilitator = models.ForeignKey(Facilitator, on_delete=models.SET_NULL, null=True, blank=True)
+
+    class Meta:
+        verbose_name_plural = 'Classes'
 
     def __str__(self):
         return self.title
@@ -128,7 +136,6 @@ class Class(models.Model):
 
 class Resource(models.Model):
     title = models.CharField(max_length=200, null=False, blank=False)
-    the_class = models.ForeignKey(Class, on_delete=models.CASCADE, related_name='resource_for_class', null=False, blank=False)
     link = models.URLField(max_length=5000, null=False, blank=False)
     images = models.ManyToManyField('Image', related_name='images_for_class')
     videos = models.ManyToManyField('Video', related_name='videos_for_class')
@@ -148,6 +155,7 @@ class Assessment(models.Model):
     date_created = models.DateField(auto_now=True)
     time_duration = models.IntegerField()
     date_due = models.DateTimeField()
+    the_class = models.ForeignKey('Class', models.CASCADE, related_name='class_assessment', null=True, blank=True)
 
     def __str__(self):
         return self.title
@@ -177,7 +185,7 @@ class StudentAttendance(models.Model):
 
 
 class FacilitatorAttendance(models.Model):
-    facilitator = models.ForeignKey(User, on_delete=models.CASCADE, related_name='facilitator')
+    facilitator = models.ForeignKey(Facilitator, on_delete=models.CASCADE, related_name='facilitator')
     the_class = models.ForeignKey('Class', on_delete=models.CASCADE, related_name='the_class_facilitated')
     date = models.DateTimeField(auto_now=True)
 
@@ -209,7 +217,7 @@ class Video(models.Model):
     is_active = models.BooleanField(default=True)
 
     def __str__(self):
-        return self.video
+        return self.title
 
 
 class Image(models.Model):
@@ -222,7 +230,7 @@ class Image(models.Model):
     is_active = models.BooleanField(default=True)
 
     def __str__(self):
-        return self.image
+        return self.title
 
 
 class Audio(models.Model):
@@ -235,7 +243,7 @@ class Audio(models.Model):
     is_active = models.BooleanField(default=True)
 
     def __str__(self):
-        return self.audio
+        return self.title
 
 
 class Quiz(models.Model):
@@ -245,6 +253,9 @@ class Quiz(models.Model):
     date = models.DateTimeField(auto_now=True)
     the_class = models.ForeignKey('Class', on_delete=models.SET_NULL, null=True)
     is_active = models.BooleanField(default=True)
+
+    class Meta:
+        verbose_name_plural = "Quizzes"
 
     def __str__(self):
         return self.title
