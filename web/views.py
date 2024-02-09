@@ -17,8 +17,6 @@ from .models import *
 # def get_range(value):
 #     return range(value)
 
-announcement = None
-
 
 class LearnView(TemplateView):
     template_name = 'learn.html'

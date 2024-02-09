@@ -11,7 +11,7 @@
 
 
 {% block content %}
-{#    {% if user.is_authenticated and not user.is_superuser and not user.is_facilitator %}#}
+    {% if user.is_authenticated %}
                 <br><br><br>
         <div class="user-content-wrapper">
             <div class="user-content">
@@ -28,7 +28,7 @@
                 </div>
             </div>
         </div>
-{#    {% endif %}#}
+    {% endif %}
     <section id="content">
         <div class="content">
             {% if data.carousels is not None or empty %}

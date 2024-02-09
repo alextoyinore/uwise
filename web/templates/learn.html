@@ -26,13 +26,20 @@
                 <h3>{{ data.course_data.title }}</h3>
 
                 <div class="filter-item-group" role="group">
-                    <a class="filter-item {% if data.page == 'info' %}selected{% endif %}" href="{% url 'learn' data.course_data.id %}/info">Course Info</a>
-                    <a class="filter-item {% if data.page == 'classes' %}selected{% endif %}" href="{% url 'learn' data.course_data.id %}/classes">Classes</a>
-                    <a class="filter-item {% if data.page == 'notes' %}selected{% endif %}" href="{% url 'learn' data.course_data.id %}/notes">Notes</a>
-                    <a class="filter-item {% if data.page == 'grades' %}selected{% endif %}" href="{% url 'learn' data.course_data.id %}/grades">Grades</a>
-                    <a class="filter-item {% if data.page == 'communities' %}selected{% endif %}" href="{% url 'learn' data.course_data.id %}/communities">Communities</a>
-                    <a class="filter-item {% if data.page == 'reviews' %}selected{% endif %}" href="{% url 'learn' data.course_data.id %}/reviews">Reviews</a>
-                    <a class="filter-item {% if data.page == 'announcements' %}selected{% endif %}" href="{% url 'learn' data.course_data.id %}/announcements">Announcements</a>
+                    <a class="filter-item {% if data.page == 'info' %}selected{% endif %}" 
+                       href="{% url 'learn' data.course_data.id %}/info">Course Info</a>
+                    <a class="filter-item {% if data.page == 'classes' %}selected{% endif %}" 
+                       href="{% url 'learn' data.course_data.id %}/classes">Classes</a>
+                    <a class="filter-item {% if data.page == 'notes' %}selected{% endif %}" 
+                       href="{% url 'learn' data.course_data.id %}/notes">Notes</a>
+                    <a class="filter-item {% if data.page == 'grades' %}selected{% endif %}" 
+                       href="{% url 'learn' data.course_data.id %}/grades">Grades</a>
+                    <a class="filter-item {% if data.page == 'communities' %}selected{% endif %}" 
+                       href="{% url 'learn' data.course_data.id %}/communities">Communities</a>
+                    <a class="filter-item {% if data.page == 'reviews' %}selected{% endif %}" 
+                       href="{% url 'learn' data.course_data.id %}/reviews">Reviews</a>
+                    <a class="filter-item {% if data.page == 'announcements' %}selected{% endif %}" 
+                       href="{% url 'learn' data.course_data.id %}/announcements">Announcements</a>
                 </div>
             </div>
         </nav>
@@ -96,29 +103,29 @@
 
                             <h3>Class Links</h3>
                             <div class="class-links">
-                                <a target="_blank" class="resource-link" href="{{ class.class_link1 }}">Class Link 1</a>>
+                                <a target="_blank" class="resource-link" href="{{ class.class_link1 }}">Class Link 1</a>
                                 {% if class.class_link2 is not None %}
-                                    <a target="_blank" class="resource-link" href="{{ class.class_link2 }}">Class Link 1</a>>
+                                    <a target="_blank" class="resource-link" href="{{ class.class_link2 }}">Class Link 1</a>
                                 {% endif %}
                             </div>
 
                             <h3>Class Resources</h3>
                             <div class="class-links">
-                                <a target="_blank" class="resource-link resource" href="{{ class.resources.link }}">Class Resources</a>>
+                                <a target="_blank" class="resource-link resource" href="{{ class.resources.link }}">Class Resources</a>
                                 {% for image in class.resources.images.all %}
-                                    <a target="_blank" class="resource-link resource" href="{{ image.link }}">Class Images</a>>
+                                    <a target="_blank" class="resource-link resource" href="{{ image.link }}">Class Images</a>
                                 {% endfor %}
 
                                 {% for video in class.resources.videos.all %}
-                                    <a target="_blank" class="resource-link resource" href="{{ video.link }}">Class Videos</a>>
+                                    <a target="_blank" class="resource-link resource" href="{{ video.link }}">Class Videos</a>
                                 {% endfor %}
 
                                 {% for reading in class.resources.readings.all %}
-                                    <a target="_blank" class="resource-link resource" href="{{ reading.link }}">Class Readings</a>>
+                                    <a target="_blank" class="resource-link resource" href="{{ reading.link }}">Class Readings</a>
                                 {% endfor %}
 
                                 {% for assessment in class.resources.assessments.all %}
-                                    <a target="_blank" class="resource-link resource" href="{{ assessment.link }}">Class Assessements</a>>
+                                    <a target="_blank" class="resource-link resource" href="{{ assessment.link }}">Class Assessements</a>
                                 {% endfor %}
 
                             </div>
@@ -158,26 +165,26 @@
             {% endif %}
         </article>
     </div>
-        <script>
-            document.querySelectorAll('.class-item').forEach((item)=>{
-                item.addEventListener('click', ()=> {
-                   // Find the next sibling element (assuming it's the description)
-                    const description = item.children[1];
-    
-                    // Toggle the display property of the description
-                    if (description.style.display === 'none' || description.style.display === '') {
-                        description.style.display = 'block'
-                        description.style.transition = '.5s ease-in-out'
-                    } else {
-                        description.style.display = 'none';
-                        description.style.transition = '.5s ease-in-out'
-                    }
-                })
-            })
+    <script>
+        document.querySelectorAll('.class-item').forEach((item)=>{
+            item.addEventListener('click', ()=> {
+               // Find the next sibling element (assuming it's the description)
+                const description = item.children[1];
 
-        </script>
-    </div>
-    <style>
+                // Toggle the display property of the description
+                if (description.style.display === 'none' || description.style.display === '') {
+                    description.style.display = 'block'
+                    description.style.transition = '.5s ease-in-out'
+                } else {
+                    description.style.display = 'none';
+                    description.style.transition = '.5s ease-in-out'
+                }
+            })
+        })
+    </script>
+</div>
+    
+<style>
     .notes {
         display: flex;
         flex-direction: column;
@@ -206,14 +213,14 @@
         flex-direction: row;
         flex-wrap: wrap;
         align-items: flex-start;
-        gap: 5px;
+        gap: 10px;
     }
     .class-links .resource {
         background: #c3d3ec55;
         color: #011F55;
         font-size: 13px;
     }
-    .resource:hover{
+    .resource:hover {
         color: #ffffff;
     }
     .class-item {
@@ -283,21 +290,16 @@
             scroll-behavior: smooth;
             scrollbar-width: thin;
             scrollbar-base-color: #011F55;
-            padding: 10px 20px 0 0;
-            {#border-right: 1px solid #c3d3ec;#}
+            padding: 10px 10px 0 0;
             position: relative;
         }
         .class-board {
             width: 60%;
             padding: 10px 0 0 10px;
-            margin: 25px 0;
-            {#position: relative;#}
-            {#left: 200px;#}
         }
         .course-grid {
             display: flex;
             flex-direction: row;
-            {#justify-content: space-evenly;#}
             flex-wrap: wrap;
             gap: 20px;
         }
@@ -312,7 +314,6 @@
             width: 100%;
             font-size: 13px;
             color: #011F55;
-            {#background: #c3d3ec33;#}
             padding: 10px 10px;
             border-radius: 2px;
             cursor: pointer;
@@ -321,12 +322,12 @@
         }
         .filter-item:hover, .filter-item:active {
             background: #c3d3ec55;
-            {#border-bottom: 1px solid #c3d3ec;#}
         }
         .selected {
             background: #c3d3ec55;
         }
-    </style>
+</style>
 {% endblock %}
 
 {% block footer %} {% endblock %}
+
