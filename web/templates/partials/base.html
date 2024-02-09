@@ -23,7 +23,7 @@
     <div class="header">
     
         {% block top-nav %}
-            {% include 'partials/topnav.html' %}
+            {% include 'partials/topnav.html' with topnavs=data.topnavs %}
         {% endblock %}
 
         {% block header-nav %}

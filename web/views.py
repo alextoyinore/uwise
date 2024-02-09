@@ -29,6 +29,7 @@ class LearnView(TemplateView):
         course_data = courseAPI.models.Course.objects.get(id=kwargs['pk'])
         classes = courseAPI.models.Class.objects.filter(course=kwargs['pk']).order_by('class_number')
         notes = utilsAPI.models.Note.objects.filter(course=course_data).order_by('-date')
+        announcements = utilsAPI.models.Announcement.objects.filter(course=course_data).order_by('-date')
 
         if course_data.skills is not None:
             course_data.skills = course_data.skills.split(', ')
@@ -46,6 +47,7 @@ class LearnView(TemplateView):
             'classes': classes,
             'page': kwargs['page'],
             'notes': notes,
+            'announcements': announcements,
         }
         context = {'data': data}
         return render(request, self.template_name, context)
@@ -82,6 +84,8 @@ class CourseView(TemplateView):
         course_data = courseAPI.models.Course.objects.get(id=kwargs['pk'])
         testimonials = Testimonial.objects.all()[:3]
         classes = courseAPI.models.Class.objects.filter(course=course_data)
+        topnavs = BusinessModel.objects.all()
+
 
         if course_data.skills is not None:
             course_data.skills = course_data.skills.split(', ')
@@ -99,6 +103,7 @@ class CourseView(TemplateView):
             'page': 'course',
             'classes': classes,
             'footer_navs': footer_navs,
+            'topnavs': topnavs,
         }
         # print(data)
         context = {'data': data}
@@ -110,6 +115,8 @@ class ExploreView(TemplateView):
 
     def get(self, request, *args, **kwargs):
         footer_navs = FooterTitle.objects.all()
+        topnavs = BusinessModel.objects.all()
+
 
         q = request.GET.get('q')
 
@@ -127,6 +134,7 @@ class ExploreView(TemplateView):
             'fields': fields,
             'footer_navs': footer_navs,
             'page': 'explore',
+            'topnavs': topnavs,
         }
         context = {'data': data}
         return render(request, self.template_name, context)
@@ -138,12 +146,14 @@ class EnrollView(TemplateView):
     def get(self, request, *args, **kwargs):
         footer_navs = FooterTitle.objects.all()
         course_data = courseAPI.models.Course.objects.get(id=kwargs['pk'])
+        topnavs = BusinessModel.objects.all()
 
         # print(course_data)
         data = {
             'course_data': course_data,
             'page': 'enroll',
             'footer_navs': footer_navs,
+            'topnavs': topnavs,
         }
         # print(data)
         context = {'data': data}
@@ -159,6 +169,7 @@ class HomeView(TemplateView):
         carousels = CourseCarousel.objects.all()[:4]
         footer_navs = FooterTitle.objects.all()
         announcement = Announcement.objects.all().first()
+        topnavs = BusinessModel.objects.all()
 
         user_courses_carousels = None
 
@@ -176,6 +187,7 @@ class HomeView(TemplateView):
             'page': 'home',
             'fields': fields,
             'footer_navs': footer_navs,
+            'topnavs': topnavs,
             'user_courses_carousels': user_courses_carousels,
             'announcement': announcement,
         }
@@ -190,9 +202,11 @@ class AboutView(TemplateView):
 
     def get(self, request, *args, **kwargs):
         footer_navs = FooterTitle.objects.all()
+        topnavs = BusinessModel.objects.all()
 
         data = {
             'footer_navs': footer_navs,
+            'topnavs': topnavs,
         }
         context = {'data': data}
         return render(request, self.template_name, context)
@@ -203,9 +217,11 @@ class PrivacyView(TemplateView):
 
     def get(self, request, *args, **kwargs):
         footer_navs = FooterTitle.objects.all()
+        topnavs = BusinessModel.objects.all()
 
         data = {
             'footer_navs': footer_navs,
+            'topnavs': topnavs,
         }
         context = {'data': data}
         return render(request, self.template_name, context)
@@ -216,9 +232,11 @@ class ContactView(TemplateView):
 
     def get(self, request, *args, **kwargs):
         footer_navs = FooterTitle.objects.all()
+        topnavs = BusinessModel.objects.all()
 
         data = {
             'footer_navs': footer_navs,
+            'topnavs': topnavs,
         }
         context = {'data': data}
         return render(request, self.template_name, context)

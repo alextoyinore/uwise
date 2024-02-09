@@ -2,7 +2,7 @@
 {% load static %}
 {% block page-title %} Dashboard {% endblock %}
 {% block header-message %}{% endblock %}
-
+{% block top-nav %}{% endblock %}
 
 {% block hero %}
 {% endblock %}
@@ -42,7 +42,7 @@
             display: flex;
             flex-direction: row;
             position: relative;
-            padding: 150px 0;
+            padding: 80px 0;
         }
         .filters {
             width: 20%;
@@ -89,12 +89,12 @@
             text-decoration: none;
         }
         .filter-item:hover {
-            background: #c3d3ec77;
+            background: #c3d3ec55;
             {#border: 1px solid #c3d3ec;#}
         }
     </style>
 {% endblock %}
 
 {% block footer %}
-    {% include 'partials/footer.html' %}
+{#    {% include 'partials/footer.html' %}#}
 {% endblock %}

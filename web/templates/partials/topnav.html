@@ -1,8 +1,12 @@
 <div id="top-nav" class="top-nav">
     <div class="top-nav-content">
-        <a href="">Individual</a>
-        <a href="">School</a>
-        <a href="">Business</a>
-        <a href="">Government</a>
+        {% for navlink in data.topnavs %}
+            {% if navlink.url_name == 'home' %}
+                <a href="{% url 'home' %}">{{ navlink.slug | capfirst }}</a>
+            {% else %}
+                <a href="{% url 'home' %}{{ navlink.url_name }}">{{ navlink.slug | capfirst }}</a>
+            {% endif %}
+        {% endfor %}
     </div>
 </div>
+

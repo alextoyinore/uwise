@@ -133,7 +133,7 @@
                     <h3>Advance your career with courses tailored to on-the-job in-demand skills</h3>
                     <ul>
                         {% for objective in data.course_data.objectives %}
-                            <li>{{ objective | title }}</li>
+                            <li>{{ objective | capfirst }}</li>
                         {% endfor %}
                     </ul>
                 </div>

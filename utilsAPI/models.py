@@ -100,6 +100,7 @@ class Announcement(models.Model):
     message = models.TextField()
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     course = models.ForeignKey(Course, on_delete=models.SET_NULL, null=True, blank=True)
+    the_class = models.ForeignKey(Class, on_delete=models.SET_NULL, null=True, blank=True)
     date = models.DateTimeField(auto_now=True)
 
     def __str__(self):

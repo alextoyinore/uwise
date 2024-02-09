@@ -15,7 +15,7 @@
                         {% if user.current_job_title == '' %} <a href="">Update your profile</a> {% else %} <a href="">{{ user.current_job_title }}</a> {% endif %}
                         <div class="header-profile-menu">
                             <a href="">Profile</a>
-                            <a href="">My Library</a>
+                            <a href="{% url 'dashboard' %}">My Library</a>
                             <a href="">Purchases</a>
                             <a href="">Favourites</a>
                             <a href="">Messages</a>

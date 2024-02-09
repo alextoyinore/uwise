@@ -26,25 +26,26 @@
                 <h3>{{ data.course_data.title }}</h3>
 
                 <div class="filter-item-group" role="group">
-                    <a class="filter-item {% if data.page == 'info' %}selected{% endif %}" 
+                    <a class="filter-item {% if data.page == 'info' %}selected{% endif %}"
                        href="{% url 'learn' data.course_data.id %}/info">Course Info</a>
-                    <a class="filter-item {% if data.page == 'classes' %}selected{% endif %}" 
+                    <a class="filter-item {% if data.page == 'classes' %}selected{% endif %}"
                        href="{% url 'learn' data.course_data.id %}/classes">Classes</a>
-                    <a class="filter-item {% if data.page == 'notes' %}selected{% endif %}" 
+                    <a class="filter-item {% if data.page == 'notes' %}selected{% endif %}"
                        href="{% url 'learn' data.course_data.id %}/notes">Notes</a>
-                    <a class="filter-item {% if data.page == 'grades' %}selected{% endif %}" 
+                    <a class="filter-item {% if data.page == 'grades' %}selected{% endif %}"
                        href="{% url 'learn' data.course_data.id %}/grades">Grades</a>
-                    <a class="filter-item {% if data.page == 'communities' %}selected{% endif %}" 
+                    <a class="filter-item {% if data.page == 'communities' %}selected{% endif %}"
                        href="{% url 'learn' data.course_data.id %}/communities">Communities</a>
-                    <a class="filter-item {% if data.page == 'reviews' %}selected{% endif %}" 
+                    <a class="filter-item {% if data.page == 'reviews' %}selected{% endif %}"
                        href="{% url 'learn' data.course_data.id %}/reviews">Reviews</a>
-                    <a class="filter-item {% if data.page == 'announcements' %}selected{% endif %}" 
+                    <a class="filter-item {% if data.page == 'announcements' %}selected{% endif %}"
                        href="{% url 'learn' data.course_data.id %}/announcements">Announcements</a>
                 </div>
             </div>
         </nav>
         <article class="class-board">
-            {% if data.page == 'info' %}
+            {% if data.page == 'info' or data.page == 'None' %}
+                <h2>Overview</h2><br>
                 <b>Field: <span>{{ data.course_data.field }}</span> .
                 Instruction Language: <span>{{ data.course_data.language }}</span> .
                 Course Duration: <span>{{ data.course_data.duration }} days</span></b>
@@ -89,6 +90,7 @@
                     </ul>
                 </div>
             {% elif data.page == 'classes' %}
+                <h2>Classes in this course</h2><br>
                 {% for class in data.classes %}
                     <div class="class-item">
                         <div class="title">
@@ -144,7 +146,8 @@
 
                 {% endfor %}
             {% elif data.page == 'notes' %}
-                <h3>My notes on {{ data.course_data.title }}</h3>
+
+                <h2>My notes on {{ data.course_data.title }}</h2><br>
                 {% for note in data.notes %}
                     <div class="notes">
                         <div class="note">
@@ -155,13 +158,33 @@
                     </div>
                 {% endfor %}
             {% elif data.page == 'grades' %}
-                <h3>Grades</h3>
+                <h2>Grades</h2>
             {% elif data.page == 'communities' %}
-                <h3>Course Communities</h3>
+                <h2>Course Communities</h2><br>
+                <h3>Hi there</h3>
+                <p>{{ data.course_data.welcome_note }}</p><br>
+                <b>Join the course community</b><br>
+                <i style="font-size:12px; color: #999;">Community can be on 
+                    WhatsApp Group, WhatsApp Community Teams, Twitter Space, Slack, etc.</i><br><br>
+                <div class="class-links">
+                    <a target="_blank" class="resource-link" href="{{ data.course_data.community_link1 }}">Community Link 1</a>
+                    {% if data.course_data.community_link2 is not None %}
+                        <a target="_blank" class="resource-link" href="{{ class.class_link2 }}">Community Link 2</a>
+                    {% endif %}
+                </div>
             {% elif data.page == 'reviews' %}
-                <h3>Course Reviews</h3>
+                <h2>Course Reviews</h2>
             {% elif data.page == 'announcements' %}
-                <h3>Announcements</h3>
+                <h2>Course Announcements</h2><br>
+                {% for announcement in data.announcements %}
+                    <div class="notes">
+                        <div class="note">
+                            <b>{{ announcement.the_class.title }}</b>
+                            <p>{{ announcement.message }}</p>
+                            <i>{{ announcement.date }}</i>
+                        </div>
+                    </div>
+                {% endfor %}
             {% endif %}
         </article>
     </div>
@@ -183,7 +206,7 @@
         })
     </script>
 </div>
-    
+
 <style>
     .notes {
         display: flex;
@@ -196,9 +219,15 @@
         border: 1px solid #c3d3ec;
         border-radius: 5px;
         margin: 5px 0;
+        background: #ffffff;
+        {#box-shadow: 1px 1px 0 1px #eee;#}
+    }
+    .note b{
+        color: #777777;
     }
     .note p {
         color: #3b5998;
+        font-weight: bold;
     }
     .note i {
         font-size: 12px;

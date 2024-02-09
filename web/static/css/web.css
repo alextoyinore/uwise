@@ -543,11 +543,13 @@ textarea {
     border: 1px solid #c3d3ec;
     cursor: pointer;
     color: #011F55;
+    /*box-shadow: 2px 2px 0 2px #eee;*/
   }
 
   .course-card:hover {
     border: 1px solid #011F55;
     color: #0e3b8d;
+    /*box-shadow: 4px 4px 0 2px #eee;*/
   }
 
   .course-image {
@@ -706,7 +708,7 @@ textarea {
     display: flex;
     flex-direction: row;
     margin: 10px 0;
-    justify-content: space-around;
+    justify-content: flex-start;
     gap: 50px;
     width: 100%;
     flex-wrap: wrap;
