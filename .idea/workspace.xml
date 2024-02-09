@@ -5,21 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b5bedfd-d550-4555-a8e1-6879e7615a78" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utilsAPI/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/utilsAPI/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uwise/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/uwise/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/static/css/web.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/static/css/web.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templates/course.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/course.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templates/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templates/learn.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/learn.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templates/partials/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/partials/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templates/partials/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/partials/footer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templates/partials/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/partials/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templates/partials/topnav.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/partials/topnav.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -200,7 +187,7 @@
       <workItem from="1707319713000" duration="9447000" />
       <workItem from="1707370802016" duration="23203000" />
       <workItem from="1707412772649" duration="1384000" />
-      <workItem from="1707425497025" duration="22468000" />
+      <workItem from="1707425497025" duration="22879000" />
     </task>
     <servers />
   </component>
