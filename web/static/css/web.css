@@ -171,7 +171,7 @@ textarea {
     text-align: center;
     align-content: center;
     border: 1px solid #011F55;
-    /*width: 100%;*/
+    width: 100%;
   }
   
   button:hover {
@@ -416,6 +416,7 @@ textarea {
     border: 1px solid #011F55;
     text-align: center;
     color: #011F55;
+    width: 100%;
   }
 
   .blue {

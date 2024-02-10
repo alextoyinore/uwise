@@ -1,7 +1,9 @@
 import json
+from typing import Any
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate, logout
-from django.http import JsonResponse
+from django.http import HttpRequest, JsonResponse
+from django.http.response import HttpResponse as HttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 
@@ -10,12 +12,21 @@ import courseAPI.models
 import utilsAPI
 from utilsAPI.models import Testimonial, Announcement
 from .models import *
+from authAPI.models import User
 
 # Create your views here.
 
 # @register.filter
 # def get_range(value):
 #     return range(value)
+
+class ProfileView(TemplateView):
+    template_name = 'profile.html'
+
+    def get(self, request, *args, **kwargs):
+        data = {}
+        context = data
+        return render(request, self.template_name, context)
 
 
 class LearnView(TemplateView):
@@ -247,6 +258,7 @@ class LoginView(TemplateView):
 
     def get(self, request, *args, **kwargs):
 
+        topnavs = BusinessModel.objects.all()
         footer_navs = FooterTitle.objects.all()
 
         if self.request.user.is_authenticated and not self.request.user.is_superuser:
@@ -255,6 +267,7 @@ class LoginView(TemplateView):
         data = {
             'page': 'login',
             'footer_navs': footer_navs,
+            'topnavs': topnavs,
         }
         context = {'data': data}
         return render(request, self.template_name, context)
@@ -280,6 +293,7 @@ class SignUpView(TemplateView):
     template_name = 'signup.html'
 
     def get(self, request, *args, **kwargs):
+        topnavs = BusinessModel.objects.all()
         footer_navs = FooterTitle.objects.all()
 
         if self.request.user.is_authenticated and not self.request.user.is_superuser:
@@ -288,6 +302,7 @@ class SignUpView(TemplateView):
         data = {
             'page': 'signup',
             'footer_navs': footer_navs,
+            'topnavs': topnavs,
         }
         context = {'data': data}
         return render(request, self.template_name, context)

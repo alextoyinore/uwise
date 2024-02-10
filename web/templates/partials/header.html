@@ -14,14 +14,14 @@
                         <b>{{ user.get_full_name | title }}</b>
                         {% if user.current_job_title == '' %} <a href="">Update your profile</a> {% else %} <a href="">{{ user.current_job_title }}</a> {% endif %}
                         <div class="header-profile-menu">
-                            <a href="">Profile</a>
+                            <a href="{% url 'profile' %}">Profile</a>
                             <a href="{% url 'dashboard' %}">My Library</a>
-                            <a href="">Purchases</a>
+                            {% comment %} <a href="">Purchases</a>
                             <a href="">Favourites</a>
                             <a href="">Messages</a>
-                            <a href="">Forum</a>
+                            <a href="">Forum</a> {% endcomment %}
                             <a href="">Announcements</a>
-                            <a href="">Certificates & Badges</a>
+                            {% comment %} <a href="">Certificates & Badges</a> {% endcomment %}
                             <a id="logout" href="{% url 'logout-user' %}" onclick="" class="logout">Logout</a>
                         </div>
                     </div>

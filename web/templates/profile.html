@@ -1,0 +1,86 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block page-title %} Learn {% endblock %}
+{% block header-message %}{% endblock %}
+
+
+{% block hero %}
+{% endblock %}
+{% block top-nav %}{% endblock %}
+
+{% block content %}
+<div class="content">
+    <div class="profile-content">
+        <div class="profile-summary">
+            <div class="image">
+                {% if user.image.url is not None %}
+                    <img src="{{ user.image.url }}" alt="" />
+                {% else %}
+                    <img src="{% static 'images/profile.png' %}" alt="" />
+                {% endif %}
+            </div>
+            <div class="profile-title">
+                <h2>{{ user.get_full_name }}</h2>
+                {% comment %} <p>{{ user.email }}</p> {% endcomment %}
+                <p>{{ user.username }}</p>
+            </div>
+        </div>
+        <div class="profile-info">
+            <h3>Bio</h3>
+            <p>{{user.bio}}</p>
+
+            <h3>Work</h3>
+            <p>Years of Experience: {{user.years_of_experience}}</p>
+            <p>Current Work Field: {{user.current_work_field}}</p>
+            <p>Desired Work Field: {{user.desired_work_field}}</p>
+            <p>Current Job Title: {{user.current_job_title}}</p>
+            <p>Desired Job Title: {{user.desired_job_title}}</p>
+
+            <h3>Academics</h3>
+            <p>Highest Academic Qualification: {{user.academic_level}}</p>
+
+
+            <h3>Gender</h3>
+            <p>{{user.gender}}</p>
+
+            <h3>Contact Details</h3>
+            <p>Country: {{user.country}}</p>
+            <p>City: {{user.city}}</p>
+
+
+            <h3>Organization</h3>
+            <p>{{user.organization}}</p>
+        </div>
+    </div>
+</div>
+
+<style>
+    .profile-info {
+        display: flex;
+        flex-direction: column;
+    }
+    .profile-content {
+        margin: 100px 0;
+        display: flex;
+        flex-direction: row;
+        gap: 50px;
+        flex-wrap: wrap;
+        {% comment %} align-items: center; {% endcomment %}
+    }
+    .profile-summary {
+        display: flex;
+        flex-direction: column;
+    }
+    .profile-summary .image {
+        width: 150px;
+        height: 150px;
+    }
+    .image img {
+        width: 150px;
+        height: 150px;
+        border-radius: 150px;
+    }
+</style>
+{% endblock %}
+
+{% block footer %} {% endblock %}
