@@ -25,9 +25,10 @@ class StaticPage(models.Model):
     date = models.DateField(auto_now=True, verbose_name='date')
     is_active = models.BooleanField(default=True, verbose_name='active', null=False)
     slug = models.SlugField(null=True, blank=True)
+    is_model_page = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.title
+        return self.url_name
 
 
 class FooterNav(models.Model):

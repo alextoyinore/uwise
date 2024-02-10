@@ -26,9 +26,9 @@
                         <li>Access general course community</li>
                     </ul>
                     
-                    <button id="btn-enroll" onclick="enrollWithoutPaying()" class="btn-cta blue bold">Enroll Pay Later</button>
+                    <button id="btn-enroll" onclick="enrollPayLater()" class="btn-cta blue bold">Enroll Pay Later</button>
                     <script>
-                        function enrollWithoutPaying(){
+                        function enrollPayLater(){
                             {#preventDefault()#}
                             
                             {% if not user.is_authenticated %}

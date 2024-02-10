@@ -7,10 +7,12 @@
                 <div class="footer-nav">
                     <strong class="footer-nav-title">For</strong>
                     {% for navlink in data.static_pages %}
-                        {% if navlink.url_name == 'home' %}
-                            <a href="{% url 'home' %}">{{ navlink.slug | capfirst }}</a>
-                        {% else %}
-                            <a href="{% url 'home' %}{{ navlink.url_name }}">{{ navlink.slug | capfirst }}</a>
+                        {% if navlink.is_model_page %}
+                            {% if navlink.url_name == 'home' %}
+                                <a href="{% url 'home' %}">{{ navlink.slug | capfirst }}</a>
+                            {% else %}
+                                <a href="{% url 'static' navlink.url_name %}">{{ navlink.slug | capfirst }}</a>
+                            {% endif %}
                         {% endif %}
                     {% endfor %}
                 </div>
@@ -19,7 +21,11 @@
                       <div class="footer-nav">
                         <strong class="footer-nav-title">{{ footer_nav.title }}</strong>
                           {% for footer_link in footer_nav.footer_links.all %}
-                              <a href="{% url 'explore' %}?q={{ footer_link }}">{{ footer_link }}</a>
+                                {% if not footer_nav.title == 'Pages' %}
+                                    <a href="{% url 'explore' %}?q={{ footer_link }}">{{ footer_link | capfirst }}</a>
+                                {% else %}
+                                    <a href="{% url 'static' footer_link.url_name %}">{{ footer_link | capfirst }}</a>
+                                {% endif %}
                           {% endfor %}
                       </div>
                   {% endfor %}

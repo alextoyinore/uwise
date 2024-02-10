@@ -226,7 +226,6 @@ class StaticPageView(TemplateView):
         data = {
             'footer_navs': footer_navs,
             'static_pages': static_pages,
-            # 'static_page': static_page,
             'page': page,
         }
         context = {'data': data}

@@ -1,10 +1,12 @@
 <div id="top-nav" class="top-nav">
     <div class="top-nav-content">
         {% for navlink in data.static_pages %}
-            {% if navlink.url_name == 'home' %}
-                <a href="{% url 'home' %}">{{ navlink.slug | capfirst }}</a>
-            {% else %}
-                <a href="{% url 'home' %}{{ navlink.url_name }}">{{ navlink.slug | capfirst }}</a>
+            {% if navlink.is_model_page %}
+                {% if navlink.url_name == 'home' %}
+                    <a href="{% url 'home' %}">{{ navlink.slug | capfirst }}</a>
+                {% else %}
+                    <a href="{% url 'static' navlink.url_name %}">{{ navlink.slug | capfirst }}</a>
+                {% endif %}
             {% endif %}
         {% endfor %}
     </div>
