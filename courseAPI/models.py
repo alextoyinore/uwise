@@ -48,7 +48,7 @@ class Course(models.Model):
     community_link1 = models.URLField(blank=True, null=True)
     community_link2 = models.URLField(blank=True, null=True)
     duration = models.IntegerField(blank=False, null=False)
-    image = models.URLField(null=False, blank=False)
+    image = models.ImageField(upload_to='courses', null=False, blank=False)
     field = models.ForeignKey('Field', on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=9, decimal_places=2, null=False, blank=False)
     class_interval = models.IntegerField(blank=False, null=False)

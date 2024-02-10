@@ -1,7 +1,7 @@
 
 <a href="{% url 'course' course.id %}" class="course-card">
     <div class="course-image">
-        <img src="{{course.image}}" alt="">
+        <img src="{{course.image.url}}" alt="">
     </div>
     <div class="course-details">
         <strong class="course-title">{{course.title}}</strong>

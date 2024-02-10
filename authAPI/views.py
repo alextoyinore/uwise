@@ -26,6 +26,14 @@ class UserView(ModelViewSet):
             permission_classes = []
 
         return [permission() for permission in permission_classes]
+    
+    def create(self, request, *args, **kwargs):
+        if 'image' in request.data:
+            image = request.data['image']
+            return super().create(request, image=image, *args, **kwargs)
+        else:
+            return super().create(request, *args, **kwargs)
+
 
     def destroy(self, request, *args, **kwargs):
         instance = self.get_object()
@@ -60,6 +68,13 @@ class AcademicLevelView(ModelViewSet):
 class OrganizationView(ModelViewSet):
     serializer_class = serializers.OrganizationSerializer
     queryset = Organization.objects.all()
+
+    def create(self, request, *args, **kwargs):
+        if 'logo' in request.data:
+            logo = request.data['logo']
+            return super().create(request, logo=logo, *args, **kwargs)
+        else:
+            return super().create(request, *args, **kwargs)
 
     def destroy(self, request, *args, **kwargs):
         instance = self.get_object()

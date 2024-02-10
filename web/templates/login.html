@@ -18,14 +18,14 @@
                 <br>
                  
                 <div class="error" style="display: none; margin-bottom: 10px; color: crimson; 
-                 font-size: 14px; font-variant-caps: petite-caps;"></div>
+                 font-size: 14px; font-variant-caps: capfirst;"></div>
 
                 <label for="email">Email</label>
-                <input type="text" id="email" name="email" placeholder="Enter your email"
+                <input type="text" id="email" name="email" placeholder="Enter your email" required
                 /> <br>
 
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="Enter your password"
+                <input type="password" id="password" name="password" placeholder="Enter your password" required
                 /> <br>
                 
                 <input type="hidden" name="next" value="{{ request.GET.next }}">

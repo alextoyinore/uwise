@@ -26,7 +26,7 @@ class User(AbstractUser):
     address = models.CharField(max_length=100, default='', blank=True)
     city = models.CharField(max_length=100, default='', blank=True)
     postal_code = models.CharField(max_length=10, default='', blank=True)
-    image = models.URLField(default='', null=True, blank=True)
+    image = models.ImageField(upload_to='users', null=True, blank=True)
     current_work_field = models.CharField(max_length=100, default='', blank=True)
     desired_work_field = models.CharField(max_length=100, default='', blank=True)
     current_job_title = models.CharField(max_length=100, default='', blank=True)
@@ -74,7 +74,7 @@ class Organization(models.Model):
 
     # ORGANIZATION DATA
     name = models.CharField(max_length=100, null=False, blank=False)
-    logo = models.URLField(blank=True, null=True)
+    logo = models.ImageField(upload_to='organizations',blank=True, null=True)
     address = models.CharField(max_length=500, default='', null=True, blank=True)
     website = models.URLField(null=False, blank=False)
     type = models.ForeignKey('OrganizationType', on_delete=models.PROTECT, null=False, blank=False)

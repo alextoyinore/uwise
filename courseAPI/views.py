@@ -19,6 +19,13 @@ class CourseViewSet(ModelViewSet):
     serializer_class = CourseSerializer
     permission_classes = [IsAdminUser]
 
+    def create(self, request, *args, **kwargs):
+        if 'image' in request.data:
+            image = request.data['image']
+            return super().create(request, image=image, *args, **kwargs)
+        else:
+            return super().create(request, *args, **kwargs)
+
 
 class AnswerViewSet(ModelViewSet):
     queryset = Answer.objects.all()

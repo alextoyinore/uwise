@@ -26,10 +26,10 @@
                         </div>
                     </div>
                     <div class="header-profile-image">
-                        {% if user.image == '' or user.image == None %}
-                            <img src="{% static 'images/profile.png' %}" alt="">
+                        {% if user.image == '' or user.image is None %}
+                            <img src="{% static 'images/profile.png' %}" alt="{{user.get_full_name}}">
                         {% else %}
-                            <img src="{{ user.image }}" alt="">
+                            <img src="{{ user.image.url }}" alt="{{user.get_full_name}}">
                         {% endif %}
                     </div>
                 </div>

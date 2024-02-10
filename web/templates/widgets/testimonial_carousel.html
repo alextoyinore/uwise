@@ -1,5 +1,5 @@
 
-{#{% for testimonial in testimonials %}#}
+{% if testimonials is not empty %}
 <section class="auto-slider-section">
     <div class="auto-slider-header">
         <div class="auto-slider-title">
@@ -24,7 +24,7 @@
     </div>
 </section>
 
-{#{% endfor %}#}
+{% endif %}
 
 <style>
     .auto-slider-header {
