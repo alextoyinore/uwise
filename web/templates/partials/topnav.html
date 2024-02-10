@@ -1,6 +1,6 @@
 <div id="top-nav" class="top-nav">
     <div class="top-nav-content">
-        {% for navlink in data.topnavs %}
+        {% for navlink in data.static_pages %}
             {% if navlink.url_name == 'home' %}
                 <a href="{% url 'home' %}">{{ navlink.slug | capfirst }}</a>
             {% else %}

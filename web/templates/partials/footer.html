@@ -6,7 +6,7 @@
                   
                 <div class="footer-nav">
                     <strong class="footer-nav-title">For</strong>
-                    {% for navlink in data.topnavs %}
+                    {% for navlink in data.static_pages %}
                         {% if navlink.url_name == 'home' %}
                             <a href="{% url 'home' %}">{{ navlink.slug | capfirst }}</a>
                         {% else %}

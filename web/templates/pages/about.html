@@ -1,4 +1,4 @@
-{% extends 'partials/base.html' %}
+{% comment %} {% extends 'partials/base.html' %}
 {% load static %}
 {% block page-title %} About {% endblock %}
 {% block header-message %}{% endblock %}
@@ -6,7 +6,7 @@
 
 {% block content %}
 
-<div id="content">
+<div id="content"> {% endcomment %}
 <div class="content">
     <h1>Welcome to Uwise Learning</h1>
     <p>At Uwise Learning, we are more than just an educational institution; we are architects of opportunity, sculptors of success, and pioneers of a new era in tech skills and vocational training. Based in the vibrant city of Lagos, Nigeria, our mission goes beyond conventional education. We are dedicated to shaping the future of global wealth by empowering individuals to not only land their dream roles but to create and build, becoming true architects of their destinies.</p>
@@ -28,9 +28,9 @@
 
     <p>At Uwise Learning, we don't just teach – we inspire, mentor, and guide. Join us, and together, let's build a future where education is the key to not just a job, but a thriving, impactful career. Welcome to Uwise Learning – where your potential meets its greatest possibilities.</p>
 </div>
-</div>
+{% comment %} </div>
 {% endblock %}
 
 {% block footer %}
     {% include 'partials/footer.html' %}
-{% endblock %}
+{% endblock %} {% endcomment %}

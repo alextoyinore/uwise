@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from web.models import CourseCarousel, BusinessModel, FooterTitle, FooterLink
+from web.models import CourseCarousel, StaticPage, FooterNav, FooterLink
 
 
 # Register your models here.
@@ -10,14 +10,14 @@ class CourseCarouselAdmin(admin.ModelAdmin):
     search_fields = ('title',)
 
 
-@admin.register(BusinessModel)
-class BusinessModelAdmin(admin.ModelAdmin):
-    list_display = ('title', 'url_name', 'description')
+@admin.register(StaticPage)
+class StaticPageAdmin(admin.ModelAdmin):
+    list_display = ('title', 'url_name', 'content')
     search_fields = ('title',)
 
 
-@admin.register(FooterTitle)
-class FooterTitleAdmin(admin.ModelAdmin):
+@admin.register(FooterNav)
+class FooterNavAdmin(admin.ModelAdmin):
     list_display = ('title',)
     search_fields = ('title',)
 

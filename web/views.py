@@ -71,7 +71,7 @@ class DashboardView(TemplateView):
         if not request.user.is_authenticated:
             return redirect('login')
 
-        footer_navs = FooterTitle.objects.all()
+        footer_navs = FooterNav.objects.all()
 
         q = request.GET.get('q')
         fields = courseAPI.models.Field.objects.all()
@@ -95,7 +95,7 @@ class CourseView(TemplateView):
         course_data = courseAPI.models.Course.objects.get(id=kwargs['pk'])
         testimonials = Testimonial.objects.all()[:3]
         classes = courseAPI.models.Class.objects.filter(course=course_data)
-        topnavs = BusinessModel.objects.all()
+        static_pages = StaticPage.objects.all()
 
 
         if course_data.skills is not None:
@@ -105,7 +105,7 @@ class CourseView(TemplateView):
         if course_data.objectives is not None:
             course_data.objectives = course_data.objectives.split('.')
 
-        footer_navs = FooterTitle.objects.all()
+        footer_navs = FooterNav.objects.all()
 
         # print(course_data)
         data = {
@@ -114,7 +114,7 @@ class CourseView(TemplateView):
             'page': 'course',
             'classes': classes,
             'footer_navs': footer_navs,
-            'topnavs': topnavs,
+            'static_pages': static_pages,
         }
         # print(data)
         context = {'data': data}
@@ -125,8 +125,8 @@ class ExploreView(TemplateView):
     template_name = 'explore.html'
 
     def get(self, request, *args, **kwargs):
-        footer_navs = FooterTitle.objects.all()
-        topnavs = BusinessModel.objects.all()
+        footer_navs = FooterNav.objects.all()
+        static_pages = StaticPage.objects.all()
 
 
         q = request.GET.get('q')
@@ -145,7 +145,7 @@ class ExploreView(TemplateView):
             'fields': fields,
             'footer_navs': footer_navs,
             'page': 'explore',
-            'topnavs': topnavs,
+            'static_pages': static_pages,
         }
         context = {'data': data}
         return render(request, self.template_name, context)
@@ -155,16 +155,16 @@ class EnrollView(TemplateView):
     template_name = 'enroll.html'
 
     def get(self, request, *args, **kwargs):
-        footer_navs = FooterTitle.objects.all()
+        footer_navs = FooterNav.objects.all()
         course_data = courseAPI.models.Course.objects.get(id=kwargs['pk'])
-        topnavs = BusinessModel.objects.all()
+        static_pages = StaticPage.objects.all()
 
         # print(course_data)
         data = {
             'course_data': course_data,
             'page': 'enroll',
             'footer_navs': footer_navs,
-            'topnavs': topnavs,
+            'static_pages': static_pages,
         }
         # print(data)
         context = {'data': data}
@@ -178,9 +178,9 @@ class HomeView(TemplateView):
         fields = courseAPI.models.Field.objects.all()[:15]
         testimonials = Testimonial.objects.all()[:3]
         carousels = CourseCarousel.objects.all()[:4]
-        footer_navs = FooterTitle.objects.all()
+        footer_navs = FooterNav.objects.all()
         announcement = Announcement.objects.all().first()
-        topnavs = BusinessModel.objects.all()
+        static_pages = StaticPage.objects.all()
 
         user_courses_carousels = None
 
@@ -198,7 +198,7 @@ class HomeView(TemplateView):
             'page': 'home',
             'fields': fields,
             'footer_navs': footer_navs,
-            'topnavs': topnavs,
+            'static_pages': static_pages,
             'user_courses_carousels': user_courses_carousels,
             'announcement': announcement,
         }
@@ -208,49 +208,74 @@ class HomeView(TemplateView):
         return render(request, self.template_name, context)
 
 
-class AboutView(TemplateView):
-    template_name = 'pages/about.html'
+class StaticPageView(TemplateView):
+    template_name = 'static.html'
 
     def get(self, request, *args, **kwargs):
-        footer_navs = FooterTitle.objects.all()
-        topnavs = BusinessModel.objects.all()
+        page = kwargs['page']
+        footer_navs = FooterNav.objects.all()
+        static_pages = StaticPage.objects.all()
+
+        for static_page in static_pages:
+            static_page.content = static_page.content.split('\n')
+        
+        #static_page = static_pages.filter(url_name=page)
+
+        # print(static_page)
 
         data = {
             'footer_navs': footer_navs,
-            'topnavs': topnavs,
+            'static_pages': static_pages,
+            # 'static_page': static_page,
+            'page': page,
         }
         context = {'data': data}
         return render(request, self.template_name, context)
 
 
-class PrivacyView(TemplateView):
-    template_name = 'pages/privacy.html'
+# class AboutView(TemplateView):
+#     template_name = 'pages/about.html'
 
-    def get(self, request, *args, **kwargs):
-        footer_navs = FooterTitle.objects.all()
-        topnavs = BusinessModel.objects.all()
+#     def get(self, request, *args, **kwargs):
+#         footer_navs = FooterTitle.objects.all()
+#         static_pages = StaticPage.objects.all()
 
-        data = {
-            'footer_navs': footer_navs,
-            'topnavs': topnavs,
-        }
-        context = {'data': data}
-        return render(request, self.template_name, context)
+#         data = {
+#             'footer_navs': footer_navs,
+#             'static_pages': static_pages,
+#         }
+#         context = {'data': data}
+#         return render(request, self.template_name, context)
 
 
-class ContactView(TemplateView):
-    template_name = 'pages/contact.html'
+# class PrivacyView(TemplateView):
+#     template_name = 'pages/privacy.html'
 
-    def get(self, request, *args, **kwargs):
-        footer_navs = FooterTitle.objects.all()
-        topnavs = BusinessModel.objects.all()
+#     def get(self, request, *args, **kwargs):
+#         footer_navs = FooterTitle.objects.all()
+#         static_pages = StaticPage.objects.all()
 
-        data = {
-            'footer_navs': footer_navs,
-            'topnavs': topnavs,
-        }
-        context = {'data': data}
-        return render(request, self.template_name, context)
+#         data = {
+#             'footer_navs': footer_navs,
+#             'topnavs': static_pages,
+#         }
+#         context = {'data': data}
+#         return render(request, self.template_name, context)
+
+
+# class ContactView(TemplateView):
+#     template_name = 'pages/contact.html'
+
+#     def get(self, request, *args, **kwargs):
+#         footer_navs = FooterTitle.objects.all()
+#         static_pages = StaticPage.objects.all()
+
+#         data = {
+#             'footer_navs': footer_navs,
+#             'static_pages': static_pages,
+#         }
+#         context = {'data': data}
+#         return render(request, self.template_name, context)
 
 
 class LoginView(TemplateView):
@@ -258,8 +283,8 @@ class LoginView(TemplateView):
 
     def get(self, request, *args, **kwargs):
 
-        topnavs = BusinessModel.objects.all()
-        footer_navs = FooterTitle.objects.all()
+        static_pages = StaticPage.objects.all()
+        footer_navs = FooterNav.objects.all()
 
         if self.request.user.is_authenticated and not self.request.user.is_superuser:
             return redirect('home')
@@ -267,7 +292,7 @@ class LoginView(TemplateView):
         data = {
             'page': 'login',
             'footer_navs': footer_navs,
-            'topnavs': topnavs,
+            'static_pages': static_pages,
         }
         context = {'data': data}
         return render(request, self.template_name, context)
@@ -293,8 +318,8 @@ class SignUpView(TemplateView):
     template_name = 'signup.html'
 
     def get(self, request, *args, **kwargs):
-        topnavs = BusinessModel.objects.all()
-        footer_navs = FooterTitle.objects.all()
+        static_pages = StaticPage.objects.all()
+        footer_navs = FooterNav.objects.all()
 
         if self.request.user.is_authenticated and not self.request.user.is_superuser:
             return redirect('home')
@@ -302,7 +327,7 @@ class SignUpView(TemplateView):
         data = {
             'page': 'signup',
             'footer_navs': footer_navs,
-            'topnavs': topnavs,
+            'static_pages': static_pages,
         }
         context = {'data': data}
         return render(request, self.template_name, context)

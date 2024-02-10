@@ -1,4 +1,5 @@
 {% extends 'partials/base.html' %}
+{% load humanize %}
 {% load static %}
 {% block page-title %} Enroll {% endblock %}
 {% block header-message %}{% endblock %}
@@ -25,7 +26,7 @@
                         <li>Access general course community</li>
                     </ul>
                     
-                    <button id="btn-enroll" onclick="enrollWithoutPaying()" class="btn-cta blue">Enroll Without Pay</button>
+                    <button id="btn-enroll" onclick="enrollWithoutPaying()" class="btn-cta blue bold">Enroll Pay Later</button>
                     <script>
                         function enrollWithoutPaying(){
                             {#preventDefault()#}
@@ -90,7 +91,6 @@
                         <li>Eligibility for course rep - Gives access to free course of choice</li>
                         <li>Access 6 months on-first-job or startup support</li>
                     </ul>
-{#                    <a href="" class="btn-cta green fill-x">Pay &#8358; {{ data.course_data.price | floatformat:"2" }}</a>#}
                     
                     {# Making payment with flutterwave #}
                     <form method="POST" action="https://checkout.flutterwave.com/v3/hosted/pay">
@@ -101,12 +101,12 @@
                           <input type="hidden" name="amount" value="{{ data.course_data.price }}" />
                           <input type="hidden" name="currency" value="NGN" />
                           <input type="hidden" name="meta[source]" value="docs-html-test" />
-                          <button type="submit" class="btn-cta green" id="start-payment-button">Pay &#8358; {{ data.course_data.price | floatformat:"2" }}</button>
+                          <button type="submit" class="btn-cta green bold" id="start-payment-button">Pay &#8358; {{ data.course_data.price |stringformat:"f"|floatformat:2}}</button>
                     </form>
                 </div>
             </div>
             
-            <div class="enroll-content-right">
+            {% comment %} <div class="enroll-content-right">
                 <div class='card'>
                     <h2>Can't afford the full course? <span>Buy a few courses to start</span></h2>
                     <ul>
@@ -131,7 +131,7 @@
                         <button type="submit" class="btn-cta green" id="start-payment-button">Pay &#8358; {{ data.course_data.price | floatformat:"2" }}</button>
                   </form>
                 </div>
-            </div>
+            </div> {% endcomment %}
         </div>
     </section>
 </div>
@@ -152,7 +152,7 @@
             line-height: 1.8;
         }
     #card-form {
-        max-width: 400px;
+        {% comment %} max-width: 400px; {% endcomment %}
     }
         .card-input-wrapper {
             width: 100%;
@@ -180,8 +180,8 @@
             margin: 25px 0;
         }
         .enroll-content-left {
-            width: 33%;
-            maring-right: 12px;
+            {% comment %} width: 33%; {% endcomment %}
+            {% comment %} maring-right: 12px; {% endcomment %}
             {#border-right: 1px solid #c3d3ec;#}
         }
         .payment-methods a {
@@ -200,12 +200,12 @@
             font-weight: bold;
         }
         .enroll-content-center {
-            width: 33%;
-            margin: 0 12px;
+            {% comment %} width: 33%; {% endcomment %}
+            {% comment %} margin: 0 12px; {% endcomment %}
         }
         .enroll-content-right {
-            width: 33%;
-            margin-left: 12px;
+            {% comment %} width: 33%; {% endcomment %}
+            {% comment %} margin-left: 12px; {% endcomment %}
         }
         .enroll-content-right span {
             display: block;
@@ -217,7 +217,9 @@
           background: #10DC80;
           color: #fff;
           border: 1px solid #0fc471;
-          font-weight: bold;
+       }
+       .bold {
+        font-weight: bold;
        }
     </style>
 

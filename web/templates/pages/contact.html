@@ -1,11 +1,11 @@
-{% extends 'partials/base.html' %}
+{% comment %} {% extends 'partials/base.html' %}
 {% load static %}
 {% block page-title %} Contact {% endblock %}
 {% block header-message %}{% endblock %}
 {% block hero %}{% endblock %}
 
 {% block content %}
-<div id="content" class="content">
+<div id="content" class="content"> {% endcomment %}
     <div class="content">
         <div class="auth-container">
             <form action="#" method="post">
@@ -31,5 +31,5 @@
     </div>
 </div>
 
-{% endblock %}
+{% comment %} {% endblock %} {% endcomment %}
 

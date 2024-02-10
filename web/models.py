@@ -18,10 +18,10 @@ class CourseCarousel(models.Model):
         ordering = ('-date',)
 
 
-class BusinessModel(models.Model):
+class StaticPage(models.Model):
     title = models.CharField(max_length=200, verbose_name='title')
     url_name = models.CharField(max_length=200, verbose_name='url_name', null=False, blank=False)
-    description = models.TextField(verbose_name='description', null=False, blank=False)
+    content = models.TextField(verbose_name='description', null=False, blank=False)
     date = models.DateField(auto_now=True, verbose_name='date')
     is_active = models.BooleanField(default=True, verbose_name='active', null=False)
     slug = models.SlugField(null=True, blank=True)
@@ -30,10 +30,10 @@ class BusinessModel(models.Model):
         return self.title
 
 
-class FooterTitle(models.Model):
+class FooterNav(models.Model):
     title = models.CharField(max_length=200, verbose_name='title')
     is_active = models.BooleanField(default=True, verbose_name='active', null=False)
-    footer_links = models.ManyToManyField('FooterLink', verbose_name='footer_links', related_name='footer_links')
+    footer_links = models.ManyToManyField('StaticPage', verbose_name='static_pages', related_name='static_pages')
 
     def __str__(self):
         return self.title
