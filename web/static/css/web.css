@@ -65,18 +65,6 @@ textarea {
   text-align: center;
 }
 
-/* Styles for small screens (up to 767px) */
-/* @media (max-width: 767px) {
-  .carousel-wrapper {
-    flex-wrap: nowrap;
-  }
-
-  .course-card {
-    width: calc(100% - 40px);
-    max-width: none;
-  }
-} */
-
 .auth-container {
     display: flex;
     flex-direction: row;

@@ -14,6 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="{% static "css/web.css" %}">
+    <link rel="stylesheet" href="{% static "css/web-mobile.css" %}">
     <script src="{% static "js/web.js" %}" defer></script>
 
 {% endblock %}
@@ -45,5 +46,154 @@
     {% block footer %}
         {% include 'partials/footer.html' %}
     {% endblock %}
+
+    <style>
+        
+        @media only screen and (max-width: 1024px) {
+            .content {
+                width: 90%;
+            }
+            .top-nav-content{
+                width: 90%;
+            }
+            .header-nav-content {
+                width: 90%;
+            }
+            .header-message-content{
+                width: 90%;
+            }
+            .user-content {
+                width: 90%;
+            }
+            .footer-wrapper {
+                width: 90%;
+            }
+            .hero-content {
+                width: 90%;
+            }
+
+            {% comment %} .course-card {
+                width: calc(100% - 40px);
+                max-width: none;
+            } {% endcomment %}
+        }
+
+        /* Styles for small screens (up to 767px) */
+
+        @media only screen and (max-width: 540px){
+            .course-image img {
+                height: 50%;
+            }
+            .explore a {
+                display: none;
+            }
+            .explore span {
+                font-size: 24px;
+            }
+            .biginfo-content {
+                flex-wrap: wrap;
+                flex-direction: column;
+                gap: 50px;
+            }
+            .slider-thumb {
+                display: none;
+            }
+            .carousel-section-navs {
+                display: none;
+            }
+            .biginfo-image {
+                width: 100%;
+            }
+            .biginfo-image img {
+                transform: rotate(0deg);
+            }
+            .biginfo-copy{
+                width: 100%;
+            }
+            .hero-content {
+                flex-direction: column;
+                padding: 40px 0;
+                gap: 20px;
+            }
+            .hero-content-left, .hero-content-right {
+                width: 100%;
+                padding: 0;
+            }
+            .course-summary-card {
+                width: 100%;
+                transform: rotate(0deg);
+            }
+            .info-content {
+                width: 100%;
+                align-items: center;
+                height: inherit;
+            }
+            .partner-info-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .partner-info-left, .partner-info-right {
+                width: 100%;
+                padding: 0;
+            }
+            .career-info-content {
+                flex-direction: column;
+            }
+            .career-info-left {
+                width: 100%;
+            }
+            .career-info-right {
+                flex-direction: column;
+                padding: 0;
+            }
+            .career-info {
+                padding: 0;
+            }
+            .certificate-content {
+                flex-direction: column;
+            }
+            .certificate-left {
+                width: 100%;
+            }
+            .certificate-right {
+                flex-wrap: wrap;
+            }
+            .course-list-content > p, .course-list-content > h3 {
+                width: 100%;
+            }
+            .course-list {
+                flex-direction: column;
+            }
+            .course-list-left, .course-list-right {
+                width: 100%;
+                padding: 0;
+            }
+            .blog-content {
+                flex-direction: column;
+            }
+            .blog-item{
+                width: 100%;
+                padding: 10px 0;
+                align-items: center;
+            }
+            .blog-image img {
+                margin-left: 10px;
+            }
+            .hero2-cta {
+                width: 100%;
+                padding: 0;
+            }
+            .hero-cta {
+                width: 100%;
+            }
+            
+
+            {% comment %} .course-card {
+                width: calc(100% - 40px);
+                max-width: none;
+            }  {% endcomment %}
+        } 
+
+    </style>
 </body>
 </html>
