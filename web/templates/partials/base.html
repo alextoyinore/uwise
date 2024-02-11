@@ -198,11 +198,14 @@
             .header-nav-right a{
                 display: none;
             }
-            .header-nav-left {
+            {% comment %} .header-nav-left {
                 display: none;
-            }
-            #mobile-nav-icon, #logo-on-mobile {
-                display: block;
+            } {% endcomment %}
+            {% comment %} #mobile-nav-icon, #logo-on-mobile {
+                display: inline-block;
+            } {% endcomment %}
+            .bottom-cta p {
+                width: 80%;
             }
 
             {% comment %} .course-card {
