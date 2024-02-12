@@ -18,7 +18,37 @@
         <div class="enroll-content">
             <div class="enroll-content-left">
                 <div class='card'>
-                    <h2>Enroll in this course but pay later</h2>
+                    <h2>Buy this course now</h2>
+                    <ul>
+                        <li>Access All Classes</li>
+                        <li>Access all course announcements</li>
+                        <li>Access all course communities</li>
+                        <li>Get help from all course facilitators</li>
+                        <li>Get freebies including heavily discount paid courses</li>
+                        <li>Get certificate upon completion</li>
+                        <li>Get discount on total fee</li>
+                        <li>Eligibility for class rep - Gives access to random free course</li>
+                        <li>Eligibility for course rep - Gives access to free course of choice</li>
+                        <li>Access 6 months on-first-job or startup support</li>
+                    </ul>
+                    
+                    {# Making payment with flutterwave #}
+                    <form method="POST" action="https://checkout.flutterwave.com/v3/hosted/pay">
+                          <input type="hidden" name="public_key" value="FLWPUBK_TEST-5855984309c2f0b177abb690e6cda4be-X" />
+                          <input type="hidden" name="customer[email]" value="{{ user.email }}" />
+                          <input type="hidden" name="customer[name]" value="{{ user.get_full_name }}" />
+                          <input type="hidden" name="tx_ref" value="txref-81123" />
+                          <input type="hidden" name="amount" value="{{ data.course_data.price }}" />
+                          <input type="hidden" name="currency" value="NGN" />
+                          <input type="hidden" name="meta[source]" value="docs-html-test" />
+                          <button type="submit" class="btn-cta green bold" id="start-payment-button">Pay &#8358; {{ data.course_data.price |stringformat:"f"|floatformat:2}}</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="enroll-content-right">
+                <div class='card'>
+                    <h2>Enroll in this course and pay later</h2>
                     <ul>
                         <li>Access general course announcements</li>
                         <li>Preview course with the first class</li>
@@ -76,37 +106,7 @@
                 </div>                
             </div>
             
-            <div class="enroll-content-center">
-                <div class='card'>
-                    <h2>Buy this course now</h2>
-                    <ul>
-                        <li>Access All Classes</li>
-                        <li>Access all course announcements</li>
-                        <li>Access all course communities</li>
-                        <li>Get help from all course facilitators</li>
-                        <li>Get freebies including heavily discount paid courses</li>
-                        <li>Get certificate upon completion</li>
-                        <li>Get discount on total fee</li>
-                        <li>Eligibility for class rep - Gives access to random free course</li>
-                        <li>Eligibility for course rep - Gives access to free course of choice</li>
-                        <li>Access 6 months on-first-job or startup support</li>
-                    </ul>
-                    
-                    {# Making payment with flutterwave #}
-                    <form method="POST" action="https://checkout.flutterwave.com/v3/hosted/pay">
-                          <input type="hidden" name="public_key" value="FLWPUBK_TEST-5855984309c2f0b177abb690e6cda4be-X" />
-                          <input type="hidden" name="customer[email]" value="{{ user.email }}" />
-                          <input type="hidden" name="customer[name]" value="{{ user.get_full_name }}" />
-                          <input type="hidden" name="tx_ref" value="txref-81123" />
-                          <input type="hidden" name="amount" value="{{ data.course_data.price }}" />
-                          <input type="hidden" name="currency" value="NGN" />
-                          <input type="hidden" name="meta[source]" value="docs-html-test" />
-                          <button type="submit" class="btn-cta green bold" id="start-payment-button">Pay &#8358; {{ data.course_data.price |stringformat:"f"|floatformat:2}}</button>
-                    </form>
-                </div>
-            </div>
-            
-            {% comment %} <div class="enroll-content-right">
+            {% comment %} <div class="enroll-content-center">
                 <div class='card'>
                     <h2>Can't afford the full course? <span>Buy a few courses to start</span></h2>
                     <ul>

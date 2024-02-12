@@ -46,12 +46,12 @@
                         <span class="material-symbols-outlined search-icon">search</span>
                         <input class="header-search-input search" placeholder="What do you want to learn?" type="search" />
                     </div>
-                    <a class="btn-cta-light" href="{% url 'login' %}">Login</a>
+                    <a class="btn-cta blue" href="{% url 'login' %}">Login</a>
 {#                    <a class="btn-cta blue" href="{% url 'signup' %}">Get Started</a>#}
                 {% elif data.page == 'login' %}
-                    <a class="btn-cta-light swtich-auth" href="{% url 'signup' %}">Sign Up</a>
+                    <a class="btn-cta-light switch-auth" href="{% url 'signup' %}">Sign Up</a>
                 {% elif data.page == 'signup' %}
-                    <a class="btn-cta-light swtich-auth" href="{% url 'login' %}">Login</a>
+                    <a class="btn-cta-light switch-auth" href="{% url 'login' %}">Login</a>
                 {% endif %}
 
             {% endif %}
