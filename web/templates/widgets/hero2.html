@@ -8,7 +8,7 @@
             {% for field in data.fields %}
                 <a href="{% url 'explore' %}?q={{ field }}" class="btn-cta-light dark">{{ field }}</a>
             {% endfor %}
-        </div><br>
+        </div>
         <div class="hero2-cta">
             <a href="{% url 'signup' %}" class="btn-cta-light hero-cta bold">Get Started</a>
             <a href="{% url 'home' %}" class="btn-cta-light hero-cta green bold">Get the App</a>
