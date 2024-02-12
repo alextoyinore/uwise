@@ -14,7 +14,11 @@
                 <b>Field: {{ data.course_data.field }}</b>
                 <b>Rating: {{ data.course_data.rating }}</b>
                 <br>
-                <a href="{% url 'enroll' data.course_data.id %}" class="btn-cta-light dark green">Enroll</a>
+                {% if not data.user_owns_course %}
+                    <a href="{% url 'enroll' data.course_data.id %}" class="btn-cta-light green">Enroll Now </a>
+                {% else %}
+                    <a href="{% url 'learn' data.course_data.id 'info' %}" class="btn-cta blue">Go to class</a>
+                {% endif %}
 
             </div>
         </div>

@@ -96,6 +96,7 @@ class CourseView(TemplateView):
         testimonials = Testimonial.objects.all()[:3]
         classes = courseAPI.models.Class.objects.filter(course=course_data)
         static_pages = StaticPage.objects.all()
+        user_owns_course = courseAPI.models.UserCourse.objects.get(user=request.user, course=course_data)
 
 
         if course_data.skills is not None:
@@ -115,6 +116,7 @@ class CourseView(TemplateView):
             'classes': classes,
             'footer_navs': footer_navs,
             'static_pages': static_pages,
+            'user_owns_course': user_owns_course,
         }
         # print(data)
         context = {'data': data}

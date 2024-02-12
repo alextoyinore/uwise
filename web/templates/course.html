@@ -16,7 +16,11 @@
                 <p>Level: {{ data.course_data.level }} . Price: &#8358; {{ data.course_data.price }} . Duration: {{ data.course_data.duration }} Days</p>
             </div>
             <div class="header-nav-right">
-                <a href="{% url 'enroll' data.course_data.id %}" class="btn-cta-light green">Enroll Now </a>
+                {% if not data.user_owns_course %}
+                    <a href="{% url 'enroll' data.course_data.id %}" class="btn-cta-light green">Enroll Now </a>
+                {% else %}
+                    <a href="{% url 'learn' data.course_data.id 'info' %}" class="btn-cta blue">Go to class</a>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -25,12 +29,12 @@
         .extra-header-nav {
             display: none;
         }
-         .green {
+        .green {
             background: #10DC80;
             color: #fff;
             border: 1px solid #0ab065;
-             font-weight: bold;
-         }
+            font-weight: bold;
+        }
     </style>
     <script>
         var prevScrollPos = window.scrollY || window.pageYOffset;
@@ -119,7 +123,7 @@
             <div class="long-ad-content">
                 <div class="ad-content-left">
                     <h3>Go from where you are to where you want to be with life-changing learning for your team</h3><br>
-                    <a href="" class="btn-cta-light">Learn more about Uwise Business</a>
+                    <a href="" class="btn-cta blue">Learn more about Uwise Business</a>
                 </div>
                 <div class="ad-content-right">
                     <img src="{% static 'images/logos.png' %}" alt="">

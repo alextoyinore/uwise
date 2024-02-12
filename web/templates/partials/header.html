@@ -4,12 +4,12 @@
         <div class="header-nav-left">
             <a href="{% url 'home' %}"><img class="logo" src="{% static 'images/uwise.png' %}" alt="Uwise Logo"></a>
             {% if data.page is not 'enroll' %}
-                <div class="explore"><a href="{% url 'explore' %}">Explore</a><span class="material-symbols-outlined">list</span></div>
+                <div class="explore"><a href="{% url 'explore' %}">Explore</a><span class="material-symbols-outlined">explore</span></div>
             {% endif %}
         </div>
         
         {# Mobile logo and nav icon #}
-        <span style="display:none;" id="mobile-nav-icon"  class="material-symbols-outlined">list</span>
+        <span style="display:none;" id="mobile-nav-icon"  class="material-symbols-outlined">explore</span>
         
         <a style="display:none;" id="logo-on-mobile" href="{% url 'home' %}"><img class="logo" src="{% static 'images/uwise.png' %}" alt="Uwise Logo"></a>
         
@@ -49,9 +49,9 @@
                     <a class="btn-cta-light" href="{% url 'login' %}">Login</a>
 {#                    <a class="btn-cta blue" href="{% url 'signup' %}">Get Started</a>#}
                 {% elif data.page == 'login' %}
-                    <a class="btn-cta-light" href="{% url 'signup' %}">Sign Up</a>
+                    <a class="btn-cta-light swtich-auth" href="{% url 'signup' %}">Sign Up</a>
                 {% elif data.page == 'signup' %}
-                    <a class="btn-cta-light" href="{% url 'login' %}">Login</a>
+                    <a class="btn-cta-light swtich-auth" href="{% url 'login' %}">Login</a>
                 {% endif %}
 
             {% endif %}
@@ -66,7 +66,7 @@
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
-        width: 40%;
+        width: 25%;
     }
     .header-profile {
         display: flex;

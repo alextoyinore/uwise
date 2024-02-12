@@ -191,27 +191,61 @@
                 padding: 0;
                 border-radius: 0;
                 background: none;
+                width: 100%;
             }
             .form-row {
                 flex-direction: column;
             }
-            .header-nav-right a{
+            .header-nav-left span {
                 display: none;
+            }
+            .header-nav-right a{
+                {% comment %} display: none; {% endcomment %}
             }
             {% comment %} .header-nav-left {
                 display: none;
-            } {% endcomment %}
-            {% comment %} #mobile-nav-icon, #logo-on-mobile {
+            } 
+            #mobile-nav-icon, #logo-on-mobile {
                 display: inline-block;
-            } {% endcomment %}
-            .bottom-cta p {
-                width: 80%;
+            }  {% endcomment %}
+            .bottom-cta p, .bottom-cta strong {
+                width: 90%;
+            }
+            .filters {
+                width: 0px;
+                max-width: none;
+                display: none;
+            }
+            .class-board {
+                width: 100%;
+                padding: 20px 0;
+            }
+            #learn-nav-icon{
+                display: block;
+            }
+            .courses-content {
+                margin: 130px 0;
+            }
+            .header-nav-left a .logo {
+                max-height: 25px;
+            }
+            .swtich-auth {
+                display: none;
+            }
+            .testimonial-card {
+                width: 300px;
+                padding: 5px 10px;
+                gap: 10px;
+            }
+            .message-column p {
+                font-size: 10px;
+                line-height: 15px;
             }
 
             {% comment %} .course-card {
-                width: calc(100% - 40px);
+                width: calc(100% - 15%);
                 max-width: none;
-            }  {% endcomment %}
+            } {% endcomment %}
         } 
 
     </style>
