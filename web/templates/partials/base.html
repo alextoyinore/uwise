@@ -81,6 +81,9 @@
         /* Styles for small screens (up to 767px) */
 
         @media only screen and (max-width: 540px){
+            .content {
+                padding: 90px 0 30px 0;
+            }
             .course-image img {
                 height: 50%;
             }
@@ -259,6 +262,12 @@
             }
             .course-card {
                 width: 40%;
+            }
+            .static-content {
+                flex-direction: column;
+            }
+            .static-content-left {
+                width: 100%;
             }
 
             {% comment %} .course-card {
