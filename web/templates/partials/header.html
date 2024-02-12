@@ -4,12 +4,12 @@
         <div class="header-nav-left">
             <a href="{% url 'home' %}"><img class="logo" src="{% static 'images/uwise.png' %}" alt="Uwise Logo"></a>
             {% if data.page is not 'enroll' %}
-                <div class="explore"><a href="{% url 'explore' %}">Explore</a><span class="material-symbols-outlined">explore</span></div>
+                <div class="explore"><a href="{% url 'explore' %}">Explore</a>&nbsp;<span onclick=showMegaMenu() style="cursor:pointer;" class="material-symbols-outlined">explore</span></div>
             {% endif %}
         </div>
         
         {# Mobile logo and nav icon #}
-        <span style="display:none;" id="mobile-nav-icon"  class="material-symbols-outlined">explore</span>
+        <span style="display:none;" id="mobile-nav-icon"  class="material-symbols-outlined">list</span>
         
         <a style="display:none;" id="logo-on-mobile" href="{% url 'home' %}"><img class="logo" src="{% static 'images/uwise.png' %}" alt="Uwise Logo"></a>
         
@@ -43,7 +43,7 @@
             {% else %}
                 {% if data.page == 'home' or data.page == 'course' or data.page == 'enroll' or data.page == 'explore' %}
                     <div class="header-search">
-                        <span class="material-symbols-outlined search-icon">search</span>
+                        <span class="material-symbols-outlined search-icon" onclick=focusInput()>search</span>
                         <input class="header-search-input search" placeholder="What do you want to learn?" type="search" />
                     </div>
                     <a class="btn-cta blue" href="{% url 'login' %}">Login</a>
@@ -60,7 +60,56 @@
     </div>
 </div>
 
+<div class="mega-menu">
+    <div class="content">
+        <div class="mega-menu-content">
+            <div class="nav-list">
+                {% for page in data.static_pages %}
+                    {% if page.is_model_page %}
+                        <a href="">{{page|capfirst}}</a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="nav-list">
+                {% for field in data.fields %}
+                    <a href="">{{field|capfirst}}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
 <style>
+    .nav-list{
+        display: flex;
+        flex-direction: column;
+    }
+    .mega-menu-content{
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+    }
+    .mega-menu {
+        display: none;
+        z-index: 1;
+        position: absolute;
+        width: 100%;
+        background: #eff3fa;
+        border: 1px solid #c3d3ec;
+        top: 100px;
+        left: 0;
+        height: 255%;
+        overflow-y: scroll;
+    }
+    .mega-menu a {
+        color: #011F55;
+        font-size: 13px;
+        padding: 10px 0;
+        text-decoration: none;
+    }
+    .mega-menu a:hover {
+        text-decoration: underline;
+    }
     .explore {
         display: flex;
         flex-direction: row;
@@ -104,8 +153,6 @@
         border: 1px solid #c3d3ec;
         top: 50px;
         right: 0;
-        {#text-align: left;#}
-        {#border-radius: 5px;#}
     }
     .header-profile-menu a {
         color: #011F55;
@@ -134,6 +181,23 @@
             headerProfileMenu.style.display = 'none'
         })
     })
+
+    function showMegaMenu(){
+        const exploreMenu = document.querySelector('.mega-menu')
+        if(exploreMenu.style.display === 'none'){
+            exploreMenu.style.display = 'block'
+        }else {
+            exploreMenu.style.display = 'none'
+        }
+
+        //exploreMenu.addEventListener('mouseout', () => {
+        //    exploreMenu.style.display = 'none'
+        //})
+    }
+
+    function focusInput(){
+        document.querySelector('.search').focus()
+    }
     
     function logout() {
         document.querySelector('#logout').addEventListener('click', function(event) {

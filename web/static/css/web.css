@@ -650,7 +650,7 @@ textarea {
       object-fit: cover;
       border-radius: 20px;
       transform-origin: bottom right;
-      transform: rotate(15deg);
+      /* transform: rotate(15deg); */
       box-shadow: 2px 2px 2px #ccc;
   }
 
