@@ -179,12 +179,14 @@ class HomeView(TemplateView):
     template_name = "index.html"
 
     def get(self, request, *args, **kwargs):
-        fields = courseAPI.models.Field.objects.all()[:15]
+        fields = courseAPI.models.Field.objects.all()
         testimonials = Testimonial.objects.all()[:3]
         carousels = CourseCarousel.objects.all()[:4]
         footer_navs = FooterNav.objects.all()
         announcement = Announcement.objects.all().first()
         static_pages = StaticPage.objects.all()
+
+        hero_fields = fields[:5]
 
         user_courses_carousels = None
 
@@ -205,6 +207,7 @@ class HomeView(TemplateView):
             'static_pages': static_pages,
             'user_courses_carousels': user_courses_carousels,
             'announcement': announcement,
+            'hero_fields': hero_fields,
         }
 
         # print(data['user_courses_carousels'])

@@ -1,5 +1,5 @@
 
-{% if carousel is not None %}
+{% if carousel is not None or carousel.courses.all|length > 0 %}
 <section class="carousel-section" role="group">
     <div class="carousel-section-header">
         <div class="carousel-section-title">

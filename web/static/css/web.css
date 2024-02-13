@@ -205,14 +205,13 @@ textarea {
   .top-nav-content a {
     color: #ffffff;
     text-decoration: none;
-    padding-right: 20px;
+    margin-right: 20px;
   }
 
   .top-nav-content a:hover,
   .top-nav-content a:active {
     color: #011F55;
     background: #fff;
-    padding: 5px 10px;
     transition: .2s ease-in-out;
   }
 
@@ -353,7 +352,7 @@ textarea {
   #hero {
     background: #011F55;
     display: flex;
-    margin-top: 90px;
+    margin-top: 80px;
   }
 
   .hero-content {

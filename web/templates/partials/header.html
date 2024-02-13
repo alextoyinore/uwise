@@ -1,5 +1,15 @@
 {% load  static %}
+
 <div id="header-nav" class="header-nav">
+    <div class="mobile-header">
+        {# Mobile logo and nav icon #}
+        <span id="mobile-nav-icon" onclick=showMegaMenu()  class="material-symbols-outlined mobile-nav-icon">list</span>
+            
+        <a id="logo-on-mobile" href="{% url 'home' %}"><img class="logo" src="{% static 'images/uwise.png' %}" alt="Uwise Logo"></a>
+    
+        <span class="material-symbols-outlined search-icon" onclick=showMegaMenu()>search</span>
+    </div>
+
     <div class="header-nav-content">
         <div class="header-nav-left">
             <a href="{% url 'home' %}"><img class="logo" src="{% static 'images/uwise.png' %}" alt="Uwise Logo"></a>
@@ -7,12 +17,6 @@
                 <div class="explore"><a href="{% url 'explore' %}">Explore</a>&nbsp;<span onclick=showMegaMenu() style="cursor:pointer;" class="material-symbols-outlined">explore</span></div>
             {% endif %}
         </div>
-        
-        {# Mobile logo and nav icon #}
-        <span style="display:none;" id="mobile-nav-icon"  class="material-symbols-outlined">list</span>
-        
-        <a style="display:none;" id="logo-on-mobile" href="{% url 'home' %}"><img class="logo" src="{% static 'images/uwise.png' %}" alt="Uwise Logo"></a>
-        
         
         <div class="header-nav-right">
             {% if user.is_authenticated %}
@@ -62,6 +66,12 @@
 
 <div class="mega-menu">
     <div class="content">
+        <br>
+        <div class="mega-menu-auth">
+            <a class="btn-cta blue" style="color:#fff;" href="{% url 'login' %}">Login</a>
+            <a class="btn-cta green" href="{% url 'signup' %}">Get Started</a>
+        </div>
+        <br>
         <div class="mega-menu-content">
             <div class="nav-list">
                 {% for page in data.static_pages %}
@@ -80,6 +90,15 @@
 </div>
 
 <style>
+    .mobile-header {
+        display: none;
+    }
+    .mega-menu-auth {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 5%;
+    }
     .nav-list{
         display: flex;
         flex-direction: column;
@@ -96,7 +115,11 @@
         width: 100%;
         background: #eff3fa;
         border: 1px solid #c3d3ec;
-        top: 100px;
+        {% if user.is_authenticated %}  
+            top: 60px; 
+        {% else %} 
+            top: 80px; 
+        {% endif %}
         left: 0;
         height: 255%;
         overflow-y: auto;

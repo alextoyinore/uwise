@@ -5,7 +5,7 @@
             <p>Wealth comes from wisdom, wisdom comes from understanding, understanding comes from knowledge, all knowledge comes from God</p>
         </div>
         <div class="hero2-content-bottom">
-            {% for field in data.fields %}
+            {% for field in data.hero_fields %}
                 <a href="{% url 'explore' %}?q={{ field }}" class="btn-cta-light dark">{{ field }}</a>
             {% endfor %}
         </div>

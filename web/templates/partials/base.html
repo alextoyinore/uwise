@@ -23,9 +23,11 @@
 
     <div class="header">
     
-        {% block top-nav %}
-            {% include 'partials/topnav.html' with topnavs=data.topnavs %}
-        {% endblock %}
+        {% if not user.is_authenticated %}
+            {% block top-nav %}
+                {% include 'partials/topnav.html' with topnavs=data.topnavs %}
+            {% endblock %}
+        {% endif %}
 
         {% block header-nav %}
             {% include 'partials/header.html' with page_type=data.page_type %}
@@ -173,9 +175,6 @@
             .course-list-content > p, .course-list-content > h3 {
                 width: 100%;
             }
-            .course-list {
-                flex-direction: column;
-            }
             .course-list-left, .course-list-right {
                 width: 100%;
                 padding: 0;
@@ -240,6 +239,7 @@
                 display: block;
             }
             .course-list {
+                flex-direction: column;
                 width: 100%;
                 padding: 0;
                 margin-top: 10%;
@@ -283,10 +283,41 @@
                 padding: 15px 0;
             }
             .static-content, .auth-form {
-                margin-top: 20%;
+                margin-top: 18%;
+                padding: 10px 0 20px 0;
             }
             .hero2-content {
                 width: 90%;
+            }
+            .hero2-content strong {
+                line-height: 1em;
+            }
+            .hero2-content p {
+                margin-top: 10px;
+            }
+            .header-nav-content {
+                display: none;
+            }
+            .mobile-nav-icon {
+                font-size: 35px;
+            }
+            .search-icon {
+                font-size: 20px;
+                margin-right: 35px;
+            }
+            .mobile-header {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                width: 90%;
+                margin: auto;
+                align-items: center;
+            }
+            .logo {
+                height: 25px;
+            }
+            .mega-menu {
+                height: 689%;
             }
             
 
