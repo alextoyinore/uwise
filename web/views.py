@@ -185,6 +185,7 @@ class HomeView(TemplateView):
         footer_navs = FooterNav.objects.all()
         announcement = Announcement.objects.all().first()
         static_pages = StaticPage.objects.all()
+        specializations = courseAPI.models.Specialization.objects.all()
 
         hero_fields = fields[:5]
 
@@ -208,6 +209,7 @@ class HomeView(TemplateView):
             'user_courses_carousels': user_courses_carousels,
             'announcement': announcement,
             'hero_fields': hero_fields,
+            'specializations': specializations,
         }
 
         # print(data['user_courses_carousels'])

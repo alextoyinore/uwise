@@ -74,6 +74,7 @@
         <br>
         <div class="mega-menu-content">
             <div class="nav-list">
+                <h3>Uwise for You</h3>
                 {% for page in data.static_pages %}
                     {% if page.is_model_page %}
                         <a href="">{{page|capfirst}}</a>
@@ -81,8 +82,15 @@
                 {% endfor %}
             </div>
             <div class="nav-list">
+                <h3>Popular Fields</h3>
                 {% for field in data.fields %}
                     <a href="">{{field|capfirst}}</a>
+                {% endfor %}
+            </div>
+            <div class="nav-list">
+                <h3>Specializations</h3>
+                {% for specialization in data.specializations %}
+                    <a href="">{{specialization|capfirst}}</a>
                 {% endfor %}
             </div>
         </div>
@@ -106,7 +114,8 @@
     .mega-menu-content{
         display: flex;
         flex-direction: row;
-        gap: 20px;
+        gap: 10%;
+        flex-wrap: wrap;
     }
     .mega-menu {
         display: none;
