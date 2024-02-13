@@ -1,10 +1,10 @@
 
 <a href="{% url 'course' course.id %}" class="course-card">
     <div class="course-image">
-        {% if course.image.url is not None %}
-            <img src="{{course.image.url}}" alt="">
-        {% else %}
+        {% if course.image_link is not None %}
             <img src="{{course.image_link}}" alt="">
+        {% else %}
+            <img src="{{course.image.url}}" alt="">
         {% endif %}
     </div>
     <div class="course-details">
