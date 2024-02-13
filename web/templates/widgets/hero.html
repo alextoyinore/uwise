@@ -7,12 +7,34 @@
         </div>
         <div class="hero-content-right">
             <div class="course-summary-card">
-                <b>Duration: {{ data.course_data.duration }} Days</b>
-                <b>Price: &#8358; {{ data.course_data.price }}</b>
-                <b>Language: {{ data.course_data.language }}</b>
-                <b>Level: {{ data.course_data.level }}</b>
-                <b>Field: {{ data.course_data.field }}</b>
-                <b>Rating: {{ data.course_data.rating }}</b>
+                <div class="summary-item">
+                    <b>Duration: </b>
+                    <b>{{ data.course_data.duration }} Days</b>
+                </div>
+                <div class="summary-item">
+                    <b>Price: </b>
+                    <b>&#8358; {{ data.course_data.price }}</b>
+                </div>
+
+                <div class="summary-item">
+                    <b>Language: </b>
+                    <b>{{ data.course_data.language }}</b>
+                </div>
+
+                <div class="summary-item">
+                    <b>Level: </b>
+                    <b>{{ data.course_data.level }}</b>
+                </div>
+
+                <div class="summary-item">
+                    <b>Field: </b>
+                    <b>{{ data.course_data.field }}</b>
+                </div>
+
+                <div class="summary-item">
+                    <b>Rating: </b>
+                    <b>{{ data.course_data.rating }}</b>
+                </div>
                 <br>
                 {% if not data.user_owns_course %}
                     <a href="{% url 'enroll' data.course_data.id %}" class="btn-cta-light green">Enroll Now </a>
@@ -26,8 +48,13 @@
 </div>
 
 <style>
+    .summary-item {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
     .course-summary-card {
-        width: 75%;
+        width: 100%;
         background: #fafcff;
         border-radius: 8px;
         padding: 20px 10px;

@@ -37,17 +37,19 @@
                 {% endfor %}
             {% endif %}
 
-            <br><br>
-            {% include 'widgets/biginfo.html' %}
-            <br><br>
+            <br>
+    </section>
 
+            {% include 'widgets/biginfo.html' %}
+            <br>
+    <section class="content">
 {#            {% if data.carousels is not None or empty %}#}
 {#                {% for carousel in data.carousels %}#}
 {#                    {% include 'widgets/course_carousel.html' with carousel=carousel %}#}
 {#                {% endfor %}#}
 {#            {% endif %}#}
 
-            <br><br>
+            <br>
             {% include 'widgets/testimonial_carousel.html' with testimonials=data.testimonials %}
             <br><br>
             {% include 'widgets/partners.html' %}
