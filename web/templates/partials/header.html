@@ -115,13 +115,9 @@
         width: 100%;
         background: #eff3fa;
         border: 1px solid #c3d3ec;
-        {% if user.is_authenticated %}  
-            top: 60px; 
-        {% else %} 
-            top: 80px; 
-        {% endif %}
+        top: 85px;
         left: 0;
-        height: 255%;
+        height: 400%;
         overflow-y: auto;
         scrollbar-width: none;
     }
@@ -210,8 +206,10 @@
         const exploreMenu = document.querySelector('.mega-menu')
         if(exploreMenu.style.display === 'none'){
             exploreMenu.style.display = 'block'
+            document.querySelector('.header-nav-right').style.display = 'none'
         }else {
             exploreMenu.style.display = 'none'
+            document.querySelector('.header-nav-right').style.display = 'flex'
         }
 
         //exploreMenu.addEventListener('mouseout', () => {
