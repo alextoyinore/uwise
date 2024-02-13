@@ -49,6 +49,7 @@ class Course(models.Model):
     community_link2 = models.URLField(blank=True, null=True)
     duration = models.IntegerField(blank=False, null=False)
     image = models.ImageField(upload_to='courses', null=False, blank=False)
+    image_link = models.URLField(null=True, blank=True)
     field = models.ForeignKey('Field', on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=9, decimal_places=2, null=False, blank=False)
     class_interval = models.IntegerField(blank=False, null=False)
@@ -57,7 +58,7 @@ class Course(models.Model):
     level = models.ForeignKey('CourseLevel', on_delete=models.SET_NULL, null=True, blank=True,
                               related_name='course_level')
     # classes = models.ManyToManyField('Class', related_name='course_classes')
-    skills = models.CharField(max_length=200, null=True, blank=True)
+    skills = models.TextField(null=True, blank=True)
     tags = models.CharField(max_length=200, null=True, blank=True)
     objectives = models.TextField(blank=True, null=True)
     next_start_date = models.DateTimeField(null=True, blank=True)
