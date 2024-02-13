@@ -1,7 +1,11 @@
 
 <a href="{% url 'course' course.id %}" class="course-card">
     <div class="course-image">
-        <img src="{{course.image.url}}" alt="">
+        {% if course.image.url is not None %}
+            <img src="{{course.image.url}}" alt="">
+        {% else %}
+            <img src="{{course.image_link}}" alt="">
+        {% endif %}
     </div>
     <div class="course-details">
         <strong class="course-title">{{course.title}}</strong>
