@@ -10,7 +10,7 @@
 
 {% block extra-header-nav %}
     <div class="header-nav extra-header-nav">
-         <div class="header-nav-content extra-header-nav-content">
+         <div class="extra-header-nav-content">
             <div class="extra-header-nav-left">
                 <h3>{{ data.course_data.title }}</h3>
                 <p>Level: {{ data.course_data.level }} . Price: &#8358; {{ data.course_data.price }} . Duration: {{ data.course_data.duration }} Days</p>
@@ -53,7 +53,7 @@
 
           if (prevScrollPos < currentScrollPos) {
               {% if not user.is_authenticated %}
-                header.style.top = "0px";
+                header.style.top = "30px";
               {% else %}
                 header.style.top = "0px";
               {% endif %}

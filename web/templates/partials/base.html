@@ -242,7 +242,7 @@
                 flex-direction: column;
                 width: 100%;
                 padding: 0;
-                margin-top: 10%;
+                margin-top: 15%;
             }
             .header-nav-left a .logo {
                 max-height: 25px;
@@ -270,7 +270,7 @@
                 width: 40%;
             }
             .course-card {
-                width: 40%;
+                {% comment %} width: 40%; {% endcomment %}
             }
             .static-content {
                 flex-direction: column;
@@ -297,6 +297,13 @@
             }
             .header-nav-content {
                 display: none;
+            }
+            .extra-header-nav {
+                display: flex;
+            }
+            .extra-header-nav-content {
+                margin: auto;
+                width: 90%;
             }
             .mobile-nav-icon {
                 font-size: 35px;

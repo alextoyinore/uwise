@@ -77,20 +77,20 @@
                 <h3>Uwise for You</h3>
                 {% for page in data.static_pages %}
                     {% if page.is_model_page %}
-                        <a href="">{{page|capfirst}}</a>
+                        <a href="{% url 'static' page.url_name %}">{{page|capfirst}}</a>
                     {% endif %}
                 {% endfor %}
             </div>
             <div class="nav-list">
                 <h3>Popular Fields</h3>
                 {% for field in data.fields %}
-                    <a href="">{{field|capfirst}}</a>
+                    <a href="{% url 'explore' field.title %}">{{field|capfirst}}</a>
                 {% endfor %}
             </div>
             <div class="nav-list">
                 <h3>Specializations</h3>
                 {% for specialization in data.specializations %}
-                    <a href="">{{specialization|capfirst}}</a>
+                    <a href="{% url 'explore' specialization.title %}">{{specialization|capfirst}}</a>
                 {% endfor %}
             </div>
         </div>

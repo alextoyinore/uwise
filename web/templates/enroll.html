@@ -41,7 +41,11 @@
                           <input type="hidden" name="amount" value="{{ data.course_data.price }}" />
                           <input type="hidden" name="currency" value="NGN" />
                           <input type="hidden" name="meta[source]" value="docs-html-test" />
-                          <button type="submit" class="btn-cta green bold" id="start-payment-button">Pay &#8358; {{ data.course_data.price |stringformat:"f"|floatformat:2}}</button>
+                          <button type="submit"
+                            {% if not user.is_authenticated %}
+                                onlick="redirectToLOgin()"
+                            {% endif %}
+                           class="btn-cta green bold" id="start-payment-button">Pay &#8358; {{ data.course_data.price |stringformat:"f"|floatformat:2}}</button>
                     </form>
                 </div>
             </div>
@@ -58,6 +62,9 @@
                     
                     <button id="btn-enroll" onclick="enrollPayLater()" class="btn-cta blue bold">Enroll Pay Later</button>
                     <script>
+                        function redirectToLOgin(){
+                            window.location.href = '{% url 'login' %}'
+                        }
                         function enrollPayLater(){
                             {#preventDefault()#}
                             
