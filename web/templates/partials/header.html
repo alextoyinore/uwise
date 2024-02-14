@@ -14,7 +14,7 @@
         <div class="header-nav-left">
             <a href="{% url 'home' %}"><img class="logo" src="{% static 'images/uwise.png' %}" alt="Uwise Logo"></a>
             {% if data.page is not 'enroll' %}
-                <div class="explore"><a href="{% url 'explore' %}">Explore</a>&nbsp;<span onclick=showMegaMenu() style="cursor:pointer;" class="material-symbols-outlined">explore</span></div>
+                <div class="explore"><a href="{% url 'explore' %}">Explore</a>&nbsp;<span onclick=showMegaMenu() style="cursor:pointer; font-size:30px;" class="material-symbols-outlined">explore</span></div>
             {% endif %}
         </div>
         
@@ -70,6 +70,7 @@
         <div class="mega-menu-auth">
             <a class="btn-cta blue" style="color:#fff;" href="{% url 'login' %}">Login</a>
             <a class="btn-cta green" href="{% url 'signup' %}">Get Started</a>
+            <span style="cursor:pointer;" onclick="closeMegaMenu()" class="material-symbols-outlined close-mega">close</span>
         </div>
         <br>
         <div class="mega-menu-content">
@@ -84,13 +85,13 @@
             <div class="nav-list">
                 <h3>Popular Fields</h3>
                 {% for field in data.fields %}
-                    <a href="{% url 'explore' field.title %}">{{field|capfirst}}</a>
+                    <a href="{% url 'explore' %}?q={{field.title}}">{{field|capfirst}}</a>
                 {% endfor %}
             </div>
             <div class="nav-list">
                 <h3>Specializations</h3>
                 {% for specialization in data.specializations %}
-                    <a href="{% url 'explore' specialization.title %}">{{specialization|capfirst}}</a>
+                    <a href="{% url 'explore' %}?q={{specialization.title}}">{{specialization|capfirst}}</a>
                 {% endfor %}
             </div>
         </div>
@@ -106,6 +107,7 @@
         flex-direction: row;
         justify-content: space-between;
         gap: 5%;
+        align-items: center;
     }
     .nav-list{
         display: flex;
@@ -124,7 +126,7 @@
         width: 100%;
         background: #eff3fa;
         border: 1px solid #c3d3ec;
-        top: 85px;
+        top: 55px;
         left: 0;
         height: 400%;
         overflow-y: auto;
@@ -211,10 +213,18 @@
         })
     })
 
+    function closeMegaMenu(){
+        const megaMenu = document.querySelector('.mega-menu')
+        if(megaMenu.style.display !== 'none'){
+            megaMenu.style.display = 'none'
+            document.querySelector('.header-nav-right').style.display = 'flex'
+        }
+    }
+
     function showMegaMenu(){
         const exploreMenu = document.querySelector('.mega-menu')
         if(exploreMenu.style.display === 'none'){
-            exploreMenu.style.display = 'block'
+            exploreMenu.style.display = 'flex'
             document.querySelector('.header-nav-right').style.display = 'none'
         }else {
             exploreMenu.style.display = 'none'
