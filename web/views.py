@@ -149,7 +149,7 @@ class CourseView(BaseView):
 
 
         if course_data.skills is not None:
-            course_data.skills = course_data.skills.split(', ')
+            course_data.skills = course_data.skills.split(', ') or course_data.skills.split('\n')
         if course_data.tags is not None:
             course_data.tags = course_data.tags.split(', ')
         if course_data.objectives is not None:
