@@ -77,11 +77,25 @@
             <a class="btn-cta blue" style="color:#fff;" href="{% url 'login' %}">Login</a>
             <a class="btn-cta green" href="{% url 'signup' %}">Get Started</a>
         </div>
-        {% else %}
-            <a class="btn-cta red mega-logout" style="color:#fff; background:crimson;" href="{% url 'logout-user' %}">Logout</a>
+        {% comment %} {% else %}
+            <a class="btn-cta red mega-logout" style="color:#fff; background:crimson;" href="{% url 'logout-user' %}">Logout</a> {% endcomment %}
         {% endif %}
         <br>
         <div class="mega-menu-content">
+            {% if user.is_authenticated %}
+            <div class="nav-list">
+                <h3>Me</h3>
+                <a href="{% url 'profile' %}">Profile</a>
+                <a href="{% url 'dashboard' %}">My Library</a>
+                {% comment %} <a href="">Purchases</a>
+                <a href="">Favourites</a>
+                <a href="">Messages</a>
+                <a href="">Forum</a> {% endcomment %}
+                <a href="">Announcements</a>
+                {% comment %} <a href="">Certificates & Badges</a> {% endcomment %}
+                <a id="logout" style="color:crimson; font-weight:bold;" href="{% url 'logout-user' %}" onclick="" class="logout">Logout</a>
+            </div>
+            {% endif %}
             <div class="nav-list">
                 <h3>Uwise for You</h3>
                 {% for page in data.static_pages %}
