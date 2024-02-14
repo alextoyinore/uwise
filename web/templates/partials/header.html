@@ -46,10 +46,10 @@
                 </div>
             {% else %}
                 {% if data.page == 'home' or data.page == 'course' or data.page == 'enroll' or data.page == 'explore' %}
-                    <div class="header-search">
+                    <form action={% url 'explore' %} class="header-search">
                         <span class="material-symbols-outlined search-icon" onclick=focusInput()>search</span>
-                        <input class="header-search-input search" placeholder="What do you want to learn?" type="search" />
-                    </div>
+                        <input class="header-search-input search" placeholder="What do you want to learn?" type="search" name="q" />
+                    </form>
                     <a class="btn-cta blue" href="{% url 'login' %}">Login</a>
 {#                    <a class="btn-cta blue" href="{% url 'signup' %}">Get Started</a>#}
                 {% elif data.page == 'login' %}
@@ -67,10 +67,14 @@
 <div class="mega-menu">
     <div class="content">
         <br>
+        <form action={% url 'explore' %} class="mega-search-form">
+            <input type="search" name="q" placeholder="What do you want to learn?" class="mega-search-input" />
+            <span style="cursor:pointer;" onclick="closeMegaMenu()" class="material-symbols-outlined close-mega">close</span>
+        </form>
+        <br>
         <div class="mega-menu-auth">
             <a class="btn-cta blue" style="color:#fff;" href="{% url 'login' %}">Login</a>
             <a class="btn-cta green" href="{% url 'signup' %}">Get Started</a>
-            <span style="cursor:pointer;" onclick="closeMegaMenu()" class="material-symbols-outlined close-mega">close</span>
         </div>
         <br>
         <div class="mega-menu-content">
@@ -99,6 +103,19 @@
 </div>
 
 <style>
+    .mega-search-form {
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .mega-search-input {
+        width: 90%;
+        padding: 20px 0;
+        padding-inline: 20px;
+    }
     .mobile-header {
         display: none;
     }
@@ -126,9 +143,13 @@
         width: 100%;
         background: #eff3fa;
         border: 1px solid #c3d3ec;
+        {% if user.is_authenticated %}
         top: 55px;
+        {% else %}
+        top: 30px;
+        {% endif %}
         left: 0;
-        height: 400%;
+        height: 600%;
         overflow-y: auto;
         scrollbar-width: none;
     }
@@ -213,6 +234,11 @@
         })
     })
 
+    function doSearch() {
+        const megaSearchInput = document.querySelector('.mega-search-input').value
+        window.location.href = `{% url 'explore' %}?q=${megaSearchInput}`
+    }
+
     function closeMegaMenu(){
         const megaMenu = document.querySelector('.mega-menu')
         if(megaMenu.style.display !== 'none'){
@@ -224,7 +250,7 @@
     function showMegaMenu(){
         const exploreMenu = document.querySelector('.mega-menu')
         if(exploreMenu.style.display === 'none'){
-            exploreMenu.style.display = 'flex'
+            exploreMenu.style.display = 'block'
             document.querySelector('.header-nav-right').style.display = 'none'
         }else {
             exploreMenu.style.display = 'none'
