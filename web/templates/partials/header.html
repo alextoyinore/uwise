@@ -72,10 +72,14 @@
             <span style="cursor:pointer;" onclick="closeMegaMenu()" class="material-symbols-outlined close-mega">close</span>
         </form>
         <br>
+        {% if not user.is_authenticated %}
         <div class="mega-menu-auth">
             <a class="btn-cta blue" style="color:#fff;" href="{% url 'login' %}">Login</a>
             <a class="btn-cta green" href="{% url 'signup' %}">Get Started</a>
         </div>
+        {% else %}
+            <a class="btn-cta red mega-logout" style="color:#fff; background:crimson;" href="{% url 'logout-user' %}">Logout</a>
+        {% endif %}
         <br>
         <div class="mega-menu-content">
             <div class="nav-list">
@@ -103,6 +107,9 @@
 </div>
 
 <style>
+    .mega-logout {
+        display: none;
+    }
     .mega-search-form {
         padding: 0;
         margin: 0;
@@ -144,7 +151,7 @@
         background: #eff3fa;
         border: 1px solid #c3d3ec;
         {% if user.is_authenticated %}
-        top: 55px;
+        top: 45px;
         {% else %}
         top: 30px;
         {% endif %}

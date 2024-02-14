@@ -114,6 +114,7 @@ class LearnView(BaseView):
         data['classes'] = classes
         data['page'] = kwargs['page']
         data['notes'] = notes
+        data['announcements'] = announcements
 
         context = {'data': data}
         return render(request, self.template_name, context)
