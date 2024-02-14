@@ -210,8 +210,7 @@ textarea {
 
   .top-nav-content a:hover,
   .top-nav-content a:active {
-    color: #011F55;
-    background: #fff;
+    text-decoration: underline;
     transition: .2s ease-in-out;
   }
 
