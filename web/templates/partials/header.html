@@ -72,7 +72,7 @@
             <input type="search" name="q" placeholder="What do you want to learn?" class="mega-search-input" />
             <span style="cursor:pointer;" onclick="closeMegaMenu()" class="material-symbols-outlined close-mega">close</span>
         </form>
-        <br>
+        
         {% if not user.is_authenticated %}
         <div class="mega-menu-auth">
             <a class="btn-cta blue" style="color:#fff;" href="{% url 'login' %}">Login</a>
@@ -81,7 +81,6 @@
         {% comment %} {% else %}
             <a class="btn-cta red mega-logout" style="color:#fff; background:crimson;" href="{% url 'logout-user' %}">Logout</a> {% endcomment %}
         {% endif %}
-        <br>
         <div class="mega-menu-content">
             {% if user.is_authenticated %}
                 <div class="nav-list">
@@ -122,9 +121,6 @@
 </div>
 
 <style>
-    .mega-menu content {
-        padding: 50px 0;
-    }
     .mega-logout {
         display: none;
     }
@@ -160,6 +156,7 @@
         flex-direction: row;
         gap: 10%;
         flex-wrap: wrap;
+        margin: 25px 0;
     }
     .mega-menu {
         display: none;
