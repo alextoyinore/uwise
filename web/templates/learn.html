@@ -14,6 +14,7 @@
     <div class="courses-content">
         <nav class="filters">
             <div class="filter-items">
+                <br>
                 <div class="org-image">
                     {% if data.course_data.organization.logo is not None %}
                         <img src="{{ data.course_data.organization.logo.url }}" alt="">
@@ -24,7 +25,6 @@
 
                 {% comment %} <p>{{ data.course_data.organization.name | title }}</p> {% endcomment %}
                 
-                <br>
                 <h3>{{ data.course_data.title }}</h3>
                 <br>
 
@@ -303,6 +303,7 @@
     }
     .org-image img {
         height: 25px;
+        filter: brightness(2) grayscale(0.5) hue-rotate(-1turn) opacity(0.2) saturate(0);
     }
     .notes {
         display: flex;

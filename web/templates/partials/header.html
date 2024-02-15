@@ -84,18 +84,18 @@
         <br>
         <div class="mega-menu-content">
             {% if user.is_authenticated %}
-            <div class="nav-list">
-                <h3>Me</h3>
-                <a href="{% url 'profile' %}">Profile</a>
-                <a href="{% url 'dashboard' %}">My Library</a>
-                <a href="">Favourites</a>
-                {% comment %} <a href="">Purchases</a>
-                <a href="">Messages</a>
-                <a href="">Forum</a> {% endcomment %}
-                <a href="">Announcements &nbsp; {% include 'widgets/message_count.html' with messages=data.announcements %}</span></a>
-                {% comment %} <a href="">Certificates & Badges</a> {% endcomment %}
-                <a id="logout" style="color:crimson; font-weight:bold;" href="{% url 'logout-user' %}" onclick="" class="logout">Logout</a>
-            </div>
+                <div class="nav-list">
+                    <h3>Me</h3>
+                    <a href="{% url 'profile' %}">Profile</a>
+                    <a href="{% url 'dashboard' %}">My Library</a>
+                    <a href="">Favourites</a>
+                    {% comment %} <a href="">Purchases</a>
+                    <a href="">Messages</a>
+                    <a href="">Forum</a> {% endcomment %}
+                    <a onclick="displayMessages()">Announcements &nbsp; {% include 'widgets/message_count.html' with messages=data.announcements %}</span></a>
+                    {% comment %} <a href="">Certificates & Badges</a> {% endcomment %}
+                    <a id="logout" style="color:crimson; font-weight:bold;" href="{% url 'logout-user' %}" onclick="" class="logout">Logout</a>
+                </div>
             {% endif %}
             <div class="nav-list">
                 <h3>Uwise for You</h3>
