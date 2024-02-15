@@ -171,16 +171,16 @@
                 {% endif %}
             {% elif data.page == 'notes' %}
 
-                <h2>My notes on {{ data.course_data.title }}</h2><br>
-                {% for note in data.notes %}
-                    <div class="notes">
+                <h2>My notes on <span style="color:#10DC80;">{{ data.course_data.title }}</span></h2><br>
+                <div class="notes">
+                    {% for note in data.notes %}
                         <div class="note">
                             <b>{{ note.the_class.title }}</b>
                             <p>{{ note.note }}</p>
                             <i>{{ note.date }}</i>
-                        </div>
-                    </div>
-                {% endfor %}
+                        </div> 
+                    {% endfor %}
+                </div>
             {% elif data.page == 'grades' %}
                 <h2>Grades</h2>
             {% elif data.page == 'communities' %}
@@ -311,23 +311,13 @@
         gap: 10px;
     }
     .notes .note {
-        padding: 10px;
-        border: 1px solid #c3d3ec;
+        background: #fff;
         border-radius: 5px;
-        margin: 5px 0;
-        background: #ffffff;
-        {#box-shadow: 1px 1px 0 1px #eee;#}
-    }
-    .note b{
-        color: #777777;
-    }
-    .note p {
-        color: #3b5998;
-        font-weight: bold;
+        padding: 10px;
     }
     .note i {
         font-size: 12px;
-        color: #777777;
+        color: #aaa;
     }
     .class-details {
         cursor: default;

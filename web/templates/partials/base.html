@@ -41,9 +41,12 @@
         {% endblock %}
     </div>
 
+    {% include 'widgets/messages.html' with messages=data.announcements message_type='Announcements' %}
+
     {% block hero %}{% endblock %}
 
-    {% block content %}{% endblock %}
+    {% block content %}
+    {% endblock %}
 
     {% block footer %}
         {% include 'partials/footer.html' %}

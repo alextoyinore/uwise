@@ -1,0 +1,63 @@
+<div class="messages">
+    <div class="messages-header">
+        <h3>{{ message_type }}</h3>
+        <span class="material-symbols-outlined" onclick="closeMessages()">close</span>
+    </div>
+    {% for message in messages %}
+        <div class="notes">
+            <div class="note">
+                <b>{{ message.title }}</b>
+                <p>{{ message.message }}</p>
+                <i>{{ message.date }}</i>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<script>
+    function displayMessages() {
+        const messages = document.querySelector('.messages')
+        messages.style.right = '0'
+        messages.style.transition = '.5s ease-in-out'
+    }
+    function closeMessages() {
+        const messages = document.querySelector('.messages')
+        messages.style.right = 'calc(0% - 35%)'
+        messages.style.transition = '.5s ease-in-out'
+    }
+</script>
+
+<style>
+    .messages-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .messages-header span {
+        cursor: pointer;
+    }
+    .messages {
+        height: 100%;
+        width: 25%;
+        position: fixed;
+        top: 10%;
+        right: calc(0% - 35%);
+        display: flex;
+        background: #eff3fa;
+        padding: 20px;
+        z-index: 1;
+        flex-direction: column;
+        gap: 10px;
+        overflow-y: auto;
+        border-top-left-radius: 20px;
+    }
+    .messages .note {
+        background: #fff;
+        border-radius: 5px;
+        padding: 10px;
+    }
+    .note i {
+        font-size: 12px;
+        color: #aaa;
+    }
+</style>

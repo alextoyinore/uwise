@@ -32,7 +32,7 @@
                             <a href="">Purchases</a>
                             <a href="">Messages</a>
                             <a href="">Forum</a> {% endcomment %}
-                            <a href=""> {% include 'widgets/message_count.html' with messages=data.announcements %} </span> &nbsp; Announcements</a>
+                            <a onclick="displayMessages()"> {% include 'widgets/message_count.html' with messages=data.announcements %} </span> &nbsp; Announcements</a>
                             {% comment %} <a href="">Certificates & Badges</a> {% endcomment %}
                             <a id="logout" href="{% url 'logout-user' %}" onclick="" class="logout">Logout</a>
                         </div>
