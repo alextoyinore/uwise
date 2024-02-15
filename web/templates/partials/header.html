@@ -27,8 +27,9 @@
                         <div class="header-profile-menu">
                             <a href="{% url 'profile' %}">Profile</a>
                             <a href="{% url 'dashboard' %}">My Library</a>
-                            {% comment %} <a href="">Purchases</a>
                             <a href="">Favourites</a>
+                            {% comment %}
+                            <a href="">Purchases</a>
                             <a href="">Messages</a>
                             <a href="">Forum</a> {% endcomment %}
                             <a href=""> {% include 'widgets/message_count.html' with messages=data.announcements %} </span> &nbsp; Announcements</a>
@@ -87,8 +88,8 @@
                 <h3>Me</h3>
                 <a href="{% url 'profile' %}">Profile</a>
                 <a href="{% url 'dashboard' %}">My Library</a>
-                {% comment %} <a href="">Purchases</a>
                 <a href="">Favourites</a>
+                {% comment %} <a href="">Purchases</a>
                 <a href="">Messages</a>
                 <a href="">Forum</a> {% endcomment %}
                 <a href="">Announcements &nbsp; {% include 'widgets/message_count.html' with messages=data.announcements %}</span></a>
