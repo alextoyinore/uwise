@@ -13,6 +13,7 @@ import utilsAPI
 from utilsAPI.models import Testimonial, Announcement
 from .models import *
 from authAPI.models import User
+from orderAPI.models import UserPurchase
 
 # Create your views here.
 
@@ -28,7 +29,7 @@ class BaseView(TemplateView):
         fields = courseAPI.models.Field.objects.all()
         testimonials = Testimonial.objects.all()[:3]
         footer_navs = FooterNav.objects.all()
-        announcement = Announcement.objects.all().first()
+        announcements = Announcement.objects.all()
         static_pages = StaticPage.objects.all()
         specializations = courseAPI.models.Specialization.objects.all()
         hero_fields = fields[:5]
@@ -39,7 +40,8 @@ class BaseView(TemplateView):
             'fields': fields,
             'footer_navs': footer_navs,
             'static_pages': static_pages,
-            'announcement': announcement,
+            'announcement': announcements.first(),
+            'announcements': announcements,
             'hero_fields': hero_fields,
             'specializations': specializations,
         }
@@ -97,6 +99,9 @@ class LearnView(BaseView):
         classes = courseAPI.models.Class.objects.filter(course=kwargs['pk']).order_by('class_number')
         notes = utilsAPI.models.Note.objects.filter(course=course_data).order_by('-date')
         announcements = utilsAPI.models.Announcement.objects.filter(course=course_data).order_by('-date')
+        user_owns_course = UserPurchase.objects.filter(user=request.user, course=kwargs['pk']).exists()
+
+        # print(user_owns_course)
 
         if course_data.skills is not None:
             course_data.skills = course_data.skills.split(', ')
@@ -115,6 +120,7 @@ class LearnView(BaseView):
         data['page'] = kwargs['page']
         data['notes'] = notes
         data['announcements'] = announcements
+        data['user_owns_course'] = user_owns_course
 
         context = {'data': data}
         return render(request, self.template_name, context)

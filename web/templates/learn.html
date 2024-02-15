@@ -94,60 +94,81 @@
                 </div>
             {% elif data.page == 'classes' %}
                 <h2>Classes in this course</h2><br>
-                {% for class in data.classes %}
-                    <div class="class-item">
-                        <div class="title">
-                            <h3>{{ class.title }}</h3>
-                            <span class="material-symbols-outlined expand">expand_more</span>
-                        </div>
-                        <div style="display:none;" class="class-details">
-                            <hr>
-                            <h3>Overview</h3>
-                            <p>{{ class.description }}</p>
-                            <br/>
+                {% if data.user_owns_course %}
+                    {% for class in data.classes %}
+                        <div class="class-item">
+                            <div class="title">
+                                <h3>{{ class.title }}</h3>
+                                <span class="material-symbols-outlined expand">expand_more</span>
+                            </div>
+                            <div style="display:none;" class="class-details">
+                                <hr>
+                                <h3>Overview</h3>
+                                <p>{{ class.description }}</p>
+                                <br/>
 
-                            <h3>Class Links</h3>
-                            <div class="class-links">
-                                <a target="_blank" class="resource-link" href="{{ class.class_link1 }}">Class Link 1</a>
-                                {% if class.class_link2 is not None %}
-                                    <a target="_blank" class="resource-link" href="{{ class.class_link2 }}">Class Link 1</a>
+                                <h3>Class Links</h3>
+                                <div class="class-links">
+                                    <a target="_blank" class="resource-link" href="{{ class.class_link1 }}">Class Link 1</a>
+                                    {% if class.class_link2 is not None %}
+                                        <a target="_blank" class="resource-link" href="{{ class.class_link2 }}">Class Link 1</a>
+                                    {% endif %}
+                                </div>
+
+                                <h3>Class Resources</h3>
+                                <div class="class-links">
+                                    <a target="_blank" class="resource-link resource" href="{{ class.resources.link }}">Class Resources</a>
+                                    {% for image in class.resources.images.all %}
+                                        <a target="_blank" class="resource-link resource" href="{{ image.link }}">Class Images</a>
+                                    {% endfor %}
+
+                                    {% for video in class.resources.videos.all %}
+                                        <a target="_blank" class="resource-link resource" href="{{ video.link }}">Class Videos</a>
+                                    {% endfor %}
+
+                                    {% for reading in class.resources.readings.all %}
+                                        <a target="_blank" class="resource-link resource" href="{{ reading.link }}">Class Readings</a>
+                                    {% endfor %}
+
+                                    {% for assessment in class.resources.assessments.all %}
+                                        <a target="_blank" class="resource-link resource" href="{{ assessment.link }}">Class Assessements</a>
+                                    {% endfor %}
+
+                                </div>
+
+                                <br/>
+                                {% if class.objectives is not None %}
+                                <h3>Class Objectives</h3>
+                                    <ul>
+                                        {% for obj in class.objectives %}
+                                            <li>{{ obj }}</li>
+                                        {% endfor %}
+                                    </ul>
                                 {% endif %}
                             </div>
-
-                            <h3>Class Resources</h3>
-                            <div class="class-links">
-                                <a target="_blank" class="resource-link resource" href="{{ class.resources.link }}">Class Resources</a>
-                                {% for image in class.resources.images.all %}
-                                    <a target="_blank" class="resource-link resource" href="{{ image.link }}">Class Images</a>
-                                {% endfor %}
-
-                                {% for video in class.resources.videos.all %}
-                                    <a target="_blank" class="resource-link resource" href="{{ video.link }}">Class Videos</a>
-                                {% endfor %}
-
-                                {% for reading in class.resources.readings.all %}
-                                    <a target="_blank" class="resource-link resource" href="{{ reading.link }}">Class Readings</a>
-                                {% endfor %}
-
-                                {% for assessment in class.resources.assessments.all %}
-                                    <a target="_blank" class="resource-link resource" href="{{ assessment.link }}">Class Assessements</a>
-                                {% endfor %}
-
-                            </div>
-
-                            <br/>
-                            {% if class.objectives is not None %}
-                            <h3>Class Objectives</h3>
-                                <ul>
-                                    {% for obj in class.objectives %}
-                                        <li>{{ obj }}</li>
-                                    {% endfor %}
-                                </ul>
-                            {% endif %}
                         </div>
-                    </div>
-
-                {% endfor %}
+                    {% endfor %}
+                {% else %}
+                    <br>
+                    <p>Dear {{ user.get_full_name }},</p><br>
+                    <p>Thank you for enrolling to this course. However, because you have not yet paid for this course your access is limited. Kindly click on the button below to pay for this course now to enjoy your classes. Upon payment completion, your classes will appear here.</p> <br>
+                    <p>Thank you!</p><br>
+                    <h3>Buy this course now</h3>
+                    {# Making payment with flutterwave #}
+                    <form method="POST" action="https://checkout.flutterwave.com/v3/hosted/pay">
+                        <input type="hidden" name="public_key" value="FLWPUBK_TEST-5855984309c2f0b177abb690e6cda4be-X" />
+                        <input type="hidden" name="customer[email]" value="{{ user.email }}" />
+                        <input type="hidden" name="customer[name]" value="{{ user.get_full_name }}" />
+                        <input type="hidden" name="tx_ref" value="txref-81123" />
+                        <input type="hidden" name="amount" value="{{ data.course_data.price }}" />
+                        <input type="hidden" name="currency" value="NGN" />
+                        <input type="hidden" name="meta[source]" value="docs-html-test" />
+                        <input type="hidden" name="redirect_url" value="{% url 'home' %}" />
+                        
+                        <button type="submit"
+                         class="btn-cta green bold" id="start-payment-button">Pay &#8358; {{ data.course_data.price |stringformat:"f"|floatformat:2}} </button>  
+                  </form>
+                {% endif %}
             {% elif data.page == 'notes' %}
 
                 <h2>My notes on {{ data.course_data.title }}</h2><br>
@@ -163,20 +184,63 @@
             {% elif data.page == 'grades' %}
                 <h2>Grades</h2>
             {% elif data.page == 'communities' %}
-                <h2>Course Communities</h2><br>
-                <h3>Hi there</h3>
-                <p>{{ data.course_data.welcome_note }}</p><br>
-                <b>Join the course community</b><br>
-                <i style="font-size:12px; color: #999;">Community can be on 
-                    WhatsApp Group, WhatsApp Community Teams, Twitter Space, Slack, etc.</i><br><br>
-                <div class="class-links">
-                    <a target="_blank" class="resource-link" href="{{ data.course_data.community_link1 }}">Community Link 1</a>
-                    {% if data.course_data.community_link2 is not None %}
-                        <a target="_blank" class="resource-link" href="{{ class.class_link2 }}">Community Link 2</a>
-                    {% endif %}
-                </div>
+                {% if data.user_owns_course %}
+                    <h2>Course Communities</h2><br>
+                    <h3>Hi there</h3>
+                    <p>{{ data.course_data.welcome_note }}</p><br>
+                    <b>Join the course community</b><br>
+                    <i style="font-size:12px; color: #999;">Community can be on 
+                        WhatsApp Group, WhatsApp Community Teams, Twitter Space, Slack, etc.</i><br><br>
+                    <div class="class-links">
+                        <a target="_blank" class="resource-link" href="{{ data.course_data.community_link1 }}">Community Link 1</a>
+                        {% if data.course_data.community_link2 is not None %}
+                            <a target="_blank" class="resource-link" href="{{ class.class_link2 }}">Community Link 2</a>
+                        {% endif %}
+                    </div>
+                {% else %}
+                    <br>
+                    <p>Dear {{ user.get_full_name }},</p><br>
+                    <p>Thank you for enrolling to this course. However, because you have not yet paid for this course your access is limited. Kindly click on the button below to pay for this course now to access the course community. Upon payment completion, the community link will appear here.</p> <br>
+                    <p>Thank you!</p><br>
+                    <h3>Buy this course now</h3>
+                    {# Making payment with flutterwave #}
+                    <form method="POST" action="https://checkout.flutterwave.com/v3/hosted/pay">
+                        <input type="hidden" name="public_key" value="FLWPUBK_TEST-5855984309c2f0b177abb690e6cda4be-X" />
+                        <input type="hidden" name="customer[email]" value="{{ user.email }}" />
+                        <input type="hidden" name="customer[name]" value="{{ user.get_full_name }}" />
+                        <input type="hidden" name="tx_ref" value="txref-81123" />
+                        <input type="hidden" name="amount" value="{{ data.course_data.price }}" />
+                        <input type="hidden" name="currency" value="NGN" />
+                        <input type="hidden" name="meta[source]" value="docs-html-test" />
+                        <input type="hidden" name="redirect_url" value="{% url 'home' %}" />
+                        
+                        <button type="submit"
+                         class="btn-cta green bold" id="start-payment-button">Pay &#8358; {{ data.course_data.price |stringformat:"f"|floatformat:2}} </button>  
+                {% endif %}
             {% elif data.page == 'reviews' %}
                 <h2>Course Reviews</h2>
+                {% if data.user_owns_course %}
+                    {# Review form goes here... #}
+                {% else %}
+                    <br>
+                    <p>Dear {{ user.get_full_name }},</p><br>
+                    <p>Thank you for enrolling to this course. However, because you have not yet paid for this course your access is limited. Kindly click on the button below to pay for this course now to review this course. Upon payment completion, the review form will appear here.</p> <br>
+                    <p>Thank you!</p><br>
+                    <h3>Buy this course now</h3>
+                    {# Making payment with flutterwave #}
+                    <form method="POST" action="https://checkout.flutterwave.com/v3/hosted/pay">
+                        <input type="hidden" name="public_key" value="FLWPUBK_TEST-5855984309c2f0b177abb690e6cda4be-X" />
+                        <input type="hidden" name="customer[email]" value="{{ user.email }}" />
+                        <input type="hidden" name="customer[name]" value="{{ user.get_full_name }}" />
+                        <input type="hidden" name="tx_ref" value="txref-81123" />
+                        <input type="hidden" name="amount" value="{{ data.course_data.price }}" />
+                        <input type="hidden" name="currency" value="NGN" />
+                        <input type="hidden" name="meta[source]" value="docs-html-test" />
+                        <input type="hidden" name="redirect_url" value="{% url 'home' %}" />
+                        
+                        <button type="submit"
+                         class="btn-cta green bold" id="start-payment-button">Pay &#8358; {{ data.course_data.price |stringformat:"f"|floatformat:2}} </button>  
+                {% endif %}
             {% elif data.page == 'announcements' %}
                 <h2>Course Announcements</h2><br>
                 {% for announcement in data.announcements %}
@@ -227,6 +291,9 @@
 </div>
 
 <style>
+    .content{
+        padding: 50px 0;
+    }
     .nav-icon{
         display: none;
     }

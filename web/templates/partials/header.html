@@ -31,7 +31,7 @@
                             <a href="">Favourites</a>
                             <a href="">Messages</a>
                             <a href="">Forum</a> {% endcomment %}
-                            <a href="">Announcements</a>
+                            <a href=""> {% include 'widgets/message_count.html' with messages=data.announcements %} </span> &nbsp; Announcements</a>
                             {% comment %} <a href="">Certificates & Badges</a> {% endcomment %}
                             <a id="logout" href="{% url 'logout-user' %}" onclick="" class="logout">Logout</a>
                         </div>
@@ -91,7 +91,7 @@
                 <a href="">Favourites</a>
                 <a href="">Messages</a>
                 <a href="">Forum</a> {% endcomment %}
-                <a href="">Announcements</a>
+                <a href="">Announcements &nbsp; {% include 'widgets/message_count.html' with messages=data.announcements %}</span></a>
                 {% comment %} <a href="">Certificates & Badges</a> {% endcomment %}
                 <a id="logout" style="color:crimson; font-weight:bold;" href="{% url 'logout-user' %}" onclick="" class="logout">Logout</a>
             </div>
@@ -121,6 +121,9 @@
 </div>
 
 <style>
+    .mega-menu content {
+        padding: 50px 0;
+    }
     .mega-logout {
         display: none;
     }
