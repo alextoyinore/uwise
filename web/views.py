@@ -152,7 +152,7 @@ class CourseView(BaseView):
     def get(self, request, *args, **kwargs):
         course_data = courseAPI.models.Course.objects.get(id=kwargs['pk'])
         classes = courseAPI.models.Class.objects.filter(course=course_data)
-        # user_owns_course = courseAPI.models.UserCourse.objects.get(user=request.user, course=kwargs['pk'])
+        user_owns_course = courseAPI.models.UserCourse.objects.filter(user=request.user, course=kwargs['pk'])
 
 
         if course_data.skills is not None:
@@ -166,6 +166,7 @@ class CourseView(BaseView):
         data['course_data'] = course_data
         data['classes'] = classes
         data['page'] = 'course'
+        data['user_owns_course'] = user_owns_course
 
         context = {'data': data}
         return render(request, self.template_name, context)

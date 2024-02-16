@@ -10,19 +10,6 @@
 
 {% block extra-header-nav %}
     <div class="header-nav extra-header-nav">
-        <div class="mobile-header extra-header-nav-content">
-            <div class="extra-header-nav-left">
-                <h3>{{ data.course_data.title }}</h3>
-                <p>Level: {{ data.course_data.level }} . Price: &#8358; {{ data.course_data.price }} . Duration: {{ data.course_data.duration }} Days</p>
-            </div>
-            <div class="header-nav-right">
-                {% if not data.user_owns_course %}
-                    <a href="{% url 'enroll' data.course_data.id %}" class="btn-cta-light green">Enroll Now </a>
-                {% else %}
-                    <a href="{% url 'learn' data.course_data.id 'info' %}" class="btn-cta blue">Go to class</a>
-                {% endif %}
-            </div>
-        </div>
          <div class="header-nav-content extra-header-nav-content">
             <div class="extra-header-nav-left">
                 <h3>{{ data.course_data.title }}</h3>
@@ -303,7 +290,27 @@
         </section>
     </div>
 
+    <div class="enroll-mobile-sticker">
+        {% if not data.user_owns_course %}
+            <a href="{% url 'enroll' data.course_data.id %}" class="btn-cta green bold">Enroll Now </a>
+        {% else %}
+            <a href="{% url 'learn' data.course_data.id 'info' %}" class="btn-cta blue bold">Go to class</a>
+        {% endif %}
+    </div>
+
     <style>
+        .enroll-mobile-sticker {
+            width: 100%;
+            background: #10DC8011;
+            {% comment %} padding: 10px; {% endcomment %}
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            display: none;
+        }
+        .enroll-mobile-sticker a {
+            border-radius: 0;
+        }
         .course-list-item + p {
             padding: 10px;
         }
