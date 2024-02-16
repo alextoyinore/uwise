@@ -152,7 +152,11 @@ class CourseView(BaseView):
     def get(self, request, *args, **kwargs):
         course_data = courseAPI.models.Course.objects.get(id=kwargs['pk'])
         classes = courseAPI.models.Class.objects.filter(course=course_data)
-        user_owns_course = courseAPI.models.UserCourse.objects.filter(user=request.user, course=kwargs['pk'])
+
+        user_owns_course = None
+        
+        if request.user.is_authenticated:
+            user_owns_course = courseAPI.models.UserCourse.objects.filter(user=request.user, course=kwargs['pk'])
 
 
         if course_data.skills is not None:
