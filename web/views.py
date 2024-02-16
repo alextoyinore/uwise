@@ -154,13 +154,13 @@ class CourseView(BaseView):
         classes = courseAPI.models.Class.objects.filter(course=course_data)
 
         user_owns_course = None
-        
+
         if request.user.is_authenticated:
             user_owns_course = courseAPI.models.UserCourse.objects.filter(user=request.user, course=kwargs['pk'])
 
 
         if course_data.skills is not None:
-            course_data.skills = course_data.skills.split(', ') or course_data.skills.split('\n')
+            course_data.skills = course_data.skills.split('.') or course_data.skills.split(', ') 
         if course_data.tags is not None:
             course_data.tags = course_data.tags.split(', ')
         if course_data.objectives is not None:
