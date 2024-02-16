@@ -68,10 +68,16 @@
 <div class="mega-menu">
     <div class="content">
         <br>
-        <form action={% url 'explore' %} class="mega-search-form">
-            <input type="search" name="q" placeholder="What do you want to learn?" class="mega-search-input" />
+        <div class="mega-search-form">
+            <a href="{% url 'explore' %}">
+                <span style="cursor:pointer;font-size:35px;" class="material-symbols-outlined">explore</span>
+            </a>
+            <form action={% url 'explore' %}>
+                <input type="search" name="q" placeholder="What do you want to learn?" class="mega-search-input" />
+            </form>
             <span style="cursor:pointer;" onclick="closeMegaMenu()" class="material-symbols-outlined close-mega">close</span>
-        </form>
+        </div>
+        
         
         {% if not user.is_authenticated %}
         <div class="mega-menu-auth">
@@ -131,9 +137,10 @@
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+        width: 100%;
     }
     .mega-search-input {
-        width: 90%;
+        {% comment %} width: 90%; {% endcomment %}
         padding: 20px 0;
         padding-inline: 20px;
     }
