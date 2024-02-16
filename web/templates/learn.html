@@ -166,7 +166,7 @@
                         <input type="hidden" name="redirect_url" value="{% url 'home' %}" />
                         
                         <button type="submit"
-                         class="btn-cta green bold" id="start-payment-button">Pay &#8358; {{ data.course_data.price |stringformat:"f"|floatformat:2}} </button>  
+                         class="btn-cta green bold" id="start-online-pay">Pay &#8358; {{ data.course_data.price |stringformat:"f"|floatformat:2}} </button>  
                   </form>
                 {% endif %}
             {% elif data.page == 'notes' %}
@@ -215,7 +215,7 @@
                         <input type="hidden" name="redirect_url" value="{% url 'home' %}" />
                         
                         <button type="submit"
-                         class="btn-cta green bold" id="start-payment-button">Pay &#8358; {{ data.course_data.price |stringformat:"f"|floatformat:2}} </button>  
+                         class="btn-cta green bold" id="start-online-pay">Pay &#8358; {{ data.course_data.price |stringformat:"f"|floatformat:2}} </button>  
                 {% endif %}
             {% elif data.page == 'reviews' %}
                 <h2>Course Reviews</h2>
@@ -239,7 +239,7 @@
                         <input type="hidden" name="redirect_url" value="{% url 'home' %}" />
                         
                         <button type="submit"
-                         class="btn-cta green bold" id="start-payment-button">Pay &#8358; {{ data.course_data.price |stringformat:"f"|floatformat:2}} </button>  
+                         class="btn-cta green bold" id="start-online-pay">Pay &#8358; {{ data.course_data.price |stringformat:"f"|floatformat:2}} </button>  
                 {% endif %}
             {% elif data.page == 'announcements' %}
                 <h2>Course Announcements</h2><br>
@@ -255,6 +255,9 @@
             {% endif %}
         </article>
     </div>
+    <section>
+        {% include 'widgets/manual_payment.html' with course=data.course_data %}
+    </section>
     <script>
         document.querySelectorAll('.class-item').forEach((item)=>{
             item.addEventListener('click', ()=> {

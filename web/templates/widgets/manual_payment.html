@@ -1,0 +1,80 @@
+<div class="manual-pay">
+    <div onclick="closeManualPay()" class="close-manual-pay">
+        <span style="text-align:right;" class="material-symbols-outlined">close</span>
+    </div>
+    <h3>Dear {{user.get_full_name}},</h3>
+    <p>Thank you for choosing to purchase <b style="color:#10DC80;">{{course.title}}</b></p>
+    <p>Our engineers are working hard to bring you seemless and secure online payment. However, in the meantime, kindly make a transfer of the amount of <b style="color:#10DC80;">&#8358;{{course.price}}</b> to the following account details to purchase your course.</p>
+
+    <div class="bank-details">
+        <h3><strong>Bank Name:</strong> <b>Moniepoint</b></h3>
+        <h3><strong>Account Name:</strong> <b>Projectstar Technologies</b></h3>
+        <h3><strong>Account Number:</strong> <b>8060177914</b></h3>
+    <div>
+
+    <br>
+
+    <i>Upon completion of payment. Send the following in an email to <b style="color:#10DC80;">pay@uwise.pro</b></i>
+    <ol>
+        <li>Evidence of Payment</li>
+        <li>Your full name as it appears on Uwise. (*** Confirm in `Profle`)</li>
+        <li>Your Uwise email</li>
+        <li>Purchased Course Title</li>
+    </ol>
+</div>
+
+<script>
+    startOnlinePay = document.querySelector('#start-online-pay').addEventListener('click', (e)=> {
+        e.preventDefault()
+        manualPay = document.querySelector('.manual-pay')
+        manualPay.style.top = '10vh'
+        manualPay.style.transition = '.5s ease-in-out'
+    })
+
+    function closeManualPay() {
+        manualPay = document.querySelector('.manual-pay')
+        manualPay.style.top = '-100vh'
+        manualPay.style.transition = '.5s ease-in-out'
+    }
+</script>
+
+<style>
+    .close-manual-pay {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        cursor: pointer;
+    }
+    .manual-pay {
+        width: 50%;
+        background: #fff;
+        box-shadow: 0px 0px 10px 10px #eee5;
+        padding: 40px;
+        position: fixed;
+        {% comment %} z-index: 5; {% endcomment %}
+        top: -100vh;
+        left: 25%;
+        {% comment %} display: none; {% endcomment %}
+    }
+    .manual-pay i {
+        font-size:15px;
+    }
+    .manual-pay ol li {
+        color: #333;
+        font-size: 13px;
+    }
+    .bank-details {
+        display: flex;
+        flex-direction: column;
+    }
+    .bank-details h3 {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .bank-details h3 b {
+        color: #10DC80;
+        text-align: right;
+    }
+</style>
