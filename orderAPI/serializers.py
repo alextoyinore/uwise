@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from orderAPI.models import Order, Cart
+from orderAPI.models import Order, Cart, UserPurchase
 
 
 # Serializers
@@ -16,3 +16,8 @@ class CartSerializer(serializers.ModelSerializer):
         model = Cart
         fields = '__all__'
 
+class UserPurchaseSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserPurchase
+        fields = '__all__'
+        

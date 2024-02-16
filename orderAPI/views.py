@@ -21,3 +21,9 @@ class CartViewSet(viewsets.ModelViewSet):
     queryset = Cart.objects.all()
     serializer_class = CartSerializer
     permission_classes = [IsAuthenticated]
+
+class UserPurchaseViewSet(viewsets.ModelViewSet):
+    queryset = UserPurchase.objects.all()
+    serializer_class = UserPurchaseSerializer
+    permission_classes = [IsAuthenticated]
+

@@ -16,42 +16,45 @@
         </div>
         <div class="error" style="display: none; color: crimson;"></div>
         <div class="enroll-content">
-            <div class="enroll-content-left">
-                <div class='card'>
-                    <h2>Buy this course now</h2>
-                    <ul>
-                        <li>Access All Classes</li>
-                        <li>Access all course announcements</li>
-                        <li>Access all course communities</li>
-                        <li>Get help from all course facilitators</li>
-                        <li>Get freebies including heavily discount paid courses</li>
-                        <li>Get certificate upon completion</li>
-                        <li>Get discount on total fee</li>
-                        <li>Eligibility for class rep - Gives access to random free course</li>
-                        <li>Eligibility for course rep - Gives access to free course of choice</li>
-                        <li>Access 6 months on-first-job or startup support</li>
-                    </ul>
-                    
-                    {# Making payment with flutterwave #}
-                    <form method="POST" action="https://checkout.flutterwave.com/v3/hosted/pay">
-                          <input type="hidden" name="public_key" value="FLWPUBK_TEST-5855984309c2f0b177abb690e6cda4be-X" />
-                          <input type="hidden" name="customer[email]" value="{{ user.email }}" />
-                          <input type="hidden" name="customer[name]" value="{{ user.get_full_name }}" />
-                          <input type="hidden" name="tx_ref" value="txref-81123" />
-                          <input type="hidden" name="amount" value="{{ data.course_data.price }}" />
-                          <input type="hidden" name="currency" value="NGN" />
-                          <input type="hidden" name="meta[source]" value="docs-html-test" />
-                          <input type="hidden" name="redirect_url" value="{% url 'home' %}" />
-                          {% if not user.is_authenticated %}
-                          <a href="{% url 'login' %}" 
-                          class="btn-cta green bold" id="start-payment-button">Pay &#8358; {{ data.course_data.price |stringformat:"f"|floatformat:2}}</a>
-                            {% else %}
-                            <button type="submit"
-                           class="btn-cta green bold" id="start-payment-button">Pay &#8358; {{ data.course_data.price |stringformat:"f"|floatformat:2}}</button>
-                           {% endif %}
-                    </form>
+            {% if not data.course_data.price == 0 %}
+                <div class="enroll-content-left">
+                    <div class='card'>
+                        <h2>Buy this course now</h2>
+                        <ul>
+                            <li>Access All Classes</li>
+                            <li>Access all course announcements</li>
+                            <li>Access all course communities</li>
+                            <li>Get help from all course facilitators</li>
+                            <li>Get freebies including heavily discount paid courses</li>
+                            <li>Get certificate upon completion</li>
+                            <li>Get discount on total fee</li>
+                            <li>Eligibility for class rep - Gives access to random free course</li>
+                            <li>Eligibility for course rep - Gives access to free course of choice</li>
+                            <li>Access 6 months on-first-job or startup support</li>
+                        </ul>
+                        
+                        {# Making payment with flutterwave #}
+                        <form method="POST" action="https://checkout.flutterwave.com/v3/hosted/pay">
+                            <input type="hidden" name="public_key" value="FLWPUBK_TEST-5855984309c2f0b177abb690e6cda4be-X" />
+                            <input type="hidden" name="customer[email]" value="{{ user.email }}" />
+                            <input type="hidden" name="customer[name]" value="{{ user.get_full_name }}" />
+                            <input type="hidden" name="tx_ref" value="txref-81123" />
+                            <input type="hidden" name="amount" value="{{ data.course_data.price }}" />
+                            <input type="hidden" name="currency" value="NGN" />
+                            <input type="hidden" name="meta[source]" value="docs-html-test" />
+                            <input type="hidden" name="redirect_url" value="{% url 'home' %}" />
+                            {% if not user.is_authenticated %}
+                            <a href="{% url 'login' %}" 
+                            class="btn-cta green bold" id="start-payment-button">Pay &#8358; {{ data.course_data.price |stringformat:"f"|floatformat:2}}</a>
+                                {% else %}
+                                <button type="submit"
+                            class="btn-cta green bold" id="start-payment-button">Pay &#8358; {{ data.course_data.price |stringformat:"f"|floatformat:2}}</button>
+                            {% endif %}
+                        </form>
+                    </div>
                 </div>
-            </div>
+            {% endif %}
+            
 
             <div class="enroll-content-right">
                 <div class='card'>
@@ -63,7 +66,13 @@
                         <li>Access general course community</li>
                     </ul>
                     
-                    <button id="btn-enroll" onclick="enrollPayLater()" class="btn-cta blue bold">Enroll Pay Later</button>
+                    <button id="btn-enroll" onclick="enrollPayLater()" class="btn-cta blue bold">
+                        {% if not data.course_data.price == 0 %}
+                            Enroll Pay Later
+                        {% else %}
+                            Enroll Free
+                        {% endif %}
+                    </button>
                     <script>
                         function redirectToLOgin(){
                             e.preventDefault()
@@ -92,7 +101,41 @@
                                 },
                             }).then(response => {
                                  if (response.ok) {
-                                    window.location.href = '{% url 'home' %}'
+                                    {% if data.course_data.price == 0 %}
+                                        fetch("{% url 'user-purchases' %}", {
+                                            method: 'POST',
+                                            body: formData.toString(),
+                                            headers: {
+                                                'Accept': 'application/json',
+                                                'Content-Type': 'application/x-www-form-urlencoded',
+                                                'X-Requested-With': 'XMLHttpRequest',  // Required for Django to identify it as an AJAX request
+                                                'X-CSRFToken': getCookie('csrftoken')  // Include CSRF token for security
+                                            },
+                                        }).then(response => {
+                                            if(response.ok){
+                                                window.location.href = '{% url 'home' %}'
+                                            }else{
+                                                return response.json().then(data => {
+                                                   console.log(data)
+                                                   const error = document.querySelector('.error')
+                                                   error.style.display = 'block'
+           
+                                                   for (d in data){
+                                                       console.log(d)
+                                                       var newParagraph = document.createElement('b')
+                                                       newParagraph.setAttribute('style', 'display: block;')
+                                                       newParagraph.textContent = data[d]
+                                                       if(data[d]==='The fields user, course must make a unique set.'){
+                                                           newParagraph.textContent = 'You are already enrolled to this course'
+                                                       }
+                                                       error.appendChild(newParagraph)
+                                                   }
+                                               })
+                                            }
+                                        })
+                                    {% else %}
+                                        window.location.href = '{% url 'home' %}'
+                                    {% endif %}   
                                  }else{
                                      return response.json().then(data => {
                                         console.log(data)

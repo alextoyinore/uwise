@@ -44,14 +44,14 @@ class Order(models.Model):
 class UserPurchase(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='purchase_by_user', null=False, blank=False)
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='purchased_course', null=False, blank=False)
-    date_added = models.DateTimeField(auto_now_add=True)
+    date_added = models.DateTimeField(auto_now=True)
 
     class Meta:
         unique_together = ('user', 'course')
         ordering = ('date_added',)
-        verbose_name_plural = 'UserPurchases'
+        verbose_name_plural = 'User Purchases'
         get_latest_by = 'date_added'
-        verbose_name = 'UserPurchase'
+        verbose_name = 'User Purchase'
 
     def __str__(self):
         return f'{self.user.get_full_name()} - {self.course.title}'
