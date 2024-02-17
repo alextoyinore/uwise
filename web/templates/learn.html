@@ -54,11 +54,9 @@
                 Course Duration: <span>{{ data.course_data.duration }} days</span></b>
                 <br/><br/>
 
-                <h3>Welcome Note</h3>
                 {% if data.course_data.welcome_note is not None or data.course_data.welcome_note is not empty %}
+                    <h3>Welcome Note</h3>
                     <p>{{ data.course_data.welcome_note }}</p>
-                {% else %}
-                    <p>{{ data.course_data.description }}</p>
                 {% endif %}
                 <br/>
                 {% if data.course_data.intro_video is not None or data.course_data.intro_video is not empty %}
@@ -67,11 +65,7 @@
                     {#  <source src="{{ data.course_data.intro_video }}" type="video/mp4" preload="auto" poster="" />#}
                     {#</video>#}
                 {% endif %}
-                <br/><br/>
-                {% if data.course_data.welcome_note is not None or data.course_data.welcome_note is not empty %}
-                    <p>{{ data.course_data.description }}</p><br/>
-                {% endif %}
-
+                <br><br>
                 <h3>Description</h3>
                 <p>{{ data.course_data.description }}</p>
                 <br/>
