@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from authAPI.manager import CustomUserManager
+from django.core.mail import send_mail
+
 
 
 class Facilitator(models.Model):
@@ -53,6 +55,16 @@ class User(AbstractUser):
         email_username = self.email.split('@')[0]
         email_domain = self.email.split('@')[1].split('.')[0]
         self.username = email_username + email_domain
+
+        # Send email
+        # send_mail(
+        #     'Welcome to Uwise',
+        #     f'Hi, {self.first_name} {self.last_name}. We warmly welcome you to Uwise. Your account has been successfully created.',
+        #     'toyin@uwise.pro',
+        #     [f'{self.email}'],
+        #     fail_silently=False,
+        # )
+
         super(User, self).save(*args, **kwargs)
 
     def __str__(self) -> str:
