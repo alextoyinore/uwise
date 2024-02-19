@@ -10,7 +10,7 @@
     <div class="course-details">
         <strong class="course-title">{{course.title}}</strong>
         <div class="course-details-bottom">
-            <p class="rating"><span class="material-symbols-outlined rating-star">star</span> {{ course.rating }}  ({{ course.rating_count }} reviews)</p>
+            {% comment %} <p class="rating"><span class="material-symbols-outlined rating-star">star</span> {{ course.rating }}  ({{ course.rating_count }} reviews)</p> {% endcomment %}
             <i class="course-duration">{{course.duration}} Days, {{course.level}}</i>
         </div>
     </div>

@@ -521,8 +521,8 @@ textarea {
   .course-card {
     flex: 0 0 auto;
     text-decoration: none;
-    width: 180px;
-    height: 270px;
+    width: 175px;
+    height: 36vh;
     border-radius: 5px;
     overflow: hidden;
     box-sizing: border-box;
@@ -540,7 +540,7 @@ textarea {
   }
 
   .course-image {
-    height: 60%;
+    height: 50%;
   }
 
   .course-image img {
@@ -551,7 +551,7 @@ textarea {
 
   .course-details {
     padding: 10px;
-    height: 30%;
+    height: 40%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -562,7 +562,7 @@ textarea {
   }
 
   .course-details strong {
-    font-size: .8em;
+    font-size: .75em;
     line-height: 1.5em;
   }
 
