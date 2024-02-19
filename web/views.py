@@ -58,7 +58,7 @@ class HomeView(BaseView):
     
 
     def get(self, request, *args, **kwargs):
-        carousels = CourseCarousel.objects.all().order_by('-date')[:4]
+        carousels = CourseCarousel.objects.all().order_by('date')[:4]
         user_courses_carousels = None
 
         latest = courseAPI.models.Course.objects.all()[:8]
