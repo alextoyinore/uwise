@@ -31,30 +31,27 @@
     {% endif %}
     <section id="content">
         <div class="content">
-            {% if data.carousels is not None or empty %}
-                {% for carousel in data.carousels %}
-                    {% include 'widgets/course_carousel.html' with carousel=carousel %}
-                {% endfor %}
-            {% endif %}
+            
+            {% include 'widgets/course_carousel.html' with carousel=data.latest_carousel %}
 
-            <br>
+        </div>
     </section>
 
             {% include 'widgets/biginfo.html' %}
             <br>
     <section class="content">
-{#            {% if data.carousels is not None or empty %}#}
-{#                {% for carousel in data.carousels %}#}
-{#                    {% include 'widgets/course_carousel.html' with carousel=carousel %}#}
-{#                {% endfor %}#}
-{#            {% endif %}#}
+        <h2>Specializations</h2>
+        {% if data.carousels is not None or empty %}
+            {% for carousel in data.carousels %}
+                {% include 'widgets/course_carousel.html' with carousel=carousel %}
+            {% endfor %}
+        {% endif %}
 
             <br>
-            {% include 'widgets/testimonial_carousel.html' with testimonials=data.testimonials %}
-            <br><br>
-            {% include 'widgets/partners.html' %}
-            <br><br>
-        </div>
+        {% include 'widgets/testimonial_carousel.html' with testimonials=data.testimonials %}
+        <br><br>
+        {% include 'widgets/partners.html' %}
+        <br>
     </section>
 
     {% if not user.is_authenticated %}

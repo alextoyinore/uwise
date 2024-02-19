@@ -18,4 +18,3 @@ urlpatterns = [
     path('learn/<int:pk>/<str:page>', view=LearnView.as_view(), name='learn'),
     path('me', view=ProfileView.as_view(), name='profile')
 ]
-

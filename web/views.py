@@ -61,6 +61,13 @@ class HomeView(BaseView):
         carousels = CourseCarousel.objects.all()[:4]
         user_courses_carousels = None
 
+        latest = courseAPI.models.UserCourse.objects.all()[:8]
+        latest_carousel = {
+            'title': 'Latest',
+            'courses': latest,
+        }
+
+
         if request.user.is_authenticated:
             user_courses = courseAPI.models.UserCourse.objects.filter(user=request.user)
             user_courses_carousels = {
@@ -72,6 +79,7 @@ class HomeView(BaseView):
         # print(data['user_courses_carousels'])
         data = self.get_context_data()
         data['carousels'] = carousels
+        data['latest_carousel'] = latest_carousel
         data['user_courses_carousels'] = user_courses_carousels
 
         context = {'data': data}

@@ -2,7 +2,8 @@
     <div class="hero2-content">
         <div class="hero2-content-top">
             <strong>Build wealth from learning</strong><br>
-            <p>Wealth comes from wisdom, wisdom comes from understanding, understanding comes from knowledge, all knowledge comes from God</p>
+            {% comment %} <p>Wealth comes from wisdom, wisdom comes from understanding, understanding comes from knowledge, all knowledge comes from God</p> {% endcomment %}
+            <p>Learn, unlearn, and re-learn. Acquire, practice and perfect new skills for business, career, and personal growth.</p>
         </div>
         <div class="hero2-content-bottom">
             {% for field in data.hero_fields %}
@@ -37,6 +38,8 @@
 
     .hero2-content-top p{
         color: #3b5998;
+        {% comment %} color: #fff; {% endcomment %}
+        font-weigthL lighter;
     }
     .hero2-content-bottom {
         display: flex;
@@ -48,13 +51,16 @@
 
     .hero2-content-bottom a {
         text-align: center;
+        background: #fff;
+        color: #011f55;
+        font-weight: bold;
     }
 
     .hero2-cta {
         display: flex;
         flex-direction: row;
         gap: 10px;
-        padding: 10px 50px;
+        {% comment %} padding: 10px 50px; {% endcomment %}
         justify-content: center;
         flex-wrap: wrap;
     }
