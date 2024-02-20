@@ -48,6 +48,12 @@ class NoteAdmin(admin.ModelAdmin):
     search_fields = ('user', 'course',)
 
 
+@admin.register(Favourite)
+class FavouriteAdmin(admin.ModelAdmin):
+    list_display = ('user', 'course', )
+    search_fields = ('user', 'course',)
+
+
 @admin.register(Message)
 class MessageAdmin(admin.ModelAdmin):
     list_display = ('sender', 'receiver', 'course', 'message', 'date',)

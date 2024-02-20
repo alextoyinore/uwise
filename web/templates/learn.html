@@ -64,10 +64,18 @@
                     {#<video controls style="width:100%;">#}
                     {#  <source src="{{ data.course_data.intro_video }}" type="video/mp4" preload="auto" poster="" />#}
                     {#</video>#}
+                    <br><br>
                 {% endif %}
-                <br><br>
                 <h3>Description</h3>
-                <p>{{ data.course_data.description }}</p>
+                {% for paragraph in data.course_data.description %}
+                            <div class="paragraph">
+                                {% if paragraph|wordcount < 15 %}
+                                    <h3>{{paragraph}}</h3>
+                                {% else %}
+                                    <p>{{paragraph}}</p>
+                                {% endif %}
+                            </div>
+                        {% endfor%}
                 <br/>
 
                 <h3 class="course-skills">Skills you'll gain</h3><br>
@@ -288,157 +296,7 @@
 </div>
 
 <style>
-    .content{
-        padding: 50px 0;
-    }
-    .nav-icon{
-        display: none;
-    }
-    .org-image {
-        height: 35px;
-        margin-bottom: 10px;
-    }
-    .org-image img {
-        height: 25px;
-        filter: brightness(2) grayscale(0.5) hue-rotate(-1turn) opacity(0.2) saturate(0);
-    }
-    .notes {
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        gap: 10px;
-    }
-    .notes .note {
-        background: #fff;
-        border-radius: 5px;
-        padding: 10px;
-    }
-    .note i {
-        font-size: 12px;
-        color: #aaa;
-    }
-    .class-details {
-        cursor: default;
-    }
-    .class-details .class-links {
-        margin: 20px 0;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-items: flex-start;
-        gap: 10px;
-    }
-    .class-links .resource {
-        background: #c3d3ec55;
-        color: #011F55;
-        font-size: 13px;
-    }
-    .resource:hover {
-        color: #ffffff;
-    }
-    .class-item {
-        padding: 5px 10px;
-        border-radius: 5px;
-        border: 1px solid #c3d3ec;
-        margin: 10px 0;
-        cursor: pointer;
-    }
-    .class-item .title {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-    }
-    .resource-link {
-        text-decoration: none;
-        color: #ffffff;
-        background: #10DC80;
-        padding: 10px 20px;
-        border-radius: 5px;
-        font-size: 13px;
-    }
-    .resource-link:hover{
-        background: #011F55;
-    }
-    li {
-        font-size: 13px;
-        color: #777777;
-        line-height: 22px;
-    }
-    .skills-content {
-        display: flex;
-        flex-direction: row;
-        gap: 10px;
-        text-align: left;
-        flex-wrap: wrap;
-    }
-
-    .skill {
-        padding: 5px 10px;
-        font-size: 12px;
-        color: #0e3b8d;
-        background: #eff3fa;
-        border-radius: 5px;
-    }
-    b{
-        font-size: 13px;
-        color: #011F55;
-    }
-    b span{
-        color: #10DC80;
-    }
-        .courses-content {
-            display: flex;
-            flex-direction: row;
-            position: relative;
-            margin: 10px 0;
-        }
-        .filters {
-            width: 25%;
-            height: 500px;
-            display: flex;
-            flex-direction: column;
-            overflow-y: auto;
-            scroll-behavior: smooth;
-            scrollbar-width: thin;
-            scrollbar-base-color: #011F55;
-            padding: 10px 10px 0 0;
-            position: relative;
-        }
-        .class-board {
-            width: 60%;
-            padding: 10px 0 0 10px;
-        }
-        .course-grid {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        .filter-item-group {
-            display: flex;
-            flex-direction: row;
-            gap: 5px;
-            flex-wrap: wrap;
-
-        }
-        .filter-item {
-            width: 100%;
-            font-size: 13px;
-            color: #011F55;
-            padding: 10px 10px;
-            border-radius: 2px;
-            cursor: pointer;
-            font-weight: bold;
-            text-decoration: none;
-        }
-        .filter-item:hover, .filter-item:active {
-            background: #c3d3ec55;
-        }
-        .selected {
-            background: #c3d3ec55;
-        }
+    
 </style>
 {% endblock %}
 

@@ -145,10 +145,14 @@ class Testimonial(models.Model):
 
 
 class Favourite(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    courses = models.ManyToManyField(Course)
-    date = models.DateField(null=False, blank=False, auto_now=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    date = models.DateTimeField(null=False, blank=False, auto_now=True)
+
+    class Meta:
+        unique_together = ('user', 'course')
 
     def __str__(self) -> str:
-        return self.courses.all()
-
+        return self.course.title
+    
+    

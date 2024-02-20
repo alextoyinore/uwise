@@ -104,6 +104,7 @@ class LearnView(BaseView):
             return redirect('login')
 
         course_data = courseAPI.models.Course.objects.get(id=kwargs['pk'])
+        course_data.description = course_data.description.split('\n')
         classes = courseAPI.models.Class.objects.filter(course=kwargs['pk']).order_by('class_number')
         notes = utilsAPI.models.Note.objects.filter(course=course_data).order_by('-date')
         announcements = utilsAPI.models.Announcement.objects.filter(course=course_data).order_by('-date')

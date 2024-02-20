@@ -69,3 +69,8 @@ class TestimonialSerializer(serializers.ModelSerializer):
         model = Testimonial
         fields = '__all__'
 
+
+class FavouriteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Favourite
+        fields = '__all__'

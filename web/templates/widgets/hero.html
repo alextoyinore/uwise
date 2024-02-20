@@ -35,40 +35,73 @@
                     <b>Rating: </b>
                     <b>{{ data.course_data.rating }}</b>
                 </div>
+
+                <br>
+                <div class="summary-item">
+                    <a class="btn-cta small-btn fav-btn" onclick=addToFavourites()><span class="material-symbols-outlined">add</span> Favourites</a>
+                    <a href="" class="btn-cta small-btn wish-btn"><span class="material-symbols-outlined">add</span> Wishlist</a>
+                </div>
+                
                 <br>
                 {% if not data.user_owns_course %}
                     <a href="{% url 'enroll' data.course_data.id %}" class="btn-cta-light green">Enroll Now </a>
                 {% else %}
                     <a href="{% url 'learn' data.course_data.id 'info' %}" class="btn-cta blue">Go to class</a>
                 {% endif %}
-
+                
             </div>
         </div>
     </div>
 </div>
 
-<style>
-    .summary-item {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-    }
-    .course-summary-card {
-        width: 100%;
-        background: #fafcff;
-        border-radius: 8px;
-        padding: 20px 10px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        {#text-align: left;#}
-        {% comment %} transform: rotate(5deg); {% endcomment %}
+<script>
+    function addToFavourites() {
+
+        //document.querySelector('.fav-btn').addEventListener('click', function(event) {
+           //event.preventDefault();
+
+           alert('hello')
+    
+           const formData = new URLSearchParams();
+    
+           formData.append('course', {{data.course_data.id}})
+           formData.append('user', {{request.user}}) 
+    
+            fetch("{% url 'favourites' %}", {
+                method: 'POST',
+                body: formData.toString(),
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-Requested-With': 'XMLHttpRequest',  // Required for Django to identify it as an AJAX request
+                    'X-CSRFToken': `${getCookie('csrftoken')}`  // Include CSRF token for security
+                },
+            })
+            .then(response => {
+                if(response.ok){
+                   // window.location.href = '#'
+                   alert('Success!')
+                }
+            })
+    //    })
     }
 
-    .course-summary-card b {
-        color: #011F55;
-        border-bottom: 1px solid #c3d3ec77;
-        padding: 10px 20px;
-        text-align: right;
+
+    // Function to get cookie
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
     }
-</style>
+    return cookieValue;
+}
+</script>
+

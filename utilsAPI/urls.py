@@ -127,4 +127,17 @@ urlpatterns = [
         'patch': 'partial_update',
         'delete': 'destroy',
     }), name='review'),
+
+
+    # FAVOURITE
+
+    path('favourites', view=FavouriteViewSet.as_view({
+        'post': 'create',
+        'get': 'list'}), name='favourites'),
+    path('favourite/<int:pk>', view=FavouriteViewSet.as_view({
+        'get': 'retrieve',
+        'put': 'update',
+        'patch': 'partial_update',
+        'delete': 'destroy',
+    }), name='favourite'),
 ]
