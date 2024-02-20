@@ -550,8 +550,8 @@ textarea {
 
   .course-card:hover {
     border: 1px solid var(--bg-blue);
-    color: #0e3b8d;
-    /*box-shadow: 4px 4px 0 2px #eee;*/
+    color: #77a1f0;
+    box-shadow: 0 0 0 8px #ccc;
   }
 
   .course-image {
