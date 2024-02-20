@@ -54,13 +54,25 @@
     </div>
 </div>
 
+<style>
+    .small-btn {
+        font-size: 13px;
+        padding: 5px 0;
+      }
+    .fav-btn {
+        {% comment %} background: orange;
+        border-color: deeporange;
+        color: #fff; {% endcomment %}
+    }
+</style>
+
 <script>
     function addToFavourites() {
 
         //document.querySelector('.fav-btn').addEventListener('click', function(event) {
            //event.preventDefault();
 
-           alert('hello')
+           //alert('hello')
     
            const formData = new URLSearchParams();
     
@@ -79,11 +91,11 @@
             })
             .then(response => {
                 if(response.ok){
-                   // window.location.href = '#'
-                   alert('Success!')
+                   document.querySelector('.fav-btn').innerText = 'Success!'
+                   window.location.href = '#'
                 }
             })
-    //    })
+       //})
     }
 
 
