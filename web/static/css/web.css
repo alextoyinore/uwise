@@ -87,9 +87,9 @@ textarea {
   margin-top: 100px;
 }
 
-.auth-form {
+/* .auth-form {
   width: 400px;
-}
+} */
 
 .left-bottom-switcher {
   border-bottom-left-radius: 10px;
@@ -125,7 +125,7 @@ textarea {
   margin: auto;
   display: flex;
   flex-direction: column;
-  border: 1px solid var(--bg-blue) 10;
+  border: 1px solid var(--bg-blue);
   background: #fff;
   border-radius: 20px;
   padding: 40px;

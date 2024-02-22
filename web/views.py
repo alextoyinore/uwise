@@ -207,7 +207,36 @@ class ExploreView(BaseView):
 
         context = {'data': data}
         return render(request, self.template_name, context)
+    
 
+class BlogsView(BaseView):
+    template_name = 'blogs.html'
+
+    def get(self, request, *args, **kwargs):
+        featured = blogAPI.models.Post.objects.filter(featured=True).first()
+        data = self.get_context_data()
+        data['featured'] = featured
+        context = {'data': data}
+        return render(request, self.template_name, context)
+
+
+class BlogView(BaseView):
+    template_name = 'blog.html'
+
+    def get(self, request, *args, **kwargs):
+        try:
+            blog = blogAPI.models.Post.objects.get(id=kwargs['pk'])
+        except blogAPI.models.Post.DoesNotExist:
+            raise Http404("Course does not exist")
+        
+        blog.content = blog.content.split('\n')
+        
+        data = self.get_context_data()
+        data['blog'] = blog
+        data['prev']=blog.id-1
+        data['next']=blog.id+1
+        context = {'data': data}
+        return render(request, self.template_name, context)
 
 class EnrollView(BaseView):
     template_name = 'enroll.html'

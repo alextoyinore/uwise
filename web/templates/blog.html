@@ -1,0 +1,138 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block page-title %} Blog {% endblock %}
+{% block header-message %}{% endblock %}
+{% block top-nav %}{% endblock %}
+
+{% block hero %}
+{% endblock %}
+
+{% block content %}
+
+    <div class="article-content">
+        
+        <div class="article-wrapper">
+            <div class="article-meta">
+                <div class="article-crumb">
+                    <a href="{% url 'blogs' %}" style="font-weight:bold;">Blogs</a>
+                    <a>{{data.blog.title}}</a>
+                </div>
+                {# Blog Author #}
+                <div class="author-item">
+                    <div class="author-image">
+                        {% if data.blog.author.image == '' or data.blog.author.image is None %}
+                            <img src="{% static 'images/profile.png' %}" alt="{{user.get_full_name}}">
+                        {% else %}
+                            <img src="{{ data.blog.author.image.url }}" alt="{{user.get_full_name}}">
+                        {% endif %}
+                    </div>
+                    <div class="author-detail">
+                        <b>{{ data.blog.author.get_full_name }}</b>
+                        <p>{{data.blog.author.current_job_title}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="article-main-content">
+
+                <h1>{{data.blog.title}}</h1>
+                <p>{{data.blog.excerpt}}</p>
+                <span class="date-posted">{{data.blog.date_posted}}</span>
+
+                {# BLog image #}
+                <div class="article-image">
+                    <img src="{{data.blog.image_link}}" alt="" />
+                </div>
+
+                <div class="article-paragraphs">
+                    {% for paragraph in data.blog.content %}
+                        <div class="paragraph">
+                            {% if paragraph|wordcount < 15 %}
+                                <h3>{{paragraph}}</h3>
+                            {% else %}
+                                <p>{{paragraph}}</p>
+                            {% endif %}
+                        </div>
+                    {% endfor%}
+                </div>
+
+                <div class="blog-navs">
+                    {% if data.blog.id > 1 %}
+                        <a class="blog-nav" href="{% url 'blog' data.prev %}">Previous</a>
+                    {% endif %}
+
+                    {% if data.blog.id < data.blogs|length %}
+                        <a class="blog-nav" href="{% url 'blog' data.next %}">Next</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .article-crumb {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .article-crumb a {
+            text-decoration: none;
+            color: var(--bg-blue);
+            font-size: 11px;
+        }
+        .blog-navs {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin: 30px 0;
+        }
+        .blog-nav {
+            border: 1px solid var(--bg-blue);
+            color: var(--bg-blue);
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        .blog-nav:hover {
+            background: var(--bg-blue);
+            color: #fff;
+        }
+        .article-image {
+            width: 100%;
+            height: 50vh;
+            margin: 20px 0;
+        }
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+        .article-content {
+            width: 70%;
+            margin: auto;
+        }
+        .article-wrapper {
+            margin: 10% 0;
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+        }
+        .article-meta {
+            width: 20%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .article-main-content {
+            width: 60%;
+        }
+        .article-main-content .date-posted{
+            font-size: 13px;
+            color: #777;
+            display: block;
+            margin: 20px 0;
+        }
+    </style>
+
+{% endblock %}
+

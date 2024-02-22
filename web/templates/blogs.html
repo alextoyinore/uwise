@@ -1,0 +1,139 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block page-title %} Blog {% endblock %}
+{% block header-message %}{% endblock %}
+{% block top-nav %}{% endblock %}
+
+{% block hero %}
+{% endblock %}
+
+{% block content %}
+<div class="blogs-content">
+    <section class="featured-post-wrapper">
+        <div class="featured-post">
+            <a href="{% url 'blog' data.featured.id %}">
+                <div class="featured-post-image">
+                    <img src="{{data.featured.image_link}}" alt="" />
+                </div>
+                <div class="featured-post-right">
+                    <strong>{{data.featured.title}}</strong><br>
+                    <p>{{data.featured.excerpt}}</p>
+                    <span>{{data.featured.date_posted}}</span>
+                </div>
+            </a>
+        </div>
+    </section>
+    <section class="blogs-grid-wrapper">
+        <h3>Latests</h3><br>
+        <div class="blogs-grid">
+            {% for post in data.blogs|slice:":8" %}
+                <a class="post" href="{% url 'blog' post.id %}">
+                    <div class="post-image">
+                        <img src="{{post.image_link}}" alt="" />
+                    </div>
+                    <div class="post-bottom">
+                        <strong>{{post.title}}</strong><br>
+                        <span>{{post.date_posted}}</span>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </section>
+
+    {# Filter by categories #}
+</div>
+    <style>
+        .featured-post-right{
+            display: flex;
+            flex-direction: column;
+            width: 45%;
+        }
+        .featured-post-right strong {
+            font-size: 1.5rem;
+            line-height: 1.8rem;
+        }
+        .featured-post-right span {
+            margin: 20px 0;
+            font-size: 12px;
+            color: #777;
+            font-style: italics;
+        }
+        .blogs-content {
+            width: 70%;
+            margin: auto;
+        }
+        .featured-post-wrapper {
+            margin-top: 10%;
+        }
+        .featured-post {
+            width: 100%;
+            height: 20%;
+        }
+        .featured-post a {
+            display: flex;
+            flex-direction: row;
+            text-decoration: none;
+            color: var(--bg-blue);
+            gap: 20px;
+        }
+        .featured-post a:hover{
+            color: #114ec1;
+        }
+        .featured-post-image{
+            width: 45%;
+            height: 100%;
+        }
+        .featured-post-image img {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+        }
+        .blogs-grid-wrapper {
+            margin-bottom: 10%;
+        }
+        .blogs-grid {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .post {
+            width: 240px;
+            height: 30%;
+            background: #fff;
+            border-radius: 10px;
+            border: 1px solid #eee;
+            cursor: pointer;
+            text-decoration: none;
+            color: var(--bg-blue);
+        }
+        .post:hover {
+            border: 1px solid #114ec1;
+            color: #114ec1;
+        }
+        .post-image {
+            width: 100%;
+            height: 50%;
+            border-radius: 10px 10px 0 0;
+        }
+        .post-image img {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px 10px 0 0;
+        }
+        .post-bottom {
+            padding: 10px 20px;
+        }
+        .post-bottom strong {
+            font-size: 12px;
+            line-height: 8px;
+        }
+        .post-bottom span {
+            margin: 20px 0;
+            font-size: 10px;
+            color: #777;
+            font-style: italics;
+        }
+    </style>
+{% endblock %}
+

@@ -1,10 +1,17 @@
-<div class="blog-item">
-    <div class="blog-image">
-        <img src="{{post.image_link}}" alt="">
+<a class="blog-item-wrapper" href="{% url 'blog' post.id %}">
+    <div class="blog-item">
+        <div class="blog-image">
+            <img src="{{post.image_link}}" alt="">
+        </div>
+        <div class="blog-detail">
+            <b>{{post.title}}</b>
+            <p>{{post.excerpt|truncatewords:"10"}}</p>
+        </div>
     </div>
-    <div class="blog-detail">
-        <b>{{post.title}}</b>
-        <p>{{post.excerpt|truncatewords:"10"}}</p>
-    </div>
-</div>
+</a>
 
+<style>
+    .blog-item-wrapper {
+        text-decoration: none; 
+    }
+</style>

@@ -59,8 +59,53 @@
     {% endblock %}
 
     <style>
-        
-        
+
+        @media only screen and (max-width: 540px) {
+            .featured-post a {
+                flex-direction: column;
+            }
+            .blogs-content {
+                width: 94%;
+            }
+            .featured-post-wrapper {
+                margin-top: 20%;
+            }
+            .featured-post-image {
+                width: 100%;
+            }
+            .featured-post-right {
+                width: 100%;
+            }
+            .post {
+                display: flex;
+                width: 100%;
+                height: 100px;
+            }
+            .post-image {
+                height: 100px;
+                width: 125px;
+            }
+            .post-image img {
+                border-radius: 10px 0 0 10px;
+                object-fit: cover;
+                width: 125px;
+            }
+            .post-bottom {
+                padding: 0 10px;
+            }
+            .article-meta {
+                display: none;
+            }
+            .article-main-content {
+                width: 100%;
+            }
+            .article-content {
+                width: 94%;
+            }
+            .article-wrapper {
+                margin: 20% 0;
+            }
+        }
 
     </style>
 </body>
