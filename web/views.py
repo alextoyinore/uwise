@@ -18,10 +18,6 @@ from orderAPI.models import UserPurchase
 
 # Create your views here.
 
-# @register.filter
-# def get_range(value):
-#     return range(value)
-
 class BaseView(TemplateView):
     template_name = 'partials/base.html'
 
@@ -33,7 +29,7 @@ class BaseView(TemplateView):
         announcements = Announcement.objects.all()
         static_pages = StaticPage.objects.all()
         specializations = courseAPI.models.Specialization.objects.all()
-        blogs = blogAPI.models.Post.objects.all()
+        blogs = blogAPI.models.Post.objects.all().order_by('-date_posted')
 
         data = {
             'testimonials': testimonials,
@@ -59,7 +55,7 @@ class HomeView(BaseView):
     
 
     def get(self, request, *args, **kwargs):
-        carousels = CourseCarousel.objects.all().order_by('date')[:4]
+        carousels = CourseCarousel.objects.all().order_by('-date')[:5]
         user_courses_carousels = None
 
         latest = courseAPI.models.Course.objects.all()[:8]
@@ -145,7 +141,7 @@ class DashboardView(BaseView):
 
         q = request.GET.get('q')
         fields = courseAPI.models.Field.objects.all()
-        courses = courseAPI.models.UserCourse.objects.filter(user=request.user).all()
+        courses = courseAPI.models.UserCourse.objects.filter(user=request.user).all().order_by('-date')
 
         data = self.get_context_data()
         data['q'] = q
