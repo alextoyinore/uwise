@@ -17,7 +17,7 @@ urlpatterns = [
     path('learn/<int:pk>', view=LearnView.as_view(), name='learn'),
     path('learn/<int:pk>/<str:page>', view=LearnView.as_view(), name='learn'),
     path('me', view=ProfileView.as_view(), name='profile'),
-    path('blogs', view=BlogsView.as_view(), name='blogs'),
+    path('blog', view=BlogsView.as_view(), name='blogs'),
     path('blog/<int:pk>', view=BlogView.as_view(), name='blog')
 ]
 
