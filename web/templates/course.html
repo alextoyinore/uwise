@@ -190,107 +190,86 @@
         </section>
     
     {# Courses/Lessons in this course #}
-    {% if data.classes|length > 0 %}
-        <section id="courses" class="programme-course-list">
-            <div class="course-list-content">
-                <h3>Classes in this course</h3>
-                <p>{{ data.course_data.description | truncatewords:"50" }}</p><br>
-                <div class="course-content-list">
-                    <div class="course-list-left">
+        {% if data.classes|length > 0 %}
+            <section id="courses" class="programme-course-list">
+                <div class="course-list-content">
+                    <h3>Classes in this course</h3>
+                    <p>{{ data.course_data.description | truncatewords:"50" }}</p><br>
+                    <div class="course-content-list">
+                        <div class="course-list-left">
 
-                        {# Course Lesson Item #}
+                            {# Course Lesson Item #}
 
-                        {% for class in data.classes %}
-                            <div class="course-list-item">
-                                <div class="list-item-left">
-                                    <a href="">{{ class.title }}</a>
-                                    <p>Class {{ class.class_number }} . {{ class.time_duration }} days . 4.7 <span class="material-symbols-outlined rating">star</span> (437 Ratings)</p>
-                                </div>
-                                <span class="material-symbols-outlined expand">expand_more</span>
-                            </div>
-                            <p style="display: none;">{{ class.description }}</p>
-                        {% endfor %}
-                            <script>
-                                courseListItem = document.querySelectorAll('.course-list-item')
-                                courseListItem.forEach(function (item){
-                                    item.addEventListener('click', ()=> {
-                                       // Find the next sibling element (assuming it's the description)
-                                        const description = item.nextElementSibling;
-
-                                        // Toggle the display property of the description
-                                        if (description.style.display === 'none' || description.style.display === '') {
-                                            description.style.display = 'block'
-                                            description.style.transition = '.5s ease-in-out'
-                                        } else {
-                                            description.style.display = 'none';
-                                            description.style.transition = '.5s ease-in-out'
-                                        }
-                                    })
-                                })
-                            </script>
-                    </div>
-                
-                {# Facilitators #}
-                    <div class="course-list-right">
-                        <div class="author-list">
-                            <h3>Facilitators</h3>
                             {% for class in data.classes %}
-                            <div class="author-item">
-                                <div class="author-image">
-                                    <img src="{{ class.facilitator.user.image }}" alt="">
+                                <div class="course-list-item">
+                                    <div class="list-item-left">
+                                        <a href="">{{ class.title }}</a>
+                                        <p>Class {{ class.class_number }} . {{ class.time_duration }} days . 4.7 <span class="material-symbols-outlined rating">star</span> (437 Ratings)</p>
+                                    </div>
+                                    <span class="material-symbols-outlined expand">expand_more</span>
                                 </div>
-                                <div class="author-detail">
-                                    <b>{{ class.facilitator.user.get_full_name }}</b>
-                                    <p>{{ class.facilitator.user.course_count }} Courses . {{ facilitator.user.student_count }} Students</p>
-                                </div>
-                            </div>
+                                <p style="display: none;">{{ class.description }}</p>
                             {% endfor %}
+                                <script>
+                                    courseListItem = document.querySelectorAll('.course-list-item')
+                                    courseListItem.forEach(function (item){
+                                        item.addEventListener('click', ()=> {
+                                        // Find the next sibling element (assuming it's the description)
+                                            const description = item.nextElementSibling;
+
+                                            // Toggle the display property of the description
+                                            if (description.style.display === 'none' || description.style.display === '') {
+                                                description.style.display = 'block'
+                                                description.style.transition = '.5s ease-in-out'
+                                            } else {
+                                                description.style.display = 'none';
+                                                description.style.transition = '.5s ease-in-out'
+                                            }
+                                        })
+                                    })
+                                </script>
+                        </div>
+                    
+                    {# Facilitators #}
+                        <div class="course-list-right">
+                            <div class="author-list">
+                                <h3>Facilitators</h3>
+                                {% for class in data.classes %}
+                                <div class="author-item">
+                                    <div class="author-image">
+                                        <img src="{{ class.facilitator.user.image }}" alt="">
+                                    </div>
+                                    <div class="author-detail">
+                                        <b>{{ class.facilitator.user.get_full_name }}</b>
+                                        <p>{{ class.facilitator.user.course_count }} Courses . {{ facilitator.user.student_count }} Students</p>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-    {% endif %}
+        {% endif %}
     
     {# Testimonials #}
         <section id="testimonials" class="testimonials">
             {% include 'widgets/testimonial_carousel.html' with testimonials=data.testimonials %}
         </section>
-    
+        
     {# Latest Blogs #}
-        <section class="latest-blogs">
-            <h3>Lastest Blogs . <a href="">See All</a></h3>
-            <div class="blog-content">
-                <div class="blog-item">
-                    <div class="blog-image">
-                        <img src="https://images.pexels.com/photos/5198239/pexels-photo-5198239.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
-                    </div>
-                    <div class="blog-detail">
-                        <b>Learning a new skill in less than 10,000 hours</b>
-                        <p>Developing a new set of skill or skills can be a...</p>
-                    </div>
+        {% if data.blogs|length > 0 %}
+            <section class="latest-blogs">
+                <h3>Lastest Blogs . <a href="">See All</a></h3>
+                <div class="blog-content">
+                    {% for post in data.blogs %}
+                        {% include 'widgets/blog_card.html' with post=post %}
+                    {% endfor %}
                 </div>
-                <div class="blog-item">
-                    <div class="blog-image">
-                        <img src="https://images.pexels.com/photos/4144038/pexels-photo-4144038.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
-                    </div>
-                    <div class="blog-detail">
-                        <b>Why learning Python in 2024 is Jackpot move</b>
-                        <p>Developing a new set of skill or skills can be a...</p>
-                    </div>
-                </div>
-                <div class="blog-item">
-                    <div class="blog-image">
-                        <img src="https://images.pexels.com/photos/920382/pexels-photo-920382.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
-                    </div>
-                    <div class="blog-detail">
-                        <b>Learning a new skill in less than 10,000 hours</b>
-                        <p>Developing a new set of skill or skills can be a...</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+            </section>
+        {% endif %}
+        
     </div>
 
     <div class="enroll-mobile-sticker">
@@ -300,7 +279,7 @@
             <a href="{% url 'learn' data.course_data.id 'info' %}" class="btn-cta blue bold">Go to class</a>
         {% endif %}
     </div>
-
+    
     <style>
         
     </style>

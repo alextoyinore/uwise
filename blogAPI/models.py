@@ -11,6 +11,7 @@ class Post(models.Model):
     content = models.TextField(null=False, blank=False)
     featured = models.BooleanField(default=False)
     featured_image = models.ImageField(blank=True, null=True, upload_to='blog/images/')
+    image_link = models.URLField(null=True, blank=True)
     excerpt = models.TextField(null=True, blank=True)
     slug = models.SlugField(blank=True, null=True, unique=True)
     date_posted = models.DateTimeField(auto_now=True)
@@ -18,7 +19,7 @@ class Post(models.Model):
     category = models.ManyToManyField(Category, blank=True)
     tags = models.ManyToManyField(Tag, blank=True)
     likes = models.ManyToManyField('Like', blank=True, related_name='post_likes')
-    is_published = models.BooleanField(default=False)
+    is_published = models.BooleanField(default=True)
 
     def __str__(self):
         return self.title

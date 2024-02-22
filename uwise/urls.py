@@ -19,6 +19,8 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+import web
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/auth/', include('authAPI.urls')),
@@ -32,5 +34,8 @@ urlpatterns = [
     # path('api/v1/auth/', include('djoser.urls.authtoken')),
 ]
 
+handle404 = web.views.handle404
+
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

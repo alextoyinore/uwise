@@ -2,12 +2,13 @@ import json
 from typing import Any
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate, logout
-from django.http import HttpRequest, JsonResponse
+from django.http import Http404, HttpRequest, JsonResponse
 from django.http.response import HttpResponse as HttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 
 import authAPI
+import blogAPI
 import courseAPI.models
 import utilsAPI
 from utilsAPI.models import Testimonial, Announcement
@@ -27,12 +28,12 @@ class BaseView(TemplateView):
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
         context = super().get_context_data(**kwargs)
         fields = courseAPI.models.Field.objects.all()
-        testimonials = Testimonial.objects.all()[:3]
+        testimonials = Testimonial.objects.all()
         footer_navs = FooterNav.objects.all()
         announcements = Announcement.objects.all()
         static_pages = StaticPage.objects.all()
         specializations = courseAPI.models.Specialization.objects.all()
-        hero_fields = fields[:5]
+        blogs = blogAPI.models.Post.objects.all()
 
         data = {
             'testimonials': testimonials,
@@ -42,8 +43,8 @@ class BaseView(TemplateView):
             'static_pages': static_pages,
             'announcement': announcements.first(),
             'announcements': announcements,
-            'hero_fields': hero_fields,
             'specializations': specializations,
+            'blogs': blogs,
         }
 
         context = data
@@ -159,7 +160,10 @@ class CourseView(BaseView):
     template_name = 'course.html'
 
     def get(self, request, *args, **kwargs):
-        course_data = courseAPI.models.Course.objects.get(id=kwargs['pk'])
+        try:
+            course_data = courseAPI.models.Course.objects.get(id=kwargs['pk'])
+        except Course.DoesNotExist:
+            raise Http404("Course does not exist")
         classes = courseAPI.models.Class.objects.filter(course=course_data)
 
         user_owns_course = None
@@ -209,7 +213,10 @@ class EnrollView(BaseView):
     template_name = 'enroll.html'
 
     def get(self, request, *args, **kwargs):
-        course_data = courseAPI.models.Course.objects.get(id=kwargs['pk'])
+        try:
+            course_data = courseAPI.models.Course.objects.get(id=kwargs['pk'])
+        except Course.DoesNotExist:
+            raise Http404("Course does not exist")
 
         data = self.get_context_data()
         data['course_data'] = course_data
@@ -287,3 +294,6 @@ class SignUpView(BaseView):
 def logout_user(request):
     logout(request)
     return redirect('login')
+
+def handle404(request):
+    return render(request, template_name='404.html', status=404)
