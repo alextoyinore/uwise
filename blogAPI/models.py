@@ -8,11 +8,11 @@ from utilsAPI.models import Category, Tag
 class Post(models.Model):
     title = models.CharField(max_length=500, null=False, blank=False)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+    excerpt = models.TextField(null=True, blank=True)
     content = models.TextField(null=False, blank=False)
-    featured = models.BooleanField(default=False)
     featured_image = models.ImageField(blank=True, null=True, upload_to='uploads/blog/images/')
     image_link = models.URLField(null=True, blank=True)
-    excerpt = models.TextField(null=True, blank=True)
+    featured = models.BooleanField(default=False)
     slug = models.SlugField(blank=True, null=True, unique=True)
     date_posted = models.DateTimeField(auto_now=True)
     modified_date = models.DateTimeField(auto_now=True)
