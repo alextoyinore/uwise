@@ -9,6 +9,7 @@
 
 {% block content %}
 <div class="blogs-content">
+    {% if data.featured is not None %}
     <section class="featured-post-wrapper">
         <div class="featured-post">
             <a href="{% url 'blog' data.featured.id %}">
@@ -23,6 +24,9 @@
             </a>
         </div>
     </section>
+    {% endif %}
+
+    {% if data.blogs is not None or data.blogs|length > 0 %}
     <section class="blogs-grid-wrapper">
         <h3>Latests</h3><br>
         <div class="blogs-grid">
@@ -39,6 +43,7 @@
             {% endfor %}
         </div>
     </section>
+    {% endif %}
 
     {# Filter by categories #}
 </div>
@@ -63,7 +68,7 @@
             margin: auto;
         }
         .featured-post-wrapper {
-            margin-top: 10%;
+            margin-top: 15%;
         }
         .featured-post {
             width: 100%;
