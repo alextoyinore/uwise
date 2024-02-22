@@ -10,7 +10,7 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField(null=False, blank=False)
     featured = models.BooleanField(default=False)
-    featured_image = models.ImageField(blank=True, null=True, upload_to='blog/images/')
+    featured_image = models.ImageField(blank=True, null=True, upload_to='uploads/blog/images/')
     image_link = models.URLField(null=True, blank=True)
     excerpt = models.TextField(null=True, blank=True)
     slug = models.SlugField(blank=True, null=True, unique=True)

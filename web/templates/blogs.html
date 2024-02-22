@@ -30,7 +30,7 @@
     <section class="blogs-grid-wrapper">
         <h3>Latests</h3><br>
         <div class="blogs-grid">
-            {% for post in data.blogs|slice:":8" %}
+            {% for post in data.blogs %}
                 <a class="post" href="{% url 'blog' post.id %}">
                     <div class="post-image">
                         <img src="{{post.image_link}}" alt="" />
