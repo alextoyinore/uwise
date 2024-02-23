@@ -263,9 +263,11 @@
             <section class="latest-blogs">
                 <h3>Lastest Blogs . <a href="{% url 'blogs' %}">See All</a></h3>
                 <div class="blog-content">
-                    {% for post in data.blogs|slice:":3" %}
-                        {% include 'widgets/blog_card.html' with post=post %}
-                    {% endfor %}
+                    <div class="blog-track">
+                        {% for post in data.blogs|slice:":3" %}
+                            {% include 'widgets/blog_card.html' with post=post %}
+                        {% endfor %}
+                    </div>
                 </div>
             </section>
         {% endif %}

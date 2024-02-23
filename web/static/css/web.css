@@ -238,7 +238,7 @@ button:hover {
 .header-nav {
   background: #ffffff;
   color: var(--bg-blue);
-  padding: 8px 0;
+  padding: 10px 0;
   font-size: 14px;
   border-bottom: 1px solid #c3d3ec;
   box-shadow: 5px 6px 4px 2px #91b3ea11;
@@ -549,8 +549,9 @@ button:hover {
 }
 
 .course-card:hover {
-  border: 1px solid #114ec1;
-  color: #114ec1;
+  border: 1px solid #0547c2;
+  color: #0547c2;
+  box-shadow: 5px 6px 4px 2px #91b3ea11;
 }
 
 .course-image {
@@ -1091,13 +1092,13 @@ button:hover {
 /* TESTIMONIAL CARD */
 
 .testimonial-card {
-  width: 400px;
+  width: 45%;
   background: #ffffff;
   display: flex;
   flex-direction: row;
-  padding: 10px 20px;
+  padding: 0px 10px;
   flex: 0 0 auto;
-  gap: 25px;
+  gap: 10px;
   align-items: center;
   border: 1px solid #c3d3ec;
   border-radius: 5px;
@@ -1178,7 +1179,7 @@ button:hover {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 25px;
+  gap: 15px;
 }
 
 /* COURSE */
@@ -1203,22 +1204,29 @@ button:hover {
 }
 .blog-content {
   display: flex;
+  width: 100%;
+  overflow: hidden;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  overflow-x: auto;
+}
+.blog-track {
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
   gap: 25px;
-  overflow-x: auto;
-  overflow: hidden;
 }
 .blog-item {
-  width: 80%;
+  width: 94%;
   display: flex;
   flex-direction: row;
   gap: 20px;
   border-radius: 5px;
   border: 1px solid #c3d3ec;
-  padding: 20px;
+  padding: 10px;
   cursor: pointer;
   background: #ffffff;
+  flex: 0 0 auto;
 }
 .blog-item:hover {
   border-color: var(--bg-blue);
@@ -1259,7 +1267,7 @@ button:hover {
 .course-content-list {
   display: flex;
   flex-direction: row;
-  gap: 25px;
+  gap: 15px;
 }
 .course-list-content > p,
 .course-list-content > h3 {
@@ -1468,7 +1476,7 @@ li {
 .info-detail {
   display: flex;
   flex-direction: row;
-  gap: 25px;
+  gap: 10px;
   align-items: flex-start;
   flex-wrap: wrap;
 }
@@ -1485,10 +1493,12 @@ li {
 
 .info-content .info-message {
   font-size: 10px;
+  color: var(--bg-blue);
 }
 
 .info-content .icon {
   font-size: 40px;
+  color: var(--bg-blue);
 }
 hr {
   margin: 0;

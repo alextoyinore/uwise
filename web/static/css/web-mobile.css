@@ -124,11 +124,11 @@
     .blog-content {
         flex-direction: column;
     }
-    .blog-item{
-        width: 100%;
+    /* .blog-item{
+        width: 90%;
         padding: 10px 0;
         align-items: center;
-    }
+    } */
     .blog-image img {
         margin-left: 10px;
     }
