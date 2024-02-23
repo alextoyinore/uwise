@@ -241,6 +241,7 @@ button:hover {
   padding: 8px 0;
   font-size: 14px;
   border-bottom: 1px solid #c3d3ec;
+  box-shadow: 5px 6px 4px 2px #91b3ea11;
 }
 .extra-header-nav {
   background: #f5faff;
@@ -1799,9 +1800,14 @@ b span {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-top: 12%;
+  gap: 40px;
 }
 .static-content-left {
   width: 60%;
+}
+.static-content-right {
+  width: 40%;
 }
 .paragraph {
   margin-bottom: 20px;
