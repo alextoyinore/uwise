@@ -359,6 +359,9 @@ button:hover {
   display: flex;
   justify-content: space-between;
 }
+.header-message-content-message {
+  width: 85%;
+}
 
 #hero {
   background: var(--bg-blue);
