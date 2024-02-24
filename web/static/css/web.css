@@ -18,6 +18,16 @@ html {
   transition: 0.5s ease-in-out;
 }
 
+::selection {
+  color: #fff;
+  background: var(--bg-blue);
+}
+
+::moz-selection {
+  color: #fff;
+  background: var(--bg-blue);
+}
+
 body {
   font-family: "Open Sans", sans-serif;
   margin: 0;
@@ -171,7 +181,7 @@ button {
   background-color: var(--bg-blue);
   color: white;
   cursor: pointer;
-  height: 40px;
+  height: 50px;
   text-align: center;
   align-content: center;
   border: 1px solid var(--bg-blue);
@@ -412,7 +422,7 @@ button:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2em;
+  font-size: .8em;
   padding: 10px 0px;
   min-width: 100px;
   border-radius: 5px;
@@ -471,7 +481,7 @@ button:hover {
 }
 
 .btn-cta-light {
-  font-size: 1em;
+  font-size: .8em;
   padding: 10px 30px;
   color: var(--bg-blue);
   background: #fff;
@@ -551,7 +561,7 @@ button:hover {
 .course-card:hover {
   border: 1px solid #0547c2;
   color: #0547c2;
-  box-shadow: 5px 6px 4px 2px #91b3ea11;
+  box-shadow: 0px 0px 6px 6px #91b3ea11;
 }
 
 .course-image {

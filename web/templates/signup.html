@@ -13,7 +13,7 @@
                  
                  {% csrf_token %}
                  
-                <h1>Sign Up.</h1> <br/>
+                <h1>Sign Up</h1> <br/>
                 <p>Learn, unlearn, and re-learn. Acquire, practice and perfect new skills for business, career, and personal growth.</p>
                 <br/>
 
@@ -31,10 +31,12 @@
 
                 <label class="input-label" for="email">Email</label>
                 <input type="text" id="email" name="email" required placeholder="Enter your email"/>
+
+                <label class="input-label" for="phone">Phone</label>
+                <input type="phone" id="phone" name="phone" required placeholder="Enter your Phone Number"/>
               
                 <label class="input-label" for="password">Password</label>
                 <input type="password" id="password" name="password" required placeholder="Enter your password"/>
-                
                 
                 <br>
             
@@ -66,6 +68,7 @@
        const lastName = document.querySelector('#lastName').value
        const email = document.querySelector('#email').value
        const password = document.querySelector('#password').value
+       const phone = document.querySelector('#phone').value
        
        console.log(firstName)
            
@@ -73,6 +76,7 @@
        formData.append('last_name', lastName)
        formData.append('email', email)
        formData.append('password', password)
+       formData.append('phone', phone)
            
        {#console.log(formData.toString())#}
     

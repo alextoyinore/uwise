@@ -2,6 +2,9 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from authAPI.manager import CustomUserManager
 from django.core.mail import send_mail
+from django.contrib.auth.models import Group
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
 
@@ -12,6 +15,19 @@ class Facilitator(models.Model):
 
     def __str__(self):
         return self.user.get_full_name()
+    
+
+    def save(self, *args, **kwargs):
+        group = Group.objects.get(name="Facilitator")
+        self.user.groups.add(group)
+        super(User, self).save(*args, **kwargs)  
+
+
+# @receiver(post_save, sender=User)
+# def add_user_to_group(sender, instance, created, **kwargs):
+#     if created:
+#         group = Group.objects.get(name='Student')
+#         instance.groups.add(group)
 
 
 class User(AbstractUser):
@@ -61,11 +77,12 @@ class User(AbstractUser):
         #     'Welcome to Uwise',
         #     f'Hi, {self.first_name} {self.last_name}. We warmly welcome you to Uwise. Your account has been successfully created.',
         #     'toyin@uwise.pro',
-        #     [f'{self.email}'],
-        #     fail_silently=False,
+        #     [self.email],
+        #     fail_silently=True,
         # )
 
         super(User, self).save(*args, **kwargs)
+        
 
     def __str__(self) -> str:
         return self.get_full_name()

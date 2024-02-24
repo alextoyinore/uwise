@@ -5,27 +5,27 @@ from rest_framework.response import Response
 from rest_framework import status
 
 
-class IsSuperAdmin(permissions.BasePermission):
+class IsStudent(permissions.BasePermission):
 
     def has_permission(self, request, view):
-        if request.user.groups.filter(name='SuperAdmin').exists():
+        if request.user.groups.filter(name='Student').exists():
             return True
         return False
 
     def has_object_permission(self, request, view, obj):
-        if request.user.groups.filter(name='SuperAdmin').exists():
+        if request.user.groups.filter(name='Student').exists():
             return True
         return False
 
 
-class IsManagement(permissions.BasePermission):
+class IsUwiseAdmin(permissions.BasePermission):
     def has_permission(self, request, view):
-        if request.user.groups.filter(name='Management').exists():
+        if request.user.groups.filter(name='UwiseAdmin').exists():
             return True
         return False
 
     def has_object_permission(self, request, view, obj):
-        if request.user.groups.filter(name='Management').exists():
+        if request.user.groups.filter(name='UwiseAdmin').exists():
             return True
         return False
 
