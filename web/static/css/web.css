@@ -135,7 +135,7 @@ textarea {
   margin: auto;
   display: flex;
   flex-direction: column;
-  border: 1px solid var(--bg-blue);
+  border: 1px solid #c3d3ec;
   background: #fff;
   border-radius: 20px;
   padding: 40px;
