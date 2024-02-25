@@ -1,5 +1,11 @@
 {% extends 'partials/base.html' %}
 {% load static %}
+{% block meta-og %}
+    <meta property="og:title" content="Uwise | {{data.course_data.title}}">
+    <meta property="og:description" content="{{data.course_data.excerpt}}">
+    <meta property="og:image" content="{{data.course_data.image_link}}">
+    <meta property="og:url" content="{% url 'course' data.course_data.id %}">
+{% endblock %}
 {% block page-title %} Course {% endblock %}
 {% block header-message %}{% endblock %}
 

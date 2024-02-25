@@ -1,5 +1,11 @@
 {% extends 'partials/base.html' %}
 {% load static %}
+{% block meta-og %}
+    <meta property="og:title" content="Uwise | {{data.blog.title}}">
+    <meta property="og:description" content="{{data.blog.excerpt}}">
+    <meta property="og:image" content="{{data.blog.image_link}}">
+    <meta property="og:url" content="{% url 'blog' data.blog.id %}">
+{% endblock %}
 {% block page-title %} Blog {% endblock %}
 {% block header-message %}{% endblock %}
 {% block top-nav %}{% endblock %}

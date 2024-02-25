@@ -3,10 +3,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta property="og:title" content="Uwise | Build wealth from learning">
-    <meta property="og:description" content="Learn, unlearn, and re-learn. Acquire, practice and perfect new skills for business, career, and personal growth.">
-    <meta property="og:image" content="{% static "images/uwise-og.jpg" %}">
-    <meta property="og:url" content="https://uwise.pro">
+    {% block meta-og %}
+        <meta property="og:title" content="Uwise | Build wealth from learning">
+        <meta property="og:description" content="Learn, unlearn, and re-learn. Acquire, practice and perfect new skills for business, career, and personal growth.">
+        <meta property="og:image" content="{% static "images/uwise-og.jpg" %}">
+        <meta property="og:url" content="https://uwise.pro">
+    {% endblock %}
 
     <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
 
