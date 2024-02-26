@@ -18,6 +18,10 @@ html {
   transition: 0.5s ease-in-out;
 }
 
+input:-internal-autofill-selected {
+  background: #fff;
+}
+
 ::selection {
   color: #fff;
   background: var(--bg-blue);
@@ -74,7 +78,7 @@ hr {
 p {
   margin: 0;
   color: #555;
-  font-size: 13px;
+  font-size: 12px;
   line-height: 20px;
 }
 
@@ -167,7 +171,7 @@ label {
 input,
 button {
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #c3d3ec;  
   border-radius: 5px;
   outline: 0;
   height: 30px;

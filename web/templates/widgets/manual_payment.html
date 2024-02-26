@@ -1,10 +1,11 @@
+{% load humanize %}
 <div class="manual-pay">
     <div onclick="closeManualPay()" class="close-manual-pay">
         <span style="text-align:right;" class="material-symbols-outlined">close</span>
     </div>
     <h3>Dear {{user.get_full_name}},</h3>
     <p>Thank you for choosing to purchase <b style="color:#10DC80;">{{course.title}}</b>.</p>
-    <p>Our engineers are working hard to bring you seemless and secure online payment. However, in the meantime, kindly make a transfer of the amount of <b style="color:#10DC80;">&#8358;{{course.price}}</b> to the following account details to purchase your course.</p>
+    <p>Our engineers are working hard to bring you seemless and secure online payment. However, in the meantime, kindly make a transfer of the amount of <b style="color:#10DC80;">&#8358;{{course.price|intcomma}}</b> to the following account details to purchase your course.</p>
 
     <br>
 

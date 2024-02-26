@@ -1,5 +1,6 @@
 {% extends 'partials/base.html' %}
 {% load static %}
+{% load humanize %}
 {% block page-title %} Learn {% endblock %}
 {% block header-message %}{% endblock %}
 
@@ -168,7 +169,7 @@
                         <input type="hidden" name="redirect_url" value="{% url 'home' %}" />
                         
                         <button type="submit"
-                         class="btn-cta green bold" id="start-online-pay">Pay &#8358; {{ data.course_data.price |stringformat:"f"|floatformat:2}} </button>  
+                         class="btn-cta green bold" id="start-online-pay">Pay &#8358; {{ data.course_data.price|intcomma}} </button>  
                   </form>
                 {% endif %}
             {% elif data.page == 'notes' %}
@@ -217,7 +218,7 @@
                         <input type="hidden" name="redirect_url" value="{% url 'home' %}" />
                         
                         <button type="submit"
-                         class="btn-cta green bold" id="start-online-pay">Pay &#8358; {{ data.course_data.price |stringformat:"f"|floatformat:2}} </button>  
+                         class="btn-cta green bold" id="start-online-pay">Pay &#8358; {{ data.course_data.price|intcomma}} </button>  
                 {% endif %}
             {% elif data.page == 'reviews' %}
                 <h2>Course Reviews</h2>
@@ -241,7 +242,7 @@
                         <input type="hidden" name="redirect_url" value="{% url 'home' %}" />
                         
                         <button type="submit"
-                         class="btn-cta green bold" id="start-online-pay">Pay &#8358; {{ data.course_data.price |stringformat:"f"|floatformat:2}} </button>  
+                         class="btn-cta green bold" id="start-online-pay">Pay &#8358; {{ data.course_data.price|intcomma}} </button>  
                 {% endif %}
             {% elif data.page == 'announcements' %}
                 <h2>Course Announcements</h2><br>

@@ -1,3 +1,4 @@
+{% load humanize %}
 <div id="hero">
     <div class="hero-content">
         <div class="hero-content-left">
@@ -13,7 +14,7 @@
                 </div>
                 <div class="summary-item">
                     <b>Price: </b>
-                    <b>&#8358; {{ data.course_data.price }}</b>
+                    <b>&#8358; {{ data.course_data.price|intcomma }}</b>
                 </div>
 
                 <div class="summary-item">

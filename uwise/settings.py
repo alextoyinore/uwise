@@ -56,7 +56,6 @@ INSTALLED_APPS = [
     "blogAPI.apps.BlogAPIConfig",
     "web.apps.WebConfig",
     "social_django",
-    # "fontawesomefree",
     "djoser",
 ]
 
