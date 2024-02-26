@@ -35,6 +35,16 @@
                 <h2>
                     {% if data.q is None %} All Courses {% else %} {{ data.q }} {% endif %}
                 </h2> <br>
+                {% if data.courses|length > 0 %}
+                    <p>
+                        {% if data.courses|length > 1 %} 
+                            {{data.courses|length}} courses 
+                        {% else %} 
+                            {{data.courses|length}} course
+                        {% endif %}
+                    </p>
+                {% endif %}
+                <br>
                 <div class="course-grid">
                     {% for course in data.courses %}
                         {% include 'widgets/course_card.html' with course=course %}
