@@ -32,7 +32,7 @@
                   {% endfor %}
 
                 <div class="footer-nav">
-                    <strong class="footer-nav-title">Languages</strong>
+                    <strong class="footer-nav-title">Popular Languages</strong>
                     <a href="{% url 'explore' %}?q=python">Python</a>
                     <a href="{% url 'explore' %}?q=java">Java</a>
                     <a href="{% url 'explore' %}?q=javascript">Javascript</a>
@@ -40,11 +40,23 @@
                     <a href="{% url 'explore' %}?q=flutter">Flutter</a>
                 </div>
 
+
+                <div class="footer-nav">
+                    <strong class="footer-nav-title">Popular Fields</strong>
+                    <a href="{% url 'explore' %}?q=design">Design</a>
+                    <a href="{% url 'explore' %}?q=data">Data Analysis</a>
+                    <a href="{% url 'explore' %}?q=cyber">Cybersecurity</a>
+                    <a href="{% url 'explore' %}?q=frontend">Frontend</a>
+                    <a href="{% url 'explore' %}?q=backend">Backend</a>
+                </div>
+
                 <div class="footer-nav">
                     <strong class="footer-nav-title">Uwise</strong>
-                    <p>&copy; {% now "Y" %} Uwise Learning Technologies</p>
+                    <p>&copy; {% now "Y" %} Uwise</p>
                     <p>Lagos, Nigeria</p>
-                    <a href="tel:+2348060177914">+234 806 017 7914</a>
+                    <a href="email:toyin@uwise.pro">toyin@uwise.pro</a>
+                    <a href="tel:+2348060177914">+2348060177914</a>
+                    {% comment %} <a href="tel:+2349015480337">+2349015480337</a> {% endcomment %}
                 </div>
             </div>
         </div>

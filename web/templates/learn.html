@@ -20,7 +20,7 @@
                     {% if data.course_data.organization.logo is not None %}
                         <img src="{{ data.course_data.organization.logo.url }}" alt="">
                     {% else %}
-                        <img src="" alt="">
+                        <img src="{% static 'images/uwise.png' %}" alt="">
                     {% endif %}
                 </div>
 
@@ -41,9 +41,9 @@
                     <a class="filter-item {% if data.page == 'communities' %}selected{% endif %}"
                        href="{% url 'learn' data.course_data.id %}/communities">Communities</a>
                     <a class="filter-item {% if data.page == 'reviews' %}selected{% endif %}"
-                       href="{% url 'learn' data.course_data.id %}/reviews">Reviews</a>
+                       href="{% url 'learn' data.course_data.id %}/reviews">Review</a>
                     <a class="filter-item {% if data.page == 'announcements' %}selected{% endif %}"
-                       href="{% url 'learn' data.course_data.id %}/announcements">Announcements</a>
+                       href="{% url 'learn' data.course_data.id %}/announcements">Announcements  &nbsp; {% include 'widgets/message_count.html' with messages=data.announcements %} </span> </a>
                 </div>
             </div>
         </nav>
@@ -175,6 +175,9 @@
             {% elif data.page == 'notes' %}
 
                 <h2>My notes on <span style="color:#10DC80;">{{ data.course_data.title }}</span></h2><br>
+                {# Note form goes here... #}
+                {% include 'widgets/note_form.html' with course=data.course_data %}
+                <br>
                 <div class="notes">
                     {% for note in data.notes %}
                         <div class="note">
@@ -186,6 +189,28 @@
                 </div>
             {% elif data.page == 'grades' %}
                 <h2>Grades</h2>
+                {% if data.user_owns_course %}
+
+                {% else %}
+                <br>
+                <p>Dear {{ user.get_full_name }},</p><br>
+                <p>Thank you for enrolling to this course. However, because you have not yet paid for this course your access is limited. Kindly click on the button below to pay for this course now. Upon payment you may begin your classes. Your grades will be accessible here</p> <br>
+                <p>Thank you!</p><br>
+                <h3>Buy this course now</h3>
+                {# Making payment with flutterwave #}
+                <form method="POST" action="https://checkout.flutterwave.com/v3/hosted/pay">
+                    <input type="hidden" name="public_key" value="FLWPUBK_TEST-5855984309c2f0b177abb690e6cda4be-X" />
+                    <input type="hidden" name="customer[email]" value="{{ user.email }}" />
+                    <input type="hidden" name="customer[name]" value="{{ user.get_full_name }}" />
+                    <input type="hidden" name="tx_ref" value="txref-81123" />
+                    <input type="hidden" name="amount" value="{{ data.course_data.price }}" />
+                    <input type="hidden" name="currency" value="NGN" />
+                    <input type="hidden" name="meta[source]" value="docs-html-test" />
+                    <input type="hidden" name="redirect_url" value="{% url 'home' %}" />
+                    
+                    <button type="submit"
+                     class="btn-cta green bold" id="start-online-pay">Pay &#8358; {{ data.course_data.price|intcomma}} </button>  
+                {% endif %}
             {% elif data.page == 'communities' %}
                 {% if data.user_owns_course %}
                     <h2>Course Communities</h2><br>
@@ -221,9 +246,11 @@
                          class="btn-cta green bold" id="start-online-pay">Pay &#8358; {{ data.course_data.price|intcomma}} </button>  
                 {% endif %}
             {% elif data.page == 'reviews' %}
-                <h2>Course Reviews</h2>
+                <h2>Review <span class="green-text">{{data.course_data.title}}</span></h2>
+                <br>
                 {% if data.user_owns_course %}
                     {# Review form goes here... #}
+                    {% include 'widgets/review_form.html' with course=data.course_data %}
                 {% else %}
                     <br>
                     <p>Dear {{ user.get_full_name }},</p><br>
@@ -293,6 +320,9 @@
           }
           filters.style.transition = '.5s ease-in-out'
         })
+
+
+        
     </script>
 </div>
 
@@ -301,5 +331,12 @@
 </style>
 {% endblock %}
 
-{% block footer %} {% endblock %}
+{% block footer %}
+<section class="footer"> 
+    <div class="footer-wrapper">
+        <p>&copy; {% now "Y" %} Uwise</p>
+    </div>
+</section>
+
+{% endblock %}
 

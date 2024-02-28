@@ -1,0 +1,26 @@
+<div class="contact">
+    <p>Input a maximum of 5 and minimum of 1 in the "Rating" field. <span class="green-text">{{course.title}}</span></p>
+    <form class="review-form">
+        {% csrf_token %}
+        <input class="rvform-input" type="number" max=5 required name="rating" placeholder="Rating" />
+        <textarea rows="10" class="rvform-input" required name="review" wrap="hard" placeholder="Review"></textarea>
+        <button class="form-btn" type="submit">Submit Review</button>
+    </form>
+</div>
+
+<style>
+    .review-form {
+        width: 100%;
+    }
+    .rvform-input {
+        width: 92%;
+        padding: 5px 0;
+        padding-inline: 10px;
+        margin: 5px 0;
+        resize: none;
+        border-radius: 5px;
+    }
+    .form-btn {
+        width: 30%;
+    }
+</style>

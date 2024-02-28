@@ -73,6 +73,7 @@ class Grade(models.Model):
 
 
 class Note(models.Model):
+    title = models.CharField(max_length=200, null=True, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     note = models.TextField()

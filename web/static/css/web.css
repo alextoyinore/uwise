@@ -78,14 +78,20 @@ hr {
 p {
   margin: 0;
   color: #555;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 20px;
 }
 
 textarea {
   outline: 0;
-  border: 1px solid #ccc;
+  border: 1px solid #c3d3ec;
   padding: 20px;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #a7bfe5;
+  font-family: "Open Sans", Sans-serif;
 }
 
 .center-txt {
@@ -171,21 +177,17 @@ label {
 input,
 button {
   padding: 10px;
-  border: 1px solid #c3d3ec;  
+  border: 1px solid #c3d3ec;
   border-radius: 5px;
   outline: 0;
   height: 30px;
-}
-
-input::placeholder {
-  color: #aaa;
 }
 
 button {
   background-color: var(--bg-blue);
   color: white;
   cursor: pointer;
-  height: 50px;
+  height: 45px;
   text-align: center;
   align-content: center;
   border: 1px solid var(--bg-blue);
@@ -426,7 +428,7 @@ button:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: .8em;
+  font-size: 1em;
   padding: 10px 0px;
   min-width: 100px;
   border-radius: 5px;
@@ -468,9 +470,9 @@ button:hover {
 }
 
 .green {
-  background: #10dc80;
+  background: var(--bg-green);
   color: #fff;
-  border: 1px solid #0aa65e;
+  border: 1px solid var(--bg-green);
   font-weight: bold;
 }
 
@@ -485,7 +487,7 @@ button:hover {
 }
 
 .btn-cta-light {
-  font-size: .8em;
+  font-size: 0.8em;
   padding: 10px 30px;
   color: var(--bg-blue);
   background: #fff;
@@ -761,7 +763,7 @@ button:hover {
   z-index: 1;
   position: absolute;
   width: 100%;
-  background: #eff3fa;
+  background: #fafcff;
   border: 1px solid #c3d3ec;
   left: 0;
   height: 600%;
@@ -913,10 +915,6 @@ button:hover {
   padding: 12px 65px;
 }
 
-.green {
-  background: #10dc80;
-  color: #fff;
-}
 .bold {
   font-weight: bold;
 }
@@ -960,7 +958,7 @@ button:hover {
 }
 
 .bank-details h3 b {
-  color: #10dc80;
+  color: var(--bg-green);
   text-align: right;
 }
 .bank-details h3 strong {
@@ -1747,7 +1745,7 @@ form label {
 .resource-link {
   text-decoration: none;
   color: #ffffff;
-  background: #10dc80;
+  background: var(--bg-green);
   padding: 10px 20px;
   border-radius: 5px;
   font-size: 13px;
@@ -1780,7 +1778,7 @@ b {
   color: var(--bg-blue);
 }
 b span {
-  color: #10dc80;
+  color: var(--bg-green);
 }
 
 .class-board {
@@ -1883,6 +1881,7 @@ b span {
 .footer-nav {
   display: flex;
   flex-direction: column;
+  max-width: 35%;
 }
 
 .footer-nav strong {
@@ -1912,11 +1911,8 @@ b span {
 }
 
 /* MODIFIERS */
-
-.green {
-  background: #10dc80;
-  color: #fff;
-  border: 1px solid #0fc471;
+.green-text {
+  color: var(--bg-green);
 }
 .bold {
   font-weight: bold;

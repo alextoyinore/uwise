@@ -1,9 +1,8 @@
 {% extends 'partials/base.html' %}
 {% load static %}
-{% block page-title %} Welcome {% endblock %}
-
-{% block hero %}
-{% endblock %}
+{% block page-title %} Explore {% endblock %}
+{% block header-message %}{% endblock %}
+{% block hero %}{% endblock %}
 
 {% block content %}
     <div class="content">
@@ -33,7 +32,7 @@
             </nav>
             <article class="course-list">
                 <h2>
-                    {% if data.q is None %} All Courses {% else %} {{ data.q }} {% endif %}
+                    {% if data.q is None %} All Courses {% else %} {{ data.q | capfirst }} {% endif %}
                 </h2> <br>
                 {% if data.courses|length > 0 %}
                     <p>

@@ -1,0 +1,82 @@
+<div class="contact">
+    <h3>New Note</h3>
+    <label class="error"></label>
+    <form method='post' class="note-form">
+        {% csrf_token %}
+        <input class="ntform-input" id="title" type="text" required name="title" placeholder="Note Title" />
+        <textarea rows="5" class="ntform-input" id="note" required name="note" wrap="hard" placeholder="Note Content"></textarea>
+        <button class="form-btn" type="submit" onclick=addNote()>Add Note</button>
+    </form>
+</div>
+
+<script>
+    function addNote() {
+
+        document.querySelector('.note-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        alert('Hello')
+    
+            const error = document.querySelector('.error')
+            error.innerHTML = ''
+    
+           const formData = new URLSearchParams();
+    
+           const title = document.querySelector('#title').value
+           const note = document.querySelector('#note').value
+    
+           console.log(title)
+    
+           formData.append('title', title)
+           formData.append('note', note)
+           formData.append('course', {{course.id}})
+           formData.append('user', {{request.user}})
+    
+            fetch("{% url 'notes' %}", {
+                method: 'POST',
+                body: formData.toString(),
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-Requested-With': 'XMLHttpRequest',  // Required for Django to identify it as an AJAX request
+                    'X-CSRFToken': `${getCookie('csrftoken')}`  // Include CSRF token for security
+                },
+            })
+            .then(response => {
+                if (response.ok){
+                    alert(`Note ${title} added successfully`)
+                }else {
+                    return response.json().then(data => {
+                        console.log(data)
+                        error.style.display = 'block'
+    
+                        for (d in data){
+                            console.log(d)
+                            var newParagraph = document.createElement('b')
+                            newParagraph.setAttribute('style', 'display: block;')
+                            newParagraph.textContent = data[d]
+                            error.appendChild(newParagraph)
+                        }
+                    })
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    }
+</script>
+
+<style>
+    .note-form {
+        width: 100%;
+    }
+    .ntform-input {
+        width: 92%;
+        padding: 5px 0;
+        padding-inline: 10px;
+        margin: 5px 0;
+        resize: none;
+        border-radius: 5px;
+    }
+    .form-btn {
+        width: 30%;
+    }
+</style>
