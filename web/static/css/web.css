@@ -256,7 +256,7 @@ button:hover {
   color: var(--bg-blue);
   padding: 10px 0;
   font-size: 14px;
-  border-bottom: 1px solid #c3d3ec;
+  /* border-bottom: 1px solid #c3d3ec; */
   box-shadow: 5px 6px 4px 2px #91b3ea11;
 }
 .extra-header-nav {
