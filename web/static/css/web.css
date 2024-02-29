@@ -680,9 +680,7 @@ button:hover {
 /* BIG INFO */
 
 .biginfo {
-  /* padding: 25px; */
-  /* border-radius: 20px; */
-  background: #c3d3ec55;
+  background: #c3d3ec22;
 }
 .biginfo-content {
   margin: auto;
@@ -983,7 +981,7 @@ button:hover {
 
 /* USER CONTENT */
 .user-content-wrapper {
-  background: #c3d3ec22;
+  /* background: #c3d3ec22; */
   margin-top: 45px;
   padding: 3% 0;
 }
