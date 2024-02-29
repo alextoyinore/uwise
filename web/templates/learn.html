@@ -253,11 +253,13 @@
                     {% if data.review is None %}
                         {% include 'widgets/review_form.html' with course=data.course_data %}
                     {% else %}
+                    <div class="notes">
                         <div class="note">
                             <b>You rated this course: {{ data.review.rating }}</b>
                             <p>{{ data.review.review }}</p>
                             <i>{{ data.review.date }}</i>
                         </div>
+                    </div>
                     {% endif %}
                 {% else %}
                     <br>
