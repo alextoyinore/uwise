@@ -27,35 +27,55 @@
         </div>
         <div class="profile-info">
             <h3>Bio</h3>
-            <p>{{user.bio}}</p>
+            <p><span class="left">Summary</span> <span class="right">{{user.bio}}</span></p>
+
+            <hr>
 
             <h3>Work</h3>
-            <p>Years of Experience: {{user.years_of_experience}}</p>
-            <p>Current Work Field: {{user.current_work_field}}</p>
-            <p>Desired Work Field: {{user.desired_work_field}}</p>
-            <p>Current Job Title: {{user.current_job_title}}</p>
-            <p>Desired Job Title: {{user.desired_job_title}}</p>
+            <p><span class="left">Years of Experience:</span> <span class="right">{{user.years_of_experience}}</span></p>
+            <p><span class="left">Current Work Field:</span> <span class="right">{{user.current_work_field}}</span></p>
+            <p><span class="left">Desired Work Field:</span> <span class="right">{{user.desired_work_field}}</span></p>
+            <p><span class="left">Current Job Title:</span> <span class="right">{{user.current_job_title}}</span></p>
+            <p><span class="left">Desired Job Title:</span> <span class="right">{{user.desired_job_title}}</span></p>
+
+            <hr>
 
             <h3>Academics</h3>
-            <p>Highest Academic Qualification: {{user.academic_level}}</p>
+            <p><span class="left">Highest Academic Qualification:</span> <span class="right">{{user.academic_level}}</span></p>
 
+            <hr>
 
             <h3>Gender</h3>
             <p>{{user.gender}}</p>
 
+            <hr>
+
             <h3>Contact Details</h3>
-            <p>Country: {{user.country}}</p>
-            <p>City: {{user.city}}</p>
+            <p><span class="left">Country:</span> <span class="right">{{user.country}}</span></p>
+            <p><span class="left">City:</span> <span class="right">{{user.city}}</span></p>
+
+            <hr>
 
 
             <h3>Organization</h3>
-            <p>{{user.organization}}</p>
+            <p><span class="left">Name:</span> <span class="right">{{user.organization}}</span></p>
         </div>
     </div>
 </div>
 
 <style>
-   
+   .profile-info p {
+    display: flex;
+    justify-content: space-between;
+    gap: 50%;
+    margin: 5px 0;
+   }
+   .profile-info p .left {
+        color: var(--bg-blue);
+   }
+   .profile-info p .right {
+        text-align: right;
+   }
 </style>
 {% endblock %}
 

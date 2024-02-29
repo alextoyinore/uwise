@@ -1568,7 +1568,7 @@ hr {
   margin-top: 12%;
 }
 .filters {
-  width: 20%;
+  width: 25%;
   height: 500px;
   display: flex;
   flex-direction: column;
@@ -1734,6 +1734,7 @@ form label {
   border: 1px solid #c3d3ec;
   margin: 10px 0;
   cursor: pointer;
+  background: #fff5;
 }
 .class-item .title {
   width: 100%;
@@ -1794,6 +1795,7 @@ b span {
 .profile-info {
   display: flex;
   flex-direction: column;
+  width: 60%;
 }
 .profile-content {
   margin: 100px 0;
@@ -1805,6 +1807,7 @@ b span {
 .profile-summary {
   display: flex;
   flex-direction: column;
+  width: 25%;
 }
 .profile-summary .image {
   width: 150px;
