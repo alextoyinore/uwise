@@ -131,8 +131,6 @@ class LearnView(BaseView):
 
         if review is not None:
             data['review'] = review
-        
-        print(data['review'])
 
         context = {'data': data}
         return render(request, self.template_name, context)
