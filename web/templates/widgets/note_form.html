@@ -1,20 +1,18 @@
 <div class="contact">
     <h3>New Note</h3>
     <label class="error"></label>
-    <form method='post' class="note-form">
+    <form class="note-form">
         {% csrf_token %}
         <input class="ntform-input" id="title" type="text" required name="title" placeholder="Note Title" />
         <textarea rows="5" class="ntform-input" id="note" required name="note" wrap="hard" placeholder="Note Content"></textarea>
-        <button class="form-btn" type="submit" onclick=addNote()>Add Note</button>
+        <button class="form-btn" type="submit">Add Note</button>
     </form>
+    <label class="success"></label>
 </div>
 
 <script>
-    function addNote() {
-
-        document.querySelector('.note-form').addEventListener('submit', function(event) {
+    document.querySelector('.note-form').addEventListener('submit', function(event) {
         event.preventDefault();
-        alert('Hello')
     
             const error = document.querySelector('.error')
             error.innerHTML = ''
@@ -29,7 +27,7 @@
            formData.append('title', title)
            formData.append('note', note)
            formData.append('course', {{course.id}})
-           formData.append('user', {{request.user}})
+           formData.append('user', {{request.user.id}})
     
             fetch("{% url 'notes' %}", {
                 method: 'POST',
@@ -43,7 +41,8 @@
             })
             .then(response => {
                 if (response.ok){
-                    alert(`Note ${title} added successfully`)
+                    document.querySelector('.success').innerHTML = `Note ${title} added successfully`
+                    location.reload()
                 }else {
                     return response.json().then(data => {
                         console.log(data)
@@ -60,8 +59,8 @@
                 }
             })
             .catch(error => console.error('Error:', error));
-        });
-    }
+        })
+        
 </script>
 
 <style>
@@ -78,5 +77,8 @@
     }
     .form-btn {
         width: 30%;
+    }
+    .success {
+        color: var(--bg-green);
     }
 </style>

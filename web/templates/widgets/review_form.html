@@ -1,12 +1,68 @@
 <div class="contact">
-    <p>Input a maximum of 5 and minimum of 1 in the "Rating" field. <span class="green-text">{{course.title}}</span></p>
+    <p>Input a maximum of 5 and minimum of 1 in the "Rating" field.</p>
+    <label class="error"></label>
     <form class="review-form">
         {% csrf_token %}
-        <input class="rvform-input" type="number" max=5 required name="rating" placeholder="Rating" />
-        <textarea rows="10" class="rvform-input" required name="review" wrap="hard" placeholder="Review"></textarea>
+        <input class="rvform-input" type="number" max=5 required name="rating" id="rating" placeholder="Rating" />
+        <textarea rows="10" id="review" class="rvform-input" required name="review" wrap="hard" placeholder="Review"></textarea>
         <button class="form-btn" type="submit">Submit Review</button>
     </form>
+    <label class="success"></label>
 </div>
+
+
+<script>
+    document.querySelector('.review-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+    
+            const error = document.querySelector('.error')
+            error.innerHTML = ''
+    
+           const ratingData = new URLSearchParams();
+           const reviewData = new URLSearchParams();
+    
+           const rating = document.querySelector('#rating').value
+           const review = document.querySelector('#review').value
+    
+           console.log(rating)
+
+           reviewData.append('review', review)
+           reviewData.append('rating', rating)
+           reviewData.append('course', {{course.id}})
+           reviewData.append('user', {{request.user.id}})
+    
+            fetch("{% url 'reviews' %}", {
+                method: 'POST',
+                body: reviewData,
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-Requested-With': 'XMLHttpRequest',  // Required for Django to identify it as an AJAX request
+                    'X-CSRFToken': `${getCookie('csrftoken')}`  // Include CSRF token for security
+                },
+            })
+            .then(response => {
+                if (response.ok){
+                    document.querySelector('.success').innerHTML = `Your review has been submitted.`
+                    location.reload()
+                }else {
+                    return response.json().then(data => {
+                        console.log(data)
+                        error.style.display = 'block'
+    
+                        for (d in data){
+                            console.log(d)
+                            var newParagraph = document.createElement('b')
+                            newParagraph.setAttribute('style', 'display: block;')
+                            newParagraph.textContent = data[d]
+                            error.appendChild(newParagraph)
+                        }
+                    })
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        })
+</script>
 
 <style>
     .review-form {

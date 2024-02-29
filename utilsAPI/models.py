@@ -37,16 +37,21 @@ class Language(models.Model):
 
 
 class Review(models.Model):
-    title = models.CharField(max_length=200, null=False, blank=False)
+    title = models.CharField(max_length=200, null=True, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, swappable=True)
     course = models.ForeignKey(Course, on_delete=models.SET_NULL, null=True, blank=True)
     facilitator = models.ForeignKey(Facilitator, on_delete=models.SET_NULL, null=True, blank=True)
     review = models.TextField()
+    rating = models.IntegerField()
     date = models.DateTimeField(auto_now=True)
     is_approved = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.title
+        return self.review
+    
+    class Meta:
+        unique_together = ('user', 'course')
+
 
 
 class Rating(models.Model):
@@ -58,7 +63,11 @@ class Rating(models.Model):
     is_approved = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.rating
+        return self.user.get_full_name()
+    
+    class Meta:
+        unique_together = ('user', 'course')
+
 
 
 class Grade(models.Model):

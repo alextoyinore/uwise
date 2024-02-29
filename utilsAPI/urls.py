@@ -92,10 +92,10 @@ urlpatterns = [
 
     # NOTE
 
-    path('notes', view=GenderViewSet.as_view({
+    path('notes', view=NoteViewSet.as_view({
         'post': 'create',
         'get': 'list'}), name='notes'),
-    path('note/<int:pk>', view=GenderViewSet.as_view({
+    path('note/<int:pk>', view=NoteViewSet.as_view({
         'get': 'retrieve',
         'put': 'update',
         'patch': 'partial_update',
@@ -105,10 +105,10 @@ urlpatterns = [
 
     # RATING
 
-    path('ratings', view=GenderViewSet.as_view({
+    path('ratings', view=RatingViewSet.as_view({
         'post': 'create',
         'get': 'list'}), name='ratings'),
-    path('rating/<int:pk>', view=GenderViewSet.as_view({
+    path('rating/<int:pk>', view=RatingViewSet.as_view({
         'get': 'retrieve',
         'put': 'update',
         'patch': 'partial_update',
@@ -118,10 +118,10 @@ urlpatterns = [
 
     # REVIEW
 
-    path('reviews', view=GenderViewSet.as_view({
+    path('reviews', view=ReviewViewSet.as_view({
         'post': 'create',
         'get': 'list'}), name='reviews'),
-    path('review/<int:pk>', view=GenderViewSet.as_view({
+    path('review/<int:pk>', view=ReviewViewSet.as_view({
         'get': 'retrieve',
         'put': 'update',
         'patch': 'partial_update',

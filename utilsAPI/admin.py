@@ -26,7 +26,7 @@ class LanguageAdmin(admin.ModelAdmin):
 
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
-    list_display = ('user', 'course', 'title', 'review')
+    list_display = ('user', 'course', 'rating', 'review')
     search_fields = ('user', 'course',)
 
 

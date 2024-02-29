@@ -181,7 +181,7 @@
                 <div class="notes">
                     {% for note in data.notes %}
                         <div class="note">
-                            <b>{{ note.the_class.title }}</b>
+                            <b>{{ note.title }}</b>
                             <p>{{ note.note }}</p>
                             <i>{{ note.date }}</i>
                         </div> 
@@ -250,7 +250,15 @@
                 <br>
                 {% if data.user_owns_course %}
                     {# Review form goes here... #}
-                    {% include 'widgets/review_form.html' with course=data.course_data %}
+                    {% if data.review is None %}
+                        {% include 'widgets/review_form.html' with course=data.course_data %}
+                    {% else %}
+                        <div class="note">
+                            <b>You rated this course: {{ data.review.rating }}</b>
+                            <p>{{ data.review.review }}</p>
+                            <i>{{ data.review.date }}</i>
+                        </div>
+                    {% endif %}
                 {% else %}
                     <br>
                     <p>Dear {{ user.get_full_name }},</p><br>
@@ -323,6 +331,9 @@
 
 
         
+
+
+        
     </script>
 </div>
 
@@ -332,11 +343,6 @@
 {% endblock %}
 
 {% block footer %}
-<section class="footer"> 
-    <div class="footer-wrapper">
-        <p>&copy; {% now "Y" %} Uwise</p>
-    </div>
-</section>
-
+    {% include 'partials/footer_mini.html' %}
 {% endblock %}
 
