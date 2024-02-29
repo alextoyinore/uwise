@@ -129,6 +129,19 @@ urlpatterns = [
     }), name='review'),
 
 
+    # CONTACT
+
+    path('contacts', view=ContactViewSet.as_view({
+        'post': 'create',
+        'get': 'list'}), name='contacts'),
+    path('contact/<int:pk>', view=ContactViewSet.as_view({
+        'get': 'retrieve',
+        'put': 'update',
+        'patch': 'partial_update',
+        'delete': 'destroy',
+    }), name='contact'),
+
+
     # FAVOURITE
 
     path('favourites', view=FavouriteViewSet.as_view({

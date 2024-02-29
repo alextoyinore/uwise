@@ -30,6 +30,12 @@ class ReviewAdmin(admin.ModelAdmin):
     search_fields = ('user', 'course',)
 
 
+@admin.register(Contact)
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ('name', 'organization', 'email', 'message', 'date')
+    search_fields = ('name', 'organization', 'email',)
+
+
 @admin.register(Rating)
 class RatingAdmin(admin.ModelAdmin):
     list_display = ('user', 'course', 'rating', 'date')

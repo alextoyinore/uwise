@@ -36,6 +36,17 @@ class Language(models.Model):
         return self.name
 
 
+class Contact(models.Model):
+    name = models.CharField(max_length=200, null=False, blank=False)
+    organization = models.CharField(max_length=200, null=False, blank=False)
+    email = models.EmailField(max_length=200, null=False, blank=False)
+    message = models.TextField()
+    date = models.DateTimeField(auto_now=True)
+
+    def __str__(self) -> str:
+        return f'{self.name} {self.message}'
+
+
 class Review(models.Model):
     title = models.CharField(max_length=200, null=True, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, swappable=True)

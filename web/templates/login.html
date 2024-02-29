@@ -165,7 +165,10 @@ function setCookie(name, value, options = {}) {
 
 {% endblock %}
 
-{% block footer %}{% endblock %}
+{% block footer %}
+    {% include 'partials/footer_mini.html' %}
+    <br>
+{% endblock %}
 
 
 

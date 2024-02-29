@@ -64,6 +64,12 @@ class ReviewSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class ContactSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Contact
+        fields = '__all__'
+
+
 class TestimonialSerializer(serializers.ModelSerializer):
     class Meta:
         model = Testimonial

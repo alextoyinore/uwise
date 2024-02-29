@@ -109,6 +109,11 @@ class ReviewViewSet(ModelViewSet):
     permission_classes = [IsAuthenticated, IsAdminUser]
 
 
+class ContactViewSet(ModelViewSet):
+    serializer_class = ContactSerializer
+    queryset = Contact.objects.all()
+
+
 class FavouriteViewSet(ModelViewSet):
     serializer_class = FavouriteSerializer
     queryset = Favourite.objects.all()
