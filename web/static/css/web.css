@@ -160,7 +160,6 @@ textarea::placeholder {
   flex-direction: column;
   border: 1px solid #c3d3ec;
   background: #fff;
-  border-radius: 20px;
   padding: 40px;
 }
 
@@ -191,7 +190,6 @@ input,
 button {
   padding: 10px;
   border: 1px solid #c3d3ec;
-  border-radius: 5px;
   outline: 0;
   height: 30px;
 }
@@ -272,9 +270,7 @@ button:hover {
   /* border-bottom: 1px solid #c3d3ec; */
   box-shadow: 5px 6px 4px 2px #91b3ea11;
 }
-.extra-header-nav {
-  background: #f5faff;
-}
+
 .extra-header-nav-left {
   flex-direction: column;
   align-items: flex-start;
@@ -329,7 +325,6 @@ button:hover {
 
 .header-search-input {
   padding: 20px;
-  border-radius: 5px;
   text-indent: 25px;
   outline: 0;
   width: 50px;
@@ -445,7 +440,6 @@ button:hover {
   font-size: 1em;
   padding: 10px 0px;
   min-width: 100px;
-  border-radius: 5px;
   text-decoration: none;
   border: 1px solid var(--primary-blue);
   text-align: center;
@@ -505,7 +499,6 @@ button:hover {
   padding: 10px 30px;
   color: var(--primary-blue);
   background: #fff;
-  border-radius: 5px;
   text-decoration: none;
   border: 1px solid var(--primary-blue);
   text-align: center;
@@ -529,7 +522,6 @@ button:hover {
 }
 
 .carousel-section {
-  border-radius: 10px;
   width: 100%;
   padding: 25px 0;
 }
@@ -545,7 +537,6 @@ button:hover {
 .carousel-wrapper {
   overflow-x: auto;
   scrollbar-width: none;
-  border-radius: 5px;
 }
 
 .carousel-wrapper::-webkit-scrollbar {
@@ -554,7 +545,6 @@ button:hover {
 
 .carousel-track {
   display: flex;
-  border-radius: 5px;
 }
 
 .carousel-items {
@@ -569,7 +559,6 @@ button:hover {
   text-decoration: none;
   width: 175px;
   height: 36vh;
-  border-radius: 5px;
   overflow: hidden;
   box-sizing: border-box;
   background: #fff;
@@ -643,8 +632,7 @@ button:hover {
 .slider-wrapper {
   width: 200px;
   height: 4px;
-  border-radius: 4px;
-  background: #5e7eb855;
+  background: var(--primary-blue-light);
   display: flex;
   align-items: center;
 }
@@ -652,8 +640,7 @@ button:hover {
 .slider-thumb {
   width: 50px;
   height: 4px;
-  border-radius: 8px;
-  background: #5e7eb8;
+  background: var(--primary-blue);
   cursor: grab;
 }
 
@@ -677,7 +664,6 @@ button:hover {
   background: #5e7eb8;
   align-items: center;
   display: flex;
-  border-radius: 10px;
   text-align: center;
   cursor: pointer;
 }
@@ -720,10 +706,6 @@ button:hover {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 20px;
-  /* transform-origin: bottom right; */
-  /* transform: rotate(15deg); */
-  /* box-shadow: 2px 2px 2px #ccc; */
 }
 
 .biginfo-copy {
@@ -864,7 +846,6 @@ button:hover {
 .course-summary-card {
   width: 100%;
   background: #fafcff;
-  border-radius: 8px;
   padding: 20px 10px;
   display: flex;
   flex-direction: column;
@@ -1085,7 +1066,6 @@ button:hover {
 }
 .messages .note {
   background: #fff;
-  border-radius: 5px;
   padding: 10px;
 }
 .note i {
@@ -1125,7 +1105,6 @@ button:hover {
   gap: 10px;
   align-items: center;
   border: 1px solid #c3d3ec;
-  border-radius: 5px;
 }
 
 .student-photo {
@@ -1166,20 +1145,7 @@ button:hover {
   justify-content: space-between;
   align-items: center;
 }
-.dots-wrapper {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  align-items: center;
-  justify-content: space-between;
-}
 
-.dots {
-  width: 5px;
-  height: 5px;
-  border-radius: 5px;
-  background: #cccccc;
-}
 
 .auto-slider-wrapper {
   display: flex;
@@ -1188,7 +1154,6 @@ button:hover {
   overflow-x: auto;
   scroll-behavior: smooth;
   scrollbar-width: none;
-  border-radius: 5px;
 }
 
 .auto-slider-wrapper::-webkit-scrollbar {
@@ -1245,7 +1210,6 @@ button:hover {
   display: flex;
   flex-direction: row;
   gap: 20px;
-  border-radius: 5px;
   border: 1px solid #c3d3ec;
   padding: 10px;
   cursor: pointer;
@@ -1563,9 +1527,8 @@ hr {
 .skill {
   padding: 5px 10px;
   font-size: 12px;
-  color: #0e3b8d;
+  color: var(--primary-blue);
   background: #eff3fa;
-  border-radius: 5px;
 }
 
 /* DASHBOARD, EXPLORE AND PART OF LEARN */
@@ -1614,7 +1577,6 @@ hr {
   font-size: 13px;
   color: var(--primary-blue);
   padding: 10px 10px;
-  border-radius: 2px;
   cursor: pointer;
   font-weight: bold;
   text-decoration: none;
@@ -1623,7 +1585,6 @@ hr {
   font-size: 10px;
   color: var(--primary-blue);
   padding: 5px 10px;
-  border-radius: 2px;
   cursor: pointer;
   font-weight: bold;
   background: #c3d3ec33;
@@ -1640,7 +1601,6 @@ hr {
   background: #fff;
   padding: 20px;
   border: 1px solid #c3d3ec;
-  border-radius: 10px;
 }
 .card ul li {
   font-size: 13px;
@@ -1714,7 +1674,6 @@ form label {
 }
 .notes .note {
   background: #fff;
-  border-radius: 5px;
   padding: 10px;
 }
 .note i {
@@ -1741,8 +1700,7 @@ form label {
   color: #ffffff;
 }
 .class-item {
-  padding: 5px 10px;
-  border-radius: 5px;
+  padding: 10px 10px;
   border: 1px solid #c3d3ec;
   margin: 10px 0;
   cursor: pointer;
@@ -1760,7 +1718,6 @@ form label {
   color: #ffffff;
   background: var(--primary-green);
   padding: 10px 20px;
-  border-radius: 5px;
   font-size: 13px;
 }
 .resource-link:hover {
@@ -1780,11 +1737,11 @@ li {
 }
 
 .skills-content .skill {
-  padding: 5px 10px;
+  padding: 10px 15px;
   font-size: 12px;
-  color: #0e3b8d;
+  color: var(--primary-blue);
   background: #eff3fa;
-  border-radius: 5px;
+  font-weight: bold;
 }
 b {
   font-size: 13px;
@@ -1853,9 +1810,9 @@ b span {
 /* FOOTER */
 
 #footer {
-  background: #fff;
   width: 100%;
   padding: 25px 0;
+  color: var(--primary-blue)
 }
 
 .footer-wrapper {
@@ -1905,7 +1862,7 @@ b span {
 
 .footer-nav a {
   text-decoration: none;
-  color: #555555;
+  color: var(--primary-blue);
   font-size: 12px;
   padding: 6px 0;
 }
