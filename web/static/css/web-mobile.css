@@ -79,6 +79,9 @@
         width: 100%;
         transform: rotate(0deg);
     }
+    .summary-cta {
+        display: none;
+    }
     .info-content {
         width: 100%;
         align-items: center;
