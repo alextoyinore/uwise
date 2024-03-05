@@ -3,17 +3,23 @@
 :root {
   /* Backgrounds */
   /* --primary-blue: #00296b; */
-  --primary-blue: #104176;
-  --primary-blue-light: #fafcff;
+  --primary-blue: #0e3b8d;
+  --primary-blue-light: #d9e6ff;
   --primary-blue-soft: #ebf3ff;
-  --primary-green: #74e090;
+  --primary-green: #69da87;
+  --primary-green-light: #dfffe7;
   --primary-warning: #df4375;
+  --primary-warning-light: #ffdde8;
   --primary-info: #fbd8af;
+  --primary-info-light: #fff1e1;
   --primary-yellow: #dcf3c4;
+  --primary-yellow-light: #f4ffe8;
   
   /* Texts */
-  --text-blue-dark: var(--primary-blue);
-  --text-blue-light: #a0b0ca;
+  --text-primary-blue: var(--primary-blue);
+  --text-primary-warning: var(--primary-warning);
+  --text-primary-green: var(--primary-green);
+  --text-primary: #555;
   --text-light: #fff;
 }
 
@@ -43,7 +49,7 @@ body {
   font-family: "Open Sans", sans-serif;
   margin: 0;
   padding: 0;
-  background: #fafcff;
+  /* background: #fafcff; */
 }
 
 h1 {
@@ -366,7 +372,7 @@ button:hover {
   width: 100%;
   display: flex;
   align-items: center;
-  background: #fafcff;
+  background: var(--primary-yellow-light);
   border-bottom: 1px solid #c3d3ec55;
   border-top: 1px solid #c3d3ec55;
 }
@@ -389,7 +395,7 @@ button:hover {
 }
 
 #hero {
-  background: var(--primary-blue);
+  /* background: var(--primary-blue); */
   display: flex;
   margin-top: 50px;
 }
@@ -409,8 +415,8 @@ button:hover {
 }
 
 .hero-content-left strong {
-  font-size: 2.5em;
-  color: #ffffff;
+  font-size: 2.2em;
+  color: var(--primary-blue);
   line-height: 1.1em;
   display: block;
   margin: 20px 0;
@@ -418,12 +424,12 @@ button:hover {
 }
 
 .hero-content-left p {
-  color: #5e7eb8;
+  color: var(--primary-blue);
 }
 
 .hero-content-left > i {
   font-size: 14px;
-  color: #c3d3ec;
+  color: var(--primary-blue);
   padding: 20px 0;
   display: block;
 }
@@ -514,7 +520,7 @@ button:hover {
 
 #content {
   width: 100%;
-  background: #fafcff;
+  background: #fff;
 }
 
 .content {
@@ -887,12 +893,12 @@ button:hover {
   width: 100%;
 }
 .hero2-content-top strong {
-  color: #ffffff;
+  color: var(--primary-blue);
   font-size: 3em;
 }
 
 .hero2-content-top p {
-  color: #5e7eb8;
+  color: var(--primary-blue);
   font-weight: lighter;
 }
 .hero2-content-bottom {
@@ -1035,7 +1041,7 @@ button:hover {
 }
 
 .bottom-cta p {
-  color: #5e7eb8;
+  color: #90aad8;
   width: 50%;
   margin: auto;
   font-size: 13px;
@@ -1847,7 +1853,7 @@ b span {
 /* FOOTER */
 
 #footer {
-  background: #eff3fa;
+  background: #fff;
   width: 100%;
   padding: 25px 0;
 }

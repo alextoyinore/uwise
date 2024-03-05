@@ -37,8 +37,6 @@
                     <b>{{ data.course_data.rating }}</b>
                 </div>
 
-                <br>
-
                 {% comment %} <div class="summary-item">
                     <a class="btn-cta small-btn fav-btn" onclick=addToFavourites()><span class="material-symbols-outlined">add</span> Favourites</a>
                     <a href="" class="btn-cta small-btn wish-btn"><span class="material-symbols-outlined">add</span> Wishlist</a>
@@ -46,11 +44,11 @@
                 </div> {% endcomment %}
                 
                 
-                {% if not data.user_owns_course %}
-                    <a href="{% url 'enroll' data.course_data.id %}" class="btn-cta green">Enroll Now </a>
+                {% comment %} {% if not data.user_owns_course %}
+                    <a href="{% url 'enroll' data.course_data.id %}" class="btn-cta blue">Enroll Now </a>
                 {% else %}
                     <a href="{% url 'learn' data.course_data.id 'info' %}" class="btn-cta blue">Go to class</a>
-                {% endif %}
+                {% endif %} {% endcomment %}
                 
             </div>
         </div>

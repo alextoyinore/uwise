@@ -144,7 +144,7 @@
         padding: 0;
         border-radius: 0;
         background: none;
-        width: 100%;
+        width: 90%;
     }
     .form-row {
         flex-direction: column;
@@ -240,10 +240,12 @@
         padding: 10px 0 20px 0;
     }
     .hero2-content {
-        width: 94%;
+        width: 75%;
+        flex-direction: column;
     }
     .hero2-content strong {
         line-height: 1em;
+        font-size: 1.5em;
     }
     .hero2-content p {
         margin-top: 10px;
@@ -290,7 +292,7 @@
         display: flex;
     }
     .hero-content-left strong {
-        font-size: 2em;
+        font-size: 1.5em;
     }
     .manual-pay {
         width: 80%;
