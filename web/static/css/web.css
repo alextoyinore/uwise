@@ -1367,7 +1367,7 @@ button:hover {
   justify-content: space-between;
   align-items: center;
   padding: 20px 30px;
-  background: #eff3fa;
+  background: var(--primary-yellow-light);
   gap: 20px;
 }
 .career-info-left {
@@ -1868,7 +1868,6 @@ b span {
 }
 
 .footer-nav a:hover {
-  color: #0e3b8d;
   text-decoration: underline;
 }
 
@@ -1891,11 +1890,11 @@ b span {
 }
 
 .red {
-  background: #ff253a;
-  color: #fff;
+  background: var(--primary-warning-light);
+  color: var(--primary-warning);
 }
 
 .dark {
-  background: #0e3b8d;
-  color: #4285f4;
+  background: var(--primary-blue);
+  color: var(--primary-blue-light);
 }
