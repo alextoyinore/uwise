@@ -4,7 +4,7 @@
   /* Backgrounds */
   /* --primary-blue: #00296b; */
   --primary-blue: #0e3b8d;
-  --primary-blue-light: #d9e6ff;
+  --primary-blue-light: #ebf2ff;
   --primary-blue-soft: #ebf3ff;
   --primary-green: #69da87;
   --primary-green-light: #dfffe7;
@@ -395,7 +395,7 @@ button:hover {
 }
 
 #hero {
-  /* background: var(--primary-blue); */
+  background: var(--primary-blue-light);
   display: flex;
   margin-top: 50px;
 }
@@ -417,7 +417,7 @@ button:hover {
 .hero-content-left strong {
   font-size: 2.2em;
   color: var(--primary-blue);
-  line-height: 1.1em;
+  line-height: 1.2em;
   display: block;
   margin: 20px 0;
   letter-spacing: 0;
