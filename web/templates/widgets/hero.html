@@ -43,12 +43,15 @@
                     <br>
                 </div> {% endcomment %}
                 
+                <div class="summary-cta">
                 
-                {% if not data.user_owns_course %}
-                    <a href="{% url 'enroll' data.course_data.id %}" class="btn-cta blue summary-cta">Enroll Now </a>
-                {% else %}
-                    <a href="{% url 'learn' data.course_data.id 'info' %}" class="btn-cta blue summary-cta">Go to class</a>
-                {% endif %}
+                    {% if not data.user_owns_course %}
+                        <a href="{% url 'enroll' data.course_data.id %}" class="btn-cta blue">Enroll Now </a>
+                    {% else %}
+                        <a href="{% url 'learn' data.course_data.id 'info' %}" class="btn-cta blue">Go to class</a>
+                    {% endif %}
+
+                </div>
                 
             </div>
         </div>
@@ -61,8 +64,9 @@
         padding: 5px 0;
         cursor: pointer;
     }
-    .small-btn:hover {
-
+    .summary-cta {
+        width: 90%;
+        margin: 0 5%;
     }
 </style>
 
