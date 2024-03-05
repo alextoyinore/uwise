@@ -2,13 +2,17 @@
 /* Add your styles for the authentication page here */
 :root {
   /* Backgrounds */
-  --bg-blue: #00296b;
-  --bg-blue-light: #fafcff;
-  --bg-blue-soft: #ebf3ff;
-  --bg-green: #10dc80;
-
+  /* --primary-blue: #00296b; */
+  --primary-blue: #104176;
+  --primary-blue-light: #fafcff;
+  --primary-blue-soft: #ebf3ff;
+  --primary-green: #74e0d5;
+  --primary-warning: #df4375;
+  --primary-info: #fbd8af;
+  --primary-yellow: #dcf3c4;
+  
   /* Texts */
-  --text-blue-dark: var(--bg-blue);
+  --text-blue-dark: var(--primary-blue);
   --text-blue-light: #a0b0ca;
   --text-light: #fff;
 }
@@ -16,6 +20,9 @@
 html {
   scroll-behavior: smooth;
   transition: 0.5s ease-in-out;
+  scrollbar-width: 10px;
+  scrollbar-gutter: 10px;
+  
 }
 
 input:-internal-autofill-selected {
@@ -24,12 +31,12 @@ input:-internal-autofill-selected {
 
 ::selection {
   color: #fff;
-  background: var(--bg-blue);
+  background: var(--primary-blue);
 }
 
 ::moz-selection {
   color: #fff;
-  background: var(--bg-blue);
+  background: var(--primary-blue);
 }
 
 body {
@@ -41,7 +48,7 @@ body {
 
 h1 {
   font-size: 2em;
-  color: var(--bg-blue);
+  color: var(--primary-blue);
   margin: 10px 0;
   line-height: 1.2em;
 }
@@ -49,7 +56,7 @@ h1 {
 h3 {
   margin: 10px 0;
   font-size: 1em;
-  color: var(--bg-blue);
+  color: var(--primary-blue);
   line-height: 1.2em;
 }
 
@@ -66,7 +73,7 @@ h3 a:hover {
 h2 {
   margin: 0;
   font-size: 1.5em;
-  color: var(--bg-blue);
+  color: var(--primary-blue);
 }
 
 hr {
@@ -166,7 +173,7 @@ form a {
 
 form a:hover,
 form p a:hover {
-  color: var(--bg-blue);
+  color: var(--primary-blue);
 }
 
 label {
@@ -184,13 +191,13 @@ button {
 }
 
 button {
-  background-color: var(--bg-blue);
+  background-color: var(--primary-blue);
   color: white;
   cursor: pointer;
   height: 45px;
   text-align: center;
   align-content: center;
-  border: 1px solid var(--bg-blue);
+  border: 1px solid var(--primary-blue);
   width: 100%;
 }
 
@@ -218,7 +225,7 @@ button:hover {
 
 #top-nav {
   display: flex;
-  background: var(--bg-blue);
+  background: var(--primary-blue);
   color: #ffffff;
   padding: 5px;
   font-size: 14px;
@@ -253,7 +260,7 @@ button:hover {
 
 .header-nav {
   background: #ffffff;
-  color: var(--bg-blue);
+  color: var(--primary-blue);
   padding: 10px 0;
   font-size: 14px;
   /* border-bottom: 1px solid #c3d3ec; */
@@ -289,7 +296,7 @@ button:hover {
 
 .header-nav-left a {
   text-decoration: none;
-  color: var(--bg-blue);
+  color: var(--primary-blue);
   font-size: 16px;
   font-weight: bold;
   display: flex;
@@ -345,8 +352,8 @@ button:hover {
 
 .header-auth-btn .login-btn {
   background: transparent;
-  border: 1px solid var(--bg-blue);
-  color: var(--bg-blue);
+  border: 1px solid var(--primary-blue);
+  color: var(--primary-blue);
 }
 
 .header-auth-btn .login-btn:hover {
@@ -360,7 +367,8 @@ button:hover {
   display: flex;
   align-items: center;
   background: #fafcff;
-  border-bottom: 1px solid #c3d3ec;
+  border-bottom: 1px solid #c3d3ec55;
+  border-top: 1px solid #c3d3ec55;
 }
 
 .close-icon {
@@ -381,7 +389,7 @@ button:hover {
 }
 
 #hero {
-  background: var(--bg-blue);
+  background: var(--primary-blue);
   display: flex;
   margin-top: 50px;
 }
@@ -433,9 +441,9 @@ button:hover {
   min-width: 100px;
   border-radius: 5px;
   text-decoration: none;
-  border: 1px solid var(--bg-blue);
+  border: 1px solid var(--primary-blue);
   text-align: center;
-  color: var(--bg-blue);
+  color: var(--primary-blue);
   width: 100%;
 }
 
@@ -447,12 +455,12 @@ button:hover {
 .btn-cta:hover {
   color: white;
   /*background: #0e3b8d;*/
-  background: var(--bg-blue);
+  background: var(--primary-blue);
   transition: 0.3s ease-in-out;
 }
 
 .light {
-  color: var(--bg-blue);
+  color: var(--primary-blue);
   background: #fff;
 }
 
@@ -465,19 +473,19 @@ button:hover {
 }
 
 .darker {
-  background: var(--bg-blue);
+  background: var(--primary-blue);
   color: #4285f4;
 }
 
 .green {
-  background: var(--bg-green);
+  background: var(--primary-green);
   color: #fff;
-  border: 1px solid var(--bg-green);
+  border: 1px solid var(--primary-green);
   font-weight: bold;
 }
 
 .green:hover {
-  border-color: var(--bg-blue);
+  border-color: var(--primary-blue);
 }
 
 .hero-content-right {
@@ -489,17 +497,17 @@ button:hover {
 .btn-cta-light {
   font-size: 0.8em;
   padding: 10px 30px;
-  color: var(--bg-blue);
+  color: var(--primary-blue);
   background: #fff;
   border-radius: 5px;
   text-decoration: none;
-  border: 1px solid var(--bg-blue);
+  border: 1px solid var(--primary-blue);
   text-align: center;
 }
 
 .btn-cta-light:hover {
   color: #fff;
-  background: var(--bg-blue);
+  background: var(--primary-blue);
   border: 1px solid #0e3b8d;
   transition: 0.3s ease-in-out;
 }
@@ -561,7 +569,7 @@ button:hover {
   background: #fff;
   border: 1px solid #c3d3ec;
   cursor: pointer;
-  color: var(--bg-blue);
+  color: var(--primary-blue);
 }
 
 .course-card:hover {
@@ -617,7 +625,7 @@ button:hover {
 
 .rating-star {
   font-size: 14px;
-  color: var(--bg-blue);
+  color: var(--primary-blue);
 }
 
 .carousel-section-navs {
@@ -644,7 +652,7 @@ button:hover {
 }
 
 .slider-thumb:hover {
-  background: var(--bg-blue);
+  background: var(--primary-blue);
 }
 
 .slider-thumb:active {
@@ -669,7 +677,7 @@ button:hover {
 }
 
 .slider-btn:hover {
-  background: var(--bg-blue);
+  background: var(--primary-blue);
   height: 6px;
 }
 
@@ -769,7 +777,7 @@ button:hover {
   scrollbar-width: none;
 }
 .mega-menu a {
-  color: var(--bg-blue);
+  color: var(--primary-blue);
   font-size: 13px;
   padding: 10px 0;
   text-decoration: none;
@@ -827,7 +835,7 @@ button:hover {
   right: 0;
 }
 .header-profile-menu a {
-  color: var(--bg-blue);
+  color: var(--primary-blue);
   font-size: 13px;
   padding: 10px 20px;
 }
@@ -858,7 +866,7 @@ button:hover {
 }
 
 .course-summary-card b {
-  color: var(--bg-blue);
+  color: var(--primary-blue);
   border-bottom: 1px solid #c3d3ec77;
   padding: 10px 20px;
   text-align: right;
@@ -898,7 +906,7 @@ button:hover {
 .hero2-content-bottom a {
   text-align: center;
   background: #fff;
-  color: var(--bg-blue);
+  color: var(--primary-blue);
   font-weight: bold;
 }
 
@@ -956,14 +964,14 @@ button:hover {
 }
 
 .bank-details h3 b {
-  color: var(--bg-green);
+  color: var(--primary-green);
   text-align: right;
 }
 .bank-details h3 strong {
   color: #333;
   text-align: left;
   font-weight: bold;
-  color: var(--bg-blue);
+  color: var(--primary-blue);
   font-size: 13px;
 }
 
@@ -1003,7 +1011,7 @@ button:hover {
 }
 .dash-nav a {
   text-decoration: none;
-  color: var(--bg-blue);
+  color: var(--primary-blue);
   background: #c3d3ec44;
   padding: 10px 10px;
   font-size: 12px;
@@ -1017,7 +1025,7 @@ button:hover {
 
 .bottom-cta {
   width: 100%;
-  background: var(--bg-blue);
+  background: var(--primary-blue);
   padding: 70px 0;
   text-align: center;
   display: flex;
@@ -1067,7 +1075,7 @@ button:hover {
   gap: 10px;
   overflow-y: auto;
   border-top-left-radius: 20px;
-  border: 1px solid var(--bg-blue) 44;
+  border: 1px solid var(--primary-blue) 44;
 }
 .messages .note {
   background: #fff;
@@ -1102,7 +1110,7 @@ button:hover {
 /* TESTIMONIAL CARD */
 
 .testimonial-card {
-  width: 45%;
+  width: 40%;
   background: #ffffff;
   display: flex;
   flex-direction: row;
@@ -1239,7 +1247,7 @@ button:hover {
   flex: 0 0 auto;
 }
 .blog-item:hover {
-  border-color: var(--bg-blue);
+  border-color: var(--primary-blue);
   color: #0646d5;
 }
 .blog-image {
@@ -1258,7 +1266,7 @@ button:hover {
   gap: 5px;
 }
 .blog-detail b {
-  color: var(--bg-blue);
+  color: var(--primary-blue);
   font-size: 0.8em;
 }
 .blog-detail p {
@@ -1308,7 +1316,7 @@ button:hover {
 }
 .list-item-left a {
   text-decoration: none;
-  color: var(--bg-blue);
+  color: var(--primary-blue);
   font-weight: bold;
 }
 .list-item-left p {
@@ -1503,12 +1511,12 @@ li {
 
 .info-content .info-message {
   font-size: 10px;
-  color: var(--bg-blue);
+  color: var(--primary-blue);
 }
 
 .info-content .icon {
   font-size: 40px;
-  color: var(--bg-blue);
+  color: var(--primary-blue);
 }
 hr {
   margin: 0;
@@ -1573,7 +1581,7 @@ hr {
   overflow-y: auto;
   scroll-behavior: smooth;
   scrollbar-width: thin;
-  scrollbar-base-color: var(--bg-blue);
+  scrollbar-base-color: var(--primary-blue);
   padding: 10px 20px 0 0;
   position: relative;
 }
@@ -1598,7 +1606,7 @@ hr {
 .filter-item {
   width: 100%;
   font-size: 13px;
-  color: var(--bg-blue);
+  color: var(--primary-blue);
   padding: 10px 10px;
   border-radius: 2px;
   cursor: pointer;
@@ -1607,7 +1615,7 @@ hr {
 }
 .explore-filter-item {
   font-size: 10px;
-  color: var(--bg-blue);
+  color: var(--primary-blue);
   padding: 5px 10px;
   border-radius: 2px;
   cursor: pointer;
@@ -1672,7 +1680,7 @@ form label {
   background: #c3d3ec33;
 }
 .payment-methods a:active {
-  color: var(--bg-blue);
+  color: var(--primary-blue);
   font-weight: bold;
 }
 .enroll-content-right span {
@@ -1720,7 +1728,7 @@ form label {
 }
 .class-links .resource {
   background: #c3d3ec55;
-  color: var(--bg-blue);
+  color: var(--primary-blue);
   font-size: 13px;
 }
 .resource:hover {
@@ -1744,13 +1752,13 @@ form label {
 .resource-link {
   text-decoration: none;
   color: #ffffff;
-  background: var(--bg-green);
+  background: var(--primary-green);
   padding: 10px 20px;
   border-radius: 5px;
   font-size: 13px;
 }
 .resource-link:hover {
-  background: var(--bg-blue);
+  background: var(--primary-blue);
 }
 li {
   font-size: 13px;
@@ -1774,10 +1782,10 @@ li {
 }
 b {
   font-size: 13px;
-  color: var(--bg-blue);
+  color: var(--primary-blue);
 }
 b span {
-  color: var(--bg-green);
+  color: var(--primary-green);
 }
 
 .class-board {
@@ -1903,7 +1911,7 @@ b span {
 
 .footer-nav em {
   font-size: 13px;
-  color: var(--bg-blue);
+  color: var(--primary-blue);
 }
 
 .footer-nav i {
@@ -1913,7 +1921,7 @@ b span {
 
 /* MODIFIERS */
 .green-text {
-  color: var(--bg-green);
+  color: var(--primary-green);
 }
 .bold {
   font-weight: bold;
