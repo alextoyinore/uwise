@@ -23,13 +23,13 @@ class BaseView(TemplateView):
 
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
         context = super().get_context_data(**kwargs)
-        fields = courseAPI.models.Field.objects.all()
+        fields = courseAPI.models.Field.objects.filter(is_active=True).all()
         testimonials = Testimonial.objects.all()
-        footer_navs = FooterNav.objects.all()
+        footer_navs = FooterNav.objects.filter(is_active=True).all()
         announcements = Announcement.objects.all()
-        static_pages = StaticPage.objects.all()
+        static_pages = StaticPage.objects.filter(is_active=True).all()
         specializations = courseAPI.models.Specialization.objects.all()
-        blogs = blogAPI.models.Post.objects.all().order_by('-date_posted')
+        blogs = blogAPI.models.Post.objects.filter(is_published=True).all().order_by('-date_posted')
 
         data = {
             'testimonials': testimonials,
@@ -55,7 +55,7 @@ class HomeView(BaseView):
     
 
     def get(self, request, *args, **kwargs):
-        carousels = CourseCarousel.objects.all().order_by('-date')[:5]
+        carousels = CourseCarousel.objects.filter(is_active=True).all().order_by('-date')[:5]
         user_courses_carousels = None
 
         latest = courseAPI.models.Course.objects.all()[:8]
@@ -196,9 +196,9 @@ class ExploreView(BaseView):
         q = request.GET.get('q')
 
         if q is not None:
-            courses = courseAPI.models.Course.objects.filter(title__icontains=q)
+            courses = courseAPI.models.Course.objects.filter(title__icontains=q, active=True)
         else:
-            courses = courseAPI.models.Course.objects.all()
+            courses = courseAPI.models.Course.objects.filter(is_active=True).all()
 
         data = self.get_context_data()
         data['courses'] = courses
@@ -213,7 +213,7 @@ class BlogsView(BaseView):
     template_name = 'blogs.html'
 
     def get(self, request, *args, **kwargs):
-        featured = blogAPI.models.Post.objects.filter(featured=True).first()
+        featured = blogAPI.models.Post.objects.filter(featured=True, is_published=True).first()
         data = self.get_context_data()
         data['featured'] = featured
         context = {'data': data}
@@ -260,7 +260,7 @@ class StaticPageView(BaseView):
 
     def get(self, request, *args, **kwargs):
         page = kwargs['page']
-        static_pages = StaticPage.objects.all()
+        static_pages = StaticPage.objects.filter(is_active=True).all()
 
         for static_page in static_pages:
             static_page.content = static_page.content.split('\n')

@@ -53,10 +53,10 @@ body {
 }
 
 h1 {
-  font-size: 2em;
+  font-size: 1.5em;
   color: var(--primary-blue);
   margin: 10px 0;
-  line-height: 1.2em;
+  line-height: 1.25em;
 }
 
 h3 {
@@ -292,7 +292,7 @@ button:hover {
 }
 
 .header-nav-left a .logo {
-  max-height: 30px;
+  max-height: 25px;
   margin-right: 20px;
 }
 
@@ -339,7 +339,7 @@ button:hover {
   position: relative;
   left: 35px;
   font-size: 20px;
-  color: #aaaaaa;
+  color: var(--primary-blue-light);
   cursor: pointer;
 }
 
@@ -392,6 +392,7 @@ button:hover {
 #hero {
   background: var(--primary-blue-light);
   display: flex;
+  flex-direction: column;
   margin-top: 50px;
 }
 
@@ -681,6 +682,10 @@ button:hover {
 
 .biginfo {
   background: #c3d3ec22;
+}
+.biginfo-title {
+  font-size: 1em;
+  color: var(--text-primary-blue);
 }
 .biginfo-content {
   margin: auto;
