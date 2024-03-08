@@ -23,6 +23,27 @@
   --text-light: #fff;
 }
 
+/* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-blue-light);
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--primary-blue-light);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--primary-blue);
+  border-radius: 20px;
+  border: 0;
+}
+
 html {
   scroll-behavior: smooth;
   transition: 0.5s ease-in-out;
@@ -537,11 +558,11 @@ button:hover {
 
 .carousel-wrapper {
   overflow-x: auto;
-  scrollbar-width: none;
+  scrollbar-width: 5px;
 }
 
 .carousel-wrapper::-webkit-scrollbar {
-  display: none;
+  /* display: none; */
 }
 
 .carousel-track {
@@ -1004,7 +1025,7 @@ button:hover {
 .dash-nav a {
   text-decoration: none;
   color: var(--primary-blue);
-  background: #c3d3ec44;
+  background: var(--primary-green-light);
   padding: 10px 10px;
   font-size: 12px;
   font-weight: bold;
@@ -1012,7 +1033,7 @@ button:hover {
 .dash-nav a:hover,
 .dash-nav a:active,
 .dash-nav a:visited {
-  background: #c3d3ec;
+  background: var(--primary-yellow-light);
 }
 
 .bottom-cta {
@@ -1817,7 +1838,8 @@ b span {
 #footer {
   width: 100%;
   padding: 25px 0;
-  color: var(--primary-blue)
+  color: var(--primary-blue);
+  background: var(--primary-blue-light);
 }
 
 .footer-wrapper {
