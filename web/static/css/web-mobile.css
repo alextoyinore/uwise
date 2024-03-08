@@ -57,6 +57,12 @@
     .carousel-section-navs {
         display: none;
     }
+    .carousel-wrapper {
+        scrollbar-width: none;
+    }
+    .carousel-wrapper::-webkit-scrollbar {
+        display: none;
+      }
     .biginfo-image {
         width: 100%;
     }
