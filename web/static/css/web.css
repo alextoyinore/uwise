@@ -388,7 +388,7 @@ button:hover {
   width: 100%;
   display: flex;
   align-items: center;
-  background: var(--primary-yellow-light);
+  background: var(--primary-green-light);
   border-bottom: 1px solid #c3d3ec55;
   border-top: 1px solid #c3d3ec55;
 }
@@ -1025,15 +1025,14 @@ button:hover {
 .dash-nav a {
   text-decoration: none;
   color: var(--primary-blue);
-  background: var(--primary-green-light);
+  background: var(--primary-blue-light);
   padding: 10px 10px;
   font-size: 12px;
   font-weight: bold;
 }
 .dash-nav a:hover,
-.dash-nav a:active,
-.dash-nav a:visited {
-  background: var(--primary-yellow-light);
+.dash-nav a:active {
+  background: var(--primary-green-light);
 }
 
 .bottom-cta {
