@@ -127,7 +127,7 @@ class SpecializationCourseViewSet(ModelViewSet):
 class UserCourseViewSet(ModelViewSet):
     queryset = UserCourse.objects.all()
     serializer_class = UserCourseSerializer
-    permission_classes = [IsAuthenticated, IsStudent]
+    permission_classes = [IsAuthenticated]
 
 
 class CourseFacilitatorViewSet(ModelViewSet):

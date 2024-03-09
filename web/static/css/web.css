@@ -286,7 +286,7 @@ button:hover {
 .header-nav {
   background: #ffffff;
   color: var(--primary-blue);
-  padding: 10px 0;
+  padding: 12px 0;
   font-size: 14px;
   /* border-bottom: 1px solid #c3d3ec; */
   box-shadow: 5px 6px 4px 2px #91b3ea11;
