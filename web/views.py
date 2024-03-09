@@ -196,7 +196,7 @@ class ExploreView(BaseView):
         q = request.GET.get('q')
 
         if q is not None:
-            courses = courseAPI.models.Course.objects.filter(title__icontains=q, active=True)
+            courses = courseAPI.models.Course.objects.filter(title__icontains=q, is_active=True)
         else:
             courses = courseAPI.models.Course.objects.filter(is_active=True).all()
 
