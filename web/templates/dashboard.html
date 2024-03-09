@@ -15,25 +15,55 @@
                 <div class="filter-items">
                     <br>
                     <div class="filter-item-group">
-                        <a class="filter-item" href="{% url 'dashboard' %}#">In Progress</a>
-                        <a class="filter-item" href="{% url 'dashboard' %}#">Enrolled</a>
-                        <a class="filter-item" href="{% url 'dashboard' %}#">Completed</a>
-                        <a class="filter-item" href="{% url 'dashboard' %}#">Favourites</a>
-                        <a class="filter-item" href="{% url 'dashboard' %}#">Wishlist</a>
+                        <a class="filter-item" href="{% url 'dashboard' %}#inprogress">In Progress</a>
+                        <a class="filter-item" href="{% url 'dashboard' %}#enrolled">Enrolled</a>
+                        <a class="filter-item" href="{% url 'dashboard' %}#completed">Completed</a>
+                        <a class="filter-item" href="{% url 'dashboard' %}#favourites">Favourites</a>
+                        <a class="filter-item" href="{% url 'dashboard' %}#wishlist">Wishlist</a>
                     </div>
                 </div>
             </nav>
             <article class="course-list">
                 <h2>{{ request.user.get_full_name }} Dashboard</h2>
 
-                <h3>
-                    {% if data.q is None %} My Library {% else %} {{ data.q }} {% endif %}
-                </h3> <br>
-                <div class="course-grid">
-                    {% for course in data.courses %}
-                        {% include 'widgets/user_course_card.html' with course=course.course %}
-                    {% endfor %}
-                </div>
+                {% if data.q is not None %}
+                    <h3>{{ data.q }}</h3> <br>
+                    <div class="course-grid">
+                        {% for course in data.courses %}
+                            {% include 'widgets/user_course_card.html' with course=course.course %}
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <h3 id="inprogress">In Progress</h3> <br>
+                    <div class="course-grid">
+                        {% for course in data.purchased_courses %}
+                            {% include 'widgets/user_course_card.html' with course=course.course %}
+                        {% endfor %}
+                    </div>
+
+                    <h3 id="enrolled">Enrolled</h3> <br>
+                    <div class="course-grid">
+                        {% for course in data.courses %}
+                            {% include 'widgets/user_course_card.html' with course=course.course %}
+                        {% endfor %}
+                    </div>
+
+                    <h3 id="completed">Completed</h3> <br>
+                    <div class="course-grid">
+                        {% for course in data.purchased_courses %}
+                            {% if course.is_completed %}
+                                {% include 'widgets/user_course_card.html' with course=course.course %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+
+                    <h3 id="favourites">Favourites</h3> <br>
+                    <div class="course-grid">
+                        {% for course in data.favourites %}
+                            {% include 'widgets/user_course_card.html' with course=course.course %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
             </article>
         </div>
     </div>

@@ -44,6 +44,7 @@ class Order(models.Model):
 class UserPurchase(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='purchase_by_user', null=False, blank=False)
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='purchased_course', null=False, blank=False)
+    is_completed = models.BooleanField(default=False)
     date_added = models.DateTimeField(auto_now=True)
 
     class Meta:

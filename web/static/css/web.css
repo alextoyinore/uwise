@@ -558,7 +558,7 @@ button:hover {
 
 .carousel-wrapper {
   overflow-x: auto;
-  scrollbar-width: 5px;
+  scrollbar-width: thin;
 }
 
 .carousel-wrapper::-webkit-scrollbar {

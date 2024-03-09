@@ -146,10 +146,14 @@ class DashboardView(BaseView):
         q = request.GET.get('q')
         fields = courseAPI.models.Field.objects.all()
         courses = courseAPI.models.UserCourse.objects.filter(user=request.user).all().order_by('-date')
+        purchased_courses = UserPurchase.objects.filter(user=request.user).all()
+        favourites = utilsAPI.models.Favourite.objects.filter(user=request.user).all()
 
         data = self.get_context_data()
         data['q'] = q
         data['courses'] = courses
+        data['purchased_courses'] = purchased_courses
+        data['favourites'] = favourites
         data['page'] = 'explore'
 
         context = {'data': data}

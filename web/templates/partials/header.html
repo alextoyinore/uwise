@@ -3,7 +3,10 @@
 <div id="header-nav" class="header-nav">
     <div class="mobile-header">
         {# Mobile logo and nav icon #}
-        <span id="mobile-nav-icon" onclick=showMegaMenu()  class="material-symbols-outlined mobile-nav-icon">list</span>
+
+        {% comment %} <span id="mobile-nav-icon" onclick=showMegaMenu()  class="material-symbols-outlined mobile-nav-icon">list</span> {% endcomment %}
+
+        <img class="menu-icon" onclick=showMegaMenu() src="{% static "images/menu.png" %}" />
             
         <a id="logo-on-mobile" href="{% url 'home' %}"><img class="logo" src="{% static 'images/uwise.png' %}" alt="Uwise Logo"></a>
     
@@ -14,7 +17,10 @@
         <div class="header-nav-left">
             <a href="{% url 'home' %}"><img class="logo" src="{% static 'images/uwise.png' %}" alt="Uwise Logo"></a>
             {% if data.page is not 'enroll' %}
-                <div class="explore"><a href="{% url 'explore' %}">Explore</a>&nbsp;<span onclick=showMegaMenu() style="cursor:pointer; font-size:30px;" class="material-symbols-outlined">explore</span></div>
+                <div class="explore"><a href="{% url 'explore' %}">Explore</a> &nbsp;&nbsp;
+                    {% comment %} <span onclick=showMegaMenu() style="cursor:pointer; font-size:30px;" class="material-symbols-outlined">explore</span> {% endcomment %}
+                    <img class="menu-icon" onclick=showMegaMenu() src="{% static "images/menu.png" %}" />
+                </div>
             {% endif %}
         </div>
         
@@ -70,7 +76,9 @@
         <br>
         <div class="mega-search-form">
             <a href="{% url 'explore' %}">
-                <span style="cursor:pointer;font-size:35px;" class="material-symbols-outlined">explore</span>
+                {% comment %} <span style="cursor:pointer;font-size:35px;" class="material-symbols-outlined">explore</span> {% endcomment %}
+
+                <img class="menu-icon" src="{% static "images/menu.png" %}" />
             </a>
             <form action={% url 'explore' %}>
                 <input type="search" name="q" placeholder="What do you want to learn?" class="mega-search-input" />
@@ -81,8 +89,8 @@
         
         {% if not user.is_authenticated %}
         <div class="mega-menu-auth">
-            <a class="btn-cta blue" style="color:#fff;" href="{% url 'login' %}">Login</a>
-            <a class="btn-cta green" href="{% url 'signup' %}">Get Started</a>
+            <a class="btn-cta blue mega-auth-link" style="color:#fff;" href="{% url 'login' %}">Login</a>
+            <a class="btn-cta blue mega-auth-link" style="color:#fff;" href="{% url 'signup' %}">Get Started</a>
         </div>
         {% comment %} {% else %}
             <a class="btn-cta red mega-logout" style="color:#fff; background:crimson;" href="{% url 'logout-user' %}">Logout</a> {% endcomment %}
@@ -133,6 +141,14 @@
         {% else %}
             top: 30px;
         {% endif %}
+    }
+    .menu-icon {
+        width: 15px;
+        cursor: pointer;
+    }
+    .mega-auth-link {
+        text-decoration: none;
+        color: #fff;
     }
 </style>
 
