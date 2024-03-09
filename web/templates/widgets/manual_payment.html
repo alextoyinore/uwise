@@ -4,8 +4,8 @@
         <span style="text-align:right;" class="material-symbols-outlined">close</span>
     </div>
     <h3>Dear {{user.get_full_name}},</h3>
-    <p>Thank you for choosing to purchase <b style="color:#10DC80;">{{course.title}}</b>.</p>
-    <p>Our engineers are working hard to bring you seemless and secure online payment. However, in the meantime, kindly make a transfer of the amount of <b style="color:#10DC80;">&#8358;{{course.price|intcomma}}</b> to the following account details to purchase your course.</p>
+    <p>Thank you for choosing to purchase <b class="green-text">{{course.title}}</b>.</p>
+    <p>Our engineers are working hard to bring you seemless and secure online payment. However, in the meantime, kindly make a transfer of the amount of <b class="green-text">&#8358;{{course.price|intcomma}}</b> to the following account details to purchase your course.</p>
 
     <br>
 
@@ -17,7 +17,7 @@
 
     <br>
 
-    <p>Upon completion of payment. Send the following in an email to <a href="mailto:pay@uwise.pro" style="color:#10DC80; text-decoration:none;font-weight:bold;">pay@uwise.pro</a>.</p>
+    <p>Upon completion of payment. Send the following in an email to <a href="mailto:pay@uwise.pro" class="green-text" style="text-decoration:none;font-weight:bold;">pay@uwise.pro</a>.</p>
     <ol>
         <li>Evidence of Payment</li>
         <li>Your full name as it appears on Uwise. (*** Confirm in `Profle`)</li>

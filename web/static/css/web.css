@@ -892,7 +892,7 @@ button:hover {
   width: 75%;
   margin: auto;
   text-align: center;
-  padding: 70px 0 30px 0;
+  padding: 100px 0 30px 0;
   gap: 20px;
 }
 
@@ -1090,12 +1090,12 @@ button:hover {
   border: 1px solid var(--primary-blue) 44;
 }
 .messages .note {
-  background: #fff;
+  background: var(--primary-green-light);
   padding: 10px;
 }
 .note i {
   font-size: 12px;
-  color: #aaa;
+  color: var(--primary-blue);
 }
 
 /* PARTNER */
@@ -1698,12 +1698,12 @@ form label {
   gap: 10px;
 }
 .notes .note {
-  background: #fff;
+  background: var(--primary-green-light);
   padding: 10px;
 }
 .note i {
   font-size: 12px;
-  color: #aaa;
+  color: var(--primary-blue);
 }
 .class-details {
   cursor: default;

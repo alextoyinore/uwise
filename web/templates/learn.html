@@ -2,7 +2,7 @@
 {% load static %}
 {% load humanize %}
 {% block page-title %} Learn {% endblock %}
-{% block header-message %}{% endblock %}
+{% comment %} {% block header-message %}{% endblock %} {% endcomment %}
 
 
 {% block hero %}
@@ -175,7 +175,8 @@
                 {% endif %}
             {% elif data.page == 'notes' %}
 
-                <h2>My notes on <span style="color:#10DC80;">{{ data.course_data.title }}</span></h2><br>
+                <h2>My notes</h2>
+                <p>on <span class="green-text">{{ data.course_data.title }}</span></p><br>
                 {# Note form goes here... #}
                 {% include 'widgets/note_form.html' with course=data.course_data %}
                 <br>
@@ -247,7 +248,8 @@
                          class="btn-cta green bold" id="start-online-pay">Pay &#8358; {{ data.course_data.price|intcomma}} </button>  
                 {% endif %}
             {% elif data.page == 'reviews' %}
-                <h2>Review <span class="green-text">{{data.course_data.title}}</span></h2>
+                <h2>My Review</h2>
+                <p>of <span class="green-text">{{ data.course_data.title }}</span></p><br>
                 <br>
                 {% if data.user_owns_course %}
                     {# Review form goes here... #}
