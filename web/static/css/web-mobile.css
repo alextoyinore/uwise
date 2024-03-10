@@ -1,27 +1,27 @@
 @media only screen and (max-width: 1024px) {
     .content {
-        width: 94%;
+        width: 90%;
     }
     .top-nav-content{
-        width: 94%;
+        width: 90%;
     }
     .header-nav-content {
-        width: 94%;
+        width: 90%;
     }
     .header-message-content{
-        width: 94%;
+        width: 90%;
     }
     .user-content {
-        width: 94%;
+        width: 90%;
     }
     .footer-wrapper {
-        width: 94%;
+        width: 90%;
     }
     .hero-content {
-        width: 94%;
+        width: 90%;
     }
     .biginfo-content {
-        width: 94%;
+        width: 90%;
     }
 }
 
@@ -162,7 +162,7 @@
         display: none;
     }
     .bottom-cta p, .bottom-cta strong {
-        width: 94%;
+        width: 90%;
     }
     .filters {
         width: 0px;
@@ -268,7 +268,7 @@
     }
     .extra-header-nav-content {
         margin: auto;
-        width: 94%;
+        width: 90%;
     }
     .mobile-nav-icon {
         font-size: 35px;
@@ -281,7 +281,7 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        width: 94%;
+        width: 90%;
         margin: auto;
         align-items: center;
     }
@@ -289,7 +289,7 @@
         height: 25px;
     }
     .mega-menu {
-        height: 689%;
+        width: 100%;
     }
     .mega-logout {
         display: block;
