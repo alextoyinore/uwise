@@ -782,13 +782,16 @@ button:hover {
   display: none;
   z-index: 1;
   position: absolute;
-  width: 100%;
-  background: #fafcff;
-  border: 1px solid #c3d3ec;
+  width: 50%;
+  background: var(--primary-green-light);
+  border: 1px solid var(--primary-green);
   left: 0;
-  height: 600%;
+  top: 0;
   overflow-y: auto;
-  scrollbar-width: none;
+  scrollbar-width: thin;
+}
+.mega-menu content {
+  width: 80%;
 }
 .mega-menu a {
   color: var(--primary-blue);
@@ -1080,14 +1083,13 @@ button:hover {
   top: 10%;
   right: calc(0% - 120%);
   display: flex;
-  background: #eff3fa;
+  background: var(--primary-green-light);
   padding: 20px;
   z-index: 1;
   flex-direction: column;
   gap: 10px;
   overflow-y: auto;
-  border-top-left-radius: 20px;
-  border: 1px solid var(--primary-blue) 44;
+  border: 1px solid var(--primary-green);
 }
 .messages .note {
   background: var(--primary-green-light);

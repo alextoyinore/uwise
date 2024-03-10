@@ -37,10 +37,10 @@ class FieldSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class SpecializationSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Specialization
-        fields = '__all__'
+# class SpecializationSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Specialization
+#         fields = '__all__'
 
 
 class SpecializationCourseSerializer(serializers.ModelSerializer):

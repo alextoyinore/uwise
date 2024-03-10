@@ -14,22 +14,9 @@ class Field(models.Model):
         return self.title
 
 
-class Specialization(models.Model):
-    title = models.CharField(max_length=100, null=False, blank=False)
-    field = models.ForeignKey(Field, on_delete=models.CASCADE)
-    description = models.TextField()
-    objectives = models.TextField(null=True, blank=True)
-    skills = models.TextField(null=True, blank=True)
-    courses = models.ManyToManyField('Course', related_name='specialization_courses', blank=True)
-    is_active = models.BooleanField(default=False)
-
-    def __str__(self):
-        return self.title
-
-
 class SpecializationCourse(models.Model):
-    specialization = models.ForeignKey(Specialization, on_delete=models.CASCADE)
-    course = models.ForeignKey('Course', on_delete=models.CASCADE)
+    specialization = models.ForeignKey('Course', on_delete=models.CASCADE, related_name='specialization')
+    course = models.ForeignKey('Course', on_delete=models.CASCADE, related_name='specialization_course')
     is_active = models.BooleanField(default=False)
 
     class Meta:
@@ -57,11 +44,11 @@ class Course(models.Model):
     organization = models.ForeignKey(Organization, on_delete=models.SET_NULL, swappable=True, null=True, blank=True)
     level = models.ForeignKey('CourseLevel', on_delete=models.SET_NULL, null=True, blank=True,
                               related_name='course_level')
-    # classes = models.ManyToManyField('Class', related_name='course_classes')
     skills = models.TextField(null=True, blank=True)
     tags = models.CharField(max_length=200, null=True, blank=True)
     objectives = models.TextField(blank=True, null=True)
     next_start_date = models.DateTimeField(null=True, blank=True)
+    is_specialization = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     date_created = models.DateTimeField(auto_now=True)
 

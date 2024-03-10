@@ -147,15 +147,15 @@ urlpatterns = [
 
     # SPECIALIZATION
 
-    path('specializations', view=SpecializationViewSet.as_view({
-        'post': 'create',
-        'get': 'list'}), name='specializations'),
-    path('specialization/<int:pk>', view=SpecializationViewSet.as_view({
-        'get': 'retrieve',
-        'put': 'update',
-        'patch': 'partial_update',
-        'delete': 'destroy',
-    }), name='specialization'),
+    # path('specializations', view=SpecializationViewSet.as_view({
+    #     'post': 'create',
+    #     'get': 'list'}), name='specializations'),
+    # path('specialization/<int:pk>', view=SpecializationViewSet.as_view({
+    #     'get': 'retrieve',
+    #     'put': 'update',
+    #     'patch': 'partial_update',
+    #     'delete': 'destroy',
+    # }), name='specialization'),
 
     # SPECIALIZATION COURSES
 

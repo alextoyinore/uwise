@@ -195,6 +195,12 @@
                 </div>
             </div>
         </section>
+
+
+        {# If specialation #}
+        {% comment %} {% if data.specialization_course_carousel is not None %}
+            {% include 'widgets/course_carousel.html' with carousel=data.specialization_course_carousel %}
+        {% endif %} {% endcomment %}
     
     {# Courses/Lessons in this course #}
         {% if data.classes|length > 0 %}

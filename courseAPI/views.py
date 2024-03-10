@@ -112,10 +112,10 @@ class ReadingViewSet(ModelViewSet):
     permission_classes = [IsAdminUser, IsFacilitator, IsStudent]
 
 
-class SpecializationViewSet(ModelViewSet):
-    queryset = Specialization.objects.all()
-    serializer_class = SpecializationSerializer
-    permission_classes = [IsAdminUser, IsUwiseAdmin]
+# class SpecializationViewSet(ModelViewSet):
+#     queryset = Specialization.objects.all()
+#     serializer_class = SpecializationSerializer
+#     permission_classes = [IsAdminUser, IsUwiseAdmin]
 
 
 class SpecializationCourseViewSet(ModelViewSet):

@@ -135,17 +135,16 @@
 </div>
 
 <style>
-    .mega-menu {
-        {% if user.is_authenticated %}
-            top: 45px;
-        {% else %}
-            top: 30px;
-        {% endif %}
-    }
     .menu-icon {
         width: 15px;
         cursor: pointer;
     }
+    .mega-menu {
+        width: 50%;
+    }
+    .mega-menu .content {
+        width: 90%;
+      }
     .mega-auth-link {
         text-decoration: none;
         color: #fff;

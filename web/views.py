@@ -28,7 +28,7 @@ class BaseView(TemplateView):
         footer_navs = FooterNav.objects.filter(is_active=True).all()
         announcements = Announcement.objects.all()
         static_pages = StaticPage.objects.filter(is_active=True).all()
-        specializations = courseAPI.models.Specialization.objects.all()
+        specializations = courseAPI.models.Course.objects.filter(is_specialization=True).all()
         blogs = blogAPI.models.Post.objects.filter(is_published=True).all().order_by('-date_posted')
 
         data = {
@@ -64,7 +64,6 @@ class HomeView(BaseView):
             'courses': latest,
         }
 
-
         if request.user.is_authenticated:
             user_courses = courseAPI.models.UserCourse.objects.filter(user=request.user)
             user_courses_carousels = {
@@ -75,9 +74,15 @@ class HomeView(BaseView):
 
         # print(data['user_courses_carousels'])
         data = self.get_context_data()
+        specialization_carousel = {
+            'title': 'Specializations',
+            'courses': data['specializations']
+        }
+
         data['carousels'] = carousels
         data['latest_carousel'] = latest_carousel
         data['user_courses_carousels'] = user_courses_carousels
+        data['specialization_carousel'] = specialization_carousel
 
         context = {'data': data}
         return render(request, self.template_name, context)
@@ -170,6 +175,22 @@ class CourseView(BaseView):
             raise Http404("Course does not exist")
         classes = courseAPI.models.Class.objects.filter(course=course_data)
 
+        specialization_courses = courseAPI.models.SpecializationCourse.objects.filter(specialization=course_data).all()
+        courses = []
+        for c in specialization_courses:
+            courses.append(c.course)
+
+        specialization_course_carousel = None
+
+        if len(specialization_courses) > 0:
+            specialization_course_carousel = {
+                'title': 'Courses in this specialization',
+                'courses': courses
+            }
+
+        print(courses)
+
+
         user_owns_course = None
 
         if request.user.is_authenticated:
@@ -188,6 +209,7 @@ class CourseView(BaseView):
         data['classes'] = classes
         data['page'] = 'course'
         data['user_owns_course'] = user_owns_course
+        data['specialization_course_carousel'] = specialization_course_carousel
 
         context = {'data': data}
         return render(request, self.template_name, context)
