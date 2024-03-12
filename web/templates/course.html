@@ -198,7 +198,7 @@
 
 
         {# If specialation #}
-        {% if data.specialization is not None %}
+        {% if data.course_data.is_specialization %}
             {% include 'widgets/course_carousel.html' with carousel=data.specialization_courses_carousel is_specialization=True %}
         {% endif %}
     
