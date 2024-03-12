@@ -198,10 +198,11 @@
 
 
         {# If specialation #}
-        {% if data.specialization_course_carousel is not None %}
-            {% include 'widgets/course_carousel.html' with carousel=data.specialization_course_carousel %}
+        {% if data.specialization is not None %}
+            {% include 'widgets/course_carousel.html' with carousel=data.specialization_courses_carousel is_specialization=True %}
         {% endif %}
     
+
     {# Courses/Lessons in this course #}
         {% if data.classes|length > 0 %}
             <section id="courses" class="programme-course-list">

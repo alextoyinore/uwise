@@ -42,7 +42,7 @@
             {% include 'widgets/biginfo.html' %}
             <br>
     <section class="content">
-        <h2>Specializations</h2>
+        <h2>Fields</h2>
         {% if data.carousels is not None or empty %}
             {% for carousel in data.carousels %}
                 {% include 'widgets/course_carousel.html' with carousel=carousel %}

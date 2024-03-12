@@ -175,21 +175,14 @@ class CourseView(BaseView):
             raise Http404("Course does not exist")
         classes = courseAPI.models.Class.objects.filter(course=course_data)
 
-        specialization_courses = courseAPI.models.SpecializationCourse.objects.filter(specialization=course_data).all()
-        courses = []
-        for c in specialization_courses:
-            courses.append(c.course)
+        specialization = courseAPI.models.SpecializationCourse.objects.filter(specialization=course_data)
 
-        specialization_course_carousel = None
+        specialization_courses_carousel = {
+            'title': 'Courses in this specialization',
+            'courses': specialization,
+        }
 
-        if len(specialization_courses) > 0:
-            specialization_course_carousel = {
-                'title': 'Courses in this specialization',
-                'courses': courses
-            }
-
-        print(courses)
-
+        print(specialization)
 
         user_owns_course = None
 
@@ -209,7 +202,8 @@ class CourseView(BaseView):
         data['classes'] = classes
         data['page'] = 'course'
         data['user_owns_course'] = user_owns_course
-        data['specialization_course_carousel'] = specialization_course_carousel
+        data['specialization_courses_carousel'] = specialization_courses_carousel
+        data['specialization'] = specialization
 
         context = {'data': data}
         return render(request, self.template_name, context)

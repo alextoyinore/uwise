@@ -11,16 +11,13 @@ class Field(models.Model):
     is_active = models.BooleanField(default=True)
 
     def __str__(self):
-        return self.title
+        return self.title    
 
 
 class SpecializationCourse(models.Model):
     specialization = models.ForeignKey('Course', on_delete=models.CASCADE, related_name='specialization')
-    course = models.ForeignKey('Course', on_delete=models.CASCADE, related_name='specialization_course')
-    is_active = models.BooleanField(default=False)
-
-    class Meta:
-        unique_together = ('specialization', 'course')
+    courses = models.ManyToManyField('Course', related_name='specialization_courses')
+    is_active = models.BooleanField(default=True)
 
     def __str__(self):
         return self.specialization.title

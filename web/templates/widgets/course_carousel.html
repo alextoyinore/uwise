@@ -22,10 +22,14 @@
     <div class="carousel-wrapper">
         <div class="carousel-track">
             <div class="carousel-items">
-            {% if  not carousel.is_user_carousel %}
+            {% if  not carousel.is_user_carousel %} 
                 {% for course in carousel.courses.all %}
                     {% include 'widgets/course_card.html' with course=course %}
                 {% endfor %}
+            {% comment %} {% elif is_specialization is True %}
+                {% for course in carousel.courses.courses.all %}
+                    {% include 'widgets/course_card.html' with course=course %}
+                {% endfor %} {% endcomment %}
             {% else %}
                 {% for course in carousel.courses.all %}
                     {% include 'widgets/user_course_card.html' with course=course.course %}
