@@ -66,6 +66,9 @@ class CourseType(models.Model):
     is_active = models.BooleanField(default=True)
     date = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return self.type
+
 
 class UserCourse(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='course_owner', null=False, blank=False)
