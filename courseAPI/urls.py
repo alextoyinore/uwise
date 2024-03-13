@@ -16,6 +16,20 @@ urlpatterns = [
     }), name='course-level'),
 
 
+
+    # COURSE TYPE
+
+    path('course-type', view=CourseTypeViewSet.as_view({
+        'post': 'create',
+        'get': 'list'}), name='course-types'),
+    path('course-type/<int:pk>', view=CourseTypeViewSet.as_view({
+        'get': 'retrieve',
+        'put': 'update',
+        'patch': 'partial_update',
+        'delete': 'destroy',
+    }), name='course-type'),
+
+
     # COURSE
 
     path('courses', view=CourseViewSet.as_view({

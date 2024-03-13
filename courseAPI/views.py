@@ -130,6 +130,12 @@ class UserCourseViewSet(ModelViewSet):
     permission_classes = [IsAuthenticated]
 
 
+class CourseTypeViewSet(ModelViewSet):
+    queryset = CourseType.objects.all()
+    serializer_class = CourseTypeSerializer
+    permission_classes = [IsAdminUser]
+
+
 class CourseFacilitatorViewSet(ModelViewSet):
     queryset = CourseFacilitator.objects.all()
     serializer_class = CourseFacilitatorSerializer

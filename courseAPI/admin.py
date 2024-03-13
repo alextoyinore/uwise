@@ -95,6 +95,11 @@ class SpecializationCourseAdmin(admin.ModelAdmin):
     search_fields = ('specialization',)
 
 
+@admin.register(CourseType)
+class CourseTypeAdmin(admin.ModelAdmin):
+    list_display = ('type', 'is_active')
+    search_fields = ('type',)
+
 @admin.register(Field)
 class FieldAdmin(admin.ModelAdmin):
     list_display = ('title', 'is_active')

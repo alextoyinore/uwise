@@ -55,6 +55,11 @@ class UserCourseSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class CourseTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CourseType
+        fields = '__all__'
+
 class CourseFacilitatorSerializer(serializers.ModelSerializer):
     class Meta:
         model = CourseFacilitator

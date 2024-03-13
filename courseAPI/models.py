@@ -39,8 +39,13 @@ class Course(models.Model):
     class_interval = models.IntegerField(blank=False, null=False)
     language = models.CharField(max_length=200, null=True, blank=True)
     organization = models.ForeignKey(Organization, on_delete=models.SET_NULL, swappable=True, null=True, blank=True)
-    level = models.ForeignKey('CourseLevel', on_delete=models.SET_NULL, null=True, blank=True,
+    level = models.ForeignKey('CourseLevel', 
+                              on_delete=models.SET_NULL, 
+                              null=True, blank=True,
                               related_name='course_level')
+    course_type = models.ForeignKey('CourseType', 
+                              on_delete=models.DO_NOTHING, 
+                              related_name='course_type')
     skills = models.TextField(null=True, blank=True)
     tags = models.CharField(max_length=200, null=True, blank=True)
     objectives = models.TextField(blank=True, null=True)
@@ -56,6 +61,12 @@ class Course(models.Model):
         ordering = ('-date_created', 'is_active', 'next_start_date')
 
 
+class CourseType(models.Model):
+    type = models.CharField(max_length=200)
+    is_active = models.BooleanField(default=True)
+    date = models.DateTimeField(auto_now=True)
+
+
 class UserCourse(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='course_owner', null=False, blank=False)
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='course')
@@ -66,6 +77,7 @@ class UserCourse(models.Model):
 
     def __str__(self):
         return f'{self.user.get_full_name()} {self.course.title}'
+
 
 
 class CourseFacilitator(models.Model):
@@ -99,18 +111,18 @@ class Class(models.Model):
     course = models.ForeignKey('Course', on_delete=models.CASCADE, null=True, blank=True)
     title = models.CharField(max_length=200, null=False, blank=False)
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    class_link1 = models.URLField(max_length=5000, null=False, blank=False)
-    class_link2 = models.URLField(max_length=5000, null=True, blank=True)
+    class_link1 = models.URLField(null=False, blank=False)
+    class_link2 = models.URLField(null=True, blank=True)
     resources = models.ForeignKey('Resource', models.CASCADE, related_name='resource_for_class', null=True, blank=True)
     class_number = models.IntegerField(blank=False, null=False)
     description = models.TextField(blank=False, null=False, default='')
     objectives = models.TextField(blank=False, null=False, default='')
-    is_active = models.BooleanField(default=True)
     date_created = models.DateField(auto_now=True)
     time_duration = models.IntegerField()
     expiration_date = models.DateField(null=True, blank=True)
     class_did_hold = models.BooleanField()
     facilitator = models.ForeignKey(Facilitator, on_delete=models.SET_NULL, null=True, blank=True)
+    is_active = models.BooleanField(default=True)
 
     class Meta:
         verbose_name_plural = 'Classes'
