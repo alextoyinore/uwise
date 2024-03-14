@@ -82,7 +82,7 @@ h1 {
 
 h3 {
   margin: 10px 0;
-  font-size: 1em;
+  font-size: .8em;
   color: var(--primary-blue);
   line-height: 1.2em;
 }
@@ -286,9 +286,8 @@ button:hover {
 .header-nav {
   background: #ffffff;
   color: var(--primary-blue);
-  padding: 12px 0;
+  padding: 18px 0;
   font-size: 14px;
-  /* border-bottom: 1px solid #c3d3ec; */
   box-shadow: 5px 6px 4px 2px #91b3ea11;
 }
 
@@ -360,7 +359,7 @@ button:hover {
   position: relative;
   left: 35px;
   font-size: 20px;
-  color: var(--primary-blue-light);
+  color: var(--primary-blue);
   cursor: pointer;
 }
 
@@ -1005,7 +1004,7 @@ button:hover {
 
 /* USER CONTENT */
 .user-content-wrapper {
-  /* background: #c3d3ec22; */
+  background: var(--primary-blue-light);
   margin-top: 45px;
   padding: 3% 0;
 }
@@ -1142,8 +1141,8 @@ button:hover {
 
 .student-photo img {
   object-fit: cover;
-  width: 100px;
-  height: 100px;
+  width: 60px;
+  height: 60px;
   border-radius: 200px;
 }
 
@@ -1153,8 +1152,8 @@ button:hover {
 }
 
 .message-column p {
-  font-size: 12px;
-  line-height: 18px;
+  font-size: 10px;
+  line-height: 14px;
 }
 
 .message-column i {
@@ -1233,7 +1232,7 @@ button:hover {
   gap: 25px;
 }
 .blog-item {
-  width: 94%;
+  width: 93%;
   display: flex;
   flex-direction: row;
   gap: 20px;
@@ -1248,8 +1247,8 @@ button:hover {
   color: #0646d5;
 }
 .blog-image {
-  width: 75px;
-  height: 75px;
+  width: 50px;
+  height: 50px;
 }
 .blog-image img {
   width: 75px;
@@ -1264,12 +1263,12 @@ button:hover {
 }
 .blog-detail b {
   color: var(--primary-blue);
-  font-size: 0.8em;
+  font-size: 0.7em;
 }
 .blog-detail p {
-  color: #777777;
-  font-size: 12px;
-  line-height: 18px;
+  color: var(--primary-blue);
+  font-size: 10px;
+  line-height: 14px;
 }
 
 .testimonials {
@@ -1508,12 +1507,12 @@ li {
 
 .info-content .info-message {
   font-size: 10px;
-  color: var(--primary-blue);
+  /* color: var(--primary-blue); */
 }
 
 .info-content .icon {
   font-size: 40px;
-  color: var(--primary-blue);
+  /* color: var(--primary-blue); */
 }
 hr {
   margin: 0;

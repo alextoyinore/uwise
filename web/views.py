@@ -173,6 +173,7 @@ class CourseView(BaseView):
             course_data = courseAPI.models.Course.objects.get(id=kwargs['pk'])
         except Course.DoesNotExist:
             raise Http404("Course does not exist")
+        
         classes = courseAPI.models.Class.objects.filter(course=course_data)
 
         specialization = courseAPI.models.SpecializationCourse.objects.filter(specialization=course_data)

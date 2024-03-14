@@ -199,12 +199,17 @@
 
         {# If specialation #}
         {% if data.course_data.is_specialization %}
-            {% include 'widgets/course_carousel.html' with carousel=data.specialization_courses_carousel is_specialization=True %}
-        {% endif %}
-    
+            <div id="courses">
+                {% comment %} {% include 'widgets/course_carousel.html' with carousel=data.specialization_courses_carousel is_specialization=True %} {% endcomment %}
+                {{ data.specialization.specialization.title }}
+                {% for course in data.specialization.courses.all %}
+                    {{course.title}}
+                {% endfor %}
+            </div>
+        {% else %}
 
-    {# Courses/Lessons in this course #}
-        {% if data.classes|length > 0 %}
+            {# Courses/Lessons in this course #}
+            {% if data.classes|length > 0 %}
             <section id="courses" class="programme-course-list">
                 <div class="course-list-content">
                     <h3>Classes in this course</h3>
@@ -264,6 +269,8 @@
                     </div>
                 </div>
             </section>
+
+            {% endif %}
 
         {% endif %}
     
