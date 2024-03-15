@@ -16,7 +16,7 @@ class Field(models.Model):
 
 class SpecializationCourse(models.Model):
     specialization = models.ForeignKey('Course', on_delete=models.CASCADE, related_name='specialization')
-    courses = models.ManyToManyField('Course', related_name='specialization_courses')
+    course = models.ForeignKey('Course', on_delete=models.SET_NULL, null=True, related_name='specialization_course')
     is_active = models.BooleanField(default=True)
 
     def __str__(self):

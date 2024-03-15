@@ -176,14 +176,14 @@ class CourseView(BaseView):
         
         classes = courseAPI.models.Class.objects.filter(course=course_data)
 
-        specialization = courseAPI.models.SpecializationCourse.objects.filter(specialization=course_data)
+        specialization_courses = courseAPI.models.SpecializationCourse.objects.filter(specialization=course_data)
 
         specialization_courses_carousel = {
             'title': 'Courses in this specialization',
-            'courses': specialization,
+            'courses': specialization_courses,
         }
 
-        print(specialization)
+        print(specialization_courses)
 
         user_owns_course = None
 
@@ -204,7 +204,7 @@ class CourseView(BaseView):
         data['page'] = 'course'
         data['user_owns_course'] = user_owns_course
         data['specialization_courses_carousel'] = specialization_courses_carousel
-        data['specialization'] = specialization
+        data['specialization_courses'] = specialization_courses
 
         context = {'data': data}
         return render(request, self.template_name, context)

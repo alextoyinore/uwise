@@ -82,7 +82,7 @@ h1 {
 
 h3 {
   margin: 10px 0;
-  font-size: .8em;
+  font-size: .9em;
   color: var(--primary-blue);
   line-height: 1.2em;
 }
@@ -286,7 +286,7 @@ button:hover {
 .header-nav {
   background: #ffffff;
   color: var(--primary-blue);
-  padding: 18px 0;
+  padding: 14px 0;
   font-size: 14px;
   box-shadow: 5px 6px 4px 2px #91b3ea11;
 }
@@ -357,7 +357,7 @@ button:hover {
 
 .search-icon {
   position: relative;
-  left: 35px;
+  /* left: 35px; */
   font-size: 20px;
   color: var(--primary-blue);
   cursor: pointer;
@@ -1004,7 +1004,7 @@ button:hover {
 
 /* USER CONTENT */
 .user-content-wrapper {
-  background: var(--primary-blue-light);
+  /* background: var(--primary-blue-light); */
   margin-top: 45px;
   padding: 3% 0;
 }

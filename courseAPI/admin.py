@@ -91,8 +91,8 @@ class ReadingAdmin(admin.ModelAdmin):
 
 @admin.register(SpecializationCourse)
 class SpecializationCourseAdmin(admin.ModelAdmin):
-    list_display = ('specialization',)
-    search_fields = ('specialization',)
+    list_display = ('specialization', 'course')
+    search_fields = ('specialization', 'course')
 
 
 @admin.register(CourseType)

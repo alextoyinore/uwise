@@ -278,7 +278,7 @@
     }
     .search-icon {
         font-size: 20px;
-        margin-right: 35px;
+        /* margin-right: 35px; */
     }
     .mobile-header {
         display: flex;
