@@ -46,6 +46,7 @@ class UserPurchase(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='purchased_course', null=False, blank=False)
     is_completed = models.BooleanField(default=False)
     date_added = models.DateTimeField(auto_now=True)
+    is_active = models.BooleanField(default=True)
 
     class Meta:
         unique_together = ('user', 'course')
