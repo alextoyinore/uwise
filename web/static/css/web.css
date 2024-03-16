@@ -288,7 +288,8 @@ button:hover {
   color: var(--primary-blue);
   padding: 14px 0;
   font-size: 14px;
-  box-shadow: 5px 6px 4px 2px #91b3ea11;
+  /* box-shadow: 5px 6px 4px 2px #91b3ea11; */
+  border-bottom: 1px solid var(--primary-blue-light);
 }
 
 .extra-header-nav-left {
@@ -1726,7 +1727,7 @@ form label {
   color: #ffffff;
 }
 .class-item {
-  padding: 10px 10px;
+  padding: 5px 15px;
   border: 1px solid #c3d3ec;
   margin: 10px 0;
   cursor: pointer;

@@ -112,6 +112,7 @@ class LearnView(BaseView):
         announcements = utilsAPI.models.Announcement.objects.filter(course=course_data).order_by('-date')
         user_owns_course = UserPurchase.objects.filter(user=request.user, course=kwargs['pk']).exists()
         review = utilsAPI.models.Review.objects.filter(user=request.user, course=course_data).first()
+        course_grades = utilsAPI.models.Grade.objects.filter(user=request.user, course=course_data)
 
         # print(user_owns_course)
 
@@ -133,6 +134,7 @@ class LearnView(BaseView):
         data['notes'] = notes
         data['announcements'] = announcements
         data['user_owns_course'] = user_owns_course
+        data['course_grades'] = course_grades
 
         if review is not None:
             data['review'] = review

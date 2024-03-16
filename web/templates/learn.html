@@ -51,9 +51,11 @@
         <article class="class-board">
             {% if data.page == 'info' or data.page == 'None' %}
                 <h2>Overview</h2><br>
-                <b>Field: <span>{{ data.course_data.field }}</span> .
-                Instruction Language: <span>{{ data.course_data.language }}</span> .
-                Course Duration: <span>{{ data.course_data.duration }} days</span></b>
+                <b>Field: <span>{{ data.course_data.field }}</span> <br>
+                Instruction Language: <span>{{ data.course_data.language }}</span> <br>
+                Course Duration: <span>{{ data.course_data.duration }}  days</span> <br>
+                Class Interval: <span>{{ data.course_data.class_interval }} days</span>
+                </b>
                 <br/><br/>
 
                 {% if data.course_data.welcome_note is not None or data.course_data.welcome_note is not empty %}
@@ -192,7 +194,7 @@
             {% elif data.page == 'grades' %}
                 <h2>Grades</h2>
                 {% if data.user_owns_course %}
-
+                    
                 {% else %}
                 <br>
                 <p>Dear {{ user.get_full_name }},</p><br>

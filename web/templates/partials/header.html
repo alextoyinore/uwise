@@ -76,9 +76,9 @@
         <br>
         <div class="mega-search-form">
             <a href="{% url 'explore' %}">
-                {% comment %} <span style="cursor:pointer;font-size:35px;" class="material-symbols-outlined">explore</span> {% endcomment %}
+                <span style="cursor:pointer;font-size:35px;" class="material-symbols-outlined">explore</span>
 
-                <img class="menu-icon" src="{% static "images/menu.png" %}" />
+                {% comment %} <img class="menu-icon" src="{% static "images/menu.png" %}" /> {% endcomment %}
             </a>
             <form action={% url 'explore' %}>
                 <input type="search" name="q" placeholder="What do you want to learn?" class="mega-search-input" />
