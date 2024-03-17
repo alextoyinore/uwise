@@ -123,6 +123,7 @@
     .certificate-right {
         flex-wrap: wrap;
     }
+
     .course-list-content > p, .course-list-content > h3 {
         width: 100%;
     }
@@ -172,10 +173,12 @@
         max-width: none;
         display: none;
         margin-top: 5%;
+        position: relative;
     }
     .class-board {
         width: 100%;
         padding: 20px 0;
+        margin-left: 0;
     }
     .nav-icon{
         display: block;
@@ -200,6 +203,7 @@
         width: 100%;
         padding: 0;
         margin-top: 15%;
+        margin-left: 0;
     }
     .header-nav-left a .logo {
         max-height: 25px;

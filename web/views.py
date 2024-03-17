@@ -24,7 +24,7 @@ class BaseView(TemplateView):
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
         context = super().get_context_data(**kwargs)
         fields = courseAPI.models.Field.objects.filter(is_active=True).all()
-        testimonials = Testimonial.objects.all()
+        testimonials = Testimonial.objects.all()[:5]
         footer_navs = FooterNav.objects.filter(is_active=True).all()
         announcements = Announcement.objects.all()
         static_pages = StaticPage.objects.filter(is_active=True).all()

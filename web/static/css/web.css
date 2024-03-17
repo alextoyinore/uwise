@@ -358,7 +358,7 @@ button:hover {
 
 .search-icon {
   position: relative;
-  /* left: 35px; */
+  left: 35px;
   font-size: 20px;
   color: var(--primary-blue);
   cursor: pointer;
@@ -705,7 +705,7 @@ button:hover {
   background: #c3d3ec22;
 }
 .biginfo-title {
-  font-size: 1em;
+  font-size: 2em;
   color: var(--text-primary-blue);
 }
 .biginfo-content {
