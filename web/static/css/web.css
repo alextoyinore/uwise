@@ -210,7 +210,7 @@ label {
 input,
 button {
   padding: 10px;
-  border: 1px solid #c3d3ec;
+  border: 1px solid var(--primary-blue-light);
   outline: 0;
   height: 30px;
 }
@@ -223,7 +223,6 @@ button {
   text-align: center;
   align-content: center;
   border: 1px solid var(--primary-blue);
-  width: 100%;
 }
 
 button:hover {
@@ -702,8 +701,9 @@ button:hover {
 /* BIG INFO */
 
 .biginfo {
-  background: #c3d3ec22;
+  background: var(--primary-blue-light);
 }
+
 .biginfo-title {
   font-size: 2em;
   color: var(--text-primary-blue);
