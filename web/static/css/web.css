@@ -34,6 +34,7 @@
 /* Works on Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
   width: 5px;
+  height: 5px;
 }
 
 *::-webkit-scrollbar-track {
@@ -49,9 +50,8 @@
 html {
   scroll-behavior: smooth;
   transition: 0.5s ease-in-out;
-  scrollbar-width: 10px;
-  scrollbar-gutter: 10px;
-  
+  scrollbar-width: 5px;
+  scrollbar-gutter: 5px;
 }
 
 input:-internal-autofill-selected {
@@ -140,7 +140,6 @@ textarea::placeholder {
   justify-content: center;
   gap: 50px;
   padding: 25px 0;
-  margin-top: 100px;
 }
 
 /* .auth-form {
@@ -168,7 +167,9 @@ textarea::placeholder {
 
 .form-bottom-info {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
+  gap: 1em;
 }
 
 .input-label {
@@ -187,8 +188,11 @@ input {
   display: flex;
   flex-direction: column;
   border: 1px solid var(--primary-blue-light);
-  /* background: #fff; */
   padding: 40px;
+  box-sizing: border-box;
+  /* box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 10px;
+  transition: transform 100ms ease-in 0s, box-shadow 100ms linear 0s;
+  transform-origin: 50% 100%; */
 }
 
 form p {
@@ -855,12 +859,9 @@ button:hover {
   box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 10px;
   transition: transform 100ms ease-in 0s, box-shadow 100ms linear 0s;
   transform-origin: 50% 100%;
-  /* background: var(--primary-info-light); */
-  /* border: 1px solid var(--primary-green); */
   left: 0;
   top: 5.7em;
   overflow-y: auto;
-  scrollbar-width: thin;
 }
 .mega-menu content {
   width: 80%;
@@ -1652,9 +1653,7 @@ hr {
   flex-direction: column;
   overflow-y: auto;
   scroll-behavior: smooth;
-  /* scrollbar-width: thin; */
   scrollbar-base-color: var(--primary-blue);
-  /* padding: 10px 20px 0 0; */
   position: fixed;
 }
 .course-list {
