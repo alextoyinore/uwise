@@ -422,7 +422,6 @@ button:hover {
   /* background: var(--primary-blue-light); */
   display: flex;
   flex-direction: column;
-  height: 27em;
 }
 
 .hero-content {
