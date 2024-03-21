@@ -8,10 +8,12 @@
         {% endif %}
     </div>
     <div class="course-details">
-        <strong class="course-title">{{course.title}}</strong>
+        <img class="org-logo" src="{{ course.organization.logo.url }}" alt="">
+        <span class="course-title">{{course.title}}</span>
+        <span class="skills"><label>Skills: </label>{{course.tags}}</span>
         <div class="course-details-bottom">
             {% comment %} <p class="rating"><span class="material-symbols-outlined rating-star">star</span> {{ course.rating }}  ({{ course.rating_count }} reviews)</p> {% endcomment %}
-            <i class="course-duration">{{course.duration}} Days, {{course.level}}</i>
+            <span class="course-duration">{{course.duration}} Days, {{course.level}}</span>
         </div>
     </div>
 </a>

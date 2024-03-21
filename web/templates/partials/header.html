@@ -4,9 +4,9 @@
     <div class="mobile-header">
         {# Mobile logo and nav icon #}
 
-        {% comment %} <span id="mobile-nav-icon" onclick=showMegaMenu()  class="material-symbols-outlined mobile-nav-icon">list</span> {% endcomment %}
+        <span id="mobile-nav-icon" onclick=showMegaMenu()  class="material-symbols-outlined mobile-nav-icon">list</span>
 
-        <img class="menu-icon" onclick=showMegaMenu() src="{% static "images/menu.png" %}" />
+        {% comment %} <img class="menu-icon" onclick=showMegaMenu() src="{% static "images/menu.png" %}" /> {% endcomment %}
             
         <a id="logo-on-mobile" href="{% url 'home' %}"><img class="logo" src="{% static 'images/uwise.png' %}" alt="Uwise Logo"></a>
     
@@ -23,6 +23,11 @@
                 </div>
             {% endif %}
         </div>
+
+        <form action={% url 'explore' %}>
+            <input name="q" class="hero-search" type='text' placeholder='Search by course name' />
+            {% comment %} <button class="search-btn" type='submit'>Search</button> {% endcomment %}
+        </form>
         
         <div class="header-nav-right">
             {% if user.is_authenticated %}
@@ -53,10 +58,10 @@
                 </div>
             {% else %}
                 {% if data.page == 'home' or data.page == 'course' or data.page == 'enroll' or data.page == 'explore' %}
-                    <form action={% url 'explore' %} class="header-search">
+                    {% comment %} <form action={% url 'explore' %} class="header-search">
                         <span class="material-symbols-outlined search-icon" onclick=focusInput()>search</span>
                         <input class="header-search-input search" placeholder="What do you want to learn?" type="search" name="q" />
-                    </form>
+                    </form> {% endcomment %}
                     <a class="btn-cta blue" href="{% url 'login' %}">Login</a>
 {#                    <a class="btn-cta blue" href="{% url 'signup' %}">Get Started</a>#}
                 {% elif data.page == 'login' %}
@@ -73,24 +78,24 @@
 
 <div class="mega-menu">
     <div class="content">
-        <br>
         <div class="mega-search-form">
             <a href="{% url 'explore' %}">
-                <span style="cursor:pointer;font-size:35px;" class="material-symbols-outlined">explore</span>
+                {% comment %} <span style="cursor:pointer;font-size:35px;" class="material-symbols-outlined">explore</span> {% endcomment %}
 
                 {% comment %} <img class="menu-icon" src="{% static "images/menu.png" %}" /> {% endcomment %}
             </a>
-            <form action={% url 'explore' %}>
+
+            {% comment %} <form action={% url 'explore' %}>
                 <input type="search" name="q" placeholder="What do you want to learn?" class="mega-search-input" />
-            </form>
-            <span style="cursor:pointer;" onclick="closeMegaMenu()" class="material-symbols-outlined close-mega">close</span>
+            </form> {% endcomment %}
+            {% comment %} <span style="cursor:pointer;" onclick="closeMegaMenu()" class="material-symbols-outlined close-mega">close</span> {% endcomment %}
         </div>
         
         
         {% if not user.is_authenticated %}
         <div class="mega-menu-auth">
             <a class="btn-cta blue mega-auth-link" style="color:#fff;" href="{% url 'login' %}">Login</a>
-            <a class="btn-cta blue mega-auth-link" style="color:#fff;" href="{% url 'signup' %}">Get Started</a>
+            <a class="btn-cta blue mega-auth-link" style="color:#fff;" href="{% url 'signup' %}">Sign Up</a>
         </div>
         {% comment %} {% else %}
             <a class="btn-cta red mega-logout" style="color:#fff; background:crimson;" href="{% url 'logout-user' %}">Logout</a> {% endcomment %}
@@ -135,6 +140,23 @@
 </div>
 
 <style>
+    .hero-search {
+        width: 400px;
+    }
+    .hero-search::placeholder{
+        color: var(--primary-blue)
+    }
+    .search-btn {
+        width: 150px;
+    }
+    @media only screen and (max-width: 540px){
+        .hero-search {
+            width: 100%;
+        }
+        .search-btn {
+            width: 100%;
+        }
+    }
     .menu-icon {
         width: 15px;
         cursor: pointer;

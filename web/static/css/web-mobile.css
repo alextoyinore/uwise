@@ -232,14 +232,14 @@
     }
     .course-grid {
         width: 100%;
-        gap: 10px;
+        gap: 1em;
     }
     .course-card {
-        width: 170px;
-        height: 35vh;
+        width: 14em;
+        height: 50vh;
     }
     .carousel-items {
-        gap: 10px;
+        gap: 1.5em;
     }
     .static-content {
         flex-direction: column;
@@ -256,8 +256,8 @@
         padding: 10px 0 20px 0;
     }
     .hero2-content {
-        width: 75%;
-        flex-direction: column;
+        width: 100%;
+        flex-direction: column-reverse;
     }
     .hero2-content strong {
         line-height: 1em;
@@ -282,7 +282,7 @@
     }
     .search-icon {
         font-size: 20px;
-        /* margin-right: 35px; */
+        margin-right: 35px;
     }
     .mobile-header {
         display: flex;
@@ -315,8 +315,11 @@
         left: 5%;
         padding: 20px;
     }
+    .hero2-content-top {
+        width: 90%;
+    }
     .hero2-content-bottom {
-        display: none;
+        width: 90%;
     }
     .enroll-wrapper {
         margin-top: 20%;
@@ -329,8 +332,8 @@
         max-width: none;
     }
     .course-card {
-        width: 160px;
-        height: 34vh;
+        width: 21em;
+        height: 44vh;
     }
     .top-nav-content {
         flex-wrap: nowrap;

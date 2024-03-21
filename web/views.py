@@ -80,7 +80,7 @@ class HomeView(BaseView):
         }
 
         data['carousels'] = carousels
-        data['latest_carousel'] = latest_carousel
+        data['latest'] = latest
         data['user_courses_carousels'] = user_courses_carousels
         data['specialization_carousel'] = specialization_carousel
 

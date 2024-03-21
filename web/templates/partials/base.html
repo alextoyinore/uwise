@@ -45,13 +45,13 @@
     <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
     
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block page-title %}{% endblock %} - Uwise</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block page-title %}{% endblock %} - Uwise</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Expanded:wght@100;200;300;400;500;600;700;800;900&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Montaga&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
     <link rel="stylesheet" href="{% static "css/web.css" %}">
@@ -63,10 +63,6 @@
 <body>
 
     <div class="header">
-
-        {% block header-message %}
-            {% include 'partials/header_message.html' %}
-        {% endblock %}
     
         {% if not user.is_authenticated %}
             {% block top-nav %}
@@ -84,10 +80,14 @@
 
     {% include 'widgets/messages.html' with messages=data.announcements message_type='Announcements' %}
 
-    {% block hero %}{% endblock %}
-
-    {% block content %}
-    {% endblock %}
+    <div style="margin-top:5.7em;">
+        {% block header-message %}
+            {% include 'partials/header_message.html' %}
+        {% endblock %}
+        {% block hero %}{% endblock %}
+        {% block content %}
+        {% endblock %}
+    </div>
 
     {% block footer %}
         {% include 'partials/footer.html' %}

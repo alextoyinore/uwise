@@ -1,27 +1,33 @@
+{% load static %}
 <div id="hero">
     <div class="hero2-content">
         <div class="hero2-content-top">
-            <strong>Build wealth from learning</strong><br>
+            <h1>Live online classes with professionals and industry experts</h1>
             {% comment %} <p>Wealth comes from wisdom, wisdom comes from understanding, understanding comes from knowledge, all knowledge comes from God</p> {% endcomment %}
-            <p>Learn, unlearn, and re-learn. Acquire, practice and perfect new skills for business, career, and personal growth.</p>
+
+            <p>
+                At Uwise we are on a mission to build 1,000,000 Billionaires over the next 20 years through tech, vocational, and personal development education. Learn from highly skilled professionals and industry experts. Join a community of like-minded learners, develop relationships, and engage potential business partners.
+            </p><br>
+            {% comment %} <p>
+                Beyond technical skills, learn how to turn your newly acquired skills into income streams. Develop both technical and soft skills including communication, negotiation, selling and more. Meet with leading industry thought leaders from several fields and be inspired. You are wise
+            </p> 
+            <br>{% endcomment %}
+            <div class="hero2-cta">
+                <a href="{% url 'signup' %}" class="btn-cta-light hero-cta bold green">Start your first course</a>
+                <a href="{% url 'explore' %}" class="btn-cta-light hero-cta bold">Explore Courses</a>
+            </div>
         </div>
         <div class="hero2-content-bottom">
+            <img class='hero2-img' src="{% static 'images/edu.png' %}" />
             {% comment %} {% for field in data.fields|slice:":4" %}
                 <a href="{% url 'explore' %}?q={{ field }}" class="btn-cta-light dark">{{ field }}</a>
             {% endfor %} {% endcomment %}
-
-            <form>
-                <input type='text' placeholder='Search by course name' />
-                <button type='submit'>Search</button>
-            </form>
-        </div>
-        <div class="hero2-cta">
-            <a href="{% url 'signup' %}" class="btn-cta-light hero-cta bold green">Get Started</a>
-            <a href="{% url 'explore' %}" class="btn-cta-light hero-cta bold">Explore Courses</a>
         </div>
     </div>
 </div>
 
 <style>
-    
+    .hero2-img{
+        width: 100%;
+    }
 </style>
