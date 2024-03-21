@@ -325,6 +325,12 @@
     .enroll-wrapper {
         margin-top: 20%;
     }
+    .hero-search {
+        width: 100%;
+    }
+    .search-btn {
+        width: 100%;
+    }
     
 }
 @media only screen and (max-width: 480px){

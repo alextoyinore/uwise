@@ -27,13 +27,13 @@
 
 /* Works on Firefox */
 * {
-  scrollbar-width: thin;
+  /* scrollbar-width: thin; */
   scrollbar-color: var(--primary-blue-light);
 }
 
 /* Works on Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
-  width: 10px;
+  width: 5px;
 }
 
 *::-webkit-scrollbar-track {
@@ -232,7 +232,17 @@ button {
 }
 
 button:hover {
-  background-color: #0e3b8d;
+  background-color: var(--primary-blue);
+}
+
+.socials {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+.socials a img {
+  height: 1.5em;
+  filter: brightness(20);
 }
 
 .social-buttons {
@@ -365,10 +375,8 @@ button:hover {
 }
 
 .search-icon {
-  position: relative;
-  left: 35px;
-  font-size: 20px;
-  color: var(--primary-blue);
+  font-size: 1em;
+  width: 1em;
   cursor: pointer;
 }
 
@@ -422,6 +430,13 @@ button:hover {
   /* background: var(--primary-blue-light); */
   display: flex;
   flex-direction: column;
+}
+
+.hero-search {
+  width: 400px;
+}
+.search-btn {
+  text-align: center;
 }
 
 .hero-content {
@@ -565,7 +580,7 @@ button:hover {
 
 .carousel-wrapper {
   overflow-x: auto;
-  scrollbar-width: thin;
+  /* scrollbar-width: thin; */
 }
 
 .carousel-wrapper::-webkit-scrollbar {
@@ -736,6 +751,7 @@ button:hover {
 
 .biginfo {
   background: var(--primary-blue);
+  border-bottom: 1px solid #fff4;
 }
 
 .biginfo-title {
@@ -771,6 +787,7 @@ button:hover {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 1em;
 }
 
 .biginfo-copy {
@@ -778,6 +795,18 @@ button:hover {
 }
 
 /* MEGA MENU */
+
+.menu-icon {
+  width: 15px;
+  cursor: pointer;
+}
+.mega-menu .content {
+  width: 90%;
+}
+.mega-auth-link {
+  text-decoration: none;
+  color: #fff;
+}
 
 .mega-logout {
   display: none;
@@ -1089,12 +1118,13 @@ button:hover {
 .bottom-cta {
   width: 100%;
   background: var(--primary-blue);
-  padding: 70px 0;
+  padding: 30px 0;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-bottom: 1px solid #fff4;
 }
 
 .bottom-cta p {
@@ -1622,7 +1652,7 @@ hr {
   flex-direction: column;
   overflow-y: auto;
   scroll-behavior: smooth;
-  scrollbar-width: thin;
+  /* scrollbar-width: thin; */
   scrollbar-base-color: var(--primary-blue);
   /* padding: 10px 20px 0 0; */
   position: fixed;
@@ -1936,6 +1966,9 @@ b span {
   display: flex;
   flex-direction: column;
   max-width: 35%;
+}
+.footer-nav p {
+  color: #fff;
 }
 
 .footer-nav strong {

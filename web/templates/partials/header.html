@@ -26,8 +26,14 @@
 
         <form action={% url 'explore' %}>
             <input name="q" class="hero-search" type='text' placeholder='Search by course name' />
-            {% comment %} <button class="search-btn" type='submit'>Search</button> {% endcomment %}
+            <button class="search-btn" type='submit'>
+                <img class='search-icon' src="{% static 'images/search-icon.png' %}" />
+            </button>
         </form>
+
+        <style>
+        
+        </style>
         
         <div class="header-nav-right">
             {% if user.is_authenticated %}
@@ -140,33 +146,9 @@
 </div>
 
 <style>
-    .hero-search {
-        width: 400px;
-    }
-    .hero-search::placeholder{
-        color: var(--primary-blue)
-    }
-    .search-btn {
-        width: 150px;
-    }
+    
     @media only screen and (max-width: 540px){
-        .hero-search {
-            width: 100%;
-        }
-        .search-btn {
-            width: 100%;
-        }
-    }
-    .menu-icon {
-        width: 15px;
-        cursor: pointer;
-    }
-    .mega-menu .content {
-        width: 90%;
-      }
-    .mega-auth-link {
-        text-decoration: none;
-        color: #fff;
+        
     }
 </style>
 
