@@ -19,9 +19,7 @@
         <div class="header-nav-left">
             <a href="{% url 'home' %}"><img class="logo" src="{% static 'images/uwise.png' %}" alt="Uwise Logo"></a>
             {% if data.page is not 'enroll' %}
-                <div class="explore"><a onmouseover=showMegaMenu() >Explore</a> &nbsp;&nbsp;
-                    {% comment %} <span onclick=showMegaMenu() style="cursor:pointer; font-size:30px;" class="material-symbols-outlined">explore</span> {% endcomment %}
-                    {% comment %} <img class="menu-icon" onclick=showMegaMenu() src="{% static "images/menu.png" %}" /> {% endcomment %}
+                <div class="explore"><a onclick=showMegaMenu() onmouseover=showMegaMenu() >Explore</a> &nbsp;&nbsp;
                 </div>
             {% endif %}
         </div>
@@ -133,7 +131,7 @@
             <form action={% url 'explore' %}>
                 <input name="q" class="hero-search" type='text' placeholder='Search by course name' />
             </form>
-            <br>
+
             {% if not user.is_authenticated %}
                 <div class="mega-menu-auth">
                     <a class="btn-cta blue mega-auth-link" style="color:#fff;" href="{% url 'login' %}">Login</a>

@@ -64,11 +64,11 @@
 
     <div class="header">
     
-        {% if not user.is_authenticated %}
+        {% comment %} {% if not user.is_authenticated %}
             {% block top-nav %}
                 {% include 'partials/topnav.html' with topnavs=data.topnavs %}
             {% endblock %}
-        {% endif %}
+        {% endif %} {% endcomment %}
 
         {% block header-nav %}
             {% include 'partials/header.html' with page_type=data.page_type %}
