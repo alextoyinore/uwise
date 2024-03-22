@@ -872,20 +872,24 @@ button:hover {
   flex-direction: row;
   gap: 10%;
   flex-wrap: wrap;
-  margin: 25px 0;
+  margin: 1.5em 0;
+  overflow-y: auto;
 }
 .mega-menu {
   display: none;
   z-index: 1;
-  position: absolute;
+  position: relative;
   width: 50%;
   background: #fff;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 10px;
   transition: transform 100ms ease-in 0s, box-shadow 100ms linear 0s;
   transform-origin: 50% 100%;
-  left: 0;
-  top: 5.7em;
+  /* left: 0; */
+  /* top: 5.7em; */
   overflow-y: auto;
+}
+.mega-menu-mobile-bottom {
+  display: none;
 }
 .mega-menu content {
   width: 80%;
@@ -2098,8 +2102,18 @@ b span {
   background: var(--primary-warning-light);
   color: var(--primary-warning);
 }
+.error {
+  color: var(--primary-warning);
+}
 
 .dark {
   background: var(--primary-blue);
   color: var(--primary-blue-light);
+}
+.grey-btn {
+  background: #eee;
+  color: #777;
+  width: 100%;
+  border: 0;
+  font-weight: bold;
 }

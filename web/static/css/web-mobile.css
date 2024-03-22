@@ -301,6 +301,13 @@
     .mega-menu {
         width: 100%;
     }
+    .mega-menu-auth {
+        flex-direction: column-reverse;
+        gap: 1em;
+    }
+    .mega-menu-content {
+        height: 15em;
+    }
     .mega-logout {
         display: block;
     }
@@ -328,10 +335,24 @@
         margin-top: 20%;
     }
     .hero-search {
-        width: 100%;
+        width: 91%;
     }
     .search-btn {
         width: 100%;
+    }
+    .mega-menu-mobile-bottom {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        background: white;
+        width: 91%;
+        padding: 2em 1em;
+        z-index: 2;
+    }
+    .mega-menu-mobile-bottom a {
+        padding: 1em 0;
     }
     
 }
