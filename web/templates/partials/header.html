@@ -9,17 +9,19 @@
         {% comment %} <img class="menu-icon" onclick=showMegaMenu() src="{% static "images/menu.png" %}" /> {% endcomment %}
             
         <a id="logo-on-mobile" href="{% url 'home' %}"><img class="logo" src="{% static 'images/uwise.png' %}" alt="Uwise Logo"></a>
+
+        <img class='search-icon' onclick=showMegaMenu() src="{% static 'images/search-icon-blue.png' %}" />
     
-        <span class="material-symbols-outlined search-icon" onclick=showMegaMenu()>search</span>
+        {% comment %} <span class="material-symbols-outlined search-icon" onclick=showMegaMenu()>search</span> {% endcomment %}
     </div>
 
     <div class="header-nav-content">
         <div class="header-nav-left">
             <a href="{% url 'home' %}"><img class="logo" src="{% static 'images/uwise.png' %}" alt="Uwise Logo"></a>
             {% if data.page is not 'enroll' %}
-                <div class="explore"><a href="{% url 'explore' %}">Explore</a> &nbsp;&nbsp;
+                <div class="explore"><a onmouseover=showMegaMenu() href="{% url 'explore' %}">Explore</a> &nbsp;&nbsp;
                     {% comment %} <span onclick=showMegaMenu() style="cursor:pointer; font-size:30px;" class="material-symbols-outlined">explore</span> {% endcomment %}
-                    <img class="menu-icon" onclick=showMegaMenu() src="{% static "images/menu.png" %}" />
+                    {% comment %} <img class="menu-icon" onclick=showMegaMenu() src="{% static "images/menu.png" %}" /> {% endcomment %}
                 </div>
             {% endif %}
         </div>
@@ -187,10 +189,10 @@
         const exploreMenu = document.querySelector('.mega-menu')
         if(exploreMenu.style.display === 'none'){
             exploreMenu.style.display = 'block'
-            document.querySelector('.header-nav-right').style.display = 'none'
+            //document.querySelector('.header-nav-right').style.display = 'none'
         }else {
             exploreMenu.style.display = 'none'
-            document.querySelector('.header-nav-right').style.display = 'flex'
+            //document.querySelector('.header-nav-right').style.display = 'flex'
         }
 
         //exploreMenu.addEventListener('mouseout', () => {

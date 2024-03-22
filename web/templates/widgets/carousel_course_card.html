@@ -1,5 +1,5 @@
 
-<a href="{% url 'learn' course.id %}/info" class="course-card">
+<a href="{% url 'course' course.id %}" class="carousel-course-card">
     <div class="course-image">
         {% if course.image_link is not None %}
             <img src="{{course.image_link}}" alt="">
@@ -13,11 +13,12 @@
         <span class="skills"><label>Skills: </label>{{course.tags}}</span>
         <div class="course-details-bottom">
             {% comment %} <p class="rating"><span class="material-symbols-outlined rating-star">star</span> {{ course.rating }}  ({{ course.rating_count }} reviews)</p> {% endcomment %}
-            <i class="course-duration">{{course.duration}} Days, {{course.level}}</i>
+            <span class="course-duration">{{course.duration}} Days, {{course.level}}</span>
         </div>
     </div>
 </a>
 
 <style>
     
+
 </style>

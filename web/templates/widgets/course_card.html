@@ -8,7 +8,7 @@
         {% endif %}
     </div>
     <div class="course-details">
-        <img class="org-logo" src="{{ course.organization.logo.url }}" alt="">
+        {% comment %} <p><img class="org-logo" src="{{ course.organization.logo.url }}" alt=""> &nbsp; <label class='org-name'>{{course.organization.name}}</label></p> {% endcomment %}
         <span class="course-title">{{course.title}}</span>
         <span class="skills"><label>Skills: </label>{{course.tags}}</span>
         <div class="course-details-bottom">

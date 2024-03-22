@@ -233,11 +233,15 @@
     }
     .course-grid {
         width: 100%;
-        gap: 1em;
+        gap: 2em;
     }
     .course-card {
         width: 48%;
         height: 50vh;
+    }
+    .carousel-course-card {
+        width: 18em;
+        height: 45vh;
     }
     .carousel-items {
         gap: 1.5em;
@@ -281,8 +285,7 @@
         font-size: 35px;
     }
     .search-icon {
-        font-size: 20px;
-        margin-right: 35px;
+        font-size: 1em;
     }
     .mobile-header {
         display: flex;
@@ -339,6 +342,10 @@
     }
     .course-card {
         width: 100%;
+        height: 45vh;
+    }
+    .carousel-course-card {
+        width: 18em;
         height: 45vh;
     }
     .top-nav-content {
