@@ -58,7 +58,7 @@ class HomeView(BaseView):
         carousels = CourseCarousel.objects.filter(is_active=True).all().order_by('-date')[:5]
         user_courses_carousels = None
 
-        latest = courseAPI.models.Course.objects.all()[:8]
+        latest = courseAPI.models.Course.objects.all()[:10]
         latest_carousel = {
             'title': 'Latest',
             'courses': latest,
