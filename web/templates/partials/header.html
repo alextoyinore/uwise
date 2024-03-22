@@ -19,7 +19,7 @@
         <div class="header-nav-left">
             <a href="{% url 'home' %}"><img class="logo" src="{% static 'images/uwise.png' %}" alt="Uwise Logo"></a>
             {% if data.page is not 'enroll' %}
-                <div class="explore"><a onmouseover=showMegaMenu() href="{% url 'explore' %}">Explore</a> &nbsp;&nbsp;
+                <div class="explore"><a onmouseover=showMegaMenu() >Explore</a> &nbsp;&nbsp;
                     {% comment %} <span onclick=showMegaMenu() style="cursor:pointer; font-size:30px;" class="material-symbols-outlined">explore</span> {% endcomment %}
                     {% comment %} <img class="menu-icon" onclick=showMegaMenu() src="{% static "images/menu.png" %}" /> {% endcomment %}
                 </div>
@@ -47,12 +47,11 @@
                             <a href="{% url 'profile' %}">Profile</a>
                             <a href="{% url 'dashboard' %}">My Library</a>
                             <a href="">Favourites</a>
-                            {% comment %}
                             <a href="">Purchases</a>
                             <a href="">Messages</a>
-                            <a href="">Forum</a> {% endcomment %}
+                            <a href="">Forum</a>
                             <a onclick="displayMessages()"> {% include 'widgets/message_count.html' with messages=data.announcements %} </span> &nbsp; Announcements</a>
-                            {% comment %} <a href="">Certificates & Badges</a> {% endcomment %}
+                            <a href="">Certificates & Badges</a>
                             <a id="logout" href="{% url 'logout-user' %}" onclick="" class="logout">Logout</a>
                         </div>
                     </div>
@@ -86,19 +85,14 @@
 
 <div class="mega-menu">
     <div class="content">
-        {% comment %} <div class="mega-search-form"> {% endcomment %}
-            {% comment %} <a href="{% url 'explore' %}"> {% endcomment %}
-                {% comment %} <span style="cursor:pointer;font-size:35px;" class="material-symbols-outlined">explore</span> {% endcomment %}
+        <div class="mega-menu-top">
+            <a href="{% url 'explore' %}">View All Courses</a>
+            <span style="cursor:pointer;text-align:right;color:var(--primary-blue);" onclick="closeMegaMenu()" class="material-symbols-outlined close-mega">close</span>
+        </div>
 
-                {% comment %} <img class="menu-icon" src="{% static "images/menu.png" %}" /> {% endcomment %}
-            {% comment %} </a> {% endcomment %}
-
-            {% comment %} <form action={% url 'explore' %}>
-                <input type="search" name="q" placeholder="What do you want to learn?" class="mega-search-input" />
-            </form>
-            {% comment %} <span style="cursor:pointer;" onclick="closeMegaMenu()" class="material-symbols-outlined close-mega">close</span> {% endcomment %}
-        {% comment %} </div> {% endcomment %}
-        <span style="cursor:pointer;text-align:right;color:var(--primary-blue);" onclick="closeMegaMenu()" class="material-symbols-outlined close-mega">close</span>
+        <br>
+        <hr>
+        
         <div class="mega-menu-content">
             {% if user.is_authenticated %}
                 <div class="nav-list">
@@ -106,11 +100,11 @@
                     <a href="{% url 'profile' %}">Profile</a>
                     <a href="{% url 'dashboard' %}">My Library</a>
                     <a href="">Favourites</a>
-                    {% comment %} <a href="">Purchases</a>
+                    <a href="">Purchases</a>
                     <a href="">Messages</a>
-                    <a href="">Forum</a> {% endcomment %}
+                    <a href="">Forum</a>
                     <a onclick="displayMessages()">Announcements &nbsp; {% include 'widgets/message_count.html' with messages=data.announcements %}</span></a>
-                    {% comment %} <a href="">Certificates & Badges</a> {% endcomment %}
+                    <a href="">Certificates & Badges</a>
                     <a id="logout" style="color:crimson; font-weight:bold;" href="{% url 'logout-user' %}" onclick="" class="logout">Logout</a>
                 </div>
             {% endif %}
@@ -139,6 +133,7 @@
             <form action={% url 'explore' %}>
                 <input name="q" class="hero-search" type='text' placeholder='Search by course name' />
             </form>
+            <br>
             {% if not user.is_authenticated %}
                 <div class="mega-menu-auth">
                     <a class="btn-cta blue mega-auth-link" style="color:#fff;" href="{% url 'login' %}">Login</a>
@@ -151,7 +146,17 @@
 </div>
 
 <style>
-    
+    .mega-menu-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .mega-menu-top a {
+        text-decoration: none;
+        font-weight: bold;
+        color: var(--primary-blue);
+        cursor: pointer;
+    }
     @media only screen and (max-width: 540px){
         
     }
