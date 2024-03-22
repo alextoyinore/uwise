@@ -300,6 +300,7 @@
     }
     .mega-menu {
         width: 100%;
+        left: 0;
     }
     .mega-menu-auth {
         flex-direction: column-reverse;
