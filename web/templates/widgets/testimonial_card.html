@@ -1,11 +1,9 @@
 <article class="testimonial-card">
-    <div class="student-photo">
-        <img src="{{ testimonial.user.image }}" alt="">
-    </div>
-
+    <img src="{{ testimonial.user.image }}" alt="">
     <div class="message-column">
         <h3>{{ testimonial.user.get_full_name | title }}</h3>
         <p>{{ testimonial.message | truncatewords:"20" }}</p>
+        <br>
         <i>{{ testimonial.date }}</i>
     </div>
 </article>

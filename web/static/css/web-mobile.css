@@ -80,7 +80,7 @@
     }
     .hero-content {
         flex-direction: column;
-        padding: 0 0;
+        padding: 1em 0;
         gap: 20px;
     }
     .hero-content-left, .hero-content-right {

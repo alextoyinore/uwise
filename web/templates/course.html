@@ -300,7 +300,7 @@
 
     <div class="enroll-mobile-sticker">
         {% if not data.user_owns_course %}
-            <a href="{% url 'enroll' data.course_data.id %}" class="btn-cta blue bold">Enroll Now </a>
+            <a href="{% url 'enroll' data.course_data.id %}" class="btn-cta green bold">Enroll Now </a>
         {% else %}
             <a href="{% url 'learn' data.course_data.id 'info' %}" class="btn-cta blue bold">Go to class</a>
         {% endif %}
