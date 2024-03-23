@@ -38,9 +38,9 @@
             display: none;
         }
         .green {
-            background: #10DC80;
+            background: var(--primary-green);
             color: #fff;
-            border: 1px solid #0ab065;
+            border: 1px solid var(--primary-green);
             font-weight: bold;
         }
     </style>
@@ -60,12 +60,7 @@
           var currentScrollPos = window.scrollY || window.pageYOffset;
 
           if (prevScrollPos < currentScrollPos) {
-              {% if not user.is_authenticated %}
-                header.style.top = "30px";
-              {% else %}
-                header.style.top = "0px";
-              {% endif %}
-
+            header.style.top = "0px";
             header.style.transition = '.5s ease-in-out'
           } else {
             header.style.top = "-400px"; // Adjust this value based on your header's height

@@ -37,6 +37,9 @@
     .courses-content {
         /* padding: 40px 0; */
     }
+    .mega-menu .content {
+        width: 90%;
+    }
     .courses-content h2 {
         width: 70%;
     }
