@@ -916,6 +916,7 @@ button:hover {
   align-items: center;
   justify-content: space-between;
   width: 25%;
+  cursor: pointer;
 }
 
 /* HEADER PROFILE  */
