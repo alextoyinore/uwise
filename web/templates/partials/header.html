@@ -10,9 +10,39 @@
             
         <a id="logo-on-mobile" href="{% url 'home' %}"><img class="logo" src="{% static 'images/uwise.png' %}" alt="Uwise Logo"></a>
 
-        <img class='search-icon' onclick=showMegaMenu() src="{% static 'images/search-icon-blue.png' %}" />
+        {% comment %} <img class='search-icon' onclick=showMegaMenu() src="{% static 'images/search-icon-blue.png' %}" /> {% endcomment %}
     
         {% comment %} <span class="material-symbols-outlined search-icon" onclick=showMegaMenu()>search</span> {% endcomment %}
+
+        <div class="header-nav-right">
+            {% if user.is_authenticated %}
+                <div class="header-profile">
+                    <div class="header-profile-details">
+                        {% comment %} <b>{{ user.get_full_name | title }}</b> {% endcomment %}
+                        {% comment %} {% if user.current_job_title == '' %} <a href="">Update your profile</a> {% else %} <a href="">{{ user.current_job_title }}</a> {% endif %} {% endcomment %}
+                        <div class="header-profile-menu">
+                            <a href="{% url 'profile' %}">Profile</a>
+                            <a href="{% url 'dashboard' %}">My Library</a>
+                            <a href="">Favourites</a>
+                            <a href="">Purchases</a>
+                            <a href="">Messages</a>
+                            <a href="">Forum</a>
+                            <a onclick="displayMessages()"> {% include 'widgets/message_count.html' with messages=data.announcements %} </span> &nbsp; Announcements</a>
+                            <a href="">Certificates & Badges</a>
+                            <a id="logout" href="{% url 'logout-user' %}" onclick="" class="logout">Logout</a>
+                        </div>
+                    </div>
+                    <div class="header-profile-image">
+                        {% if user.image == '' or user.image is None %}
+                            <img src="{% static 'images/profile.png' %}" alt="{{user.get_full_name}}">
+                        {% else %}
+                            <img src="{{ user.image.url }}" alt="{{user.get_full_name}}">
+                        {% endif %}
+                    </div>
+                </div>
+            {% endif %}
+
+        </div>
     </div>
 
     <div class="header-nav-content">
@@ -63,10 +93,6 @@
                 </div>
             {% else %}
                 {% if data.page == 'home' or data.page == 'course' or data.page == 'enroll' or data.page == 'explore' %}
-                    {% comment %} <form action={% url 'explore' %} class="header-search">
-                        <span class="material-symbols-outlined search-icon" onclick=focusInput()>search</span>
-                        <input class="header-search-input search" placeholder="What do you want to learn?" type="search" name="q" />
-                    </form> {% endcomment %}
                     <a class="btn-cta blue" href="{% url 'login' %}">Login</a>
                    <a class="btn-cta green" href="{% url 'signup' %}">Sign Up</a>
                 {% elif data.page == 'login' %}

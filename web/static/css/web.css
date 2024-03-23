@@ -603,7 +603,7 @@ button:hover {
   display: flex;
   flex-direction: row;
   gap: 2em;
-  margin: 2em .5em;
+  margin: 2em 0;
 }
 
 /* COURSE CARD */
