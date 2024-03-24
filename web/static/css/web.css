@@ -124,7 +124,7 @@ p {
 
 textarea {
   outline: 0;
-  border: 1px solid #c3d3ec;
+  border: 1px solid #ccc;
   padding: 20px;
 }
 
@@ -1675,7 +1675,6 @@ li {
 
 .ad-content-left h3 {
   line-height: 1.6em;
-  padding-left: 5px;
 }
 
 .ad-content-right {

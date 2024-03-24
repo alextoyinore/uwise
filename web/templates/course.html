@@ -125,7 +125,8 @@
         <section class="long-ad">
             <div class="long-ad-content">
                 <div class="ad-content-left">
-                    <h3>Go from where you are to where you want to be with life-changing learning for your team</h3><br>
+                    <h3>Elevate your team to the next level</h3>
+                    <p>At the heart of Uwise's appeal to businesses is its comprehensive suite of corporate training solutions. From leadership development and employee onboarding to technical skills training and compliance, Uwise offers a diverse range of courses designed to meet the unique needs of modern organizations.</p><br>
                     <a href="{% url 'static' 'business' %}" class="btn-cta blue">Learn more about Uwise Business</a>
                 </div>
                 <div class="ad-content-right">
@@ -146,7 +147,7 @@
                 </div>
                 <div class="partner-info-right">
                     <img src="{% static 'images/lady.png' %}" alt="">
-{#                    <img src="{{ data.course_data.image }}" alt="">#}
+                    {% comment %} <img src="{{ data.course_data.image.url }}" alt=""> {% endcomment %}
                 </div>
             </div>
         </section>
