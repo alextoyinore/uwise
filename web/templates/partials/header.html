@@ -9,8 +9,6 @@
         {% comment %} <img class="menu-icon" onclick=showMegaMenu() src="{% static "images/menu.png" %}" /> {% endcomment %}
             
         <a id="logo-on-mobile" href="{% url 'home' %}"><img class="logo" src="{% static 'images/uwise.png' %}" alt="Uwise Logo"></a>
-
-        {% comment %} <img class='search-icon' onclick=showMegaMenu() src="{% static 'images/search-icon-blue.png' %}" /> {% endcomment %}
     
         {% comment %} <span class="material-symbols-outlined search-icon" onclick=showMegaMenu()>search</span> {% endcomment %}
 
@@ -40,6 +38,8 @@
                         {% endif %}
                     </div>
                 </div>
+            {% else %}
+                <img class='search-icon' onclick=showMegaMenu() src="{% static 'images/search-icon-blue.png' %}" />
             {% endif %}
 
         </div>
