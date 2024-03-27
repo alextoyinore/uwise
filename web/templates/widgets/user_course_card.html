@@ -1,4 +1,5 @@
 
+{% load humanize %}
 <a href="{% url 'learn' course.id %}/info" class="course-card">
     <div class="course-image">
         {% if course.image_link is not None %}
@@ -11,6 +12,7 @@
         {% comment %} <p><img class="org-logo" src="{{ course.organization.logo.url }}" alt=""> &nbsp; <label class='org-name'>{{course.organization.name}}</label></p> {% endcomment %}
         <span class="course-title">{{course.title}}</span>
         <span class="skills"><label>Skills: </label>{{course.tags}}</span>
+        <b>&#8358; {{ course.price|intcomma }}</b>
         <div class="course-details-bottom">
             {% comment %} <p class="rating"><span class="material-symbols-outlined rating-star">star</span> {{ course.rating }}  ({{ course.rating_count }} reviews)</p> {% endcomment %}
             <i class="course-duration">{{course.duration}} Days, {{course.level}}</i>

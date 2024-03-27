@@ -151,7 +151,7 @@ class DashboardView(BaseView):
             return redirect('login')
 
         q = request.GET.get('q')
-        fields = courseAPI.models.Field.objects.all()
+        fields = courseAPI.models.Field.objects.all()[:10]
         courses = courseAPI.models.UserCourse.objects.filter(user=request.user).all().order_by('-date')
         purchased_courses = UserPurchase.objects.filter(user=request.user).all()
         favourites = utilsAPI.models.Favourite.objects.filter(user=request.user).all()
