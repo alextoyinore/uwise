@@ -264,7 +264,7 @@
     }
     .hero2-content {
         width: 100%;
-        flex-direction: column-reverse;
+        flex-direction: column;
     }
     .hero2-content strong {
         line-height: 1em;

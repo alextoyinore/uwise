@@ -602,7 +602,7 @@ button:hover {
 .carousel-items {
   display: flex;
   flex-direction: row;
-  gap: 2em;
+  gap: 3em;
   margin: 2em 0;
 }
 
@@ -1789,7 +1789,7 @@ hr {
   flex-direction: row;
   width: 100%;
   flex-wrap: wrap;
-  gap: 1.5em;
+  gap: 3em;
   margin-bottom: 40px;
 }
 .filter-item-group {
